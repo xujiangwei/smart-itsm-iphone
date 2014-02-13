@@ -27,7 +27,7 @@
 		4A92F0FD18AC9A1600EB594B /* SNotificationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0FC18AC9A1600EB594B /* SNotificationDetailViewController.m */; };
 		4A92F10118AC9C4900EB594B /* SAttentionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F10018AC9C4900EB594B /* SAttentionDetailViewController.m */; };
 		4A92F10518AC9CF400EB594B /* SToolDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F10418AC9CF400EB594B /* SToolDetailViewController.m */; };
-		4A92F11118ACAEBE00EB594B /* rootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F11018ACAEBE00EB594B /* rootViewController.m */; };
+		4A92F11118ACAEBE00EB594B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F11018ACAEBE00EB594B /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +72,8 @@
 		4A92F10018AC9C4900EB594B /* SAttentionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAttentionDetailViewController.m; sourceTree = "<group>"; };
 		4A92F10318AC9CF400EB594B /* SToolDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SToolDetailViewController.h; sourceTree = "<group>"; };
 		4A92F10418AC9CF400EB594B /* SToolDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SToolDetailViewController.m; sourceTree = "<group>"; };
-		4A92F10F18ACAEBE00EB594B /* rootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rootViewController.h; sourceTree = "<group>"; };
-		4A92F11018ACAEBE00EB594B /* rootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rootViewController.m; sourceTree = "<group>"; };
+		4A92F10F18ACAEBE00EB594B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		4A92F11018ACAEBE00EB594B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,11 +133,11 @@
 		4417CF7718AC74C700E6E09F /* SmartITSM */ = {
 			isa = PBXGroup;
 			children = (
-				4A92F10F18ACAEBE00EB594B /* rootViewController.h */,
-				4A92F11018ACAEBE00EB594B /* rootViewController.m */,
 				4A92F10218AC9CB200EB594B /* Tool */,
 				4A92F0FE18AC9BEF00EB594B /* Attention */,
 				4A92F0FA18AC99D500EB594B /* Notification */,
+				4A92F10F18ACAEBE00EB594B /* RootViewController.h */,
+				4A92F11018ACAEBE00EB594B /* RootViewController.m */,
 				4417CF8018AC74C700E6E09F /* AppDelegate.h */,
 				4417CF8118AC74C700E6E09F /* AppDelegate.m */,
 				4417CF8318AC74C700E6E09F /* Main.storyboard */,
@@ -316,7 +316,7 @@
 				4A92F0F618AC95B000EB594B /* SAttentionViewController.m in Sources */,
 				4417CF8218AC74C700E6E09F /* AppDelegate.m in Sources */,
 				4A92F10518AC9CF400EB594B /* SToolDetailViewController.m in Sources */,
-				4A92F11118ACAEBE00EB594B /* rootViewController.m in Sources */,
+				4A92F11118ACAEBE00EB594B /* RootViewController.m in Sources */,
 				4417CF7E18AC74C700E6E09F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
