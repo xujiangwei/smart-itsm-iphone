@@ -4,18 +4,30 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "Cell.h"
+#import "MastPrerequisites.h"
 
-@interface MastEngine : NSObject
+@interface MastEngine : NSObject <CCTalkListener, CCActionDelegate>
 
 /** 返回单例。
  */
 + (MastEngine *)sharedSingleton;
 
-- (void)applicationDidFinishLaunchingWithOptions:(UIApplication *)application;
 
-- (void)applicationDidBecomeActive:(UIApplication *)application;
+/** 启动引擎。
+ */
+- (BOOL)start;
 
-- (void)applicationWillResignActive:(UIApplication *)application;
+/** 停止引擎。
+ */
+- (void)stop;
+
+
+/**
+ */
+- (void)addListener:(NSString *)identifier action:(NSString *)action listener:(ActionListener *)listener;
+
+/**
+ */
+- (void)removeListener:(NSString *)identifier action:(NSString *)action listener:(ActionListener *)listener;
 
 @end
