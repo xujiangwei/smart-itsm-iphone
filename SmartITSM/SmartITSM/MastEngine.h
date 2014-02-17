@@ -15,7 +15,7 @@
 
 /** 启动引擎。
  */
-- (BOOL)start;
+- (BOOL)start:(Contacts *)contacts;
 
 /** 停止引擎。
  */

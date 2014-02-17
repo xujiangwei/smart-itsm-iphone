@@ -13,6 +13,8 @@
 
 // 动作监听器，key: cellet identifier
 @property (strong, nonatomic) NSMutableDictionary *listeners;
+// 状态监听器：key: cellet identifier
+@property (strong, nonatomic) NSMutableDictionary *statusListeners;
 
 @end
 
@@ -41,14 +43,38 @@ static MastEngine *sharedInstance = nil;
     return self;
 }
 
-- (BOOL)start
+- (BOOL)start:(Contacts *)contacts
 {
+    if ([[contacts getAddresses] count] == 0)
+    {
+        return NO;
+    }
+
+    CCNucleusConfig *config = [[CCNucleusConfig alloc] init:CONSUMER device:PHONE];
+    CCNucleus *nucleus = [CCNucleus sharedSingletonWithConfig:config];
+
+    if (![nucleus startup])
+    {
+        return NO;
+    }
+
+    // 设置监听器
+    [CCTalkService sharedSingleton].listener = self;
+
+    NSArray *list = [contacts getAddresses];
+    for (ContactAddress *addr in list)
+    {
+        CCInetAddress *address = [[CCInetAddress alloc] initWithAddress:addr.host port:addr.port];
+        [[CCTalkService sharedSingleton] call:addr.identifier hostAddress:address];
+    }
+
     return YES;
 }
 
 - (void)stop
 {
-    
+    [CCTalkService sharedSingleton].listener = nil;
+    [[CCNucleus sharedSingleton] shutdown];
 }
 
 #pragma mark - Listener methods
