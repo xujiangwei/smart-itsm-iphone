@@ -38,6 +38,8 @@ static MastEngine *sharedInstance = nil;
     if (self = [super init])
     {
         self.listeners = [[NSMutableDictionary alloc] initWithCapacity:2];
+        
+        self.statusListeners = [[NSMutableDictionary alloc] initWithCapacity:2];
     }
 
     return self;
@@ -103,6 +105,34 @@ static MastEngine *sharedInstance = nil;
         if ([set isEmpty])
         {
             [self.listeners removeObjectForKey:identifier];
+        }
+    }
+}
+
+- (void)addStatusListener:(NSString *)identifier statusListener:(StatusListener *)statusListener
+{
+    NSMutableArray *array = [self.statusListeners objectForKey:identifier];
+    if (nil != array)
+    {
+        [array addObject:statusListener];
+    }
+    else
+    {
+        array = [[NSMutableArray alloc] initWithCapacity:2];
+        [array addObject:statusListener];
+        [self.statusListeners setObject:array forKey:identifier];
+    }
+}
+
+- (void)removeStatusListener:(NSString *)identifier statusListener:(StatusListener *)statusListener
+{
+    NSMutableArray *array = [self.statusListeners objectForKey:identifier];
+    if (nil != array)
+    {
+        [array removeObject:statusListener];
+        if (array.count == 0)
+        {
+            [self.statusListeners removeObjectForKey:identifier];
         }
     }
 }

@@ -5,12 +5,16 @@
 
 #import "AppDelegate.h"
 #import "MastEngine.h"
+#import "APPStatusListener.h"
+#import "APPListener.h"
+#import "Contacts.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[MastEngine sharedSingleton] start];
+//    [[MastEngine sharedSingleton] start];
+    [self configEngine];
 
     return YES;
 }
@@ -42,6 +46,28 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     
     [[MastEngine sharedSingleton] stop];
+}
+
+#pragma mark - Privite
+
+- (void) configEngine
+{
+    APPListener *listener = [[APPListener alloc] init];
+    APPStatusListener *statusListener = [[APPStatusListener alloc] init];
+    [[MastEngine sharedSingleton] addListener:@"SmartITOM" action:@"test" listener:listener];
+    [[MastEngine sharedSingleton] addStatusListener:@"smart" statusListener:statusListener];
+    Contacts *contacts = [[Contacts alloc]init];
+    [contacts addAddress:@"SmartITOM" host:@"192.168.0.109" port:7000];
+    
+    //启动引擎
+    if (![[MastEngine sharedSingleton] start:contacts])
+    {
+        NSLog(@"Failed start the host");
+    }
+    NSLog(@"Mast started");
+    
+    
+    
 }
 
 @end
