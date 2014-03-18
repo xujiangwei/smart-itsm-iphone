@@ -1,18 +1,18 @@
 //
-//  SAttentionDetailViewController.m
+//  SDiscoveryDetailViewController.m
 //  SmartITSM
 //
 //  Created by 朱国强 on 14-2-13.
 //  Copyright (c) 2014年 Ambrose. All rights reserved.
 //
 
-#import "SAttentionDetailViewController.h"
+#import "SDiscoveryDetailViewController.h"
 
-@interface SAttentionDetailViewController ()
+@interface SDiscoveryDetailViewController ()
 
 @end
 
-@implementation SAttentionDetailViewController
+@implementation SDiscoveryDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

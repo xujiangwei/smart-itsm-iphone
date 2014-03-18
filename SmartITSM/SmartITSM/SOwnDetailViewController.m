@@ -1,18 +1,18 @@
 //
-//  SNotificationDetailViewController.m
+//  SOwnDetailViewController.m
 //  SmartITSM
 //
 //  Created by 朱国强 on 14-2-13.
 //  Copyright (c) 2014年 Ambrose. All rights reserved.
 //
 
-#import "SNotificationDetailViewController.h"
+#import "SOwnDetailViewController.h"
 
-@interface SNotificationDetailViewController ()
+@interface SOwnDetailViewController ()
 
 @end
 
-@implementation SNotificationDetailViewController
+@implementation SOwnDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

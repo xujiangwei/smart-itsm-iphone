@@ -1,19 +1,19 @@
 //
-//  SAttentionViewController.m
+//  SDiscoveryViewController.m
 //  SmartITSM
 //
 //  Created by 朱国强 on 14-2-13.
 //  Copyright (c) 2014年 Ambrose. All rights reserved.
 //
 
-#import "SAttentionViewController.h"
-#import "SAttentionDetailViewController.h"
+#import "SDiscoveryViewController.h"
+#import "SDiscoveryDetailViewController.h"
 
-@interface SAttentionViewController ()
+@interface SDiscoveryViewController ()
 
 @end
 
-@implementation SAttentionViewController
+@implementation SDiscoveryViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -59,11 +59,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"AttentionCell";
+    static NSString *CellIdentifier = @"DiscoveryCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    [cell.textLabel setText:[NSString stringWithFormat:@"关注%d",indexPath.row ]];
+    [cell.textLabel setText:[NSString stringWithFormat:@"发现%d",indexPath.row ]];
     
     return cell;
 }
@@ -117,7 +117,7 @@
     // Pass the selected object to the new view controller.
     UITableViewCell *selectCell = (UITableViewCell *)sender;
     
-    SAttentionDetailViewController *detailVC = (SAttentionDetailViewController *)[segue destinationViewController];
+    SDiscoveryDetailViewController *detailVC = (SDiscoveryDetailViewController *)[segue destinationViewController];
     [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
 }
 

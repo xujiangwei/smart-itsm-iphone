@@ -1,5 +1,5 @@
 //
-//  SNotificationViewController.h
+//  SOwnViewController.h
 //  SmartITSM
 //
 //  Created by 朱国强 on 14-2-13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SNotificationViewController : UITableViewController
+@interface SOwnViewController : UITableViewController
 
 @end

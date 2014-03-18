@@ -5,8 +5,6 @@
 
 #import "AppDelegate.h"
 #import "MastEngine.h"
-#import "APPStatusListener.h"
-#import "APPListener.h"
 #import "Contacts.h"
 
 @implementation AppDelegate
@@ -52,10 +50,6 @@
 
 - (void) configEngine
 {
-    APPListener *listener = [[APPListener alloc] init];
-    APPStatusListener *statusListener = [[APPStatusListener alloc] init];
-    [[MastEngine sharedSingleton] addListener:@"SmartITOM" action:@"test" listener:listener];
-    [[MastEngine sharedSingleton] addStatusListener:@"smart" statusListener:statusListener];
     Contacts *contacts = [[Contacts alloc]init];
     [contacts addAddress:@"SmartITOM" host:@"192.168.0.109" port:7000];
     
@@ -65,9 +59,6 @@
         NSLog(@"Failed start the host");
     }
     NSLog(@"Mast started");
-    
-    
-    
 }
 
 @end

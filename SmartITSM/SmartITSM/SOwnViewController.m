@@ -1,19 +1,19 @@
 //
-//  SNotificationViewController.m
+//  SOwnViewController.m
 //  SmartITSM
 //
 //  Created by 朱国强 on 14-2-13.
 //  Copyright (c) 2014年 Ambrose. All rights reserved.
 //
 
-#import "SNotificationViewController.h"
-#import "SNotificationDetailViewController.h"
+#import "SOwnViewController.h"
+#import "SOwnDetailViewController.h"
 
-@interface SNotificationViewController ()
+@interface SOwnViewController ()
 
 @end
 
-@implementation SNotificationViewController
+@implementation SOwnViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -60,11 +60,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"NotificationCell";
+    static NSString *CellIdentifier = @"OwnCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    [cell.textLabel setText:[NSString stringWithFormat:@"通知%d",indexPath.row ]];
+    [cell.textLabel setText:[NSString stringWithFormat:@"我%d",indexPath.row ]];
     
     return cell;
 }
@@ -118,7 +118,7 @@
     // Pass the selected object to the new view controller.
     UITableViewCell *selectCell = (UITableViewCell *)sender;
     
-    SNotificationDetailViewController *detailVC = (SNotificationDetailViewController *)[segue destinationViewController];
+    SOwnDetailViewController *detailVC = (SOwnDetailViewController *)[segue destinationViewController];
     [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
     
 }

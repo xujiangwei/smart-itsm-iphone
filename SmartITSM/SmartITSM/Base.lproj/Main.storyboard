@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8OT-VU-o0v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8OT-VU-o0v">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -24,16 +24,16 @@
             </objects>
             <point key="canvasLocation" x="299" y="6"/>
         </scene>
-        <!--Attention View Controller - 关注-->
+        <!--Discovery View Controller - 发现-->
         <scene sceneID="YEp-uu-BpB">
             <objects>
-                <tableViewController id="5xx-jZ-2SD" customClass="SAttentionViewController" sceneMemberID="viewController">
+                <tableViewController id="5xx-jZ-2SD" customClass="SDiscoveryViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ByK-1w-1fl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AttentionCell" id="IWt-OG-NI6">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiscoveryCell" id="IWt-OG-NI6">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IWt-OG-NI6" id="jGN-9W-A9l">
@@ -46,16 +46,16 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="关注" id="8eB-PT-Cxh"/>
+                    <navigationItem key="navigationItem" title="发现" id="8eB-PT-Cxh"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOg-1z-Og5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1447" y="6"/>
         </scene>
-        <!--Notification Detail View Controller-->
+        <!--Discovery Detail View Controller-->
         <scene sceneID="cPe-r9-aCs">
             <objects>
-                <viewController id="dUd-7y-qN3" customClass="SNotificationDetailViewController" sceneMemberID="viewController">
+                <viewController id="dUd-7y-qN3" customClass="SDiscoveryDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TYr-rL-8NV"/>
                         <viewControllerLayoutGuide type="bottom" id="XWn-UV-Etn"/>
@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="1919" y="6"/>
         </scene>
-        <!--Notification Detail View Controller-->
+        <!--Own Detail View Controller-->
         <scene sceneID="wW7-Pq-ukd">
             <objects>
-                <viewController id="8qk-Ba-YZy" customClass="SNotificationDetailViewController" sceneMemberID="viewController">
+                <viewController id="8qk-Ba-YZy" customClass="SOwnDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yLb-4x-niA"/>
                         <viewControllerLayoutGuide type="bottom" id="tPg-DO-XbA"/>
@@ -90,16 +90,16 @@
             </objects>
             <point key="canvasLocation" x="1926" y="-757"/>
         </scene>
-        <!--Notification View Controller - 通知-->
+        <!--Own View Controller - 我-->
         <scene sceneID="cCK-aN-tVX">
             <objects>
-                <tableViewController id="3D8-oi-0Gt" customClass="SNotificationViewController" sceneMemberID="viewController">
+                <tableViewController id="3D8-oi-0Gt" customClass="SOwnViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2at-Vf-ITS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NotificationCell" id="tsr-3V-K5w">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OwnCell" id="tsr-3V-K5w">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tsr-3V-K5w" id="iQy-G1-eSM">
@@ -112,17 +112,17 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="通知" id="a5C-Pk-5xH"/>
+                    <navigationItem key="navigationItem" title="我" id="a5C-Pk-5xH"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uHc-JA-deY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1447" y="-757"/>
         </scene>
-        <!--Navigation Controller - 通知-->
+        <!--Navigation Controller - 我-->
         <scene sceneID="MzM-TZ-5Ng">
             <objects>
                 <navigationController definesPresentationContext="YES" id="8oV-dp-N5L" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="通知" id="V3y-fG-sQ6"/>
+                    <tabBarItem key="tabBarItem" title="我" id="V3y-fG-sQ6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ciN-Wx-P76">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -134,11 +134,11 @@
             </objects>
             <point key="canvasLocation" x="913" y="-757"/>
         </scene>
-        <!--Navigation Controller - 关注-->
+        <!--Navigation Controller - 发现-->
         <scene sceneID="ekT-UW-UXI">
             <objects>
                 <navigationController definesPresentationContext="YES" id="eKM-ii-my0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="关注" id="FSe-Xy-Tam"/>
+                    <tabBarItem key="tabBarItem" title="发现" id="FSe-Xy-Tam"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FLJ-dM-E2y">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -178,10 +178,10 @@
             </objects>
             <point key="canvasLocation" x="1447" y="764"/>
         </scene>
-        <!--View Controller-->
+        <!--Tool Detail View Controller-->
         <scene sceneID="jdv-et-Fi7">
             <objects>
-                <viewController id="GsR-nz-Ugj" sceneMemberID="viewController">
+                <viewController id="GsR-nz-Ugj" customClass="SToolDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9QK-Dr-6Pz"/>
                         <viewControllerLayoutGuide type="bottom" id="2Cw-Ed-IlX"/>

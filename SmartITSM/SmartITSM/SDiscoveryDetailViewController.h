@@ -1,5 +1,5 @@
 //
-//  SAttentionDetailViewController.h
+//  SDiscoveryDetailViewController.h
 //  SmartITSM
 //
 //  Created by 朱国强 on 14-2-13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SAttentionDetailViewController : UIViewController
+@interface SDiscoveryDetailViewController : UIViewController
 
 @end

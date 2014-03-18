@@ -17,6 +17,4 @@
 
 @class Contacts;
 
-@class APPListener;
-
 #endif
