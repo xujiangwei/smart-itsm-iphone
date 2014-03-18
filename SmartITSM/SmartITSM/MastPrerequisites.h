@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #include "Cell.h"
+#import "JSONKit.h"
 
 // 动作监听器
 @class ActionListener;

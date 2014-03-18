@@ -4,8 +4,17 @@
 //
 
 #import "AppDelegate.h"
+#import "MastPrerequisites.h"
 #import "MastEngine.h"
 #import "Contacts.h"
+#import "Reachability.h"
+
+
+@interface AppDelegate ()
+{
+    Reachability *hostReach;
+}
+@end
 
 @implementation AppDelegate
 
@@ -50,6 +59,13 @@
 
 - (void) configEngine
 {
+    //监测网络
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    
+    hostReach = [Reachability reachabilityWithHostName:@"www.apple.com"];
+    
+    [hostReach startNotifier];
+    
     Contacts *contacts = [[Contacts alloc]init];
     [contacts addAddress:@"SmartITOM" host:@"192.168.0.109" port:7000];
     
@@ -58,7 +74,34 @@
     {
         NSLog(@"Failed start the host");
     }
-    NSLog(@"Mast started");
+    
+
+}
+
+#pragma mark - CheckNetWork
+
+- (void)reachabilityChanged:(NSNotification *)notification
+{
+    Reachability *reach = [notification object];
+    NSParameterAssert([reach isKindOfClass:[Reachability class]]);
+    NetworkStatus status = [reach currentReachabilityStatus];
+    
+    if (status == NotReachable)
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"错误" message:@"网络未连接" delegate:nil cancelButtonTitle:@"是" otherButtonTitles:@"否", nil];
+        [alert show];
+    }
+    else if (status == ReachableViaWiFi)
+    {
+//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:Nil message:@"wifi已连接" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
+//        [alert show];
+    }
+    else if (status == ReachableViaWWAN)
+    {
+//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:Nil message:@"WWAN已连接" delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
+//        [alert show];
+    }
+    
 }
 
 @end

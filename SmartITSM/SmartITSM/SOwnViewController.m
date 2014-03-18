@@ -36,6 +36,26 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    BOOL signin = [[defaults objectForKey:@"signin"] boolValue];
+    
+    if (signin)
+    {
+        //已登录
+        
+    }
+    else
+    {
+        //未登录
+        [self performSegueWithIdentifier:@"signin" sender:self];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -116,11 +136,18 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    UITableViewCell *selectCell = (UITableViewCell *)sender;
-    
-    SOwnDetailViewController *detailVC = (SOwnDetailViewController *)[segue destinationViewController];
-    [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
-    
+    if ([segue.identifier isEqualToString:@"signin"])
+    {
+        
+    }
+    else if ([segue.identifier isEqualToString:@"OwnDetail"])
+    {
+        UITableViewCell *selectCell = (UITableViewCell *)sender;
+        SOwnDetailViewController *detailVC = (SOwnDetailViewController *)[segue destinationViewController];
+        [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
+        
+    }
+
 }
 
 
