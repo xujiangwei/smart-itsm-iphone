@@ -2,9 +2,6 @@
 //  SToolDetailViewController.m
 //  SmartITSM
 //
-//  Created by 朱国强 on 14-2-13.
-//  Copyright (c) 2014年 Ambrose. All rights reserved.
-//
 
 #import "SToolDetailViewController.h"
 
@@ -17,7 +14,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;

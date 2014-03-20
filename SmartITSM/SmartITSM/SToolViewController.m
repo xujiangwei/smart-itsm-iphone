@@ -2,14 +2,13 @@
 //  SToolViewController.m
 //  SmartITSM
 //
-//  Created by 朱国强 on 14-2-13.
-//  Copyright (c) 2014年 Ambrose. All rights reserved.
-//
 
 #import "SToolViewController.h"
 #import "SToolDetailViewController.h"
 
 @interface SToolViewController ()
+
+@property (nonatomic, strong) NSArray *sections;
 
 @end
 
@@ -18,10 +17,18 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
+        [self buildSections];
     }
     return self;
+}
+
+- (void)buildSections
+{
+    
+    //NSArray *commonTools = [NSArray arrayWithObjects:, nil];
+    //self.sections = [];
 }
 
 - (void)viewDidLoad
@@ -45,14 +52,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     // Return the number of rows in the section.
     return 3;
 }
@@ -61,11 +66,17 @@
 {
     static NSString *CellIdentifier = @"ToolCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+
     // Configure the cell...
-    [cell.textLabel setText:[NSString stringWithFormat:@"工具%d",indexPath.row ]];
-    
+    [cell.textLabel setText:[NSString stringWithFormat:@"工具%d", indexPath.row]];
+
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *result = @"This is title";
+    return result;
 }
 
 /*
@@ -118,10 +129,8 @@
     UITableViewCell *selectCell = (UITableViewCell *)sender;
     
     SToolDetailViewController *detailVC = (SToolDetailViewController *)[segue destinationViewController];
-    [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
+    [detailVC setTitle:[NSString stringWithFormat:@"%@", selectCell.textLabel.text]];
 
 }
-
-
 
 @end
