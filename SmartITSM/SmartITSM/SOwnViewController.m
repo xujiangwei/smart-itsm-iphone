@@ -46,20 +46,18 @@
     
     if (signin)
     {
-        //已登录
-        
+        // TODO 已登录
     }
     else
     {
-        //未登录
-        [self performSegueWithIdentifier:@"signin" sender:self];
+        // 未登录
+        [self performSegueWithIdentifier:@"Signin" sender:self];
     }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -82,7 +80,7 @@
 {
     static NSString *CellIdentifier = @"OwnCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+
     // Configure the cell...
     [cell.textLabel setText:[NSString stringWithFormat:@"我%d",indexPath.row ]];
     
@@ -136,7 +134,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"signin"])
+    if ([segue.identifier isEqualToString:@"Signin"])
     {
         
     }
@@ -145,11 +143,7 @@
         UITableViewCell *selectCell = (UITableViewCell *)sender;
         SOwnDetailViewController *detailVC = (SOwnDetailViewController *)[segue destinationViewController];
         [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
-        
     }
-
 }
-
-
 
 @end
