@@ -52,11 +52,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ToolCell";
+    static NSString *CellIdentifier = @"IncidentListCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    [cell.textLabel setText:[NSString stringWithFormat:@"工具%d", indexPath.row]];
+    [cell.textLabel setText:[NSString stringWithFormat:@"故障%d", indexPath.row]];
     
     return cell;
 }
