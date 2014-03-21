@@ -15,6 +15,9 @@
 
 @implementation SOwnViewController
 
+@synthesize sectionArray;
+@synthesize cellDic;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -28,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initData];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -66,65 +70,75 @@
 {
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return [sectionArray count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 2;
+    NSString *index=[sectionArray objectAtIndex:section];
+    return [[cellDic objectForKey:index] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"OwnCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSUInteger section=indexPath.section;
+    NSInteger  row=indexPath.row;
+    
+    NSString *CellIdentifier =[NSString stringWithFormat:@"owncell%d%d",section,row];
+    
+    NSString *sectionTitle=[sectionArray objectAtIndex:section];
+    NSArray *cellAttributes=[cellDic objectForKey:sectionTitle];
 
-    // Configure the cell...
-    [cell.textLabel setText:[NSString stringWithFormat:@"我%d",indexPath.row ]];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] ;
+    }
+    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    NSString * attribute=[cellAttributes objectAtIndex:row];
+    if([attribute isEqualToString:@"incident"]){
+        cell.textLabel.text=@"故障";
+        [cell.detailTextLabel setText:@"5"];
+    }else if([attribute isEqualToString:@"problem"]){
+        cell.textLabel.text=@"问题";
+          [cell.detailTextLabel setText:@"9"];
+    }else if([attribute isEqualToString:@"change"]){
+        cell.textLabel.text=@"变更";
+          [cell.detailTextLabel setText:@"1"];
+    }else if([attribute isEqualToString:@"inspection"]){
+        cell.textLabel.text=@"巡检";
+          [cell.detailTextLabel setText:@"2"];
+    }else if([attribute isEqualToString:@"notice"]){
+        cell.textLabel.text=@"公告";
+          [cell.detailTextLabel setText:@"8"];
+    }else if ([attribute isEqualToString:@"message"]){
+        cell.textLabel.text=@"消息";
+          [cell.detailTextLabel setText:@"36"];
+    }
+
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section=indexPath.section;
+    NSInteger row=indexPath.row;
+    
+    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
+    
+    
+    if(section==0 && row==0){
+        [self performSegueWithIdentifier:@"IncidentList" sender:cell];
+    }else if(section==0 && row==1){
+        [self performSegueWithIdentifier:@"ProblemList" sender:cell];
+    }else if(section==0 && row==2){
+        [self performSegueWithIdentifier:@"ChangeList" sender:cell];
+    }else if(section==0 && row==3){
+        [self performSegueWithIdentifier:@"InspectionList" sender:cell];
+    }
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 #pragma mark - Navigation
@@ -132,8 +146,6 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"Signin"])
     {
         
@@ -143,7 +155,41 @@
         UITableViewCell *selectCell = (UITableViewCell *)sender;
         SOwnDetailViewController *detailVC = (SOwnDetailViewController *)[segue destinationViewController];
         [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
+    }else if ([segue.identifier isEqualToString:@"IncidentList"])
+    {
+        UITableViewCell *selectCell = (UITableViewCell *)sender;
+        SIncidentViewController *detailVC = (SIncidentViewController *)[segue destinationViewController];
+        [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
     }
+    else if ([segue.identifier isEqualToString:@"ProblemList"])
+    {
+        UITableViewCell *selectCell = (UITableViewCell *)sender;
+        SProblemViewController *detailVC = (SProblemViewController *)[segue destinationViewController];
+        [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
+    }else if ([segue.identifier isEqualToString:@"ChangeList"])
+    {
+        UITableViewCell *selectCell = (UITableViewCell *)sender;
+        SChangeViewController *detailVC = (SChangeViewController *)[segue destinationViewController];
+        [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
+    }else if ([segue.identifier isEqualToString:@"InspectionList"])
+    {
+        UITableViewCell *selectCell = (UITableViewCell *)sender;
+        SOwnDetailViewController *detailVC = (SOwnDetailViewController *)[segue destinationViewController];
+        [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
+    }
+
 }
+
+
+-(void)initData
+{
+   sectionArray =[NSArray arrayWithObjects:@"待办",@"公告",@"消息" ,nil];
+    NSArray  *taskInfo=[[NSArray alloc]initWithObjects:@"incident",@"problem",@"change",@"inspection", nil];
+    NSArray  *noticeInfo   =[[NSArray alloc] initWithObjects:@"notice", nil];
+    NSArray  *messageInfo   =[[NSArray alloc] initWithObjects:@"message", nil];
+    
+   cellDic=[[NSMutableDictionary alloc] initWithObjectsAndKeys:taskInfo,[sectionArray objectAtIndex:0], noticeInfo ,[sectionArray objectAtIndex:1],messageInfo ,[sectionArray objectAtIndex:2], Nil];
+}
+
 
 @end

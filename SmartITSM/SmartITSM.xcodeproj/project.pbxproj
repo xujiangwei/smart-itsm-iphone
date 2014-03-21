@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370B676B18DC33200071CDE4 /* SInspectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676A18DC33200071CDE4 /* SInspectionViewController.m */; };
+		370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676E18DC344F0071CDE4 /* SMessageViewController.m */; };
+		370B677518DC35520071CDE4 /* SProblemContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677418DC35520071CDE4 /* SProblemContentViewController.m */; };
+		370B677818DC35660071CDE4 /* SInspectionContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677718DC35660071CDE4 /* SInspectionContentViewController.m */; };
+		370B677B18DC35820071CDE4 /* SChangeContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677A18DC35820071CDE4 /* SChangeContentViewController.m */; };
+		370B677E18DC364E0071CDE4 /* SIncidentContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677D18DC364E0071CDE4 /* SIncidentContentViewController.m */; };
+		37FA4C9818DBE153004AB106 /* SProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA4C9718DBE153004AB106 /* SProblemViewController.m */; };
+		37FA4C9B18DBE16F004AB106 /* SChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA4C9A18DBE16F004AB106 /* SChangeViewController.m */; };
+		37FA4C9E18DBE196004AB106 /* SIncidentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA4C9D18DBE196004AB106 /* SIncidentViewController.m */; };
 		4414453518D7DB3A00B9FFE0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4414453418D7DB3A00B9FFE0 /* libsqlite3.dylib */; };
 		4417CF7218AC74C700E6E09F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4417CF7118AC74C700E6E09F /* Foundation.framework */; };
 		4417CF7418AC74C700E6E09F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4417CF7318AC74C700E6E09F /* CoreGraphics.framework */; };
@@ -54,6 +63,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		370B676918DC33200071CDE4 /* SInspectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SInspectionViewController.h; sourceTree = "<group>"; };
+		370B676A18DC33200071CDE4 /* SInspectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SInspectionViewController.m; sourceTree = "<group>"; };
+		370B676D18DC344F0071CDE4 /* SMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageViewController.h; sourceTree = "<group>"; };
+		370B676E18DC344F0071CDE4 /* SMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageViewController.m; sourceTree = "<group>"; };
+		370B677318DC35520071CDE4 /* SProblemContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProblemContentViewController.h; sourceTree = "<group>"; };
+		370B677418DC35520071CDE4 /* SProblemContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProblemContentViewController.m; sourceTree = "<group>"; };
+		370B677618DC35660071CDE4 /* SInspectionContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SInspectionContentViewController.h; sourceTree = "<group>"; };
+		370B677718DC35660071CDE4 /* SInspectionContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SInspectionContentViewController.m; sourceTree = "<group>"; };
+		370B677918DC35820071CDE4 /* SChangeContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SChangeContentViewController.h; sourceTree = "<group>"; };
+		370B677A18DC35820071CDE4 /* SChangeContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SChangeContentViewController.m; sourceTree = "<group>"; };
+		370B677C18DC364E0071CDE4 /* SIncidentContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentContentViewController.h; sourceTree = "<group>"; };
+		370B677D18DC364E0071CDE4 /* SIncidentContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentContentViewController.m; sourceTree = "<group>"; };
+		37FA4C9618DBE153004AB106 /* SProblemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProblemViewController.h; sourceTree = "<group>"; };
+		37FA4C9718DBE153004AB106 /* SProblemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProblemViewController.m; sourceTree = "<group>"; };
+		37FA4C9918DBE16F004AB106 /* SChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SChangeViewController.h; sourceTree = "<group>"; };
+		37FA4C9A18DBE16F004AB106 /* SChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SChangeViewController.m; sourceTree = "<group>"; };
+		37FA4C9C18DBE196004AB106 /* SIncidentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentViewController.h; sourceTree = "<group>"; };
+		37FA4C9D18DBE196004AB106 /* SIncidentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentViewController.m; sourceTree = "<group>"; };
 		4414453418D7DB3A00B9FFE0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4417CF6E18AC74C700E6E09F /* SmartITSM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartITSM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4417CF7118AC74C700E6E09F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -140,6 +167,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		370B676C18DC34370071CDE4 /* message */ = {
+			isa = PBXGroup;
+			children = (
+				370B676D18DC344F0071CDE4 /* SMessageViewController.h */,
+				370B676E18DC344F0071CDE4 /* SMessageViewController.m */,
+			);
+			name = message;
+			sourceTree = "<group>";
+		};
+		37FA4C8F18DBDF0F004AB106 /* incident */ = {
+			isa = PBXGroup;
+			children = (
+				37FA4C9C18DBE196004AB106 /* SIncidentViewController.h */,
+				37FA4C9D18DBE196004AB106 /* SIncidentViewController.m */,
+				370B677C18DC364E0071CDE4 /* SIncidentContentViewController.h */,
+				370B677D18DC364E0071CDE4 /* SIncidentContentViewController.m */,
+			);
+			name = incident;
+			sourceTree = "<group>";
+		};
+		37FA4C9018DBDF1A004AB106 /* problem */ = {
+			isa = PBXGroup;
+			children = (
+				37FA4C9618DBE153004AB106 /* SProblemViewController.h */,
+				37FA4C9718DBE153004AB106 /* SProblemViewController.m */,
+				370B677318DC35520071CDE4 /* SProblemContentViewController.h */,
+				370B677418DC35520071CDE4 /* SProblemContentViewController.m */,
+			);
+			name = problem;
+			sourceTree = "<group>";
+		};
+		37FA4C9118DBDF24004AB106 /* change */ = {
+			isa = PBXGroup;
+			children = (
+				37FA4C9918DBE16F004AB106 /* SChangeViewController.h */,
+				37FA4C9A18DBE16F004AB106 /* SChangeViewController.m */,
+				370B677918DC35820071CDE4 /* SChangeContentViewController.h */,
+				370B677A18DC35820071CDE4 /* SChangeContentViewController.m */,
+			);
+			name = change;
+			sourceTree = "<group>";
+		};
+		37FA4C9218DBDF3B004AB106 /* inspection */ = {
+			isa = PBXGroup;
+			children = (
+				370B677618DC35660071CDE4 /* SInspectionContentViewController.h */,
+				370B677718DC35660071CDE4 /* SInspectionContentViewController.m */,
+				370B676918DC33200071CDE4 /* SInspectionViewController.h */,
+				370B676A18DC33200071CDE4 /* SInspectionViewController.m */,
+			);
+			name = inspection;
+			sourceTree = "<group>";
+		};
 		4417CF6518AC74C700E6E09F = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +339,11 @@
 		4A92F0FA18AC99D500EB594B /* Own */ = {
 			isa = PBXGroup;
 			children = (
+				370B676C18DC34370071CDE4 /* message */,
+				37FA4C9218DBDF3B004AB106 /* inspection */,
+				37FA4C9118DBDF24004AB106 /* change */,
+				37FA4C9018DBDF1A004AB106 /* problem */,
+				37FA4C8F18DBDF0F004AB106 /* incident */,
 				4A92F0F118AC958F00EB594B /* SOwnViewController.h */,
 				4A92F0F218AC958F00EB594B /* SOwnViewController.m */,
 				4A92F0FB18AC9A1600EB594B /* SOwnDetailViewController.h */,
@@ -390,9 +475,11 @@
 			files = (
 				4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */,
 				4A92F0FD18AC9A1600EB594B /* SOwnDetailViewController.m in Sources */,
+				370B677818DC35660071CDE4 /* SInspectionContentViewController.m in Sources */,
 				4A92F0F918AC972B00EB594B /* SToolViewController.m in Sources */,
 				44B1182C18DADF7B00539D0C /* STool.m in Sources */,
 				44B02BF818ADAA2D0001451F /* Failure.m in Sources */,
+				370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */,
 				4A92F10118AC9C4900EB594B /* SDiscoveryDetailViewController.m in Sources */,
 				4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */,
 				4A085DF118D829E10078CDF1 /* SSigninView.m in Sources */,
@@ -400,13 +487,20 @@
 				4417CF8218AC74C700E6E09F /* AppDelegate.m in Sources */,
 				44B02BFB18ADAD7B0001451F /* Contacts.m in Sources */,
 				4A085DF918D8564E0078CDF1 /* Reachability.m in Sources */,
+				37FA4C9818DBE153004AB106 /* SProblemViewController.m in Sources */,
 				44B02BF118ADA5990001451F /* ActionListener.m in Sources */,
 				44B02BFE18ADAEB40001451F /* ListenerSet.m in Sources */,
+				370B677518DC35520071CDE4 /* SProblemContentViewController.m in Sources */,
+				370B677E18DC364E0071CDE4 /* SIncidentContentViewController.m in Sources */,
 				4A92F10518AC9CF400EB594B /* SToolDetailViewController.m in Sources */,
 				4A92F11118ACAEBE00EB594B /* RootViewController.m in Sources */,
 				4A085DEE18D81B1B0078CDF1 /* SSigninViewController.m in Sources */,
+				37FA4C9E18DBE196004AB106 /* SIncidentViewController.m in Sources */,
+				37FA4C9B18DBE16F004AB106 /* SChangeViewController.m in Sources */,
+				370B676B18DC33200071CDE4 /* SInspectionViewController.m in Sources */,
 				4417CF7E18AC74C700E6E09F /* main.m in Sources */,
 				4485DC3018ACBA2500D17061 /* MastEngine.m in Sources */,
+				370B677B18DC35820071CDE4 /* SChangeContentViewController.m in Sources */,
 				44B02BF518ADA7DE0001451F /* StatusListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

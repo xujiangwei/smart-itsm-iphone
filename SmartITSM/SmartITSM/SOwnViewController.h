@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SIncidentViewController.h"
+#import "SProblemViewController.h"
+#import "SChangeViewController.h"
+
 
 @interface SOwnViewController : UITableViewController
+
+@property(nonatomic ,strong)NSArray *sectionArray;
+
+@property(nonatomic, strong)NSMutableDictionary *cellDic;
 
 @end
