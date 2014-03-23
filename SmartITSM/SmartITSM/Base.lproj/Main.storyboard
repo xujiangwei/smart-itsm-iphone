@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8OT-VU-o0v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -7,7 +7,8 @@
         <!--Root View Controller-->
         <scene sceneID="62S-wq-zXd">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="8OT-VU-o0v" customClass="RootViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tab" definesPresentationContext="YES" id="8OT-VU-o0v" customClass="RootViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="iFd-Nc-QrB"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Acz-Ki-zsH">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -41,7 +42,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="dUd-7y-qN3" kind="push" id="Ze2-XI-NOz"/>
+                                    <segue destination="dUd-7y-qN3" kind="push" identifier="DiscoveryDetail" id="Ze2-XI-NOz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -129,6 +130,57 @@
             </objects>
             <point key="canvasLocation" x="2424" y="-1244"/>
         </scene>
+        <!--Alarm View Controller-->
+        <scene sceneID="l9l-y3-6RP">
+            <objects>
+                <tableViewController id="S5J-YJ-1MW" customClass="SAlarmViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pGX-ft-No8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="tau-Se-N8a">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tau-Se-N8a" id="wPF-pD-Uq9">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="h2T-n1-dxk" kind="push" id="Q8p-4Q-Jcy"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="S5J-YJ-1MW" id="Dhr-Vp-XJe"/>
+                            <outlet property="delegate" destination="S5J-YJ-1MW" id="hK5-l2-pmD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ize-gJ-k7F"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Atx-Nf-OKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1918" y="-570"/>
+        </scene>
+        <!--Alarm Content View Controller-->
+        <scene sceneID="SWo-Gh-sb4">
+            <objects>
+                <viewController id="h2T-n1-dxk" customClass="SAlarmContentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7YG-1d-wg3"/>
+                        <viewControllerLayoutGuide type="bottom" id="5hp-rd-uf1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h2o-tC-SeF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="W1m-0H-air"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YTK-fL-ti5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2426" y="-578"/>
+        </scene>
         <!--Own Detail View Controller-->
         <scene sceneID="wW7-Pq-ukd">
             <objects>
@@ -146,9 +198,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zw4-Lb-wvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1939" y="-61"/>
+            <point key="canvasLocation" x="1918" y="212"/>
         </scene>
-        <!--Own View Controller - 我-->
+        <!--Own View Controller - 我的-->
         <scene sceneID="cCK-aN-tVX">
             <objects>
                 <tableViewController id="3D8-oi-0Gt" customClass="SOwnViewController" sceneMemberID="viewController">
@@ -168,14 +220,14 @@
                         </prototypes>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="我" id="a5C-Pk-5xH"/>
+                    <navigationItem key="navigationItem" title="我的" id="a5C-Pk-5xH"/>
                     <connections>
-                        <segue destination="2gO-zA-odJ" kind="modal" identifier="Signin" id="lSl-l4-eN6"/>
                         <segue destination="xy1-XI-rRw" kind="push" identifier="IncidentList" id="wmi-FR-65d"/>
                         <segue destination="o6e-bV-MAT" kind="push" identifier="ProblemList" id="Gbl-Xg-nrU"/>
                         <segue destination="TkX-tZ-wi8" kind="push" identifier="ChangeList" id="DNm-JG-tPg"/>
-                        <segue destination="8qk-Ba-YZy" kind="push" id="deB-TN-amc"/>
+                        <segue destination="8qk-Ba-YZy" kind="push" identifier="OwnDetail" id="deB-TN-amc"/>
                         <segue destination="kcu-e6-waB" kind="push" identifier="InspectionList" id="uGp-J6-deL"/>
+                        <segue destination="S5J-YJ-1MW" kind="push" identifier="AlarmList" id="SeH-jB-tgp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uHc-JA-deY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -340,11 +392,12 @@
                         <outlet property="tfPassWord" destination="eB1-TW-9Xc" id="vBT-Ah-W17"/>
                         <outlet property="tfPort" destination="0dY-Yy-hfs" id="kM5-uq-pCb"/>
                         <outlet property="tfUserName" destination="3AC-2q-kbU" id="7Wv-fp-q7M"/>
+                        <segue destination="8OT-VU-o0v" kind="modal" identifier="Signin" id="khE-1g-agA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bvF-ZP-l41" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1971" y="-4117"/>
+            <point key="canvasLocation" x="-737" y="-162"/>
         </scene>
         <!--Incident View Controller-->
         <scene sceneID="Xgr-3K-ekX">
@@ -498,11 +551,11 @@
             </objects>
             <point key="canvasLocation" x="1966" y="-1985"/>
         </scene>
-        <!--Navigation Controller - 我-->
+        <!--Navigation Controller - 我的-->
         <scene sceneID="MzM-TZ-5Ng">
             <objects>
                 <navigationController definesPresentationContext="YES" id="8oV-dp-N5L" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我" id="V3y-fG-sQ6"/>
+                    <tabBarItem key="tabBarItem" title="我的" id="V3y-fG-sQ6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ciN-Wx-P76">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -547,7 +600,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="GsR-nz-Ugj" kind="push" id="VaQ-ay-Hjy"/>
+                                    <segue destination="GsR-nz-Ugj" kind="push" identifier="TollDetail" id="VaQ-ay-Hjy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

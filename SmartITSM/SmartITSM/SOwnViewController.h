@@ -10,6 +10,7 @@
 #import "SIncidentViewController.h"
 #import "SProblemViewController.h"
 #import "SChangeViewController.h"
+#import "SAlarmViewController.h"
 
 
 @interface SOwnViewController : UITableViewController

@@ -115,10 +115,15 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    UITableViewCell *selectCell = (UITableViewCell *)sender;
     
-    SDiscoveryDetailViewController *detailVC = (SDiscoveryDetailViewController *)[segue destinationViewController];
-    [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
+    if ([segue.identifier isEqualToString:@"DiscoveryDetail"])
+    {
+        UITableViewCell *selectCell = (UITableViewCell *)sender;
+        
+        SDiscoveryDetailViewController *detailVC = (SDiscoveryDetailViewController *)[segue destinationViewController];
+        [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
+    }
+
 }
 
 

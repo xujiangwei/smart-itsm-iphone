@@ -44,19 +44,6 @@
 {
     [super viewDidAppear:animated];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    BOOL signin = [[defaults objectForKey:@"signin"] boolValue];
-    
-    if (signin)
-    {
-        // TODO 已登录
-    }
-    else
-    {
-        // 未登录
-        [self performSegueWithIdentifier:@"Signin" sender:self];
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,6 +101,9 @@
     }else if ([attribute isEqualToString:@"message"]){
         cell.textLabel.text=@"消息";
           [cell.detailTextLabel setText:@"36"];
+    }else if ([attribute isEqualToString:@"alarm"]){
+        cell.textLabel.text=@"告警";
+        [cell.detailTextLabel setText:@"3"];
     }
 
     
@@ -136,6 +126,9 @@
     }else if(section==0 && row==3){
         [self performSegueWithIdentifier:@"InspectionList" sender:cell];
     }
+    else if(section==3 && row==0){
+        [self performSegueWithIdentifier:@"AlarmList" sender:cell];
+    }
 
 
 }
@@ -155,7 +148,8 @@
         UITableViewCell *selectCell = (UITableViewCell *)sender;
         SOwnDetailViewController *detailVC = (SOwnDetailViewController *)[segue destinationViewController];
         [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
-    }else if ([segue.identifier isEqualToString:@"IncidentList"])
+    }
+    else if ([segue.identifier isEqualToString:@"IncidentList"])
     {
         UITableViewCell *selectCell = (UITableViewCell *)sender;
         SIncidentViewController *detailVC = (SIncidentViewController *)[segue destinationViewController];
@@ -177,18 +171,25 @@
         SOwnDetailViewController *detailVC = (SOwnDetailViewController *)[segue destinationViewController];
         [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
     }
+    else if ([segue.identifier isEqualToString:@"AlarmList"])
+    {
+        UITableViewCell *selectCell = (UITableViewCell *)sender;
+        SAlarmViewController *detailVC = (SAlarmViewController *)[segue destinationViewController];
+        [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
+    }
 
 }
 
 
 -(void)initData
 {
-   sectionArray =[NSArray arrayWithObjects:@"待办",@"公告",@"消息" ,nil];
+   sectionArray =[NSArray arrayWithObjects:@"待办",@"公告",@"消息", @"告警" ,nil];
     NSArray  *taskInfo=[[NSArray alloc]initWithObjects:@"incident",@"problem",@"change",@"inspection", nil];
     NSArray  *noticeInfo   =[[NSArray alloc] initWithObjects:@"notice", nil];
     NSArray  *messageInfo   =[[NSArray alloc] initWithObjects:@"message", nil];
+    NSArray  *alarmInfo = [[NSArray alloc] initWithObjects:@"alarm", nil];
     
-   cellDic=[[NSMutableDictionary alloc] initWithObjectsAndKeys:taskInfo,[sectionArray objectAtIndex:0], noticeInfo ,[sectionArray objectAtIndex:1],messageInfo ,[sectionArray objectAtIndex:2], Nil];
+   cellDic=[[NSMutableDictionary alloc] initWithObjectsAndKeys:taskInfo,[sectionArray objectAtIndex:0], noticeInfo ,[sectionArray objectAtIndex:1],messageInfo ,[sectionArray objectAtIndex:2],alarmInfo, [sectionArray objectAtIndex:3], Nil];
 }
 
 

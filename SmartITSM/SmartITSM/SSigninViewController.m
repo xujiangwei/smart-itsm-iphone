@@ -14,6 +14,8 @@
 
 @interface SSigninViewController ()
 {
+    BOOL isSignin;
+    
     NSString *userName;
     NSString *passWord;
     
@@ -40,7 +42,27 @@
     [super viewDidLoad];
     
     [self.signinView setAlpha:1.0f];
+    
+
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    isSignin = FALSE;
+    
+    if (!isSignin)
+    {
+        //未登录 to do notthing
+        
+    }
+    else
+    {
+        //已登录
+        [self didSignin];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,15 +155,29 @@ if (![[MastEngine sharedSingleton] start:contacts])
 // 登录
 - (IBAction)signinBtnAction:(id)sender
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    [defaults setObject:[NSNumber numberWithBool:YES] forKey:@"signin"];
-    
-    [defaults synchronize];
-
-    [self dismissViewControllerAnimated:YES completion:^{
+    if (isSignin)
+    {
+        //登录
         
-    }];
+    }
+    else
+    {
+        //未登录
+        [self didSignin];
+    }
+
+}
+
+- (void)didSignin
+{
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UITabBarController *tabbarViewController = [storyboard instantiateViewControllerWithIdentifier:@"tab"];
+//    
+//    [self presentViewController:tabbarViewController animated:YES completion:^{
+//        
+//    }];
+
+    [self performSegueWithIdentifier:@"Signin" sender:self];
 }
 
 // 测试

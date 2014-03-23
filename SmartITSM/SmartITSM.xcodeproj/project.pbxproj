@@ -41,7 +41,6 @@
 		4A085DF118D829E10078CDF1 /* SSigninView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DF018D829E10078CDF1 /* SSigninView.m */; };
 		4A085DF418D829FB0078CDF1 /* SConfigServerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DF318D829FB0078CDF1 /* SConfigServerView.m */; };
 		4A085DF918D8564E0078CDF1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DF818D8564E0078CDF1 /* Reachability.m */; };
-		4A085DFD18D85E2E0078CDF1 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A085DFC18D85E2E0078CDF1 /* libJSONKit.a */; };
 		4A6ACFB918B361DE00DBDD11 /* libnucleus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4485DC5A18ACC81F00D17061 /* libnucleus.a */; };
 		4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F218AC958F00EB594B /* SOwnViewController.m */; };
 		4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F518AC95B000EB594B /* SDiscoveryViewController.m */; };
@@ -50,6 +49,8 @@
 		4A92F10118AC9C4900EB594B /* SDiscoveryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F10018AC9C4900EB594B /* SDiscoveryDetailViewController.m */; };
 		4A92F10518AC9CF400EB594B /* SToolDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F10418AC9CF400EB594B /* SToolDetailViewController.m */; };
 		4A92F11118ACAEBE00EB594B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F11018ACAEBE00EB594B /* RootViewController.m */; };
+		4AB79DA918DEEC8200ECEC27 /* SAlarmContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB79DA818DEEC8200ECEC27 /* SAlarmContentViewController.m */; };
+		4AB79DAC18DEEF6700ECEC27 /* SAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB79DAB18DEEF6700ECEC27 /* SAlarmViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,7 +124,6 @@
 		4A085DF318D829FB0078CDF1 /* SConfigServerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SConfigServerView.m; sourceTree = "<group>"; };
 		4A085DF718D8564E0078CDF1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4A085DF818D8564E0078CDF1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		4A085DFC18D85E2E0078CDF1 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = ../JSONKit/lib/simulator/libJSONKit.a; sourceTree = "<group>"; };
 		4A92F0F118AC958F00EB594B /* SOwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOwnViewController.h; sourceTree = "<group>"; };
 		4A92F0F218AC958F00EB594B /* SOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOwnViewController.m; sourceTree = "<group>"; };
 		4A92F0F418AC95B000EB594B /* SDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiscoveryViewController.h; sourceTree = "<group>"; };
@@ -138,6 +138,10 @@
 		4A92F10418AC9CF400EB594B /* SToolDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SToolDetailViewController.m; sourceTree = "<group>"; };
 		4A92F10F18ACAEBE00EB594B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		4A92F11018ACAEBE00EB594B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		4AB79DA718DEEC8200ECEC27 /* SAlarmContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmContentViewController.h; sourceTree = "<group>"; };
+		4AB79DA818DEEC8200ECEC27 /* SAlarmContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmContentViewController.m; sourceTree = "<group>"; };
+		4AB79DAA18DEEF6700ECEC27 /* SAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmViewController.h; sourceTree = "<group>"; };
+		4AB79DAB18DEEF6700ECEC27 /* SAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +149,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A085DFD18D85E2E0078CDF1 /* libJSONKit.a in Frameworks */,
 				4414453518D7DB3A00B9FFE0 /* libsqlite3.dylib in Frameworks */,
 				4A6ACFB918B361DE00DBDD11 /* libnucleus.a in Frameworks */,
 				4417CF7418AC74C700E6E09F /* CoreGraphics.framework in Frameworks */,
@@ -242,7 +245,6 @@
 		4417CF7018AC74C700E6E09F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4A085DFC18D85E2E0078CDF1 /* libJSONKit.a */,
 				4414453418D7DB3A00B9FFE0 /* libsqlite3.dylib */,
 				4485DC5A18ACC81F00D17061 /* libnucleus.a */,
 				4417CF7118AC74C700E6E09F /* Foundation.framework */,
@@ -339,6 +341,7 @@
 		4A92F0FA18AC99D500EB594B /* Own */ = {
 			isa = PBXGroup;
 			children = (
+				4AB79DA318DEEC0E00ECEC27 /* Alarm */,
 				370B676C18DC34370071CDE4 /* message */,
 				37FA4C9218DBDF3B004AB106 /* inspection */,
 				37FA4C9118DBDF24004AB106 /* change */,
@@ -374,6 +377,17 @@
 				44B1182B18DADF7B00539D0C /* STool.m */,
 			);
 			name = Tool;
+			sourceTree = "<group>";
+		};
+		4AB79DA318DEEC0E00ECEC27 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				4AB79DA718DEEC8200ECEC27 /* SAlarmContentViewController.h */,
+				4AB79DA818DEEC8200ECEC27 /* SAlarmContentViewController.m */,
+				4AB79DAA18DEEF6700ECEC27 /* SAlarmViewController.h */,
+				4AB79DAB18DEEF6700ECEC27 /* SAlarmViewController.m */,
+			);
+			name = Alarm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -479,6 +493,7 @@
 				4A92F0F918AC972B00EB594B /* SToolViewController.m in Sources */,
 				44B1182C18DADF7B00539D0C /* STool.m in Sources */,
 				44B02BF818ADAA2D0001451F /* Failure.m in Sources */,
+				4AB79DA918DEEC8200ECEC27 /* SAlarmContentViewController.m in Sources */,
 				370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */,
 				4A92F10118AC9C4900EB594B /* SDiscoveryDetailViewController.m in Sources */,
 				4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */,
@@ -501,6 +516,7 @@
 				4417CF7E18AC74C700E6E09F /* main.m in Sources */,
 				4485DC3018ACBA2500D17061 /* MastEngine.m in Sources */,
 				370B677B18DC35820071CDE4 /* SChangeContentViewController.m in Sources */,
+				4AB79DAC18DEEF6700ECEC27 /* SAlarmViewController.m in Sources */,
 				44B02BF518ADA7DE0001451F /* StatusListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,7 +606,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "../nucleus/include  ../JSONKit/include";
+				USER_HEADER_SEARCH_PATHS = "../nucleus/include  ";
 			};
 			name = Debug;
 		};
@@ -626,7 +642,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "../nucleus/include  ../JSONKit/include";
+				USER_HEADER_SEARCH_PATHS = "../nucleus/include  ";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -639,10 +655,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartITSM/SmartITSM-Prefix.pch";
 				INFOPLIST_FILE = "SmartITSM/SmartITSM-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"../nucleus/bin/Debug-iphonesimulator",
-					../JSONKit/lib/simulator,
-				);
+				LIBRARY_SEARCH_PATHS = "../nucleus/bin/Debug-iphonesimulator ";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -660,10 +673,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartITSM/SmartITSM-Prefix.pch";
 				INFOPLIST_FILE = "SmartITSM/SmartITSM-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"../nucleus/bin/Debug-iphonesimulator",
-					../JSONKit/lib/simulator,
-				);
+				LIBRARY_SEARCH_PATHS = "../nucleus/bin/Debug-iphonesimulator ";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
