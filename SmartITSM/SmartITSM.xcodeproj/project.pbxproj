@@ -170,16 +170,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		370B676C18DC34370071CDE4 /* message */ = {
+		370B676C18DC34370071CDE4 /* Message */ = {
 			isa = PBXGroup;
 			children = (
 				370B676D18DC344F0071CDE4 /* SMessageViewController.h */,
 				370B676E18DC344F0071CDE4 /* SMessageViewController.m */,
 			);
-			name = message;
+			name = Message;
 			sourceTree = "<group>";
 		};
-		37FA4C8F18DBDF0F004AB106 /* incident */ = {
+		37FA4C8F18DBDF0F004AB106 /* Incident */ = {
 			isa = PBXGroup;
 			children = (
 				37FA4C9C18DBE196004AB106 /* SIncidentViewController.h */,
@@ -187,10 +187,10 @@
 				370B677C18DC364E0071CDE4 /* SIncidentContentViewController.h */,
 				370B677D18DC364E0071CDE4 /* SIncidentContentViewController.m */,
 			);
-			name = incident;
+			name = Incident;
 			sourceTree = "<group>";
 		};
-		37FA4C9018DBDF1A004AB106 /* problem */ = {
+		37FA4C9018DBDF1A004AB106 /* Problem */ = {
 			isa = PBXGroup;
 			children = (
 				37FA4C9618DBE153004AB106 /* SProblemViewController.h */,
@@ -198,10 +198,10 @@
 				370B677318DC35520071CDE4 /* SProblemContentViewController.h */,
 				370B677418DC35520071CDE4 /* SProblemContentViewController.m */,
 			);
-			name = problem;
+			name = Problem;
 			sourceTree = "<group>";
 		};
-		37FA4C9118DBDF24004AB106 /* change */ = {
+		37FA4C9118DBDF24004AB106 /* Change */ = {
 			isa = PBXGroup;
 			children = (
 				37FA4C9918DBE16F004AB106 /* SChangeViewController.h */,
@@ -209,10 +209,10 @@
 				370B677918DC35820071CDE4 /* SChangeContentViewController.h */,
 				370B677A18DC35820071CDE4 /* SChangeContentViewController.m */,
 			);
-			name = change;
+			name = Change;
 			sourceTree = "<group>";
 		};
-		37FA4C9218DBDF3B004AB106 /* inspection */ = {
+		37FA4C9218DBDF3B004AB106 /* Inspection */ = {
 			isa = PBXGroup;
 			children = (
 				370B677618DC35660071CDE4 /* SInspectionContentViewController.h */,
@@ -220,7 +220,7 @@
 				370B676918DC33200071CDE4 /* SInspectionViewController.h */,
 				370B676A18DC33200071CDE4 /* SInspectionViewController.m */,
 			);
-			name = inspection;
+			name = Inspection;
 			sourceTree = "<group>";
 		};
 		4417CF6518AC74C700E6E09F = {
@@ -342,11 +342,11 @@
 			isa = PBXGroup;
 			children = (
 				4AB79DA318DEEC0E00ECEC27 /* Alarm */,
-				370B676C18DC34370071CDE4 /* message */,
-				37FA4C9218DBDF3B004AB106 /* inspection */,
-				37FA4C9118DBDF24004AB106 /* change */,
-				37FA4C9018DBDF1A004AB106 /* problem */,
-				37FA4C8F18DBDF0F004AB106 /* incident */,
+				370B676C18DC34370071CDE4 /* Message */,
+				37FA4C9218DBDF3B004AB106 /* Inspection */,
+				37FA4C9118DBDF24004AB106 /* Change */,
+				37FA4C9018DBDF1A004AB106 /* Problem */,
+				37FA4C8F18DBDF0F004AB106 /* Incident */,
 				4A92F0F118AC958F00EB594B /* SOwnViewController.h */,
 				4A92F0F218AC958F00EB594B /* SOwnViewController.m */,
 				4A92F0FB18AC9A1600EB594B /* SOwnDetailViewController.h */,
