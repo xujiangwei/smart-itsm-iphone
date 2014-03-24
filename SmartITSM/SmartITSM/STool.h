@@ -7,4 +7,7 @@
 
 @interface STool : NSObject
 
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *desc;
+
 @end

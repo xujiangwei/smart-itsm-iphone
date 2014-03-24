@@ -5,6 +5,7 @@
 
 #import "SToolViewController.h"
 #import "SToolDetailViewController.h"
+#import "STool.h"
 
 @interface SToolViewController ()
 
@@ -26,7 +27,8 @@
 
 - (void)buildSections
 {
-    
+    STool *manualPolling = [[STool alloc] init];
+    manualPolling.name = @"巡检";
     //NSArray *commonTools = [NSArray arrayWithObjects:, nil];
     //self.sections = [];
 }
