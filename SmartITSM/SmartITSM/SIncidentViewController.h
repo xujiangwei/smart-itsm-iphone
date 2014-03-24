@@ -7,7 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import "SIncidentListView.h"
+#import "SIncident.h"
+//#import "SIncidentListener.h"
+//#import "MBProgressHUD.h"
+#import "SIncidentContentViewController.h"
 
-@interface SIncidentViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@protocol SIncidentListDelegate <NSObject>
+
+//获取当前工单可用的操作，由产品提供接口
+-(NSArray *)getTaskOperation:(SIncident *)incident;
+
+@end
+
+@interface SIncidentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) NSMutableArray  * incidents;
+
+@property (strong, nonatomic)  UITableView  *incidentListView;
+
+@property (nonatomic, strong) UIPopoverController  *incidentPopVC;
+
+@property (nonatomic, assign) id<SIncidentListDelegate> delegate;
+
+//更新事故工单列表
+- (void)updateIncidentList:(NSMutableArray *)incidentArray;
 
 @end

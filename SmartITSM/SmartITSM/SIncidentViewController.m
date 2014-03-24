@@ -7,12 +7,26 @@
 //
 
 #import "SIncidentViewController.h"
+#import "SIncidentDao.h"
+#import "SIncidentContentViewController.h"
+#import "SIncidentBaseInfoCell.h"
+
+#define kCellHeight 50
 
 @interface SIncidentViewController ()
+{
+//    MBProgressHUD *HUD;
+    NSIndexPath  *currentIndexPath;
+    SIncidentContentViewController *incidentContentVC;
+}
 
 @end
 
 @implementation SIncidentViewController
+@synthesize incidentListView;
+//@synthesize incidentPopVC;
+//@synthesize delegate;
+@synthesize incidents;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,40 +40,98 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    self.incidentListView.dataSource = self;
+    self.incidentListView.delegate = self;
+    incidents = [SIncidentDao getTaskList];
+
 }
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)viewDidUnload
 {
-    // Return the number of sections.
-    return 1;
+    [self setIncidentListView:nil];
+//    [self setIncidentPopVC:nil];
+    
+    
+    [super viewDidUnload];
 }
+
+- (void)updateIncidentList:(NSMutableArray *)incidentArray
+{
+    incidents = incidentArray;
+    [incidentListView reloadData];
+}
+
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kCellHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    
+}
+
+#pragma makr - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 4;
+    return [incidents count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"IncidentListCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"SIncidentBaseInfoCell";
     
-    // Configure the cell...
-    [cell.textLabel setText:[NSString stringWithFormat:@"故障%d", indexPath.row]];
+    SIncidentBaseInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if(nil == cell)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil];
+        
+        cell = [nib objectAtIndex:0];
+    }
     
+    SIncident *tempIncident= [incidents objectAtIndex:indexPath.row];
+    cell.codeLabel.text = tempIncident.code;
+    NSString *stateImage=[SIncidentDao getStateIcon:tempIncident];
+    cell.stateImage.image=[UIImage imageNamed:stateImage];
+    //    cell.stateLabel.text =tempIncident.state;
+    cell.updateTimeLabel.text=tempIncident.updateTime;
+    cell.summaryLabel.text=tempIncident.summary;
     return cell;
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+
+#pragma  mark rotate
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+}
+
+
+
 
 
 
