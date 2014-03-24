@@ -1,6 +1,6 @@
 //
 //  SIncident.m
-//  SmartITOM
+//  SmartITSM
 //
 
 

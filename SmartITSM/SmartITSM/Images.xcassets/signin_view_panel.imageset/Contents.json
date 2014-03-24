@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "signin_view_bg.png"
+      "filename" : "signin_view_panel.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "signin_view_panel@2x.png"
     }
   ],
   "info" : {
