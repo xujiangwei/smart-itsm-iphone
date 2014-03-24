@@ -38,11 +38,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    
     [super setSelected:selected animated:animated];
-    UIView *view = [[UIView alloc]initWithFrame:self.frame];
-    [view setBackgroundColor:[UIColor colorWithRed:71.0/255.0 green:78.0/255.0 blue:96.0/255.0 alpha:0.8]];
-    self.selectedBackgroundView = view;
 }
 
 - (void)build
