@@ -1,6 +1,6 @@
 //
 //  SIncidentBaseInfoCell.h
-//  SmartITOM
+//  SmartITSM
 //
 //  Created by dwg on 13-9-3.
 //  Copyright (c) 2013年 Ambrose. All rights reserved.

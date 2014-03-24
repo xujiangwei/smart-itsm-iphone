@@ -1,6 +1,6 @@
 //
 //  SIncident.h
-//  SmartITOM
+//  SmartITSM
 //
 
 #import <Foundation/Foundation.h>

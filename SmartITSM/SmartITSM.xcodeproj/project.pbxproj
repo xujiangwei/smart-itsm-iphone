@@ -30,7 +30,7 @@
 		37948F6918DFE23B00A5BBDA /* SIncidentBaseInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F6718DFE23B00A5BBDA /* SIncidentBaseInfoCell.m */; };
 		37948F6A18DFE23B00A5BBDA /* SIncidentBaseInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37948F6818DFE23B00A5BBDA /* SIncidentBaseInfoCell.xib */; };
 		37948F6D18DFE49800A5BBDA /* SIncidentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F6C18DFE49800A5BBDA /* SIncidentListView.m */; };
-		37948F7118DFFAC100A5BBDA /* SmartITOM.db in Resources */ = {isa = PBXBuildFile; fileRef = 37948F7018DFFAC100A5BBDA /* SmartITOM.db */; };
+		37948F7118DFFAC100A5BBDA /* SmartITSM.db in Resources */ = {isa = PBXBuildFile; fileRef = 37948F7018DFFAC100A5BBDA /* SmartITSM.db */; };
 		37FA4C9818DBE153004AB106 /* SProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA4C9718DBE153004AB106 /* SProblemViewController.m */; };
 		37FA4C9B18DBE16F004AB106 /* SChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA4C9A18DBE16F004AB106 /* SChangeViewController.m */; };
 		37FA4C9E18DBE196004AB106 /* SIncidentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA4C9D18DBE196004AB106 /* SIncidentViewController.m */; };
@@ -127,7 +127,7 @@
 		37948F6818DFE23B00A5BBDA /* SIncidentBaseInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SIncidentBaseInfoCell.xib; sourceTree = "<group>"; };
 		37948F6B18DFE49800A5BBDA /* SIncidentListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentListView.h; sourceTree = "<group>"; };
 		37948F6C18DFE49800A5BBDA /* SIncidentListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentListView.m; sourceTree = "<group>"; };
-		37948F7018DFFAC100A5BBDA /* SmartITOM.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartITOM.db; sourceTree = "<group>"; };
+		37948F7018DFFAC100A5BBDA /* SmartITSM.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartITSM.db; sourceTree = "<group>"; };
 		37FA4C9618DBE153004AB106 /* SProblemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProblemViewController.h; sourceTree = "<group>"; };
 		37FA4C9718DBE153004AB106 /* SProblemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProblemViewController.m; sourceTree = "<group>"; };
 		37FA4C9918DBE16F004AB106 /* SChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SChangeViewController.h; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 		37948F6F18DFF8EB00A5BBDA /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				37948F7018DFFAC100A5BBDA /* SmartITOM.db */,
+				37948F7018DFFAC100A5BBDA /* SmartITSM.db */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -374,7 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				37948F6F18DFF8EB00A5BBDA /* Assets */,
-				37948F5218DFDDC300A5BBDA /* DataBase */,
+				441E509B18DFFF93006831EA /* Common */,
 				37948F3C18DFD4CD00A5BBDA /* Model */,
 				4A085DEB18D81AEE0078CDF1 /* Signin */,
 				4485DC2D18ACB6E200D17061 /* Core */,
@@ -419,6 +419,22 @@
 				4417CF9918AC74C700E6E09F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		441E509B18DFFF93006831EA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				441E509C18E00071006831EA /* Calendar */,
+				37948F5218DFDDC300A5BBDA /* DataBase */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		441E509C18E00071006831EA /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Calendar;
 			sourceTree = "<group>";
 		};
 		4485DC2D18ACB6E200D17061 /* Core */ = {
@@ -584,7 +600,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37948F7118DFFAC100A5BBDA /* SmartITOM.db in Resources */,
+				37948F7118DFFAC100A5BBDA /* SmartITSM.db in Resources */,
 				4417CF8A18AC74C700E6E09F /* Images.xcassets in Resources */,
 				4417CF7C18AC74C700E6E09F /* InfoPlist.strings in Resources */,
 				37948F6A18DFE23B00A5BBDA /* SIncidentBaseInfoCell.xib in Resources */,

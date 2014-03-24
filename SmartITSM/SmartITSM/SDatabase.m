@@ -1,12 +1,12 @@
 //
 //  SDatabase.m
-//  SmartITOM
+//  SmartITSM
 //
 
 
 #import "SDatabase.h"
 
-#define DATABASE_FILE @"SmartITOM.db"
+#define DATABASE_FILE @"SmartITSM.db"
 
 @interface SDatabase()
 {
@@ -54,7 +54,7 @@ static SDatabase *sharedInstance = nil;
         if (![[NSFileManager defaultManager] fileExistsAtPath:path])
         {
             // Copy database file
-            NSString *filePath = [[NSBundle mainBundle]pathForResource:@"SmartITOM" ofType:@"db"];
+            NSString *filePath = [[NSBundle mainBundle]pathForResource:@"SmartITSM" ofType:@"db"];
             
             [[NSFileManager defaultManager] copyItemAtPath:filePath toPath:path error:nil];
         }
