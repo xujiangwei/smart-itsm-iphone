@@ -10,6 +10,7 @@
 @interface SToolViewController ()
 
 @property (nonatomic, strong) NSArray *sections;
+@property (nonatomic, strong) NSArray *currentToolGroup;
 
 @end
 
@@ -50,7 +51,7 @@
     // 巡检
     STool *manualPolling = [[STool alloc] init];
     manualPolling.name = @"巡检";
-    manualPolling.desc = @"电子报单巡检";
+    manualPolling.desc = @"现场巡检";
     // 常用工具
     NSArray *commonTools = [NSArray arrayWithObjects:manualPolling, nil];
 
@@ -79,15 +80,27 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return self.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    NSLog(@"secton: %d", section);
-    return 3;
+    self.currentToolGroup = [self.sections objectAtIndex:section];
+    return self.currentToolGroup.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *title = nil;
+    switch (section)
+    {
+    case 0:
+        title = @"常用工具";
+        break;
+    default:
+        break;
+    }
+    return title;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,16 +108,12 @@
     static NSString *CellIdentifier = @"ToolCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
+    // 获取对应工具
+    STool *tool = [self.currentToolGroup objectAtIndex:indexPath.row];
     // Configure the cell...
-    [cell.textLabel setText:[NSString stringWithFormat:@"工具%d", indexPath.row]];
+    [cell.textLabel setText:tool.name];
 
     return cell;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString *result = @"This is title";
-    return result;
 }
 
 /*
@@ -155,8 +164,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    
-    if ([segue.identifier isEqualToString:@"TollDetail"])
+    if ([segue.identifier isEqualToString:@"ToolDetail"])
     {
         UITableViewCell *selectCell = (UITableViewCell *)sender;
         
