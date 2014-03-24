@@ -15,6 +15,26 @@
 
 @implementation SToolViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        [self buildSections];
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        [self buildSections];
+    }
+    return self;
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -27,10 +47,15 @@
 
 - (void)buildSections
 {
+    // 巡检
     STool *manualPolling = [[STool alloc] init];
     manualPolling.name = @"巡检";
-    //NSArray *commonTools = [NSArray arrayWithObjects:, nil];
-    //self.sections = [];
+    manualPolling.desc = @"电子报单巡检";
+    // 常用工具
+    NSArray *commonTools = [NSArray arrayWithObjects:manualPolling, nil];
+
+    // 段落
+    self.sections = [NSArray arrayWithObjects:commonTools, nil];
 }
 
 - (void)viewDidLoad
@@ -55,12 +80,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return self.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    NSLog(@"secton: %d", section);
     return 3;
 }
 
