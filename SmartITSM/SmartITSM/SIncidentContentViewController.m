@@ -72,6 +72,12 @@
         self._tableView.dataSource = self;
         [self._tableView setBackgroundColor:[UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0]];
         
+//        UIButton *operationBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+//        [operationBtn setTitle:@"操作" forState:UIControlStateNormal];
+//        [operationBtn addTarget:self action:@selector(initData) forControlEvents:UIControlEventTouchUpInside];
+//        UIBarButtonItem *rightBtnItem=[[UIBarButtonItem alloc]initWithCustomView:operationBtn];
+//        self.navigationItem.rightBarButtonItem=rightBtnItem;
+        
 //        [self.view addSubview:self._tableView];
     }
     
@@ -268,6 +274,8 @@
 {
     [cell.detailTextLabel setText:value];
 }
+
+
 
 
 //设置当前任务的可操作列表
