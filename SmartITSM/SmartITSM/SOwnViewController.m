@@ -95,9 +95,6 @@
     }else if([attribute isEqualToString:@"inspection"]){
         cell.textLabel.text=@"巡检";
           [cell.detailTextLabel setText:@"2"];
-    }else if([attribute isEqualToString:@"notice"]){
-        cell.textLabel.text=@"公告";
-          [cell.detailTextLabel setText:@"8"];
     }else if ([attribute isEqualToString:@"message"]){
         cell.textLabel.text=@"消息";
           [cell.detailTextLabel setText:@"36"];
@@ -183,13 +180,12 @@
 
 -(void)initData
 {
-   sectionArray =[NSArray arrayWithObjects:@"待办",@"公告",@"消息", @"告警" ,nil];
+   sectionArray =[NSArray arrayWithObjects:@"待办",@"消息", @"告警" ,nil];
     NSArray  *taskInfo=[[NSArray alloc]initWithObjects:@"incident",@"problem",@"change",@"inspection", nil];
-    NSArray  *noticeInfo   =[[NSArray alloc] initWithObjects:@"notice", nil];
     NSArray  *messageInfo   =[[NSArray alloc] initWithObjects:@"message", nil];
     NSArray  *alarmInfo = [[NSArray alloc] initWithObjects:@"alarm", nil];
     
-   cellDic=[[NSMutableDictionary alloc] initWithObjectsAndKeys:taskInfo,[sectionArray objectAtIndex:0], noticeInfo ,[sectionArray objectAtIndex:1],messageInfo ,[sectionArray objectAtIndex:2],alarmInfo, [sectionArray objectAtIndex:3], Nil];
+   cellDic=[[NSMutableDictionary alloc] initWithObjectsAndKeys:taskInfo,[sectionArray objectAtIndex:0],messageInfo ,[sectionArray objectAtIndex:1],alarmInfo, [sectionArray objectAtIndex:2], Nil];
 }
 
 
