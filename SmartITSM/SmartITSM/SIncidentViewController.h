@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "SIncidentListView.h"
+#import "SIncidentListView.h"
 #import "SIncident.h"
 //#import "SIncidentListener.h"
 //#import "MBProgressHUD.h"
@@ -24,9 +24,7 @@
 
 @property (nonatomic, strong) NSMutableArray  * incidents;
 
-@property (strong, nonatomic)  UITableView  *incidentListView;
-
-@property (nonatomic, strong) UIPopoverController  *incidentPopVC;
+@property (nonatomic,strong)  UITableView *incidentListView;
 
 @property (nonatomic, assign) id<SIncidentListDelegate> delegate;
 

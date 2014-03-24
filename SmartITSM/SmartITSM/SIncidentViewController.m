@@ -11,7 +11,7 @@
 #import "SIncidentContentViewController.h"
 #import "SIncidentBaseInfoCell.h"
 
-#define kCellHeight 50
+#define kCellHeight 60
 
 @interface SIncidentViewController ()
 {
@@ -25,7 +25,7 @@
 @implementation SIncidentViewController
 @synthesize incidentListView;
 //@synthesize incidentPopVC;
-//@synthesize delegate;
+@synthesize delegate;
 @synthesize incidents;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,8 +41,8 @@
 {
     [super viewDidLoad];
     
-    self.incidentListView.dataSource = self;
-    self.incidentListView.delegate = self;
+    incidentListView.dataSource = self;
+    incidentListView.delegate = self;
     incidents = [SIncidentDao getTaskList];
 
 }
@@ -77,11 +77,7 @@
     return kCellHeight;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
 
-    
-}
 
 #pragma makr - UITableViewDataSource
 
@@ -101,12 +97,11 @@
         
         cell = [nib objectAtIndex:0];
     }
-    
+    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     SIncident *tempIncident= [incidents objectAtIndex:indexPath.row];
     cell.codeLabel.text = tempIncident.code;
     NSString *stateImage=[SIncidentDao getStateIcon:tempIncident];
     cell.stateImage.image=[UIImage imageNamed:stateImage];
-    //    cell.stateLabel.text =tempIncident.state;
     cell.updateTimeLabel.text=tempIncident.updateTime;
     cell.summaryLabel.text=tempIncident.summary;
     return cell;
@@ -116,6 +111,28 @@
 {
     return 1;
 }
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"IncidentDetail" sender:cell];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"IncidentDetail"])
+    {
+        SIncidentBaseInfoCell *selectCell = (SIncidentBaseInfoCell *)sender;
+       SIncidentContentViewController *contentVC = (SIncidentContentViewController *)[segue destinationViewController];
+        [contentVC setTitle:[NSString stringWithFormat:@"%@",selectCell.codeLabel.text]];
+    }
+    
+}
+
+
+
 
 
 #pragma  mark rotate

@@ -112,8 +112,7 @@
     NSInteger row=indexPath.row;
     
     UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
-    
-    
+   
     if(section==0 && row==0){
         [self performSegueWithIdentifier:@"IncidentList" sender:cell];
     }else if(section==0 && row==1){
@@ -126,8 +125,6 @@
     else if(section==3 && row==0){
         [self performSegueWithIdentifier:@"AlarmList" sender:cell];
     }
-
-
 }
 
 
