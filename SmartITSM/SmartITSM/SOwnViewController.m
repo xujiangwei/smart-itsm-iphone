@@ -8,6 +8,7 @@
 
 #import "SOwnViewController.h"
 
+
 @interface SOwnViewController ()
 
 @end
@@ -120,8 +121,10 @@
         [self performSegueWithIdentifier:@"ChangeList" sender:cell];
     }else if(section==0 && row==3){
         [self performSegueWithIdentifier:@"InspectionList" sender:cell];
+    }else if (section == 1 && row == 0){
+        [self performSegueWithIdentifier:@"MessageList" sender:cell];
     }
-    else if(section==3 && row==0){
+    else if(section==2 && row==0){
         [self performSegueWithIdentifier:@"AlarmList" sender:cell];
     }
 }
@@ -132,11 +135,7 @@
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"Signin"])
-    {
-        
-    }
-    else if ([segue.identifier isEqualToString:@"IncidentList"])
+    if ([segue.identifier isEqualToString:@"IncidentList"])
     {
         UITableViewCell *selectCell = (UITableViewCell *)sender;
         SIncidentViewController *detailVC = (SIncidentViewController *)[segue destinationViewController];
@@ -154,12 +153,20 @@
         [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
     }else if ([segue.identifier isEqualToString:@"InspectionList"])
     {
-     
+        UITableViewCell *selectCell = (UITableViewCell *)sender;
+        SInspectionViewController *detailVC = (SInspectionViewController *)[segue destinationViewController];
+        [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
     }
     else if ([segue.identifier isEqualToString:@"AlarmList"])
     {
         UITableViewCell *selectCell = (UITableViewCell *)sender;
         SAlarmViewController *detailVC = (SAlarmViewController *)[segue destinationViewController];
+        [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
+    }
+    else if ([segue.identifier isEqualToString:@"MessageList"])
+    {
+        UITableViewCell *selectCell = (UITableViewCell *)sender;
+        SMessageViewController *detailVC = (SMessageViewController *)[segue destinationViewController];
         [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
     }
 

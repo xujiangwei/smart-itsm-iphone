@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SResourceListViewController.h"
 
 @interface SDiscoveryViewController : UITableViewController<UIActionSheetDelegate>
 

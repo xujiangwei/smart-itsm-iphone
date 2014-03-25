@@ -123,8 +123,15 @@
         SDiscoveryDetailViewController *detailVC = (SDiscoveryDetailViewController *)[segue destinationViewController];
         [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
     }
+    else if ([segue.identifier isEqualToString:@"searchResource"])
+    {
+        SResourceListViewController *resourceListViewController = (SResourceListViewController *)[segue destinationViewController];
+        [resourceListViewController setTitle:@"设备列表"];
+    }
 
 }
+
+#pragma mark - IBAction
 
 - (IBAction)addDiscovery:(id)sender
 {
@@ -134,5 +141,41 @@
     
 }
 
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+        {
+            NSLog(@"0");
+        }
+            break;
+        case 1:
+        {
+            //设备
+            [self performSegueWithIdentifier:@"searchResource" sender:self];
+            
+        }
+            break;
+        case 2:
+        {
+            NSLog(@"2");
+        }
+            break;
+        case 3:
+        {
+            NSLog(@"3");
+        }
+            break;
+        case 4:
+        {
+            NSLog(@"4");
+        }
+            
+        default:
+            break;
+    }
+}
 
 @end
