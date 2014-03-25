@@ -33,7 +33,7 @@
     return 0;
 }
 
-#pragma mark KalDataSource protocol conformance
+#pragma mark CalDataSource protocol conformance
 
 - (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<CalDataSourceCallbacks>)delegate
 {

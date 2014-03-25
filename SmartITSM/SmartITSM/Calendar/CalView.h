@@ -1,6 +1,5 @@
-/* 
- * Copyright (c) 2009 Keith Lazuka
- * License: http://www.opensource.org/licenses/mit-license.html
+/*
+ * Calendar
  */
 
 #import <UIKit/UIKit.h>
@@ -15,11 +14,11 @@
  *
  *    Private interface
  *
- *  As a client of the Kal system you should not need to use this class directly
- *  (it is managed by KalViewController).
+ *  As a client of the Cal system you should not need to use this class directly
+ *  (it is managed by CalViewController).
  *
- *  KalViewController uses KalView as its view.
- *  KalView defines a view hierarchy that looks like the following:
+ *  CalViewController uses CalView as its view.
+ *  CalView defines a view hierarchy that looks like the following:
  *
  *       +-----------------------------------------+
  *       |                header view              |
@@ -40,8 +39,8 @@
  */
 @interface CalView : UIView
 {
-  UILabel *headerTitleLabel;
-  CalLogic *logic;
+    UILabel *headerTitleLabel;
+    CalLogic *logic;
 }
 
 @property (nonatomic, weak) id<CalViewDelegate> delegate;
@@ -54,7 +53,7 @@
 - (void)redrawEntireMonth;
 
 // These 3 methods are exposed for the delegate. They should be called 
-// *after* the KalLogic has moved to the month specified by the user.
+// *after* the CalLogic has moved to the month specified by the user.
 - (void)slideDown;
 - (void)slideUp;
 - (void)jumpToSelectedMonth;    // change months without animation (i.e. when directly switching to "Today")

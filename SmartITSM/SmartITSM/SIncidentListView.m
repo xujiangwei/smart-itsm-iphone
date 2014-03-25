@@ -42,10 +42,6 @@
 
 - (void)build
 {
-//    Theme *theme = [[ThemeManager sharedSingleton] theme];
-//    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:theme.tableViewBackground]];
-//    [self.backgroundView setHidden:YES];
-//    self.separatorColor = [UIColor colorWithPatternImage:[UIImage imageNamed:theme.separatorLine]];
 }
 
 

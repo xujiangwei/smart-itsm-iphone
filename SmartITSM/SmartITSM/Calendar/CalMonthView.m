@@ -1,6 +1,5 @@
 /*
- * Copyright (c) 2009 Keith Lazuka
- * License: http://www.opensource.org/licenses/mit-license.html
+ * Calendar
  */
 
 #import <CoreGraphics/CoreGraphics.h>
@@ -23,8 +22,10 @@ extern const CGSize kTileSize;
         [tileAccessibilityFormatter setDateFormat:@"EEEE, MMMM d"];
         self.opaque = NO;
         self.clipsToBounds = YES;
-        for (int i=0; i<6; i++) {
-            for (int j=0; j<7; j++) {
+        for (int i = 0; i < 6; i++)
+        {
+            for (int j = 0; j < 7; j++)
+            {
                 CGRect r = CGRectMake(j*kTileSize.width, i*kTileSize.height, kTileSize.width, kTileSize.height);
                 [self addSubview:[[CalTileView alloc] initWithFrame:r]];
             }
@@ -37,32 +38,39 @@ extern const CGSize kTileSize;
 {
     int tileNum = 0;
     NSArray *dates[] = { leadingAdjacentDates, mainDates, trailingAdjacentDates };
-    
-    for (int i=0; i<3; i++) {
-        for (int j=0; j<dates[i].count; j++) {
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < dates[i].count; j++)
+        {
             NSDate *d = dates[i][j];
             CalTileView *tile = [self.subviews objectAtIndex:tileNum];
             [tile resetState];
             tile.date = d;
-            if ((minAvailableDate && [d compare:minAvailableDate] == NSOrderedAscending) || (maxAvailableDate && [d compare:maxAvailableDate] == NSOrderedDescending)) {
+            if ((minAvailableDate && [d compare:minAvailableDate] == NSOrderedAscending) || (maxAvailableDate && [d compare:maxAvailableDate] == NSOrderedDescending))
+            {
                 tile.type = CalTileTypeDisable;
             }
-            if (i == 0 && j == 0) {
+            if (i == 0 && j == 0)
+            {
                 tile.type |= CalTileTypeFirst;
             }
-            if (i == 2 && j == dates[i].count-1) {
+            if (i == 2 && j == dates[i].count-1)
+            {
                 tile.type |= CalTileTypeLast;
             }
-            if (dates[i] != mainDates) {
+            if (dates[i] != mainDates)
+            {
                 tile.type |= CalTileTypeAdjacent;
             }
-            if ([d isToday]) {
+            if ([d isToday])
+            {
                 tile.type |= CalTileTypeToday;
             }
             tileNum++;
         }
     }
-    
+
     numWeeks = ceilf(tileNum / 7.f);
     [self sizeToFit];
     [self setNeedsDisplay];
@@ -71,7 +79,7 @@ extern const CGSize kTileSize;
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,kTileSize}, [[UIImage imageNamed:@"Kal.bundle/kal_tile.png"] CGImage]);
+    CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,kTileSize}, [[UIImage imageNamed:@"Calendar.bundle/cal_tile.png"] CGImage]);
 }
 
 - (CalTileView *)firstTileOfMonth
@@ -79,7 +87,8 @@ extern const CGSize kTileSize;
     CalTileView *tile = nil;
     for (CalTileView *t in self.subviews)
     {
-        if (!t.belongsToAdjacentMonth) {
+        if (!t.belongsToAdjacentMonth)
+        {
             tile = t;
             break;
         }
@@ -91,8 +100,10 @@ extern const CGSize kTileSize;
 - (CalTileView *)tileForDate:(NSDate *)date
 {
     CalTileView *tile = nil;
-    for (CalTileView *t in self.subviews) {
-        if ([t.date isEqualToDate:date]) {
+    for (CalTileView *t in self.subviews)
+    {
+        if ([t.date isEqualToDate:date])
+        {
             tile = t;
             break;
         }
@@ -111,7 +122,8 @@ extern const CGSize kTileSize;
     {
         tile.marked = [dates containsObject:tile.date];
         NSString *dayString = [tileAccessibilityFormatter stringFromDate:tile.date];
-        if (dayString) {
+        if (dayString)
+        {
             NSMutableString *helperText = [[NSMutableString alloc] initWithCapacity:128];
             if ([tile.date isToday])
                 [helperText appendFormat:@"%@ ", NSLocalizedString(@"Today", @"Accessibility text for a day tile that represents today")];
@@ -122,8 +134,5 @@ extern const CGSize kTileSize;
         }
     }
 }
-
-#pragma mark -
-
 
 @end

@@ -1,6 +1,5 @@
 /*
- * Copyright (c) 2009 Keith Lazuka
- * License: http://www.opensource.org/licenses/mit-license.html
+ * Calendar
  */
 
 #import "CalViewController.h"
@@ -76,12 +75,14 @@ NSString *const CalDataSourceChangedNotification = @"CalDataSourceChangedNotific
 
 - (id)initWithSelectionMode:(CalSelectionMode)selectionMode;
 {
-    if ((self = [super init])) {
+    if ((self = [super init]))
+    {
         logic = [[CalLogic alloc] initForDate:[NSDate date]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(significantTimeChangeOccurred) name:UIApplicationSignificantTimeChangeNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:CalDataSourceChangedNotification object:nil];
         self.selectionMode = selectionMode;
-        if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+        if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
+        {
             self.edgesForExtendedLayout = UIRectEdgeNone;
         }
     }
@@ -97,7 +98,8 @@ NSString *const CalDataSourceChangedNotification = @"CalDataSourceChangedNotific
 
 - (void)setDataSource:(id<CalDataSource>)aDataSource
 {
-    if (dataSource != aDataSource) {
+    if (dataSource != aDataSource)
+    {
         dataSource = aDataSource;
         tableView.dataSource = dataSource;
     }
@@ -105,7 +107,8 @@ NSString *const CalDataSourceChangedNotification = @"CalDataSourceChangedNotific
 
 - (void)setDelegate:(id<UITableViewDelegate>)aDelegate
 {
-    if (delegate != aDelegate) {
+    if (delegate != aDelegate)
+    {
         delegate = aDelegate;
         tableView.delegate = delegate;
     }
@@ -134,8 +137,8 @@ NSString *const CalDataSourceChangedNotification = @"CalDataSourceChangedNotific
 - (void)didSelectDate:(NSDate *)date
 {
     _selectedDate = date;
-    NSDate *from = [date cc_dateByMovingToBeginningOfDay];
-    NSDate *to = [date cc_dateByMovingToEndOfDay];
+    NSDate *from = [date dateByMovingToBeginningOfDay];
+    NSDate *to = [date dateByMovingToEndOfDay];
     [self clearTable];
     [dataSource loadItemsFromDate:from toDate:to];
     [tableView reloadData];
@@ -234,10 +237,13 @@ NSString *const CalDataSourceChangedNotification = @"CalDataSourceChangedNotific
 {
     [super viewWillAppear:animated];
     [tableView reloadData];
-    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)])
+    {
         self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
         self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
-    } else {
+    }
+    else
+    {
         self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     }
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : kLightGrayColor, NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue" size:20]};
