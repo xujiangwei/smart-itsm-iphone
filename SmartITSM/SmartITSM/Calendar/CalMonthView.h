@@ -1,6 +1,5 @@
-/* 
- * Copyright (c) 2009 Keith Lazuka
- * License: http://www.opensource.org/licenses/mit-license.html
+/*
+ * Calendar
  */
 
 #import <UIKit/UIKit.h>
@@ -9,8 +8,8 @@
 
 @interface CalMonthView : UIView
 {
-  NSUInteger numWeeks;
-  NSDateFormatter *tileAccessibilityFormatter;
+    NSUInteger numWeeks;
+    NSDateFormatter *tileAccessibilityFormatter;
 }
 
 @property (nonatomic) NSUInteger numWeeks;

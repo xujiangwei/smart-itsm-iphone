@@ -1,9 +1,5 @@
 //
 //  NSDate+Convenience.h
-//  FiveStar
-//
-//  Created by Leon on 13-1-14.
-//
 //
 
 #import <Foundation/Foundation.h>
