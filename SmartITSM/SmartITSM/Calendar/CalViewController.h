@@ -22,10 +22,10 @@
  */
 @interface CalViewController : UIViewController <CalViewDelegate, CalDataSourceCallbacks>
 {
-  CalLogic *logic;
-  UITableView *tableView;
-  id <UITableViewDelegate> __unsafe_unretained delegate;
-  id <CalDataSource> __unsafe_unretained dataSource;
+    CalLogic *logic;
+    UITableView *tableView;
+    id <UITableViewDelegate> __unsafe_unretained delegate;
+    id <CalDataSource> __unsafe_unretained dataSource;
 }
 
 @property (nonatomic, unsafe_unretained) id<UITableViewDelegate> delegate;

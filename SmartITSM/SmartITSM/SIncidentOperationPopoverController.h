@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface WEPopoverContentViewController : UITableViewController {
+@interface SIncidentOperationPopoverController : UITableViewController {
 
 }
 

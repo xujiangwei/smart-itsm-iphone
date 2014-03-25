@@ -6,10 +6,10 @@
 //  Copyright 2010 Werner IT Consultancy. All rights reserved.
 //
 
-#import "WEPopoverContentViewController.h"
+#import "SIncidentOperationPopoverController.h"
 
 
-@implementation WEPopoverContentViewController
+@implementation SIncidentOperationPopoverController
 
 
 #pragma mark -
@@ -61,8 +61,8 @@
     }
     
     // Configure the cell...
-	cell.textLabel.text = [NSString stringWithFormat:@"Item %d", [indexPath row]]; 
-	cell.textLabel.textColor = [UIColor blueColor];
+	cell.textLabel.text = [NSString stringWithFormat:@"操作 %d", [indexPath row]];
+	cell.textLabel.textColor = [UIColor blackColor];
     return cell;
 }
 

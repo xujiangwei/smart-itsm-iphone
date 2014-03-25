@@ -17,7 +17,7 @@
 		3776A38418E14A210075B57F /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776A37D18E14A210075B57F /* WEPopoverContainerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3776A38518E14A210075B57F /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776A37F18E14A210075B57F /* WEPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3776A38618E14A210075B57F /* WETouchableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776A38218E14A210075B57F /* WETouchableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3776A38918E14B2A0075B57F /* WEPopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776A38818E14B2A0075B57F /* WEPopoverContentViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3776A38918E14B2A0075B57F /* SIncidentOperationPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776A38818E14B2A0075B57F /* SIncidentOperationPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		37948F3B18DFD05B00A5BBDA /* SMessageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F3A18DFD05B00A5BBDA /* SMessageContentViewController.m */; };
 		37948F4918DFD5CA00A5BBDA /* SIncident.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F3E18DFD5CA00A5BBDA /* SIncident.m */; };
 		37948F4A18DFD5CA00A5BBDA /* SInspection.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F4018DFD5CA00A5BBDA /* SInspection.m */; };
@@ -64,6 +64,12 @@
 		441E50BC18E00FCF006831EA /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 441E50B118E00FCF006831EA /* NSDateAdditions.m */; };
 		441E50BD18E00FCF006831EA /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 441E50B318E00FCF006831EA /* UIViewAdditions.m */; };
 		441E50BF18E01D62006831EA /* Calendar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 441E50BE18E01D62006831EA /* Calendar.bundle */; };
+		4439045518E1786C00E65AF4 /* HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4439044E18E1786C00E65AF4 /* HexColor.m */; };
+		4439045618E1786C00E65AF4 /* TSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4439045018E1786C00E65AF4 /* TSBlurView.m */; };
+		4439045718E1786C00E65AF4 /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4439045218E1786C00E65AF4 /* TSMessage.m */; };
+		4439045818E1786C00E65AF4 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4439045418E1786C00E65AF4 /* TSMessageView.m */; };
+		4439045A18E1787700E65AF4 /* TSMessage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4439045918E1787700E65AF4 /* TSMessage.bundle */; };
+		4439045C18E1793500E65AF4 /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 4439045B18E1793500E65AF4 /* TSMessagesDefaultDesign.json */; };
 		4485DC3018ACBA2500D17061 /* MastEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4485DC2F18ACBA2500D17061 /* MastEngine.m */; };
 		44B02BF118ADA5990001451F /* ActionListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BF018ADA5990001451F /* ActionListener.m */; };
 		44B02BF518ADA7DE0001451F /* StatusListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BF418ADA7DE0001451F /* StatusListener.m */; };
@@ -119,8 +125,8 @@
 		3776A38018E14A210075B57F /* WEPopoverParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverParentView.h; sourceTree = "<group>"; };
 		3776A38118E14A210075B57F /* WETouchableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WETouchableView.h; sourceTree = "<group>"; };
 		3776A38218E14A210075B57F /* WETouchableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETouchableView.m; sourceTree = "<group>"; };
-		3776A38718E14B2A0075B57F /* WEPopoverContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContentViewController.h; sourceTree = "<group>"; };
-		3776A38818E14B2A0075B57F /* WEPopoverContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContentViewController.m; sourceTree = "<group>"; };
+		3776A38718E14B2A0075B57F /* SIncidentOperationPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentOperationPopoverController.h; sourceTree = "<group>"; };
+		3776A38818E14B2A0075B57F /* SIncidentOperationPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentOperationPopoverController.m; sourceTree = "<group>"; };
 		37948F3918DFD05B00A5BBDA /* SMessageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageContentViewController.h; sourceTree = "<group>"; };
 		37948F3A18DFD05B00A5BBDA /* SMessageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageContentViewController.m; sourceTree = "<group>"; };
 		37948F3D18DFD5CA00A5BBDA /* SIncident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncident.h; sourceTree = "<group>"; };
@@ -203,6 +209,16 @@
 		441E50B218E00FCF006831EA /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewAdditions.h; path = Calendar/UIViewAdditions.h; sourceTree = "<group>"; };
 		441E50B318E00FCF006831EA /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewAdditions.m; path = Calendar/UIViewAdditions.m; sourceTree = "<group>"; };
 		441E50BE18E01D62006831EA /* Calendar.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Calendar.bundle; sourceTree = "<group>"; };
+		4439044D18E1786C00E65AF4 /* HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HexColor.h; path = TSMessage/HexColor.h; sourceTree = "<group>"; };
+		4439044E18E1786C00E65AF4 /* HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HexColor.m; path = TSMessage/HexColor.m; sourceTree = "<group>"; };
+		4439044F18E1786C00E65AF4 /* TSBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSBlurView.h; path = TSMessage/TSBlurView.h; sourceTree = "<group>"; };
+		4439045018E1786C00E65AF4 /* TSBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSBlurView.m; path = TSMessage/TSBlurView.m; sourceTree = "<group>"; };
+		4439045118E1786C00E65AF4 /* TSMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSMessage.h; path = TSMessage/TSMessage.h; sourceTree = "<group>"; };
+		4439045218E1786C00E65AF4 /* TSMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSMessage.m; path = TSMessage/TSMessage.m; sourceTree = "<group>"; };
+		4439045318E1786C00E65AF4 /* TSMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSMessageView.h; path = TSMessage/TSMessageView.h; sourceTree = "<group>"; };
+		4439045418E1786C00E65AF4 /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSMessageView.m; path = TSMessage/TSMessageView.m; sourceTree = "<group>"; };
+		4439045918E1787700E65AF4 /* TSMessage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TSMessage.bundle; sourceTree = "<group>"; };
+		4439045B18E1793500E65AF4 /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesDefaultDesign.json; sourceTree = "<group>"; };
 		4485DC2E18ACBA2500D17061 /* MastEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MastEngine.h; sourceTree = "<group>"; };
 		4485DC2F18ACBA2500D17061 /* MastEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MastEngine.m; sourceTree = "<group>"; };
 		4485DC5A18ACC81F00D17061 /* libnucleus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnucleus.a; path = "../nucleus/bin/Debug-iphonesimulator/libnucleus.a"; sourceTree = "<group>"; };
@@ -359,8 +375,6 @@
 		37FA4C8F18DBDF0F004AB106 /* Incident */ = {
 			isa = PBXGroup;
 			children = (
-				3776A38718E14B2A0075B57F /* WEPopoverContentViewController.h */,
-				3776A38818E14B2A0075B57F /* WEPopoverContentViewController.m */,
 				37948F6B18DFE49800A5BBDA /* SIncidentListView.h */,
 				37948F6C18DFE49800A5BBDA /* SIncidentListView.m */,
 				37948F6618DFE23B00A5BBDA /* SIncidentBaseInfoCell.h */,
@@ -370,6 +384,8 @@
 				37FA4C9D18DBE196004AB106 /* SIncidentViewController.m */,
 				370B677C18DC364E0071CDE4 /* SIncidentContentViewController.h */,
 				370B677D18DC364E0071CDE4 /* SIncidentContentViewController.m */,
+				3776A38718E14B2A0075B57F /* SIncidentOperationPopoverController.h */,
+				3776A38818E14B2A0075B57F /* SIncidentOperationPopoverController.m */,
 			);
 			name = Incident;
 			sourceTree = "<group>";
@@ -493,6 +509,7 @@
 		441E509B18DFFF93006831EA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4439044C18E1772D00E65AF4 /* TSMessage */,
 				3776A37918E14A210075B57F /* Popover */,
 				441E509C18E00071006831EA /* Calendar */,
 				37948F5218DFDDC300A5BBDA /* DataBase */,
@@ -529,6 +546,23 @@
 				441E50B318E00FCF006831EA /* UIViewAdditions.m */,
 			);
 			name = Calendar;
+			sourceTree = "<group>";
+		};
+		4439044C18E1772D00E65AF4 /* TSMessage */ = {
+			isa = PBXGroup;
+			children = (
+				4439045B18E1793500E65AF4 /* TSMessagesDefaultDesign.json */,
+				4439045918E1787700E65AF4 /* TSMessage.bundle */,
+				4439044D18E1786C00E65AF4 /* HexColor.h */,
+				4439044E18E1786C00E65AF4 /* HexColor.m */,
+				4439044F18E1786C00E65AF4 /* TSBlurView.h */,
+				4439045018E1786C00E65AF4 /* TSBlurView.m */,
+				4439045118E1786C00E65AF4 /* TSMessage.h */,
+				4439045218E1786C00E65AF4 /* TSMessage.m */,
+				4439045318E1786C00E65AF4 /* TSMessageView.h */,
+				4439045418E1786C00E65AF4 /* TSMessageView.m */,
+			);
+			name = TSMessage;
 			sourceTree = "<group>";
 		};
 		4485DC2D18ACB6E200D17061 /* Core */ = {
@@ -704,8 +738,10 @@
 			files = (
 				37948F7118DFFAC100A5BBDA /* SmartITSM.db in Resources */,
 				441E50BF18E01D62006831EA /* Calendar.bundle in Resources */,
+				4439045C18E1793500E65AF4 /* TSMessagesDefaultDesign.json in Resources */,
 				4417CF8A18AC74C700E6E09F /* Images.xcassets in Resources */,
 				4417CF7C18AC74C700E6E09F /* InfoPlist.strings in Resources */,
+				4439045A18E1787700E65AF4 /* TSMessage.bundle in Resources */,
 				37948F6A18DFE23B00A5BBDA /* SIncidentBaseInfoCell.xib in Resources */,
 				4417CF8518AC74C700E6E09F /* Main.storyboard in Resources */,
 			);
@@ -734,6 +770,7 @@
 				3776A38618E14A210075B57F /* WETouchableView.m in Sources */,
 				37948F6D18DFE49800A5BBDA /* SIncidentListView.m in Sources */,
 				441E50B818E00FCF006831EA /* CalTileView.m in Sources */,
+				4439045518E1786C00E65AF4 /* HexColor.m in Sources */,
 				441E50B618E00FCF006831EA /* CalLogic.m in Sources */,
 				4A92F0F918AC972B00EB594B /* SToolViewController.m in Sources */,
 				44B1182C18DADF7B00539D0C /* STool.m in Sources */,
@@ -770,12 +807,14 @@
 				4A085DEE18D81B1B0078CDF1 /* SSigninViewController.m in Sources */,
 				37FA4C9E18DBE196004AB106 /* SIncidentViewController.m in Sources */,
 				37948F6218DFDDDB00A5BBDA /* FMResultSet.m in Sources */,
+				4439045618E1786C00E65AF4 /* TSBlurView.m in Sources */,
 				3776A38518E14A210075B57F /* WEPopoverController.m in Sources */,
 				37948F4D18DFD5CA00A5BBDA /* SProblemDao.m in Sources */,
 				3776A38418E14A210075B57F /* WEPopoverContainerView.m in Sources */,
 				3776A38318E14A210075B57F /* UIBarButtonItem+WEPopover.m in Sources */,
 				37FA4C9B18DBE16F004AB106 /* SChangeViewController.m in Sources */,
 				370B676B18DC33200071CDE4 /* SInspectionViewController.m in Sources */,
+				4439045818E1786C00E65AF4 /* TSMessageView.m in Sources */,
 				4417CF7E18AC74C700E6E09F /* main.m in Sources */,
 				4485DC3018ACBA2500D17061 /* MastEngine.m in Sources */,
 				37948F4918DFD5CA00A5BBDA /* SIncident.m in Sources */,
@@ -783,8 +822,9 @@
 				370B677B18DC35820071CDE4 /* SChangeContentViewController.m in Sources */,
 				441E50BC18E00FCF006831EA /* NSDateAdditions.m in Sources */,
 				37948F4C18DFD5CA00A5BBDA /* SProblem.m in Sources */,
+				4439045718E1786C00E65AF4 /* TSMessage.m in Sources */,
 				37948F5118DFD6E300A5BBDA /* SUser.m in Sources */,
-				3776A38918E14B2A0075B57F /* WEPopoverContentViewController.m in Sources */,
+				3776A38918E14B2A0075B57F /* SIncidentOperationPopoverController.m in Sources */,
 				4AB79DAC18DEEF6700ECEC27 /* SAlarmViewController.m in Sources */,
 				44B02BF518ADA7DE0001451F /* StatusListener.m in Sources */,
 				37948F6118DFDDDB00A5BBDA /* FMDatabaseQueue.m in Sources */,

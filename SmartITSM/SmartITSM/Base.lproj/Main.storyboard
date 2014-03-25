@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
@@ -347,7 +347,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiM-P1-eI8">
-                                                <rect key="frame" x="182" y="120" width="57" height="30"/>
+                                                <rect key="frame" x="177" y="120" width="57" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="确认">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -413,7 +413,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4s-oA-HZm">
-                                                <rect key="frame" x="182" y="120" width="57" height="30"/>
+                                                <rect key="frame" x="177" y="120" width="57" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="登录">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -442,18 +442,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="btnCheckConfig" destination="D71-ma-l4k" id="NWa-KH-TSv"/>
+                        <outlet property="btnConfig" destination="2Ng-q3-MSX" id="xiw-cI-rq2"/>
+                        <outlet property="btnConfirm" destination="qiM-P1-eI8" id="GRi-Lu-G2r"/>
+                        <outlet property="btnSignin" destination="L4s-oA-HZm" id="QkJ-dG-Edb"/>
                         <outlet property="configServerView" destination="8oZ-dL-Y96" id="6E1-ff-LUX"/>
-                        <outlet property="confirmBtn" destination="qiM-P1-eI8" id="Zpr-Dn-uiK"/>
-                        <outlet property="connectCheckBtn" destination="D71-ma-l4k" id="lor-DH-nBi"/>
-                        <outlet property="logoImageV" destination="SN9-OI-6Xg" id="iuQ-Ba-qxV"/>
-                        <outlet property="settingBtn" destination="2Ng-q3-MSX" id="NcY-Gi-n9c"/>
-                        <outlet property="signinBtn" destination="L4s-oA-HZm" id="eHP-Kc-cof"/>
+                        <outlet property="imgLogo" destination="SN9-OI-6Xg" id="PEU-cq-hei"/>
                         <outlet property="signinView" destination="ZJ8-G1-7zQ" id="LBU-Bf-ypy"/>
                         <outlet property="subView" destination="yPr-UP-Qlh" id="Ec2-97-3O7"/>
-                        <outlet property="textFieldIP" destination="oO2-uK-NGb" id="3jd-jV-2OZ"/>
-                        <outlet property="tfPassWord" destination="eB1-TW-9Xc" id="vBT-Ah-W17"/>
+                        <outlet property="tfAddress" destination="oO2-uK-NGb" id="XNS-UE-1ey"/>
+                        <outlet property="tfPassword" destination="eB1-TW-9Xc" id="QhJ-dR-Tmj"/>
                         <outlet property="tfPort" destination="0dY-Yy-hfs" id="kM5-uq-pCb"/>
-                        <outlet property="tfUserName" destination="3AC-2q-kbU" id="7Wv-fp-q7M"/>
+                        <outlet property="tfUser" destination="3AC-2q-kbU" id="wdz-dA-j7H"/>
                         <segue destination="8OT-VU-o0v" kind="modal" identifier="Signin" id="khE-1g-agA"/>
                     </connections>
                 </viewController>

@@ -9,7 +9,7 @@
 
 #import "SIncidentContentViewController.h"
 #import "SIncidentDao.h"
-#import "WEPopoverContentViewController.h"
+#import "SIncidentOperationPopoverController.h"
 #import "UIBarButtonItem+WEPopover.h"
 //#import "SProcessLogViewController.h"
 
@@ -106,7 +106,7 @@
     
 	if (!self.popoverController) {
 		
-		UIViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain];
+		UIViewController *contentViewController = [[SIncidentOperationPopoverController alloc] initWithStyle:UITableViewStylePlain];
 		self.popoverController = [[popoverClass alloc] initWithContentViewController:contentViewController];
 		self.popoverController.delegate = self;
 		self.popoverController.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
