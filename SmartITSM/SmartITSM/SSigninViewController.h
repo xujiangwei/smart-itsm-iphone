@@ -20,23 +20,23 @@
 
 @property (strong, nonatomic) IBOutlet SConfigServerView *configServerView;
 
-@property (strong, nonatomic) IBOutlet UIImageView *logoImageV;
+@property (strong, nonatomic) IBOutlet UIImageView *imgLogo;
 
-@property (strong, nonatomic) IBOutlet UITextField *tfUserName;
+@property (strong, nonatomic) IBOutlet UITextField *tfUser;
 
-@property (strong, nonatomic) IBOutlet UITextField *tfPassWord;
+@property (strong, nonatomic) IBOutlet UITextField *tfPassword;
 
-@property (strong, nonatomic) IBOutlet UIButton *settingBtn;
+@property (strong, nonatomic) IBOutlet UIButton *btnConfig;
 
-@property (strong, nonatomic) IBOutlet UIButton *signinBtn;
+@property (strong, nonatomic) IBOutlet UIButton *btnSignin;
 
-@property (strong, nonatomic) IBOutlet UITextField *textFieldIP;
+@property (strong, nonatomic) IBOutlet UITextField *tfAddress;
 
 @property (strong, nonatomic) IBOutlet UITextField *tfPort;
 
-@property (strong, nonatomic) IBOutlet UIButton *connectCheckBtn;
+@property (strong, nonatomic) IBOutlet UIButton *btnCheckConfig;
 
-@property (strong, nonatomic) IBOutlet UIButton *confirmBtn;
+@property (strong, nonatomic) IBOutlet UIButton *btnConfirm;
 
 
 @end
