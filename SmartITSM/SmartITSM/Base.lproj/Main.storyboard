@@ -62,7 +62,7 @@
             </objects>
             <point key="canvasLocation" x="1199" y="1278"/>
         </scene>
-        <!--Resource List View Controller - 设备列表-->
+        <!--Resource List View Controller-->
         <scene sceneID="WJu-Lx-fyd">
             <objects>
                 <viewController id="aHD-jd-3mG" customClass="SResourceListViewController" sceneMemberID="viewController">
@@ -86,7 +86,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="设备列表" id="y4u-Wp-muQ"/>
+                    <navigationItem key="navigationItem" id="y4u-Wp-muQ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ikD-ok-jbW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -164,6 +164,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="teS-gB-XjW"/>
                     <connections>
                         <segue destination="KHU-qi-LkS" kind="push" id="8Nf-tY-b2b"/>
                     </connections>
@@ -288,6 +289,7 @@
                         <segue destination="TkX-tZ-wi8" kind="push" identifier="ChangeList" id="DNm-JG-tPg"/>
                         <segue destination="kcu-e6-waB" kind="push" identifier="InspectionList" id="uGp-J6-deL"/>
                         <segue destination="S5J-YJ-1MW" kind="push" identifier="AlarmList" id="SeH-jB-tgp"/>
+                        <segue destination="Hgg-2j-q3A" kind="push" identifier="MessageList" id="cnp-Ag-T6c"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uHc-JA-deY" userLabel="First Responder" sceneMemberID="firstResponder"/>

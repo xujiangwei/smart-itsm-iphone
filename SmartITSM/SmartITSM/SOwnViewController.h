@@ -11,6 +11,8 @@
 #import "SProblemViewController.h"
 #import "SChangeViewController.h"
 #import "SAlarmViewController.h"
+#import "SInspectionViewController.h"
+#import "SMessageViewController.h"
 
 
 @interface SOwnViewController : UITableViewController
