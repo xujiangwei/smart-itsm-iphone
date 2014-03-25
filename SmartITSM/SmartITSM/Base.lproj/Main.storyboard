@@ -455,7 +455,7 @@
         <!--Incident Content View Controller-->
         <scene sceneID="x28-6h-NmL">
             <objects>
-                <viewController id="XHy-xF-oc8" customClass="SIncidentContentViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="XHy-xF-oc8" customClass="SIncidentContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RGq-DX-5CW"/>
                         <viewControllerLayoutGuide type="bottom" id="ouS-fn-3Ob"/>

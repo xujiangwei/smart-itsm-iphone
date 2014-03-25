@@ -131,10 +131,6 @@
     
 }
 
-
-
-
-
 #pragma  mark rotate
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -146,11 +142,6 @@
 {
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
-
-
-
-
-
 
 
 @end
