@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SDiscoveryViewController : UITableViewController
+@interface SDiscoveryViewController : UITableViewController<UIActionSheetDelegate>
 
 @end
