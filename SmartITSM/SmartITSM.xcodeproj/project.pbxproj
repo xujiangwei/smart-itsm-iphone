@@ -17,7 +17,7 @@
 		3776A38418E14A210075B57F /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776A37D18E14A210075B57F /* WEPopoverContainerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3776A38518E14A210075B57F /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776A37F18E14A210075B57F /* WEPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3776A38618E14A210075B57F /* WETouchableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776A38218E14A210075B57F /* WETouchableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3776A38918E14B2A0075B57F /* WEPopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776A38818E14B2A0075B57F /* WEPopoverContentViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3776A38918E14B2A0075B57F /* SIncidentOperationPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776A38818E14B2A0075B57F /* SIncidentOperationPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		37948F3B18DFD05B00A5BBDA /* SMessageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F3A18DFD05B00A5BBDA /* SMessageContentViewController.m */; };
 		37948F4918DFD5CA00A5BBDA /* SIncident.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F3E18DFD5CA00A5BBDA /* SIncident.m */; };
 		37948F4A18DFD5CA00A5BBDA /* SInspection.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F4018DFD5CA00A5BBDA /* SInspection.m */; };
@@ -119,8 +119,8 @@
 		3776A38018E14A210075B57F /* WEPopoverParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverParentView.h; sourceTree = "<group>"; };
 		3776A38118E14A210075B57F /* WETouchableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WETouchableView.h; sourceTree = "<group>"; };
 		3776A38218E14A210075B57F /* WETouchableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETouchableView.m; sourceTree = "<group>"; };
-		3776A38718E14B2A0075B57F /* WEPopoverContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContentViewController.h; sourceTree = "<group>"; };
-		3776A38818E14B2A0075B57F /* WEPopoverContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContentViewController.m; sourceTree = "<group>"; };
+		3776A38718E14B2A0075B57F /* SIncidentOperationPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentOperationPopoverController.h; sourceTree = "<group>"; };
+		3776A38818E14B2A0075B57F /* SIncidentOperationPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentOperationPopoverController.m; sourceTree = "<group>"; };
 		37948F3918DFD05B00A5BBDA /* SMessageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageContentViewController.h; sourceTree = "<group>"; };
 		37948F3A18DFD05B00A5BBDA /* SMessageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageContentViewController.m; sourceTree = "<group>"; };
 		37948F3D18DFD5CA00A5BBDA /* SIncident.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncident.h; sourceTree = "<group>"; };
@@ -359,8 +359,6 @@
 		37FA4C8F18DBDF0F004AB106 /* Incident */ = {
 			isa = PBXGroup;
 			children = (
-				3776A38718E14B2A0075B57F /* WEPopoverContentViewController.h */,
-				3776A38818E14B2A0075B57F /* WEPopoverContentViewController.m */,
 				37948F6B18DFE49800A5BBDA /* SIncidentListView.h */,
 				37948F6C18DFE49800A5BBDA /* SIncidentListView.m */,
 				37948F6618DFE23B00A5BBDA /* SIncidentBaseInfoCell.h */,
@@ -370,6 +368,8 @@
 				37FA4C9D18DBE196004AB106 /* SIncidentViewController.m */,
 				370B677C18DC364E0071CDE4 /* SIncidentContentViewController.h */,
 				370B677D18DC364E0071CDE4 /* SIncidentContentViewController.m */,
+				3776A38718E14B2A0075B57F /* SIncidentOperationPopoverController.h */,
+				3776A38818E14B2A0075B57F /* SIncidentOperationPopoverController.m */,
 			);
 			name = Incident;
 			sourceTree = "<group>";
@@ -776,7 +776,7 @@
 				441E50BC18E00FCF006831EA /* NSDateAdditions.m in Sources */,
 				37948F4C18DFD5CA00A5BBDA /* SProblem.m in Sources */,
 				37948F5118DFD6E300A5BBDA /* SUser.m in Sources */,
-				3776A38918E14B2A0075B57F /* WEPopoverContentViewController.m in Sources */,
+				3776A38918E14B2A0075B57F /* SIncidentOperationPopoverController.m in Sources */,
 				4AB79DAC18DEEF6700ECEC27 /* SAlarmViewController.m in Sources */,
 				44B02BF518ADA7DE0001451F /* StatusListener.m in Sources */,
 				37948F6118DFDDDB00A5BBDA /* FMDatabaseQueue.m in Sources */,
