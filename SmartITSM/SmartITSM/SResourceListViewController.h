@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SResourceListViewController : UITableViewController
+@interface SResourceListViewController : UITableViewController <UISearchBarDelegate>
+
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end

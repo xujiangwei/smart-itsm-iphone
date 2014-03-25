@@ -7,6 +7,7 @@
 #import "SToolDetailViewController.h"
 #import "STool.h"
 
+
 @interface SToolViewController ()
 
 @property (nonatomic, strong) NSArray *sections;
@@ -61,6 +62,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    [self.tableView registerClass:[SToolResourceListCell class] forCellReuseIdentifier:@"resourceList"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -92,11 +95,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ToolCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
-    // Configure the cell...
-    [cell.textLabel setText:[NSString stringWithFormat:@"工具%d", indexPath.row]];
+        static NSString *CellIdentifier = @"ToolCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        
+        // Configure the cell...
+        [cell.textLabel setText:[NSString stringWithFormat:@"工具%d", indexPath.row]];
+    
+
 
     return cell;
 }
@@ -106,6 +112,7 @@
     NSString *result = @"This is title";
     return result;
 }
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -164,6 +171,7 @@
         [detailVC setTitle:[NSString stringWithFormat:@"%@", selectCell.textLabel.text]];
 
     }
+    
    
 }
 

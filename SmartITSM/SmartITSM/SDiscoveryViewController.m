@@ -123,7 +123,7 @@
         SDiscoveryDetailViewController *detailVC = (SDiscoveryDetailViewController *)[segue destinationViewController];
         [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
     }
-    else if ([segue.identifier isEqualToString:@"searchResource"])
+    else if ([segue.identifier isEqualToString:@"resourceList"])
     {
         SResourceListViewController *resourceListViewController = (SResourceListViewController *)[segue destinationViewController];
         [resourceListViewController setTitle:@"设备列表"];
@@ -154,7 +154,7 @@
         case 1:
         {
             //设备
-            [self performSegueWithIdentifier:@"searchResource" sender:self];
+            [self performSegueWithIdentifier:@"resourceList" sender:self];
             
         }
             break;
