@@ -1,19 +1,18 @@
 //
-//  SDiscoveryViewController.m
+//  SResourceListViewController.m
 //  SmartITSM
 //
-//  Created by 朱国强 on 14-2-13.
+//  Created by 朱国强 on 14-3-25.
 //  Copyright (c) 2014年 Ambrose. All rights reserved.
 //
 
-#import "SDiscoveryViewController.h"
-#import "SDiscoveryDetailViewController.h"
+#import "SResourceListViewController.h"
 
-@interface SDiscoveryViewController ()
+@interface SResourceListViewController ()
 
 @end
 
-@implementation SDiscoveryViewController
+@implementation SResourceListViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -45,25 +44,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 2;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"DiscoveryCell";
+    static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    [cell.textLabel setText:[NSString stringWithFormat:@"发现%d",indexPath.row ]];
     
     return cell;
 }
@@ -107,7 +105,7 @@
 }
 */
 
-
+/*
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -115,24 +113,8 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
-    if ([segue.identifier isEqualToString:@"DiscoveryDetail"])
-    {
-        UITableViewCell *selectCell = (UITableViewCell *)sender;
-        
-        SDiscoveryDetailViewController *detailVC = (SDiscoveryDetailViewController *)[segue destinationViewController];
-        [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
-    }
-
 }
 
-- (IBAction)addDiscovery:(id)sender
-{
-    UIActionSheet *sheet  = [[UIActionSheet alloc]initWithTitle:Nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles:@"设备",@"性能", @"通讯录", nil];
-
-    [sheet showFromBarButtonItem:(UIBarButtonItem *)sender animated:YES];
-    
-}
-
+ */
 
 @end
