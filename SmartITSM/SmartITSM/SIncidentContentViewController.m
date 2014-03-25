@@ -9,6 +9,8 @@
 
 #import "SIncidentContentViewController.h"
 #import "SIncidentDao.h"
+#import "WEPopoverContentViewController.h"
+#import "UIBarButtonItem+WEPopover.h"
 //#import "SProcessLogViewController.h"
 
 
@@ -31,6 +33,7 @@
 @implementation SIncidentContentViewController
 
 @synthesize  incident;
+@synthesize popoverController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,8 +58,12 @@
 {
     [super viewDidLoad];
     
-    
     [self initData];
+    
+    popoverClass = [WEPopoverController class];
+    
+    currentPopoverCellIndex = -1;
+
     
 //    [[MastEngine sharedSingleton] addListener:@"requestIncidentDetail" listener:_listener];
 //    [[MastEngine sharedSingleton] addFailureListener:_failureListener];
@@ -71,25 +78,50 @@
         self._tableView.delegate = self;
         self._tableView.dataSource = self;
         [self._tableView setBackgroundColor:[UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0]];
-        
-//        UIButton *operationBtn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-//        [operationBtn setTitle:@"操作" forState:UIControlStateNormal];
-//        [operationBtn addTarget:self action:@selector(initData) forControlEvents:UIControlEventTouchUpInside];
-//        UIBarButtonItem *rightBtnItem=[[UIBarButtonItem alloc]initWithCustomView:operationBtn];
-//        self.navigationItem.rightBarButtonItem=rightBtnItem;
-        
-//        [self.view addSubview:self._tableView];
+        UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,81,30)];
+//        [rightButton setImage:[UIImage imageNamed:@"1StarSmall.png"]forState:UIControlStateNormal];
+        [rightButton setTitle:@"操作" forState:UIControlStateNormal];
+        [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        rightButton.titleLabel.font=[UIFont systemFontOfSize:14];
+        [rightButton addTarget:self action:@selector(operation:)forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+        self.navigationItem.rightBarButtonItem= rightItem;
     }
-    
-      //    [self refreshFrame];
-    
-//    HUD = [[MBProgressHUD alloc]initWithView:self.view];
-//    [self.view addSubview:HUD];
-//    HUD.mode = MBProgressHUDModeIndeterminate;
-//    HUD.labelText = @"加载中...";
-//    HUD.delegate = self;
-//    [HUD show:YES];
 }
+
+
+
+-(void)operation:(UIButton*)sender
+{
+    
+//    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+//                                  initWithTitle:@""
+//                                  delegate:self
+//                                  cancelButtonTitle:@"取消"
+//                                  destructiveButtonTitle:@"解决"
+//                                  otherButtonTitles:@"分派二线",@"退出",nil];
+//    actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+//    [actionSheet showInView:self.view];
+    
+    
+	if (!self.popoverController) {
+		
+		UIViewController *contentViewController = [[WEPopoverContentViewController alloc] initWithStyle:UITableViewStylePlain];
+		self.popoverController = [[popoverClass alloc] initWithContentViewController:contentViewController];
+		self.popoverController.delegate = self;
+		self.popoverController.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
+		
+		[self.popoverController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem
+									   permittedArrowDirections:(UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown)
+													   animated:YES];
+        
+	} else {
+		[self.popoverController dismissPopoverAnimated:YES];
+		self.popoverController = nil;
+	}
+
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -463,5 +495,21 @@
 //{
 //    [iConsole error:@"%@",failure.description ];
 //}
+
+
+#pragma mark -
+#pragma mark WEPopoverControllerDelegate implementation
+
+- (void)popoverControllerDidDismissPopover:(WEPopoverController *)thePopoverController {
+	//Safe to release the popover here
+	self.popoverController = nil;
+}
+
+- (BOOL)popoverControllerShouldDismissPopover:(WEPopoverController *)thePopoverController {
+	//The popover is automatically dismissed if you click outside it, unless you return NO here
+	return YES;
+}
+
+
 
 @end
