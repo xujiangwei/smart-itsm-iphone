@@ -7,7 +7,6 @@
 //
 
 #import "SOwnViewController.h"
-#import "SOwnDetailViewController.h"
 
 @interface SOwnViewController ()
 
@@ -137,12 +136,6 @@
     {
         
     }
-    else if ([segue.identifier isEqualToString:@"OwnDetail"])
-    {
-        UITableViewCell *selectCell = (UITableViewCell *)sender;
-        SOwnDetailViewController *detailVC = (SOwnDetailViewController *)[segue destinationViewController];
-        [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
-    }
     else if ([segue.identifier isEqualToString:@"IncidentList"])
     {
         UITableViewCell *selectCell = (UITableViewCell *)sender;
@@ -161,9 +154,7 @@
         [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
     }else if ([segue.identifier isEqualToString:@"InspectionList"])
     {
-        UITableViewCell *selectCell = (UITableViewCell *)sender;
-        SOwnDetailViewController *detailVC = (SOwnDetailViewController *)[segue destinationViewController];
-        [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
+     
     }
     else if ([segue.identifier isEqualToString:@"AlarmList"])
     {

@@ -16,7 +16,7 @@
 #pragma mark Initialization
 
 - (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+
     if ((self = [super initWithStyle:style])) {
         self.preferredContentSize = CGSizeMake(100, 3 * 44 - 1);
       }
@@ -28,41 +28,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self initData];
 
 	self.tableView.rowHeight = 44.0;
-	self.view.backgroundColor = [UIColor blackColor];
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	self.view.backgroundColor = [UIColor clearColor];
+    self.tableView.dataSource=self;
+    self.tableView.delegate=self;
 }
 
 #pragma mark -
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
     return 1;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 3;
+    return [self.operationArray count];
 }
 
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *CellIdentifier =[NSString stringWithFormat:@"OperationCell"];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...
-	cell.textLabel.text = [NSString stringWithFormat:@"操作 %d", [indexPath row]];
+	cell.textLabel.text = [self.operationArray objectAtIndex:indexPath.row];
 	cell.textLabel.textColor = [UIColor blackColor];
+    cell.textLabel.font=[UIFont systemFontOfSize:14];
     return cell;
 }
 
@@ -71,7 +72,25 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
+
+    NSInteger section=indexPath.section;
+    NSInteger row=indexPath.row;
+    
+    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
+    
+    if(section==0 && row==0){
+        [self performSegueWithIdentifier:@"IncidentList" sender:cell];
+    }else if(section==0 && row==1){
+        [self performSegueWithIdentifier:@"ProblemList" sender:cell];
+    }else if(section==0 && row==2){
+        [self performSegueWithIdentifier:@"ChangeList" sender:cell];
+    }else if(section==0 && row==3){
+        [self performSegueWithIdentifier:@"InspectionList" sender:cell];
+    }
+    else if(section==3 && row==0){
+        [self performSegueWithIdentifier:@"AlarmList" sender:cell];
+    }
+
 	
 }
 
@@ -87,11 +106,10 @@
 
 }
 
-
-- (void)dealloc {
-    [super dealloc];
+-(void)initData
+{
+    self.operationArray =[NSArray arrayWithObjects:@"解决",@"转派一线", @"退出" ,nil];
 }
-
 
 @end
 
