@@ -75,6 +75,7 @@
 		4439045A18E1787700E65AF4 /* TSMessage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4439045918E1787700E65AF4 /* TSMessage.bundle */; };
 		4439045C18E1793500E65AF4 /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 4439045B18E1793500E65AF4 /* TSMessagesDefaultDesign.json */; };
 		4485DC3018ACBA2500D17061 /* MastEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4485DC2F18ACBA2500D17061 /* MastEngine.m */; };
+		449D726318E27336009EC203 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 449D726218E27336009EC203 /* MBProgressHUD.m */; };
 		44B02BF118ADA5990001451F /* ActionListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BF018ADA5990001451F /* ActionListener.m */; };
 		44B02BF518ADA7DE0001451F /* StatusListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BF418ADA7DE0001451F /* StatusListener.m */; };
 		44B02BF818ADAA2D0001451F /* Failure.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BF718ADAA2D0001451F /* Failure.m */; };
@@ -234,6 +235,8 @@
 		4485DC2E18ACBA2500D17061 /* MastEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MastEngine.h; sourceTree = "<group>"; };
 		4485DC2F18ACBA2500D17061 /* MastEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MastEngine.m; sourceTree = "<group>"; };
 		4485DC5A18ACC81F00D17061 /* libnucleus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnucleus.a; path = "../nucleus/bin/Debug-iphonesimulator/libnucleus.a"; sourceTree = "<group>"; };
+		449D726118E27336009EC203 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		449D726218E27336009EC203 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		44B02BEF18ADA5990001451F /* ActionListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionListener.h; sourceTree = "<group>"; };
 		44B02BF018ADA5990001451F /* ActionListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionListener.m; sourceTree = "<group>"; };
 		44B02BF218ADA5E20001451F /* MastPrerequisites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MastPrerequisites.h; sourceTree = "<group>"; };
@@ -523,6 +526,7 @@
 		441E509B18DFFF93006831EA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				449D726018E272BC009EC203 /* MBProgressHUD */,
 				4439044C18E1772D00E65AF4 /* TSMessage */,
 				3776A37918E14A210075B57F /* Popover */,
 				441E509C18E00071006831EA /* Calendar */,
@@ -599,6 +603,15 @@
 				44B02BFD18ADAEB40001451F /* ListenerSet.m */,
 			);
 			name = Core;
+			sourceTree = "<group>";
+		};
+		449D726018E272BC009EC203 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				449D726118E27336009EC203 /* MBProgressHUD.h */,
+				449D726218E27336009EC203 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		4A085DEB18D81AEE0078CDF1 /* Signin */ = {
@@ -794,6 +807,7 @@
 				441E50B618E00FCF006831EA /* CalLogic.m in Sources */,
 				4A92F0F918AC972B00EB594B /* SToolViewController.m in Sources */,
 				44B1182C18DADF7B00539D0C /* STool.m in Sources */,
+				449D726318E27336009EC203 /* MBProgressHUD.m in Sources */,
 				44B02BF818ADAA2D0001451F /* Failure.m in Sources */,
 				4AB79DA918DEEC8200ECEC27 /* SAlarmContentViewController.m in Sources */,
 				370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */,
