@@ -10,6 +10,9 @@
 #import "ListenerSet.h"
 
 @interface MastEngine ()
+{
+    BOOL _started;
+}
 
 // 动作监听器，key: cellet identifier
 @property (strong, nonatomic) NSMutableDictionary *listeners;
@@ -37,6 +40,8 @@ static MastEngine *sharedInstance = nil;
 {
     if (self = [super init])
     {
+        _started = NO;
+
         self.listeners = [[NSMutableDictionary alloc] initWithCapacity:2];
         
         self.statusListeners = [[NSMutableDictionary alloc] initWithCapacity:2];
@@ -47,6 +52,11 @@ static MastEngine *sharedInstance = nil;
 
 - (BOOL)start:(Contacts *)contacts
 {
+    if (_started)
+    {
+        return YES;
+    }
+
     if ([[contacts getAddresses] count] == 0)
     {
         return NO;
@@ -69,14 +79,28 @@ static MastEngine *sharedInstance = nil;
         CCInetAddress *address = [[CCInetAddress alloc] initWithAddress:addr.host port:addr.port];
         [[CCTalkService sharedSingleton] call:addr.identifier hostAddress:address];
     }
+    
+    _started = YES;
 
     return YES;
 }
 
 - (void)stop
 {
+    if (!_started)
+    {
+        return;
+    }
+
+    _started = NO;
+
     [CCTalkService sharedSingleton].listener = nil;
     [[CCNucleus sharedSingleton] shutdown];
+}
+
+- (BOOL)hasStarted
+{
+    return _started;
 }
 
 #pragma mark - Listener methods

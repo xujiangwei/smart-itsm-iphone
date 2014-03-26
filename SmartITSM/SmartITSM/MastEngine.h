@@ -21,6 +21,10 @@
  */
 - (void)stop;
 
+/** 是否已启动。
+ */
+- (BOOL)hasStarted;
+
 
 /** 添加监听器
  */

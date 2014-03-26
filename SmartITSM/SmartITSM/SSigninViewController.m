@@ -9,10 +9,15 @@
 #import "SSigninViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CommonCrypto/CommonDigest.h>
+#import "TSMessage/TSMessage.h"
 #import "SSigninView.h"
 #import "SConfigServerView.h"
 #import "Reachability.h"
-#import "TSMessage/TSMessage.h"
+#import "MastEngine.h"
+#import "Contacts.h"
+
+
+#define kDemoCelletName @"SmartITOM"
 
 @interface SSigninViewController ()
 {
@@ -22,7 +27,7 @@
     NSString *_password;
     
     NSString *_address;
-    NSString *_port;
+    NSInteger _port;
 
     Reachability* _hostReach;
 }
@@ -58,10 +63,17 @@
 
     [self.signinView setAlpha:1.0f];
 
-    
-    [self checkNetwork:@"www.baidu.com"];
-
-	// Do any additional setup after loading the view.
+    // 加载本地数据
+    if (![self loadLocalData])
+    {
+        // 数据加载失败，提示配置
+        
+    }
+    else
+    {
+        // 加载成功，测试网络
+        [self checkNetwork];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -76,7 +88,7 @@
 
 #pragma mark - Check network
 
-- (void)checkNetwork:(NSString *)host
+- (void)checkNetwork
 {
     if (nil != _hostReach)
     {
@@ -87,7 +99,7 @@
     // 监测网络
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
 
-    _hostReach = [Reachability reachabilityWithHostName:host];
+    _hostReach = [Reachability reachabilityWithHostName:_address];
 
     [_hostReach startNotifier];
 }
@@ -100,8 +112,9 @@
 
     if (status == NotReachable)
     {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"网络未连接" delegate:nil cancelButtonTitle:@"是" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"网络未连接" delegate:nil cancelButtonTitle:@"我知道了" otherButtonTitles:nil, nil];
         [alert show];
+        return;
     }
     else if (status == ReachableViaWiFi)
     {
@@ -113,26 +126,14 @@
         [TSMessage showNotificationWithTitle:@"您当前已通过 WWAN 连接网络"
                                         type:TSMessageNotificationTypeMessage];
     }
+
+    
 }
-
-/*
-
-Contacts *contacts = [[Contacts alloc]init];
-[contacts addAddress:@"SmartITOM" host:@"192.168.0.109" port:7000];
-
-//启动引擎
-if (![[MastEngine sharedSingleton] start:contacts])
-{
-    NSLog(@"Failed start the host");
-}
- 
- 
- */
 
 #pragma mark - Action
 
 // 设置
-- (IBAction)settingBtnAction:(id)sender
+- (IBAction)btnConfigAction:(id)sender
 {
     [UIView animateWithDuration:0.3
                           delay:0
@@ -141,17 +142,12 @@ if (![[MastEngine sharedSingleton] start:contacts])
                          CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
                          rotationAndPerspectiveTransform.m34 = 1.0 / -600;
                          self.signinView.layer.transform = CATransform3DRotate(rotationAndPerspectiveTransform, -90.0f * M_PI / 180.0f, 0.0f, 1.0f, 0.0f);
-                         
                      } completion:^(BOOL finished) {
                          CATransform3D configseverViewTransform = CATransform3DIdentity;
                          configseverViewTransform.m34 = 1.0 / -600;
                          self.configServerView.layer.transform = CATransform3DRotate(configseverViewTransform, 90 * M_PI / 180.0f, 0.0f, 1.0f, 0.0f);
                          [self.signinView setAlpha:0.0f];
-//                         [self.signinView removeFromSuperview];
-                         
                          [self.configServerView setAlpha:1.0f];
-//                         [self.subView addSubview:self.configServerView];
-                         
                          [UIView animateWithDuration:0.3
                                                delay:0
                                              options:UIViewAnimationOptionCurveLinear
@@ -169,32 +165,20 @@ if (![[MastEngine sharedSingleton] start:contacts])
 }
 
 // 登录
-- (IBAction)signinBtnAction:(id)sender
+- (IBAction)btnSigninAction:(id)sender
 {
     // TODO
     [self didSignin];
 }
 
-- (void)didSignin
-{
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UITabBarController *tabbarViewController = [storyboard instantiateViewControllerWithIdentifier:@"tab"];
-//    
-//    [self presentViewController:tabbarViewController animated:YES completion:^{
-//        
-//    }];
-
-    [self performSegueWithIdentifier:@"Signin" sender:self];
-}
-
 // 测试
-- (IBAction)connectCheckBtnAction:(id)sender
+- (IBAction)btnCheckConfigAction:(id)sender
 {
     // TODO
 }
 
 // 确认
-- (IBAction)confirmBtnAction:(id)sender
+- (IBAction)btnConfirmAction:(id)sender
 {
     [UIView animateWithDuration:0.3
                           delay:0
@@ -209,11 +193,7 @@ if (![[MastEngine sharedSingleton] start:contacts])
                          configseverViewTransform.m34 = 1.0 / -600;
                          self.signinView.layer.transform = CATransform3DRotate(configseverViewTransform, 90 * M_PI / 180.0f, 0.0f, 1.0f, 0.0f);
                          [self.configServerView setAlpha:0.0f];
-//                         [self.configServerView removeFromSuperview];
                          [self.signinView setAlpha:1.0f];
-//                         [self.subView addSubview:self.signinView];
-                         
-                         
                          [UIView animateWithDuration:0.3
                                                delay:0
                                              options:UIViewAnimationOptionCurveLinear
@@ -252,11 +232,11 @@ if (![[MastEngine sharedSingleton] start:contacts])
     }
     else if (103 == textField.tag)
     {
-        _port = self.tfPort.text;
+        _port = [self.tfPort.text integerValue];
     }
 }
 
-#pragma  mark - Touch Method
+#pragma  mark - Touch Methods
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -277,6 +257,56 @@ if (![[MastEngine sharedSingleton] start:contacts])
             [self.tfPort resignFirstResponder];
         }
     }
+}
+
+#pragma mark - Private
+
+// 加载本地数据
+- (BOOL)loadLocalData
+{
+    // TODO 将数据库内数据读取到界面
+    _address = @"";
+    _port = 7000;
+
+    if (nil == _address || [_address length] == 0)
+    {
+        return FALSE;
+    }
+
+    self.tfAddress.text = _address;
+    self.tfPort.text = [NSString stringWithFormat:@"%d", _port];
+    return TRUE;
+}
+
+// 初始化网络引擎
+- (void)initEngine
+{
+    if ([[MastEngine sharedSingleton] hasStarted])
+    {
+        return;
+    }
+
+    // 服务器
+    Contacts *contacts = [[Contacts alloc] init];
+    [contacts addAddress:kDemoCelletName host:_address port:_port];
+
+    //启动引擎
+    if (![[MastEngine sharedSingleton] start:contacts])
+    {
+        NSLog(@"Failed start the host");
+    }
+}
+
+- (void)didSignin
+{
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UITabBarController *tabbarViewController = [storyboard instantiateViewControllerWithIdentifier:@"tab"];
+//
+//    [self presentViewController:tabbarViewController animated:YES completion:^{
+//
+//    }];
+    
+    [self performSegueWithIdentifier:@"Signin" sender:self];
 }
 
 #pragma mark - Encrypt MD5
