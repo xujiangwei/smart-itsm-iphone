@@ -31,11 +31,11 @@ static const CGFloat kMonthLabelHeight = 17.f;
         self.autoresizesSubviews = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         self.backgroundColor = RGBCOLOR(246, 246, 246);
-        
+
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, frame.size.width, kHeaderHeight)];
         [self addSubviewsToHeaderView:headerView];
         [self addSubview:headerView];
-        
+
         UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0.f, kHeaderHeight, frame.size.width, frame.size.height - kHeaderHeight)];
         contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         [self addSubviewsToContentView:contentView];
@@ -74,7 +74,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
     const CGFloat kChangeMonthButtonHeight = 30.0f;
     const CGFloat kMonthLabelWidth = 200.0f;
     const CGFloat kHeaderVerticalAdjust = 13.f;
-    
+
     // Create the previous month button on the left side of the view
     CGRect previousMonthButtonFrame = CGRectMake(self.left,
                                                  kHeaderVerticalAdjust,

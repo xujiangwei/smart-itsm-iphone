@@ -73,7 +73,7 @@ NSString *const CalDataSourceChangedNotification = @"CalDataSourceChangedNotific
     [(CalView *)self.view redrawEntireMonth];
 }
 
-- (id)initWithSelectionMode:(CalSelectionMode)selectionMode;
+- (id)initWithSelectionMode:(CalSelectionMode)selectionMode
 {
     if ((self = [super init]))
     {
@@ -81,17 +81,32 @@ NSString *const CalDataSourceChangedNotification = @"CalDataSourceChangedNotific
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(significantTimeChangeOccurred) name:UIApplicationSignificantTimeChangeNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:CalDataSourceChangedNotification object:nil];
         self.selectionMode = selectionMode;
+        
         if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         {
             self.edgesForExtendedLayout = UIRectEdgeNone;
         }
     }
+
     return self;
 }
 
-- (id)init
+- (id)initWithSelectionMode:(NSCoder *)aDecoder selectionMode:(CalSelectionMode)selectionMode;
 {
-    return [self initWithSelectionMode:CalSelectionModeSingle];
+    if ((self = [super initWithCoder:aDecoder]))
+    {
+        logic = [[CalLogic alloc] initForDate:[NSDate date]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(significantTimeChangeOccurred) name:UIApplicationSignificantTimeChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:CalDataSourceChangedNotification object:nil];
+        self.selectionMode = selectionMode;
+
+        if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
+        {
+            self.edgesForExtendedLayout = UIRectEdgeNone;
+        }
+    }
+
+    return self;
 }
 
 - (CalView*)calendarView { return (CalView*)self.view; }
@@ -191,9 +206,9 @@ NSString *const CalDataSourceChangedNotification = @"CalDataSourceChangedNotific
 {
     if ([[self calendarView] isSliding])
         return;
-    
+
     [logic moveToMonthForDate:date];
-    
+
 #if PROFILER
     uint64_t start, end;
     struct timespec tp;
@@ -216,12 +231,14 @@ NSString *const CalDataSourceChangedNotification = @"CalDataSourceChangedNotific
 
 - (void)loadView
 {
+    [super loadView];
+
     if (!self.title)
         self.title = @"Calendar";
-    CalView *kalView = [[CalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic];
-    kalView.gridView.selectionMode = self.selectionMode;
-    self.view = kalView;
-    tableView = kalView.tableView;
+    CalView *calView = [[CalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic];
+    calView.gridView.selectionMode = self.selectionMode;
+    self.view = calView;
+    tableView = calView.tableView;
     tableView.dataSource = dataSource;
     tableView.delegate = delegate;
     [self reloadData];
@@ -237,6 +254,12 @@ NSString *const CalDataSourceChangedNotification = @"CalDataSourceChangedNotific
 {
     [super viewWillAppear:animated];
     [tableView reloadData];
+
+    // FIXME edgesForExtendedLayout = UIRectEdgeNone; 导致上下黑条，通过取消透明解决
+    self.navigationController.navigationBar.translucent = NO;
+    self.tabBarController.tabBar.translucent = NO;
+
+    /** 以下代码设置默认样式不再使用
     if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)])
     {
         self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
@@ -247,7 +270,8 @@ NSString *const CalDataSourceChangedNotification = @"CalDataSourceChangedNotific
         self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     }
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : kLightGrayColor, NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue" size:20]};
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    */
+    // [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated

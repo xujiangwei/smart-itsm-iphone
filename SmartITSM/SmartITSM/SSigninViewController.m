@@ -72,7 +72,7 @@
                                                         message:@"您没有设置过服务器信息，\n请先设置服务器信息"
                                                        delegate:self
                                               cancelButtonTitle:@"我知道了"
-                                              otherButtonTitles:@"现在配置", nil];
+                                              otherButtonTitles:@"现在设置", nil];
         [alert show];
     }
     else
@@ -113,11 +113,16 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.configServerView.hidden = YES;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
-    self.configServerView.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning

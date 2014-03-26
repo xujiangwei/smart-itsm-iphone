@@ -22,7 +22,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithSelectionMode:CalSelectionModeSingle];
+    self = [super initWithSelectionMode:aDecoder selectionMode:CalSelectionModeSingle];
     if (self)
     {
     }

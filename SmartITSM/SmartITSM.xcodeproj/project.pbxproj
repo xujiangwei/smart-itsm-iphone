@@ -74,6 +74,7 @@
 		4439045818E1786C00E65AF4 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4439045418E1786C00E65AF4 /* TSMessageView.m */; };
 		4439045A18E1787700E65AF4 /* TSMessage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4439045918E1787700E65AF4 /* TSMessage.bundle */; };
 		4439045C18E1793500E65AF4 /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 4439045B18E1793500E65AF4 /* TSMessagesDefaultDesign.json */; };
+		4442D69018E2A60C00FEC872 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4442D69218E2A60C00FEC872 /* Localizable.strings */; };
 		4485DC3018ACBA2500D17061 /* MastEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4485DC2F18ACBA2500D17061 /* MastEngine.m */; };
 		449D726318E27336009EC203 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 449D726218E27336009EC203 /* MBProgressHUD.m */; };
 		44B02BF118ADA5990001451F /* ActionListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BF018ADA5990001451F /* ActionListener.m */; };
@@ -232,6 +233,8 @@
 		4439045418E1786C00E65AF4 /* TSMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSMessageView.m; path = TSMessage/TSMessageView.m; sourceTree = "<group>"; };
 		4439045918E1787700E65AF4 /* TSMessage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TSMessage.bundle; sourceTree = "<group>"; };
 		4439045B18E1793500E65AF4 /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesDefaultDesign.json; sourceTree = "<group>"; };
+		4442D69118E2A60C00FEC872 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4442D69318E2A66600FEC872 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4485DC2E18ACBA2500D17061 /* MastEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MastEngine.h; sourceTree = "<group>"; };
 		4485DC2F18ACBA2500D17061 /* MastEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MastEngine.m; sourceTree = "<group>"; };
 		4485DC5A18ACC81F00D17061 /* libnucleus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnucleus.a; path = "../nucleus/bin/Debug-iphonesimulator/libnucleus.a"; sourceTree = "<group>"; };
@@ -501,6 +504,7 @@
 				4417CF7A18AC74C700E6E09F /* InfoPlist.strings */,
 				4417CF7D18AC74C700E6E09F /* main.m */,
 				4417CF7F18AC74C700E6E09F /* SmartITSM-Prefix.pch */,
+				4442D69218E2A60C00FEC872 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -773,6 +777,7 @@
 				441E50BF18E01D62006831EA /* Calendar.bundle in Resources */,
 				4439045C18E1793500E65AF4 /* TSMessagesDefaultDesign.json in Resources */,
 				4417CF8A18AC74C700E6E09F /* Images.xcassets in Resources */,
+				4442D69018E2A60C00FEC872 /* Localizable.strings in Resources */,
 				4417CF7C18AC74C700E6E09F /* InfoPlist.strings in Resources */,
 				4439045A18E1787700E65AF4 /* TSMessage.bundle in Resources */,
 				37948F6A18DFE23B00A5BBDA /* SIncidentBaseInfoCell.xib in Resources */,
@@ -910,6 +915,15 @@
 				4417CF9A18AC74C700E6E09F /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4442D69218E2A60C00FEC872 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4442D69118E2A60C00FEC872 /* Base */,
+				4442D69318E2A66600FEC872 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
