@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CommonCrypto/CommonDigest.h>
 #import "TSMessage/TSMessage.h"
+#import "MBProgressHUD/MBProgressHUD.h"
 #import "SSigninView.h"
 #import "SConfigServerView.h"
 #import "Reachability.h"
@@ -22,10 +23,10 @@
 @interface SSigninViewController ()
 {
     BOOL _signed;
-    
+
     NSString *_user;
     NSString *_password;
-    
+
     NSString *_address;
     NSInteger _port;
 
@@ -61,24 +62,65 @@
 {
     [super viewDidLoad];
 
-    [self.signinView setAlpha:1.0f];
+    self.signinView.hidden = NO;
 
     // 加载本地数据
     if (![self loadLocalData])
     {
         // 数据加载失败，提示配置
-        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:@"您没有设置过服务器信息，\n请先设置服务器信息"
+                                                       delegate:self
+                                              cancelButtonTitle:@"我知道了"
+                                              otherButtonTitles:@"现在配置", nil];
+        [alert show];
     }
     else
     {
-        // 加载成功，测试网络
-        [self checkNetwork];
+        // 加载成功
+        // 隐藏登录信息界面
+        self.signinView.hidden = YES;
+
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"正在登录请稍后";
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+
+            // 初始化引擎
+            if ([self initEngine])
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hide:YES];
+
+                    // TODO 执行登录流程
+                    [self didSignin];
+                });
+            }
+            else
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [hud hide:YES];
+
+                    self.signinView.hidden = NO;
+
+                    [TSMessage showNotificationWithTitle:@"网络连接异常"
+                                                subtitle:@"请检查您的服务器信息并确认服务器是否已启动"
+                                                    type:TSMessageNotificationTypeError];
+                });
+            }
+        });
     }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
+    [self.signinView setAlpha:1.0f];
+    [self.configServerView setAlpha:1.0f];
+
+    self.configServerView.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,7 +141,7 @@
     // 监测网络
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
 
-    _hostReach = [Reachability reachabilityWithHostName:_address];
+    _hostReach = [Reachability reachabilityWithHostName:@"www.baidu.com"];
 
     [_hostReach startNotifier];
 }
@@ -126,8 +168,6 @@
         [TSMessage showNotificationWithTitle:@"您当前已通过 WWAN 连接网络"
                                         type:TSMessageNotificationTypeMessage];
     }
-
-    
 }
 
 #pragma mark - Action
@@ -146,8 +186,8 @@
                          CATransform3D configseverViewTransform = CATransform3DIdentity;
                          configseverViewTransform.m34 = 1.0 / -600;
                          self.configServerView.layer.transform = CATransform3DRotate(configseverViewTransform, 90 * M_PI / 180.0f, 0.0f, 1.0f, 0.0f);
-                         [self.signinView setAlpha:0.0f];
-                         [self.configServerView setAlpha:1.0f];
+                         [self.signinView setHidden:YES];
+                         [self.configServerView setHidden:NO];
                          [UIView animateWithDuration:0.3
                                                delay:0
                                              options:UIViewAnimationOptionCurveLinear
@@ -192,8 +232,8 @@
                          CATransform3D configseverViewTransform = CATransform3DIdentity;
                          configseverViewTransform.m34 = 1.0 / -600;
                          self.signinView.layer.transform = CATransform3DRotate(configseverViewTransform, 90 * M_PI / 180.0f, 0.0f, 1.0f, 0.0f);
-                         [self.configServerView setAlpha:0.0f];
-                         [self.signinView setAlpha:1.0f];
+                         [self.configServerView setHidden:YES];
+                         [self.signinView setHidden:NO];
                          [UIView animateWithDuration:0.3
                                                delay:0
                                              options:UIViewAnimationOptionCurveLinear
@@ -236,7 +276,17 @@
     }
 }
 
-#pragma  mark - Touch Methods
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (1 == buttonIndex)
+    {
+        [self btnConfigAction:nil];
+    }
+}
+
+#pragma mark - Touch Methods
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -265,7 +315,7 @@
 - (BOOL)loadLocalData
 {
     // TODO 将数据库内数据读取到界面
-    _address = @"";
+    _address = @"192.168.2.3";
     _port = 7000;
 
     if (nil == _address || [_address length] == 0)
@@ -279,11 +329,11 @@
 }
 
 // 初始化网络引擎
-- (void)initEngine
+- (BOOL)initEngine
 {
     if ([[MastEngine sharedSingleton] hasStarted])
     {
-        return;
+        return TRUE;
     }
 
     // 服务器
@@ -293,8 +343,10 @@
     //启动引擎
     if (![[MastEngine sharedSingleton] start:contacts])
     {
-        NSLog(@"Failed start the host");
+        return FALSE;
     }
+    
+    return TRUE;
 }
 
 - (void)didSignin

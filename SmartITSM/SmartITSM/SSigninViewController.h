@@ -12,7 +12,7 @@
 
 @class SConfigServerView;
 
-@interface SSigninViewController : UIViewController <UITextFieldDelegate>
+@interface SSigninViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *subView;
 
