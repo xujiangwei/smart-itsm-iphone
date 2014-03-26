@@ -1,0 +1,7 @@
+/* 
+  Localizable.strings
+  SmartITSM
+*/
+
+"CalendarTitle"     = "yyyy-MM";
+"Today"             = "Today";

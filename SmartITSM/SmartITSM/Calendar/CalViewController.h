@@ -38,7 +38,10 @@
 @property (nonatomic, strong) NSDate *maxAVailableDate;
 
 - (id)initWithSelectionMode:(CalSelectionMode)selectionMode;
+- (id)initWithSelectionMode:(NSCoder *)aDecoder selectionMode:(CalSelectionMode)selectionMode;
+
 - (void)reloadData;                                 // If you change the CalDataSource after the CalViewController has already been displayed to the user, you must call this method in order for the view to reflect the new data.
+
 - (void)showAndSelectDate:(NSDate *)date;           // Updates the state of the calendar to display the specified date's month and selects the tile for that date.
 
 @end
