@@ -7,14 +7,10 @@
 //
 
 
-#import "SIncidentContentViewController.h"
+#import "SIncidentBaseViewController.h"
 #import "SIncidentDao.h"
-#import "SIncidentOperationPopoverController.h"
-#import "UIBarButtonItem+WEPopover.h"
-//#import "SProcessLogViewController.h"
 
-
-@interface SIncidentContentViewController ()
+@interface SIncidentBaseViewController ()
 
 {
     NSArray  *fieldSetArray;
@@ -30,10 +26,9 @@
 }
 @end
 
-@implementation SIncidentContentViewController
+@implementation SIncidentBaseViewController
 
 @synthesize  incident;
-@synthesize popoverController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -60,11 +55,7 @@
     
     [self initData];
     
-    popoverClass = [WEPopoverController class];
-    
-    currentPopoverCellIndex = -1;
 
-    
 //    [[MastEngine sharedSingleton] addListener:@"requestIncidentDetail" listener:_listener];
 //    [[MastEngine sharedSingleton] addFailureListener:_failureListener];
    
@@ -78,49 +69,11 @@
         self._tableView.delegate = self;
         self._tableView.dataSource = self;
         [self._tableView setBackgroundColor:[UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0]];
-        UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,81,30)];
-//        [rightButton setImage:[UIImage imageNamed:@"1StarSmall.png"]forState:UIControlStateNormal];
-        [rightButton setTitle:@"操作" forState:UIControlStateNormal];
-        [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        rightButton.titleLabel.font=[UIFont systemFontOfSize:14];
-        [rightButton addTarget:self action:@selector(operation:)forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
-        self.navigationItem.rightBarButtonItem= rightItem;
     }
 }
 
 
 
--(void)operation:(UIButton*)sender
-{
-    
-//    UIActionSheet *actionSheet = [[UIActionSheet alloc]
-//                                  initWithTitle:@""
-//                                  delegate:self
-//                                  cancelButtonTitle:@"取消"
-//                                  destructiveButtonTitle:@"解决"
-//                                  otherButtonTitles:@"分派二线",@"退出",nil];
-//    actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-//    [actionSheet showInView:self.view];
-    
-    
-	if (!self.popoverController) {
-		
-		UIViewController *contentViewController = [[SIncidentOperationPopoverController alloc] initWithStyle:UITableViewStylePlain];
-		self.popoverController = [[popoverClass alloc] initWithContentViewController:contentViewController];
-		self.popoverController.delegate = self;
-		self.popoverController.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
-		
-		[self.popoverController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem
-									   permittedArrowDirections:(UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown)
-													   animated:YES];
-        
-	} else {
-		[self.popoverController dismissPopoverAnimated:YES];
-		self.popoverController = nil;
-	}
-
-}
 
 
 - (void)didReceiveMemoryWarning
@@ -227,26 +180,27 @@
         [switchview setOn:NO];
         cell.accessoryView = switchview;
     }else if([attribute isEqualToString:@"cis"]){
-        cell.textLabel.text=@"关联配置项";
+        cell.textLabel.text=@"影响配置项";
         if([incident.ciSet count]>0){
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         [cell.detailTextLabel setText:[NSString stringWithFormat:@"%d项",[incident.ciSet count]]];
-    }else if([attribute isEqualToString:@"tickets"]){
-        cell.textLabel.text=@"关联工单";
-        if([incident.assocatesBpSet count]>0){
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
-        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%d项",[incident.assocatesBpSet count]]];
-    }else if([attribute isEqualToString:@"attachments"]){
-        cell.textLabel.text=@"附件";
-    }else if([attribute isEqualToString:@"logs"]){
-        cell.textLabel.text=@"处理日志";
-        if([incident.logSet count]>0){
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
-        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%d项",[incident.logSet count]]];
     }
+//    else if([attribute isEqualToString:@"tickets"]){
+//        cell.textLabel.text=@"关联工单";
+//        if([incident.assocatesBpSet count]>0){
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        }
+//        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%d项",[incident.assocatesBpSet count]]];
+//    }else if([attribute isEqualToString:@"attachments"]){
+//        cell.textLabel.text=@"附件";
+//    }else if([attribute isEqualToString:@"logs"]){
+//        cell.textLabel.text=@"处理日志";
+//        if([incident.logSet count]>0){
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        }
+//        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%d项",[incident.logSet count]]];
+//    }
     
     return cell;
 }
@@ -254,7 +208,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 22;
+    return 30;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -268,17 +222,17 @@
 {
 //    Theme *theme = [ThemeManager sharedSingleton].theme;
     UILabel *label=[[UILabel alloc] init];
-    label.frame=CGRectMake(10, 0, 300, 22);
+    label.frame=CGRectMake(10, 0, 300, 30);
     label.backgroundColor=[UIColor clearColor];
     [label setTextColor:[UIColor colorWithRed:48.0/255.0 green:128.0/255.0 blue:192.0/255.0 alpha:1.0]];
     label.font=[UIFont systemFontOfSize:16];
-    if(section==3||section==4||section==5 ||section==6 ){
+    if(section==3 ){
         label.text=nil;
         
     }else{
         label.text=[fieldSetArray objectAtIndex:section];
     }
-    UIView *sectionView=[[UIView alloc] initWithFrame:CGRectMake(10, 0, tableView.bounds.size.width, 22)];
+    UIView *sectionView=[[UIView alloc] initWithFrame:CGRectMake(10, 0, tableView.bounds.size.width, 30)];
     
     [sectionView addSubview:label];
     return sectionView;
@@ -365,22 +319,22 @@
 
 -(void)initData
 {
-    fieldSetArray =[NSArray arrayWithObjects:@"基本信息",@"事故来源",@"优先级",@"配置项信息",@"关联工单",@"附件",@"日志", nil];
+    fieldSetArray =[NSArray arrayWithObjects:@"基本信息",@"来源",@"优先级",@"影响配置项", nil];
     NSArray  *basicInfo=[[NSArray alloc]initWithObjects:@"code",@"state",@"summary",@"description",@"creator",@"contact",@"category",@"occurTime", nil];
     NSArray  *source   =[[NSArray alloc] initWithObjects:@"applicant",@"reportWays",@"influencer", nil];
     NSArray  *priority =[[NSArray alloc] initWithObjects:@"impact",@"urgent",@"propoity", @"isMajor",nil];
     NSArray  *cis  =[[NSArray alloc] initWithObjects:@"cis",nil];
-    NSArray  *relatedTickets  =[[NSArray alloc] initWithObjects:@"tickets",nil];
-    NSArray  *attachments  =[[NSArray alloc] initWithObjects:@"attachments",nil];
-    NSArray  *logs  =[[NSArray alloc] initWithObjects:@"logs",nil];
+//    NSArray  *relatedTickets  =[[NSArray alloc] initWithObjects:@"tickets",nil];
+//    NSArray  *attachments  =[[NSArray alloc] initWithObjects:@"attachments",nil];
+//    NSArray  *logs  =[[NSArray alloc] initWithObjects:@"logs",nil];
     
     attributeDic=[[NSMutableDictionary alloc] initWithObjectsAndKeys:basicInfo,[fieldSetArray objectAtIndex:0],
                   source   ,[fieldSetArray objectAtIndex:1],
                   priority ,[fieldSetArray objectAtIndex:2],
                   cis    ,[fieldSetArray objectAtIndex:3],
-                  relatedTickets ,[fieldSetArray objectAtIndex:4],
-                  attachments,[fieldSetArray objectAtIndex:5],
-                  logs ,[fieldSetArray objectAtIndex:6],
+//                  relatedTickets ,[fieldSetArray objectAtIndex:4],
+//                  attachments,[fieldSetArray objectAtIndex:5],
+//                  logs ,[fieldSetArray objectAtIndex:6],
                   Nil];
 }
 
@@ -497,18 +451,6 @@
 //}
 
 
-#pragma mark -
-#pragma mark WEPopoverControllerDelegate implementation
-
-- (void)popoverControllerDidDismissPopover:(WEPopoverController *)thePopoverController {
-	//Safe to release the popover here
-	self.popoverController = nil;
-}
-
-- (BOOL)popoverControllerShouldDismissPopover:(WEPopoverController *)thePopoverController {
-	//The popover is automatically dismissed if you click outside it, unless you return NO here
-	return YES;
-}
 
 
 

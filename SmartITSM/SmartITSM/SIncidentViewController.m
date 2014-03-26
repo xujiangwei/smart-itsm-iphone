@@ -8,7 +8,6 @@
 
 #import "SIncidentViewController.h"
 #import "SIncidentDao.h"
-#import "SIncidentContentViewController.h"
 #import "SIncidentBaseInfoCell.h"
 
 #define kCellHeight 60
@@ -17,7 +16,7 @@
 {
 //    MBProgressHUD *HUD;
     NSIndexPath  *currentIndexPath;
-    SIncidentContentViewController *incidentContentVC;
+    SIncidentContentTabBarController *incidentContentVC;
 }
 
 @end
@@ -125,7 +124,7 @@
     if ([segue.identifier isEqualToString:@"IncidentDetail"])
     {
         SIncidentBaseInfoCell *selectCell = (SIncidentBaseInfoCell *)sender;
-       SIncidentContentViewController *contentVC = (SIncidentContentViewController *)[segue destinationViewController];
+       SIncidentContentTabBarController *contentVC = (SIncidentContentTabBarController *)[segue destinationViewController];
         [contentVC setTitle:[NSString stringWithFormat:@"%@",selectCell.codeLabel.text]];
     }
     

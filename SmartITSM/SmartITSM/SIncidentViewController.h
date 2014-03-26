@@ -11,7 +11,7 @@
 #import "SIncident.h"
 //#import "SIncidentListener.h"
 //#import "MBProgressHUD.h"
-#import "SIncidentContentViewController.h"
+#import "SIncidentContentTabBarController.h"
 
 @protocol SIncidentListDelegate <NSObject>
 
