@@ -34,12 +34,14 @@
 		37948F6518DFDDE900A5BBDA /* SDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F6418DFDDE900A5BBDA /* SDatabase.m */; };
 		37948F6918DFE23B00A5BBDA /* SIncidentBaseInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F6718DFE23B00A5BBDA /* SIncidentBaseInfoCell.m */; };
 		37948F6A18DFE23B00A5BBDA /* SIncidentBaseInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37948F6818DFE23B00A5BBDA /* SIncidentBaseInfoCell.xib */; };
-		37948F6D18DFE49800A5BBDA /* SIncidentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F6C18DFE49800A5BBDA /* SIncidentListView.m */; };
 		37948F7118DFFAC100A5BBDA /* SmartITSM.db in Resources */ = {isa = PBXBuildFile; fileRef = 37948F7018DFFAC100A5BBDA /* SmartITSM.db */; };
 		37E289A818E27712004E8A4A /* SProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E289A718E27712004E8A4A /* SProcessViewController.m */; };
 		37E289AB18E27728004E8A4A /* SLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E289AA18E27728004E8A4A /* SLogViewController.m */; };
 		37E289AE18E27754004E8A4A /* SAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E289AD18E27754004E8A4A /* SAttachmentViewController.m */; };
 		37E289B418E27A54004E8A4A /* SIncidentContentTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E289B318E27A54004E8A4A /* SIncidentContentTabBarController.m */; };
+		37E289B718E29CBB004E8A4A /* SProcessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E289B618E29CBB004E8A4A /* SProcessCell.m */; };
+		37E289B918E29D2E004E8A4A /* SProcessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37E289B818E29D2E004E8A4A /* SProcessCell.xib */; };
+		37E289BD18E2D653004E8A4A /* PlanLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E289BC18E2D653004E8A4A /* PlanLine.m */; };
 		37FA4C9818DBE153004AB106 /* SProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA4C9718DBE153004AB106 /* SProblemViewController.m */; };
 		37FA4C9B18DBE16F004AB106 /* SChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA4C9A18DBE16F004AB106 /* SChangeViewController.m */; };
 		37FA4C9E18DBE196004AB106 /* SIncidentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA4C9D18DBE196004AB106 /* SIncidentViewController.m */; };
@@ -163,8 +165,6 @@
 		37948F6618DFE23B00A5BBDA /* SIncidentBaseInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentBaseInfoCell.h; sourceTree = "<group>"; };
 		37948F6718DFE23B00A5BBDA /* SIncidentBaseInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentBaseInfoCell.m; sourceTree = "<group>"; };
 		37948F6818DFE23B00A5BBDA /* SIncidentBaseInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SIncidentBaseInfoCell.xib; sourceTree = "<group>"; };
-		37948F6B18DFE49800A5BBDA /* SIncidentListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentListView.h; sourceTree = "<group>"; };
-		37948F6C18DFE49800A5BBDA /* SIncidentListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentListView.m; sourceTree = "<group>"; };
 		37948F7018DFFAC100A5BBDA /* SmartITSM.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartITSM.db; sourceTree = "<group>"; };
 		37E289A618E27712004E8A4A /* SProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProcessViewController.h; sourceTree = "<group>"; };
 		37E289A718E27712004E8A4A /* SProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProcessViewController.m; sourceTree = "<group>"; };
@@ -174,6 +174,11 @@
 		37E289AD18E27754004E8A4A /* SAttachmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAttachmentViewController.m; sourceTree = "<group>"; };
 		37E289B218E27A54004E8A4A /* SIncidentContentTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentContentTabBarController.h; sourceTree = "<group>"; };
 		37E289B318E27A54004E8A4A /* SIncidentContentTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentContentTabBarController.m; sourceTree = "<group>"; };
+		37E289B518E29CBB004E8A4A /* SProcessCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProcessCell.h; sourceTree = "<group>"; };
+		37E289B618E29CBB004E8A4A /* SProcessCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProcessCell.m; sourceTree = "<group>"; };
+		37E289B818E29D2E004E8A4A /* SProcessCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SProcessCell.xib; sourceTree = "<group>"; };
+		37E289BB18E2D653004E8A4A /* PlanLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanLine.h; sourceTree = "<group>"; };
+		37E289BC18E2D653004E8A4A /* PlanLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanLine.m; sourceTree = "<group>"; };
 		37FA4C9618DBE153004AB106 /* SProblemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProblemViewController.h; sourceTree = "<group>"; };
 		37FA4C9718DBE153004AB106 /* SProblemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProblemViewController.m; sourceTree = "<group>"; };
 		37FA4C9918DBE16F004AB106 /* SChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SChangeViewController.h; sourceTree = "<group>"; };
@@ -387,11 +392,18 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		37E289BA18E2D5D1004E8A4A /* TimeLine */ = {
+			isa = PBXGroup;
+			children = (
+				37E289BB18E2D653004E8A4A /* PlanLine.h */,
+				37E289BC18E2D653004E8A4A /* PlanLine.m */,
+			);
+			name = TimeLine;
+			sourceTree = "<group>";
+		};
 		37FA4C8F18DBDF0F004AB106 /* Incident */ = {
 			isa = PBXGroup;
 			children = (
-				37948F6B18DFE49800A5BBDA /* SIncidentListView.h */,
-				37948F6C18DFE49800A5BBDA /* SIncidentListView.m */,
 				37948F6618DFE23B00A5BBDA /* SIncidentBaseInfoCell.h */,
 				37948F6718DFE23B00A5BBDA /* SIncidentBaseInfoCell.m */,
 				37948F6818DFE23B00A5BBDA /* SIncidentBaseInfoCell.xib */,
@@ -526,6 +538,7 @@
 		441E509B18DFFF93006831EA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				37E289BA18E2D5D1004E8A4A /* TimeLine */,
 				449D726018E272BC009EC203 /* MBProgressHUD */,
 				4439044C18E1772D00E65AF4 /* TSMessage */,
 				3776A37918E14A210075B57F /* Popover */,
@@ -640,6 +653,9 @@
 				4A92F0F218AC958F00EB594B /* SOwnViewController.m */,
 				37E289A618E27712004E8A4A /* SProcessViewController.h */,
 				37E289A718E27712004E8A4A /* SProcessViewController.m */,
+				37E289B518E29CBB004E8A4A /* SProcessCell.h */,
+				37E289B618E29CBB004E8A4A /* SProcessCell.m */,
+				37E289B818E29D2E004E8A4A /* SProcessCell.xib */,
 				37E289A918E27728004E8A4A /* SLogViewController.h */,
 				37E289AA18E27728004E8A4A /* SLogViewController.m */,
 				37E289AC18E27754004E8A4A /* SAttachmentViewController.h */,
@@ -777,6 +793,7 @@
 				4439045A18E1787700E65AF4 /* TSMessage.bundle in Resources */,
 				37948F6A18DFE23B00A5BBDA /* SIncidentBaseInfoCell.xib in Resources */,
 				4417CF8518AC74C700E6E09F /* Main.storyboard in Resources */,
+				37E289B918E29D2E004E8A4A /* SProcessCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,7 +818,6 @@
 				441E50B518E00FCF006831EA /* CalGridView.m in Sources */,
 				370B677818DC35660071CDE4 /* SInspectionContentViewController.m in Sources */,
 				3776A38618E14A210075B57F /* WETouchableView.m in Sources */,
-				37948F6D18DFE49800A5BBDA /* SIncidentListView.m in Sources */,
 				441E50B818E00FCF006831EA /* CalTileView.m in Sources */,
 				4439045518E1786C00E65AF4 /* HexColor.m in Sources */,
 				441E50B618E00FCF006831EA /* CalLogic.m in Sources */,
@@ -836,6 +852,7 @@
 				370B677E18DC364E0071CDE4 /* SIncidentBaseViewController.m in Sources */,
 				37948F5E18DFDDDB00A5BBDA /* FMDatabase.m in Sources */,
 				37948F6018DFDDDB00A5BBDA /* FMDatabasePool.m in Sources */,
+				37E289B718E29CBB004E8A4A /* SProcessCell.m in Sources */,
 				441E50B418E00FCF006831EA /* CalDataSource.m in Sources */,
 				4A92F10518AC9CF400EB594B /* SToolDetailViewController.m in Sources */,
 				441E50BD18E00FCF006831EA /* UIViewAdditions.m in Sources */,
@@ -843,6 +860,7 @@
 				37E289AE18E27754004E8A4A /* SAttachmentViewController.m in Sources */,
 				4A085DEE18D81B1B0078CDF1 /* SSigninViewController.m in Sources */,
 				37FA4C9E18DBE196004AB106 /* SIncidentViewController.m in Sources */,
+				37E289BD18E2D653004E8A4A /* PlanLine.m in Sources */,
 				37948F6218DFDDDB00A5BBDA /* FMResultSet.m in Sources */,
 				4439045618E1786C00E65AF4 /* TSBlurView.m in Sources */,
 				3776A38518E14A210075B57F /* WEPopoverController.m in Sources */,
