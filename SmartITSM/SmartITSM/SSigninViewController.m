@@ -117,9 +117,6 @@
 {
     [super viewDidAppear:animated];
 
-    [self.signinView setAlpha:1.0f];
-    [self.configServerView setAlpha:1.0f];
-
     self.configServerView.hidden = YES;
 }
 
