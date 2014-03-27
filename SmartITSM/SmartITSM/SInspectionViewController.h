@@ -4,7 +4,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Calendar/Cal.h"
+#import "ThirdParty/Calendar/Cal.h"
 
 @interface SInspectionViewController : CalViewController
 

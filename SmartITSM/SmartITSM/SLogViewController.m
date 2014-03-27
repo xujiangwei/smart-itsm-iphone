@@ -9,9 +9,6 @@
 #import "SLogViewController.h"
 #import "PlanLine.h"
 #import <QuartzCore/QuartzCore.h>
-//#import "kkViewController.h"
-
-
 
 @interface SLogViewController ()
 
@@ -38,7 +35,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
         self.title = @"历史日志";
         
         
@@ -49,17 +46,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController setToolbarHidden:NO];
+    //    [self.navigationController setToolbarHidden:NO];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     self.navigationController.toolbar.tintColor = [UIColor blackColor];
     
     tag = 0;
     
-    NSArray *array4 = [NSArray arrayWithObjects:@"3.26",@"3.24",@"3.21",@"3.14",@"3.10",@"3.9",@"3.8",@"3.7",@"3.6",@"2.26",@"2.19",@"2.14", nil];
+    NSArray *timeArray = [NSArray arrayWithObjects:@"3.26",@"3.24",@"3.21",@"3.14",@"3.10",@"3.9",@"3.8",@"3.7",@"3.6",@"2.26",@"2.19",@"2.14", nil];
     
-    arrayMonths = [array4 copy];
     
-    int number = [arrayMonths count];
+    int number = [timeArray count];
     
     [self makeScrollView:number];
     

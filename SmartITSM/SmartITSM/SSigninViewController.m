@@ -9,8 +9,8 @@
 #import "SSigninViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CommonCrypto/CommonDigest.h>
-#import "TSMessage/TSMessage.h"
-#import "MBProgressHUD/MBProgressHUD.h"
+#import "TSMessage.h"
+#import "MBProgressHUD.h"
 #import "SSigninView.h"
 #import "SConfigServerView.h"
 #import "Reachability.h"
