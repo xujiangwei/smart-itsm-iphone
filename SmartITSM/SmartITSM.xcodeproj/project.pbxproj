@@ -124,6 +124,9 @@
 		4417CF9D18AC74C700E6E09F /* SmartITSMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4417CF9C18AC74C700E6E09F /* SmartITSMTests.m */; };
 		4442D69018E2A60C00FEC872 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4442D69218E2A60C00FEC872 /* Localizable.strings */; };
 		4485DC3018ACBA2500D17061 /* MastEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4485DC2F18ACBA2500D17061 /* MastEngine.m */; };
+		44959EDE18E3ECC7009F8E35 /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44959ED918E3ECC7009F8E35 /* JBBarChartView.m */; };
+		44959EDF18E3ECC7009F8E35 /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44959EDB18E3ECC7009F8E35 /* JBChartView.m */; };
+		44959EE018E3ECC7009F8E35 /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44959EDD18E3ECC7009F8E35 /* JBLineChartView.m */; };
 		44B02BF118ADA5990001451F /* ActionListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BF018ADA5990001451F /* ActionListener.m */; };
 		44B02BF518ADA7DE0001451F /* StatusListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BF418ADA7DE0001451F /* StatusListener.m */; };
 		44B02BF818ADAA2D0001451F /* Failure.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BF718ADAA2D0001451F /* Failure.m */; };
@@ -382,6 +385,12 @@
 		4485DC2E18ACBA2500D17061 /* MastEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MastEngine.h; sourceTree = "<group>"; };
 		4485DC2F18ACBA2500D17061 /* MastEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MastEngine.m; sourceTree = "<group>"; };
 		4485DC5A18ACC81F00D17061 /* libnucleus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnucleus.a; path = "../nucleus/bin/Debug-iphonesimulator/libnucleus.a"; sourceTree = "<group>"; };
+		44959ED818E3ECC7009F8E35 /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBBarChartView.h; path = JBChartView/JBBarChartView.h; sourceTree = "<group>"; };
+		44959ED918E3ECC7009F8E35 /* JBBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBBarChartView.m; path = JBChartView/JBBarChartView.m; sourceTree = "<group>"; };
+		44959EDA18E3ECC7009F8E35 /* JBChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBChartView.h; path = JBChartView/JBChartView.h; sourceTree = "<group>"; };
+		44959EDB18E3ECC7009F8E35 /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBChartView.m; path = JBChartView/JBChartView.m; sourceTree = "<group>"; };
+		44959EDC18E3ECC7009F8E35 /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBLineChartView.h; path = JBChartView/JBLineChartView.h; sourceTree = "<group>"; };
+		44959EDD18E3ECC7009F8E35 /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBLineChartView.m; path = JBChartView/JBLineChartView.m; sourceTree = "<group>"; };
 		44B02BEF18ADA5990001451F /* ActionListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionListener.h; sourceTree = "<group>"; };
 		44B02BF018ADA5990001451F /* ActionListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionListener.m; sourceTree = "<group>"; };
 		44B02BF218ADA5E20001451F /* MastPrerequisites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MastPrerequisites.h; sourceTree = "<group>"; };
@@ -603,10 +612,11 @@
 		3793578918E3C4F20062265C /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				3777A09A18E3CCF000398191 /* RETableViewManager */,
 				3793578A18E3C4F20062265C /* Calendar */,
 				379357A218E3C4F20062265C /* DataBase */,
+				44959ED718E3ECA3009F8E35 /* JBChartView */,
 				379357B018E3C4F20062265C /* MBProgressHUD */,
+				3777A09A18E3CCF000398191 /* RETableViewManager */,
 				379357B318E3C4F20062265C /* Popover */,
 				379357BD18E3C4F20062265C /* TimeLine */,
 				379357C018E3C4F20062265C /* TSMessage */,
@@ -908,6 +918,19 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
+		44959ED718E3ECA3009F8E35 /* JBChartView */ = {
+			isa = PBXGroup;
+			children = (
+				44959ED818E3ECC7009F8E35 /* JBBarChartView.h */,
+				44959ED918E3ECC7009F8E35 /* JBBarChartView.m */,
+				44959EDA18E3ECC7009F8E35 /* JBChartView.h */,
+				44959EDB18E3ECC7009F8E35 /* JBChartView.m */,
+				44959EDC18E3ECC7009F8E35 /* JBLineChartView.h */,
+				44959EDD18E3ECC7009F8E35 /* JBLineChartView.m */,
+			);
+			name = JBChartView;
+			sourceTree = "<group>";
+		};
 		4A085DEB18D81AEE0078CDF1 /* Signin */ = {
 			isa = PBXGroup;
 			children = (
@@ -1161,7 +1184,9 @@
 				3777A12418E3D8CD00398191 /* REValidator.m in Sources */,
 				379357D118E3C4F20062265C /* NSDateAdditions.m in Sources */,
 				3777A10018E3CCF000398191 /* REPlaceholderTextView.m in Sources */,
+				44959EDF18E3ECC7009F8E35 /* JBChartView.m in Sources */,
 				4A92F11118ACAEBE00EB594B /* RootViewController.m in Sources */,
+				44959EDE18E3ECC7009F8E35 /* JBBarChartView.m in Sources */,
 				379357D818E3C4F20062265C /* SDatabase.m in Sources */,
 				3777A0E918E3CCF000398191 /* RETableViewInlinePickerCell.m in Sources */,
 				3777A10618E3CCF000398191 /* RETableViewOptionsController.m in Sources */,
@@ -1177,6 +1202,7 @@
 				37948F4D18DFD5CA00A5BBDA /* SProblemDao.m in Sources */,
 				379357CF18E3C4F20062265C /* CalViewController.m in Sources */,
 				379357DA18E3C4F20062265C /* UIBarButtonItem+WEPopover.m in Sources */,
+				44959EE018E3ECC7009F8E35 /* JBLineChartView.m in Sources */,
 				3777A0F518E3CCF000398191 /* REInlinePickerItem.m in Sources */,
 				3777A12618E3D8CD00398191 /* RELengthValidator.m in Sources */,
 				37FA4C9B18DBE16F004AB106 /* SChangeViewController.m in Sources */,
