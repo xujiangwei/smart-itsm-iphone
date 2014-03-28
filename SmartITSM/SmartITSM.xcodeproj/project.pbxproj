@@ -50,7 +50,6 @@
 		3777A10518E3CCF000398191 /* RETableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A0DF18E3CCF000398191 /* RETableViewManager.m */; };
 		3777A10618E3CCF000398191 /* RETableViewOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A0E118E3CCF000398191 /* RETableViewOptionsController.m */; };
 		3777A10718E3CCF000398191 /* RETableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A0E318E3CCF000398191 /* RETableViewSection.m */; };
-		3777A10A18E3CF0600398191 /* SIncidentProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A10918E3CF0600398191 /* SIncidentProcessViewController.m */; };
 		3777A11018E3D8C200398191 /* NSString+RENumberFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A10D18E3D8C200398191 /* NSString+RENumberFormat.m */; };
 		3777A11118E3D8C200398191 /* REFormattedNumberField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A10F18E3D8C200398191 /* REFormattedNumberField.m */; };
 		3777A12218E3D8CD00398191 /* NSError+REValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A11418E3D8CD00398191 /* NSError+REValidation.m */; };
@@ -60,6 +59,9 @@
 		3777A12618E3D8CD00398191 /* RELengthValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A11D18E3D8CD00398191 /* RELengthValidator.m */; };
 		3777A12718E3D8CD00398191 /* REPresenceValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A11F18E3D8CD00398191 /* REPresenceValidator.m */; };
 		3777A12818E3D8CD00398191 /* REURLValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A12118E3D8CD00398191 /* REURLValidator.m */; };
+		3777A12E18E40DB700398191 /* MultilineTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A12D18E40DB700398191 /* MultilineTextItem.m */; };
+		3777A13118E40E0D00398191 /* MultilineTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A13018E40E0D00398191 /* MultilineTextCell.m */; };
+		3777A13418E41AB800398191 /* SIncidentProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A13318E41AB800398191 /* SIncidentProcessViewController.m */; };
 		379357C918E3C4F20062265C /* CalDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3793578D18E3C4F20062265C /* CalDataSource.m */; };
 		379357CA18E3C4F20062265C /* CalGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3793578F18E3C4F20062265C /* CalGridView.m */; };
 		379357CB18E3C4F20062265C /* CalLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3793579118E3C4F20062265C /* CalLogic.m */; };
@@ -240,8 +242,6 @@
 		3777A0E118E3CCF000398191 /* RETableViewOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RETableViewOptionsController.m; sourceTree = "<group>"; };
 		3777A0E218E3CCF000398191 /* RETableViewSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RETableViewSection.h; sourceTree = "<group>"; };
 		3777A0E318E3CCF000398191 /* RETableViewSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RETableViewSection.m; sourceTree = "<group>"; };
-		3777A10818E3CF0600398191 /* SIncidentProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentProcessViewController.h; sourceTree = "<group>"; };
-		3777A10918E3CF0600398191 /* SIncidentProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentProcessViewController.m; sourceTree = "<group>"; };
 		3777A10C18E3D8C200398191 /* NSString+RENumberFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RENumberFormat.h"; sourceTree = "<group>"; };
 		3777A10D18E3D8C200398191 /* NSString+RENumberFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RENumberFormat.m"; sourceTree = "<group>"; };
 		3777A10E18E3D8C200398191 /* REFormattedNumberField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFormattedNumberField.h; sourceTree = "<group>"; };
@@ -260,6 +260,12 @@
 		3777A11F18E3D8CD00398191 /* REPresenceValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REPresenceValidator.m; sourceTree = "<group>"; };
 		3777A12018E3D8CD00398191 /* REURLValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REURLValidator.h; sourceTree = "<group>"; };
 		3777A12118E3D8CD00398191 /* REURLValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REURLValidator.m; sourceTree = "<group>"; };
+		3777A12C18E40DB700398191 /* MultilineTextItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultilineTextItem.h; sourceTree = "<group>"; };
+		3777A12D18E40DB700398191 /* MultilineTextItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultilineTextItem.m; sourceTree = "<group>"; };
+		3777A12F18E40E0D00398191 /* MultilineTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultilineTextCell.h; sourceTree = "<group>"; };
+		3777A13018E40E0D00398191 /* MultilineTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultilineTextCell.m; sourceTree = "<group>"; };
+		3777A13218E41AB800398191 /* SIncidentProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentProcessViewController.h; sourceTree = "<group>"; };
+		3777A13318E41AB800398191 /* SIncidentProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentProcessViewController.m; sourceTree = "<group>"; };
 		3793578B18E3C4F20062265C /* Cal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cal.h; sourceTree = "<group>"; };
 		3793578C18E3C4F20062265C /* CalDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalDataSource.h; sourceTree = "<group>"; };
 		3793578D18E3C4F20062265C /* CalDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalDataSource.m; sourceTree = "<group>"; };
@@ -489,6 +495,8 @@
 		3777A09B18E3CCF000398191 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				3777A12F18E40E0D00398191 /* MultilineTextCell.h */,
+				3777A13018E40E0D00398191 /* MultilineTextCell.m */,
 				3777A09C18E3CCF000398191 /* RETableViewBoolCell.h */,
 				3777A09D18E3CCF000398191 /* RETableViewBoolCell.m */,
 				3777A09E18E3CCF000398191 /* RETableViewCreditCardCell.h */,
@@ -520,6 +528,8 @@
 		3777A0B418E3CCF000398191 /* Items */ = {
 			isa = PBXGroup;
 			children = (
+				3777A12C18E40DB700398191 /* MultilineTextItem.h */,
+				3777A12D18E40DB700398191 /* MultilineTextItem.m */,
 				3777A0B518E3CCF000398191 /* REBoolItem.h */,
 				3777A0B618E3CCF000398191 /* REBoolItem.m */,
 				3777A0B718E3CCF000398191 /* RECreditCardItem.h */,
@@ -742,6 +752,8 @@
 		37FA4C8F18DBDF0F004AB106 /* Incident */ = {
 			isa = PBXGroup;
 			children = (
+				3777A13218E41AB800398191 /* SIncidentProcessViewController.h */,
+				3777A13318E41AB800398191 /* SIncidentProcessViewController.m */,
 				37948F6618DFE23B00A5BBDA /* SIncidentBaseInfoCell.h */,
 				37948F6718DFE23B00A5BBDA /* SIncidentBaseInfoCell.m */,
 				37948F6818DFE23B00A5BBDA /* SIncidentBaseInfoCell.xib */,
@@ -753,8 +765,6 @@
 				3776A38818E14B2A0075B57F /* SIncidentOperationPopoverController.m */,
 				37E289B218E27A54004E8A4A /* SIncidentContentTabBarController.h */,
 				37E289B318E27A54004E8A4A /* SIncidentContentTabBarController.m */,
-				3777A10818E3CF0600398191 /* SIncidentProcessViewController.h */,
-				3777A10918E3CF0600398191 /* SIncidentProcessViewController.m */,
 			);
 			name = Incident;
 			sourceTree = "<group>";
@@ -1120,6 +1130,7 @@
 				3777A0FF18E3CCF000398191 /* RECommonFunctions.m in Sources */,
 				3777A0F318E3CCF000398191 /* REFloatItem.m in Sources */,
 				379357CB18E3C4F20062265C /* CalLogic.m in Sources */,
+				3777A13418E41AB800398191 /* SIncidentProcessViewController.m in Sources */,
 				4417CF8218AC74C700E6E09F /* AppDelegate.m in Sources */,
 				44B02BFB18ADAD7B0001451F /* Contacts.m in Sources */,
 				379357E118E3C4F20062265C /* TSMessage.m in Sources */,
@@ -1135,9 +1146,11 @@
 				3777A0F618E3CCF000398191 /* RELongTextItem.m in Sources */,
 				3777A0F718E3CCF000398191 /* REMultipleChoiceItem.m in Sources */,
 				37948F6918DFE23B00A5BBDA /* SIncidentBaseInfoCell.m in Sources */,
+				3777A13118E40E0D00398191 /* MultilineTextCell.m in Sources */,
 				379357CC18E3C4F20062265C /* CalMonthView.m in Sources */,
 				37E289A818E27712004E8A4A /* SProcessViewController.m in Sources */,
 				370B677E18DC364E0071CDE4 /* SIncidentBaseViewController.m in Sources */,
+				3777A12E18E40DB700398191 /* MultilineTextItem.m in Sources */,
 				37E289B718E29CBB004E8A4A /* SProcessCell.m in Sources */,
 				3777A0E618E3CCF000398191 /* RETableViewDateTimeCell.m in Sources */,
 				3777A10518E3CCF000398191 /* RETableViewManager.m in Sources */,
@@ -1160,7 +1173,6 @@
 				3777A0EB18E3CCF000398191 /* RETableViewNumberCell.m in Sources */,
 				379357DB18E3C4F20062265C /* WEPopoverContainerView.m in Sources */,
 				3777A10318E3CCF000398191 /* RETableViewItem.m in Sources */,
-				3777A10A18E3CF0600398191 /* SIncidentProcessViewController.m in Sources */,
 				379357CE18E3C4F20062265C /* CalView.m in Sources */,
 				37948F4D18DFD5CA00A5BBDA /* SProblemDao.m in Sources */,
 				379357CF18E3C4F20062265C /* CalViewController.m in Sources */,

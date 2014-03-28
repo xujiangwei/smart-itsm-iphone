@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SIncidentContentTabBarController.h"
 
-
-@interface SIncidentOperationPopoverController : UITableViewController {
-
-}
+@interface SIncidentOperationPopoverController : UITableViewController
 
 @property(nonatomic ,strong)NSArray *operationArray;
+
+@property(nonatomic, strong)SIncidentContentTabBarController  *contentTabBarController;
 
 @end

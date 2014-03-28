@@ -9,6 +9,7 @@
 #import "SIncidentContentTabBarController.h"
 #import "SIncidentOperationPopoverController.h"
 #import "UIBarButtonItem+WEPopover.h"
+#import "SIncidentProcessViewController.h"
 
 @interface SIncidentContentTabBarController ()
 
@@ -36,7 +37,7 @@
     currentPopoverCellIndex = -1;
 
     
-    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(20,0,81,30)];
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,44,40)];
     
     [rightButton setTitle:@"操作" forState:UIControlStateNormal];
     [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -51,20 +52,13 @@
 -(void)operation:(UIButton*)sender
 {
     
-    //    UIActionSheet *actionSheet = [[UIActionSheet alloc]
-    //                                  initWithTitle:@""
-    //                                  delegate:self
-    //                                  cancelButtonTitle:@"取消"
-    //                                  destructiveButtonTitle:@"解决"
-    //                                  otherButtonTitles:@"分派二线",@"退出",nil];
-    //    actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    //    [actionSheet showInView:self.view];
-    
-    
 	if (!self.popoverController) {
 		
-		UIViewController *contentViewController = [[SIncidentOperationPopoverController alloc] initWithStyle:UITableViewStylePlain];
-		self.popoverController = [[popoverClass alloc] initWithContentViewController:contentViewController];
+		SIncidentOperationPopoverController *operationPopoverController = [[SIncidentOperationPopoverController alloc] initWithStyle:UITableViewStylePlain];
+        operationPopoverController.contentTabBarController=self;
+        
+       
+		self.popoverController = [[popoverClass alloc] initWithContentViewController:operationPopoverController];
 		self.popoverController.delegate = self;
 		self.popoverController.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
 		
@@ -97,6 +91,7 @@
 	//The popover is automatically dismissed if you click outside it, unless you return NO here
 	return YES;
 }
+
 
 
 @end

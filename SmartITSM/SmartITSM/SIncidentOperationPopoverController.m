@@ -7,10 +7,14 @@
 //
 
 #import "SIncidentOperationPopoverController.h"
+#import "SIncidentProcessViewController.h"
+#import "ControlsViewController.h"
+
 
 
 @implementation SIncidentOperationPopoverController
-
+@synthesize operationArray;
+@synthesize contentTabBarController;
 
 #pragma mark -
 #pragma mark Initialization
@@ -72,26 +76,18 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    NSInteger section=indexPath.section;
-    NSInteger row=indexPath.row;
     
-    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
+    //    NSInteger section=indexPath.section;
+    //    NSInteger row=indexPath.row;
+    //
+    //    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
     
-    if(section==0 && row==0){
-        [self performSegueWithIdentifier:@"IncidentList" sender:cell];
-    }else if(section==0 && row==1){
-        [self performSegueWithIdentifier:@"ProblemList" sender:cell];
-    }else if(section==0 && row==2){
-        [self performSegueWithIdentifier:@"ChangeList" sender:cell];
-    }else if(section==0 && row==3){
-        [self performSegueWithIdentifier:@"InspectionList" sender:cell];
-    }
-    else if(section==3 && row==0){
-        [self performSegueWithIdentifier:@"AlarmList" sender:cell];
-    }
-
-	
+//    SIncidentProcessViewController  *processVC=[[SIncidentProcessViewController alloc]init];
+    ControlsViewController  *processVC=[[ControlsViewController alloc]init];
+    [contentTabBarController.navigationController pushViewController:processVC animated:YES];
+    
+    
+    contentTabBarController.popoverController=nil ;
 }
 
 

@@ -1,23 +1,18 @@
 //
-//  SIncidentProcessViewController.h
-//  SmartITSM
+//  ControlsViewController.h
+//  RETableViewManagerExample
 //
-//  Created by dweng on 14-3-27.
-//  Copyright (c) 2014年 Ambrose. All rights reserved.
+//  Created by Roman Efimov on 2/28/13.
+//  Copyright (c) 2013 Roman Efimov. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "RETableViewManager.h"
+#import "RETableViewOptionsController.h"
 #import "SIncident.h"
-#import "MBProgressHUD.h"
 
-@interface SIncidentProcessViewController : UITableViewController<RETableViewManagerDelegate>
-
-
-@property( nonatomic, strong) NSString *processTag;
+@interface ControlsViewController : UITableViewController <RETableViewManagerDelegate>
 
 @property( nonatomic, strong) SIncident *incident;
-
-@property (nonatomic, strong) MBProgressHUD *HUD;
 
 @end
