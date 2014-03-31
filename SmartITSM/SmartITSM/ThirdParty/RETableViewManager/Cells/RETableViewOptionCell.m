@@ -58,6 +58,8 @@
     self.accessoryType = self.item.accessoryType;
     self.textLabel.backgroundColor = [UIColor clearColor];
     self.textLabel.text = self.item.title.length == 0 ? @" " : self.item.title;
+//    update by dweng
+    self.textLabel.font=[UIFont systemFontOfSize:14];
     self.detailTextLabel.text = @"";
     self.valueLabel.text = self.item.detailLabelText;
     

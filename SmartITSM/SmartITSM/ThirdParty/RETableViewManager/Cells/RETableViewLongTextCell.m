@@ -93,7 +93,6 @@
     self.textView.returnKeyType = self.item.returnKeyType;
     self.textView.enablesReturnKeyAutomatically = self.item.enablesReturnKeyAutomatically;
     self.textView.secureTextEntry = self.item.secureTextEntry;
-    [self.textView setNeedsDisplay];
 }
 
 - (UIResponder *)responder
@@ -119,15 +118,27 @@
 {
     [self updateActionBarNavigationControl];
     [self.parentTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.rowIndex inSection:self.sectionIndex] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    if (self.item.onBeginEditing)
-        self.item.onBeginEditing(self.item);
+//    update by dweng
+//    if (self.item.onBeginEditing){
+    
+//      self.item.onBeginEditing(self.item);
+   
+        self.textView.layer.cornerRadius = 8.0f;
+        self.textView.layer.borderWidth= 1.0f;
+        self.textView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+//    }
+ 
     return YES;
 }
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView
 {
-    if (self.item.onEndEditing)
+    if (self.item.onEndEditing){
         self.item.onEndEditing(self.item);
+    }else{
+        self.textView.layer.borderColor=[[UIColor darkGrayColor] CGColor];
+        self.textView.layer.borderWidth= 0.0f;
+    }
     return YES;
 }
 

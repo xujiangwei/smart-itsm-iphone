@@ -50,8 +50,12 @@
 {
     [super cellDidLoad];
     self.textLabel.backgroundColor = [UIColor clearColor];
+    //update by dweng
+    self.textLabel.font = [UIFont systemFontOfSize:14];
     
     self.textField = [[UITextField alloc] initWithFrame:CGRectNull];
+    //update by dweng
+    self.textField.font = [UIFont systemFontOfSize:14];
     self.textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.textField.inputAccessoryView = self.actionBar;
     self.textField.delegate = self;

@@ -63,7 +63,7 @@
         self.detailLabelText = [value objectAtIndex:0];
     
     if (value.count > 1)
-        self.detailLabelText = [NSString stringWithFormat:NSLocalizedString(@"%i selected", @"%i selected"), value.count];
+        self.detailLabelText = [NSString stringWithFormat:NSLocalizedString(@"%i 项已选中", @"%i 项已选中"), value.count];
 }
 
 #pragma mark -

@@ -66,7 +66,6 @@
 {
     [super cellWillAppear];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     self.textLabel.text = self.item.title.length == 0 ? @" " : self.item.title;
     self.textField.text = self.item.value;
     self.textField.placeholder = self.item.placeholder;
@@ -122,15 +121,25 @@
     }
     [self updateActionBarNavigationControl];
     [self.parentTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.rowIndex inSection:self.sectionIndex] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    if (self.item.onBeginEditing)
-        self.item.onBeginEditing(self.item);
+    
+    self.textField.layer.borderColor=[[UIColor lightGrayColor] CGColor];;
+    self.textField.layer.borderWidth= 1.0f;
+    self.textField.layer.cornerRadius = 5.0f;
+    self.textField.layer.masksToBounds = YES;
+    //    }
     return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-    if (self.item.onEndEditing)
+    //update by dweng
+    if (self.item.onEndEditing){
         self.item.onEndEditing(self.item);
+    }else{
+        self.textField.layer.borderColor=[[UIColor darkGrayColor] CGColor];
+        self.textField.layer.borderWidth= 0.0f;
+    }
+
     return YES;
 }
 
