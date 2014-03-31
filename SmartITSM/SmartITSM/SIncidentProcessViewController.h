@@ -11,7 +11,7 @@
 #import "RETableViewOptionsController.h"
 #import "SIncident.h"
 
-@interface ControlsViewController : UITableViewController <RETableViewManagerDelegate>
+@interface SIncidentProcessViewController : UITableViewController <RETableViewManagerDelegate>
 
 @property( nonatomic, strong) SIncident *incident;
 

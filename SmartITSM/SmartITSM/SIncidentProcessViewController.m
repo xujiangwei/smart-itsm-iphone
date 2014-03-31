@@ -1,15 +1,8 @@
-//
-//  ControlsViewController.m
-//  RETableViewManagerExample
-//
-//  Created by Roman Efimov on 2/28/13.
-//  Copyright (c) 2013 Roman Efimov. All rights reserved.
-//
 
-#import "ControlsViewController.h"
+#import "SIncidentProcessViewController.h"
 #import "MultilineTextItem.h"
 
-@interface ControlsViewController ()
+@interface SIncidentProcessViewController ()
 
 @property (strong, readwrite, nonatomic) RETableViewManager *manager;
 @property (strong, readwrite, nonatomic) RETableViewSection *basicSection;
@@ -66,7 +59,7 @@
 
 @end
 
-@implementation ControlsViewController
+@implementation SIncidentProcessViewController
 
 - (void)viewDidLoad
 {
@@ -90,8 +83,8 @@
 
     self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
     
-    self.summaryItem=[RETextItem itemWithTitle:@"摘    要:" value:nil placeholder:@"服务器出现错误"];
-    self.descriptionItem=[RETextItem itemWithTitle:@"描    述:" value:nil placeholder:@"服务器出现错误,请尽快协助解决！"];
+    self.summaryItem=[RETextItem itemWithTitle:@"摘要:" value:nil placeholder:@"服务器出现错误"];
+    self.descriptionItem=[RETextItem itemWithTitle:@"描述:" value:nil placeholder:@"服务器出现错误,请尽快协助解决！"];
     self.descriptionItem.cellHeight=44;
     
     self.occurTimeItem = [REDateTimeItem itemWithTitle:@"发生时间:" value:[NSDate date] placeholder:nil format:@"MM/dd/yyyy hh:mm a" datePickerMode:UIDatePickerModeDateAndTime];

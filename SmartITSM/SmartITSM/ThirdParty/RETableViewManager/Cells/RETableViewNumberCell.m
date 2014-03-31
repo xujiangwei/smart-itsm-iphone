@@ -65,7 +65,7 @@
     self.textField.text = [self.item.value re_stringWithNumberFormat:self.item.format];
     self.textField.placeholder = self.item.placeholder;
     self.textField.format = self.item.format;
-    self.textField.font = [UIFont systemFontOfSize:17];
+    self.textField.font = [UIFont systemFontOfSize:14];
     self.textField.keyboardAppearance = self.item.keyboardAppearance;
     self.textField.keyboardType = UIKeyboardTypeNumberPad;
 }

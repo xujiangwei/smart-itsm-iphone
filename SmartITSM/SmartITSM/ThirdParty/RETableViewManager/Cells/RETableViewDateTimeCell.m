@@ -58,7 +58,7 @@
     [self addSubview:self.textField];
     
     self.dateLabel = [[UILabel alloc] initWithFrame:CGRectNull];
-    self.dateLabel.font = [UIFont systemFontOfSize:17];
+    self.dateLabel.font = [UIFont systemFontOfSize:14];
     self.dateLabel.backgroundColor = [UIColor clearColor];
     self.dateLabel.textColor = self.detailTextLabel.textColor;
     self.dateLabel.highlightedTextColor = [UIColor whiteColor];
@@ -67,7 +67,7 @@
     [self.contentView addSubview:self.dateLabel];
     
     self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectNull];
-    self.placeholderLabel.font = [UIFont systemFontOfSize:17];
+    self.placeholderLabel.font = [UIFont systemFontOfSize:14];
     self.placeholderLabel.backgroundColor = [UIColor clearColor];
     self.placeholderLabel.textColor = [UIColor lightGrayColor];
     self.placeholderLabel.highlightedTextColor = [UIColor whiteColor];

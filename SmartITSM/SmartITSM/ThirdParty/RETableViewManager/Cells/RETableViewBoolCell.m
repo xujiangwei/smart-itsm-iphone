@@ -65,6 +65,8 @@
     
     self.textLabel.backgroundColor = [UIColor clearColor];
     self.textLabel.text = self.item.title;
+    //update by dweng
+//    self.textLabel.font=[UIFont systemFontOfSize:14];
     self.switchView.on = self.item.value;
 }
 

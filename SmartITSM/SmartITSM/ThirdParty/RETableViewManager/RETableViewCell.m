@@ -95,6 +95,8 @@
 {
     [self updateActionBarNavigationControl];
     self.selectionStyle = self.section.style.defaultCellSelectionStyle;
+    //update by dweng
+    self.textLabel.font=[UIFont systemFontOfSize:14];
     
     if ([self.item isKindOfClass:[NSString class]]) {
         self.textLabel.text = (NSString *)self.item;

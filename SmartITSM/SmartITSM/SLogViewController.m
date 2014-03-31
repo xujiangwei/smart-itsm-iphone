@@ -52,10 +52,10 @@
     
     tag = 0;
     
-    NSArray *timeArray = [NSArray arrayWithObjects:@"3.26",@"3.24",@"3.21",@"3.14",@"3.10",@"3.9",@"3.8",@"3.7",@"3.6",@"2.26",@"2.19",@"2.14", nil];
+    NSArray *timeDataArray = [NSArray arrayWithObjects:@"3.26",@"3.24",@"3.21",@"3.14",@"3.10",@"3.9",@"3.8",@"3.7",@"3.6",@"2.26",@"2.19",@"2.14", nil];
+    arrayMonths=[timeDataArray copy];
     
-    
-    int number = [timeArray count];
+    int number = [arrayMonths count];
     
     [self makeScrollView:number];
     
@@ -95,7 +95,7 @@
         [monthButton setImage:image forState:UIControlStateNormal];
         monthButton.frame = CGRectMake(46, i*50, 30, 30);
         monthButton.tag = i;
-        //        [monthButton addTarget:self action:@selector(openMassage:) forControlEvents:UIControlEventTouchUpInside];
+        [monthButton addTarget:self action:@selector(openMassage:) forControlEvents:UIControlEventTouchUpInside];
         [scrollView addSubview:monthButton];
         [buttonArray addObject:monthButton];
         

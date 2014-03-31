@@ -8,8 +8,6 @@
 
 #import "SIncidentOperationPopoverController.h"
 #import "SIncidentProcessViewController.h"
-#import "ControlsViewController.h"
-
 
 
 @implementation SIncidentOperationPopoverController
@@ -82,8 +80,8 @@
     //
     //    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
     
-//    SIncidentProcessViewController  *processVC=[[SIncidentProcessViewController alloc]init];
-    ControlsViewController  *processVC=[[ControlsViewController alloc]init];
+    SIncidentProcessViewController  *processVC=[[SIncidentProcessViewController alloc]init];
+//    ControlsViewController  *processVC=[[ControlsViewController alloc]init];
     [contentTabBarController.navigationController pushViewController:processVC animated:YES];
     
     

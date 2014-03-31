@@ -28,7 +28,7 @@ static const CGFloat kVerticalMargin = 10.0;
         horizontalMargin += 5.0;
     
     CGFloat width = CGRectGetWidth(tableViewManager.tableView.bounds) - 2.0 * horizontalMargin;
-    return [item.title re_sizeWithFont:[UIFont systemFontOfSize:17] constrainedToSize:CGSizeMake(width, INFINITY)].height + 2.0 * kVerticalMargin;
+    return [item.title re_sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(width, INFINITY)].height + 2.0 * kVerticalMargin;
 }
 
 - (void)cellDidLoad
@@ -36,7 +36,7 @@ static const CGFloat kVerticalMargin = 10.0;
     [super cellDidLoad];
     self.multilineLabel = [[UILabel alloc] init];
     self.multilineLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    self.multilineLabel.font = [UIFont systemFontOfSize:17];
+    self.multilineLabel.font = [UIFont systemFontOfSize:14];
     self.multilineLabel.numberOfLines = 0;
     self.multilineLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:self.multilineLabel];
