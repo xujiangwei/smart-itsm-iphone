@@ -96,9 +96,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewDidUnload {
-
-}
 
 -(void)initData
 {

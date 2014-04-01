@@ -27,7 +27,7 @@
 @property (nonatomic, assign) id<SProblemListDelegate> delegate;
 
 //更新事故工单列表
-- (void)updateIncidentList:(NSMutableArray *)problemArray;
+//- (void)updateIncidentList:(NSMutableArray *)problemArray;
 
 @end
 

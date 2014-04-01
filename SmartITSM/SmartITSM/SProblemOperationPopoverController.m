@@ -5,9 +5,8 @@
 //  Created by dweng on 14-4-1.
 //  Copyright (c) 2014年 Ambrose. All rights reserved.
 //
-
-#import "SProblemOperationPopoverController.h"
 #import "SProblemProcessViewController.h"
+#import "SProblemOperationPopoverController.h"
 
 
 @implementation SProblemOperationPopoverController
@@ -96,9 +95,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewDidUnload {
-    
-}
 
 -(void)initData
 {

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RETableViewManager.h"
+#import "RETableViewOptionsController.h"
+#import "SProblem.h"
 
-@interface SProblemProcessViewController : UITableViewController
+@interface SProblemProcessViewController : UITableViewController <RETableViewManagerDelegate>
 
-@end
+@property( nonatomic, strong) SProblem *problem;

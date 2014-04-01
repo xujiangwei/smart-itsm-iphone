@@ -558,7 +558,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ehx-Cd-uxb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3998" y="-6981"/>
+            <point key="canvasLocation" x="3952" y="-6893"/>
         </scene>
         <!--Incident Content Tab Bar Controller-->
         <scene sceneID="2E7-Y5-CF5">
@@ -650,7 +650,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z63-98-I0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1958" y="-4731"/>
+            <point key="canvasLocation" x="1950" y="-4635"/>
         </scene>
         <!--Change View Controller-->
         <scene sceneID="ANM-LX-7WK">

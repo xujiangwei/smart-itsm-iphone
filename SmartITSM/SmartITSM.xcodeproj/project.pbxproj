@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3700750D18EAB90800EC1849 /* WEPopoverContainerView.h in Sources */ = {isa = PBXBuildFile; fileRef = 379357B618E3C4F20062265C /* WEPopoverContainerView.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		370B676B18DC33200071CDE4 /* SInspectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676A18DC33200071CDE4 /* SInspectionViewController.m */; };
 		370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676E18DC344F0071CDE4 /* SMessageViewController.m */; };
 		370B677518DC35520071CDE4 /* SProblemContentTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677418DC35520071CDE4 /* SProblemContentTabBarController.m */; };
@@ -85,7 +86,6 @@
 		379357D818E3C4F20062265C /* SDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357AF18E3C4F20062265C /* SDatabase.m */; };
 		379357D918E3C4F20062265C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357B218E3C4F20062265C /* MBProgressHUD.m */; };
 		379357DA18E3C4F20062265C /* UIBarButtonItem+WEPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357B518E3C4F20062265C /* UIBarButtonItem+WEPopover.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		379357DB18E3C4F20062265C /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357B718E3C4F20062265C /* WEPopoverContainerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		379357DC18E3C4F20062265C /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357B918E3C4F20062265C /* WEPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		379357DD18E3C4F20062265C /* WETouchableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357BC18E3C4F20062265C /* WETouchableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		379357DE18E3C4F20062265C /* PlanLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357BF18E3C4F20062265C /* PlanLine.m */; };
@@ -1126,6 +1126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3700750D18EAB90800EC1849 /* WEPopoverContainerView.h in Sources */,
 				4AC37C9A18E13792001A82C5 /* SResourceListViewController.m in Sources */,
 				3777A12218E3D8CD00398191 /* NSError+REValidation.m in Sources */,
 				3777A0E818E3CCF000398191 /* RETableViewInlineDatePickerCell.m in Sources */,
@@ -1207,7 +1208,6 @@
 				4A085DEE18D81B1B0078CDF1 /* SSigninViewController.m in Sources */,
 				37FA4C9E18DBE196004AB106 /* SIncidentViewController.m in Sources */,
 				3777A0EB18E3CCF000398191 /* RETableViewNumberCell.m in Sources */,
-				379357DB18E3C4F20062265C /* WEPopoverContainerView.m in Sources */,
 				374363C618EA49DF005E5312 /* SProblemBaseViewController.m in Sources */,
 				3777A10318E3CCF000398191 /* RETableViewItem.m in Sources */,
 				379357CE18E3C4F20062265C /* CalView.m in Sources */,
