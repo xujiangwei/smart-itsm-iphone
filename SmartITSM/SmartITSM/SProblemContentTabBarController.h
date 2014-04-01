@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "WEPopoverController.h"
-
 
 @interface SProblemContentTabBarController :UITabBarController<WEPopoverControllerDelegate, UIPopoverControllerDelegate>
 {

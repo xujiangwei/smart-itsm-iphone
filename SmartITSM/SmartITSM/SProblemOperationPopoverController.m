@@ -5,16 +5,18 @@
 //  Created by dweng on 14-4-1.
 //  Copyright (c) 2014年 Ambrose. All rights reserved.
 //
-#import "SProblemProcessViewController.h"
-#import "SProblemOperationPopoverController.h"
 
+#import "SProblemOperationPopoverController.h"
+#import "SProblemProcessViewController.h"
+
+@interface SProblemOperationPopoverController ()
+
+@end
 
 @implementation SProblemOperationPopoverController
+
 @synthesize operationArray;
 @synthesize contentTabBarController;
-
-#pragma mark -
-#pragma mark Initialization
 
 - (id)initWithStyle:(UITableViewStyle)style {
     
@@ -101,5 +103,5 @@
     self.operationArray =[NSArray arrayWithObjects:@"解决",@"转派一线", @"退出" ,nil];
 }
 
-@end
 
+@end

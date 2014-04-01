@@ -65,7 +65,7 @@
     self.leftArrowImage = nil;
     self.rightArrowImage = nil;
     self.bgImage = nil;
-    [super dealloc];
+	[super dealloc];
 }
 
 @end

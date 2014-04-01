@@ -18,6 +18,10 @@
 
 @end
 
+@interface xxx123 : NSObject
+
+@end
+
 @interface SProblemViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray  * problems;

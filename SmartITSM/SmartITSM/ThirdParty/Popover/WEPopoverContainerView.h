@@ -12,6 +12,7 @@
 /**
  * Properties for the container view determining the area where the actual content view can/may be displayed. Also Images can be supplied for the arrow images and background.
  */
+
 @interface WEPopoverContainerViewProperties : NSObject
 
 @property(nonatomic, assign) CGFloat leftBgMargin;
@@ -41,7 +42,7 @@
 
 @end
 
-@class WEPopoverContainerView;
+@class   WEPopoverContainerView;
 
 /**
  * Container/background view for displaying a popover view.

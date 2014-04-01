@@ -5,8 +5,9 @@
 //  Created by dweng on 14-4-1.
 //  Copyright (c) 2014年 Ambrose. All rights reserved.
 //
+
 #import "SProblemProcessViewController.h"
-#import "MultilineTextItem.h"
+#import "RETableViewOptionsController.h"
 
 @interface SProblemProcessViewController ()
 
@@ -66,11 +67,10 @@
 @end
 
 @implementation SProblemProcessViewController
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"故障处理";
+    self.title = @"问题解决";
     self.manager = [[RETableViewManager alloc] initWithTableView:self.tableView delegate:self];
     
     self.basicSection = [self addBasicSection];
@@ -157,24 +157,6 @@
 }
 
 
-//***********故障工单处理***************
-// 受理
-- (RETableViewSection *)addAcceptSection
-{
-    RETableViewSection *acceptSection = [RETableViewSection sectionWithHeaderTitle:@"受理"];
-    [self.manager addSection:acceptSection];
-    //    self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
-    
-    self.markItem = [RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写备注信息"];
-    //    [self.markItem setUserInteractionEnabled:YES];
-    self.markItem.cellHeight=88;
-    
-    [acceptSection addItem:self.markItem];
-    
-    return acceptSection;
-}
-
-
 //解决（一线解决与二线解决的界面不一致）
 - (RETableViewSection *)addSolveSection
 {
@@ -200,67 +182,6 @@
     return solveSection;
 }
 
-
-//退回
-- (RETableViewSection *)addReturnSection
-{
-    RETableViewSection *returnSection = [RETableViewSection sectionWithHeaderTitle:@"退回"];
-    [self.manager addSection:returnSection];
-    //    self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
-    
-    self.markItem=[RELongTextItem itemWithTitle:@"退回原因" value:nil placeholder:nil];
-    //    [self.markItem setUserInteractionEnabled:YES];
-    self.markItem.cellHeight=132;
-    
-    [returnSection addItem:self.markItem];
-    
-    return returnSection;
-}
-
-//回访，界面和二线解决界面类似
-- (RETableViewSection *)addFeedBackSection
-{
-    RETableViewSection *feedBackSection = [RETableViewSection sectionWithHeaderTitle:@"回访"];
-    
-    [self.manager addSection:feedBackSection];
-    //    self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
-    
-    self.isSolveItem = [REBoolItem itemWithTitle:@"是否解决" value:YES switchValueChangeHandler:^(REBoolItem *item) {
-        
-    }];
-    self.markItem = [RELongTextItem itemWithTitle:@"备注" value:nil placeholder:nil];
-    //    [self.markItem setUserInteractionEnabled:YES];
-    self.markItem.cellHeight=132;
-    
-    [feedBackSection addItem:self.isSolveItem];
-    [feedBackSection addItem:self.markItem];
-    
-    return feedBackSection;
-}
-
-
-
-//评价，适用于发起故障请求者
-- (RETableViewSection *)addEvaluateSection
-{
-    RETableViewSection *evaluateSection = [RETableViewSection sectionWithHeaderTitle:@"用户评价"];
-    [self.manager addSection:evaluateSection];
-    //    self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
-    
-    self.satisfactionItem = [REBoolItem itemWithTitle:@"用户满意度" value:YES switchValueChangeHandler:^(REBoolItem *item) {
-        
-    }];
-    self.markItem = [RELongTextItem itemWithTitle:@"评价" value:nil placeholder:nil];
-    //    [self.markItem setUserInteractionEnabled:YES];
-    self.markItem.cellHeight=132;
-    
-    [evaluateSection addItem:self.satisfactionItem];
-    [evaluateSection addItem:self.markItem];
-    
-    return evaluateSection;
-}
-
-
 - (RETableViewSection *)addButton
 {
     RETableViewSection *section = [RETableViewSection section];
@@ -275,5 +196,14 @@
     
     return section;
 }
+
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 @end

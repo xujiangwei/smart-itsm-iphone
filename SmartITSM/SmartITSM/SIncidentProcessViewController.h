@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "RETableViewManager.h"
-#import "RETableViewOptionsController.h"
 #import "SIncident.h"
 
 @interface SIncidentProcessViewController : UITableViewController <RETableViewManagerDelegate>

@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3700750D18EAB90800EC1849 /* WEPopoverContainerView.h in Sources */ = {isa = PBXBuildFile; fileRef = 379357B618E3C4F20062265C /* WEPopoverContainerView.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		370B676B18DC33200071CDE4 /* SInspectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676A18DC33200071CDE4 /* SInspectionViewController.m */; };
 		370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676E18DC344F0071CDE4 /* SMessageViewController.m */; };
 		370B677518DC35520071CDE4 /* SProblemContentTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677418DC35520071CDE4 /* SProblemContentTabBarController.m */; };
 		370B677818DC35660071CDE4 /* SInspectionContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677718DC35660071CDE4 /* SInspectionContentViewController.m */; };
 		370B677B18DC35820071CDE4 /* SChangeContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677A18DC35820071CDE4 /* SChangeContentViewController.m */; };
 		370B677E18DC364E0071CDE4 /* SIncidentBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677D18DC364E0071CDE4 /* SIncidentBaseViewController.m */; };
+		371F2E8418EABF7500CC06BB /* UIBarButtonItem+WEPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 371F2E7C18EABF7500CC06BB /* UIBarButtonItem+WEPopover.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		371F2E8518EABF7500CC06BB /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 371F2E7E18EABF7500CC06BB /* WEPopoverContainerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		371F2E8618EABF7500CC06BB /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 371F2E8018EABF7500CC06BB /* WEPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		371F2E8718EABF7500CC06BB /* WETouchableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 371F2E8318EABF7500CC06BB /* WETouchableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		374363C618EA49DF005E5312 /* SProblemBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 374363C518EA49DF005E5312 /* SProblemBaseViewController.m */; };
 		374363C918EA5EF0005E5312 /* SChangeBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 374363C818EA5EF0005E5312 /* SChangeBaseViewController.m */; };
-		374363CC18EA70A6005E5312 /* SProblemOperationPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 374363CB18EA70A6005E5312 /* SProblemOperationPopoverController.m */; };
-		374363CF18EA7235005E5312 /* SProblemProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 374363CE18EA7235005E5312 /* SProblemProcessViewController.m */; };
 		374363D118EA84EF005E5312 /* SProcessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 374363D018EA84EF005E5312 /* SProcessCell.xib */; };
 		3776A38918E14B2A0075B57F /* SIncidentOperationPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3776A38818E14B2A0075B57F /* SIncidentOperationPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3777A0E418E3CCF000398191 /* RETableViewBoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3777A09D18E3CCF000398191 /* RETableViewBoolCell.m */; };
@@ -85,9 +86,6 @@
 		379357D718E3C4F20062265C /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357AD18E3C4F20062265C /* FMResultSet.m */; };
 		379357D818E3C4F20062265C /* SDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357AF18E3C4F20062265C /* SDatabase.m */; };
 		379357D918E3C4F20062265C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357B218E3C4F20062265C /* MBProgressHUD.m */; };
-		379357DA18E3C4F20062265C /* UIBarButtonItem+WEPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357B518E3C4F20062265C /* UIBarButtonItem+WEPopover.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		379357DC18E3C4F20062265C /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357B918E3C4F20062265C /* WEPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		379357DD18E3C4F20062265C /* WETouchableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357BC18E3C4F20062265C /* WETouchableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		379357DE18E3C4F20062265C /* PlanLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357BF18E3C4F20062265C /* PlanLine.m */; };
 		379357DF18E3C4F20062265C /* HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357C218E3C4F20062265C /* HexColor.m */; };
 		379357E018E3C4F20062265C /* TSBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379357C418E3C4F20062265C /* TSBlurView.m */; };
@@ -107,6 +105,10 @@
 		37E289AE18E27754004E8A4A /* SAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E289AD18E27754004E8A4A /* SAttachmentViewController.m */; };
 		37E289B418E27A54004E8A4A /* SIncidentContentTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E289B318E27A54004E8A4A /* SIncidentContentTabBarController.m */; };
 		37E289B718E29CBB004E8A4A /* SProcessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E289B618E29CBB004E8A4A /* SProcessCell.m */; };
+		37F9967C18EAC79900A27B69 /* SProblemOperationPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F9967B18EAC79900A27B69 /* SProblemOperationPopoverController.m */; };
+		37F9967F18EAC85C00A27B69 /* SProblemProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F9967E18EAC85C00A27B69 /* SProblemProcessViewController.m */; };
+		37F9968218EACD9200A27B69 /* SRelatedProcessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F9968118EACD9200A27B69 /* SRelatedProcessCell.m */; };
+		37F9968418EACDB500A27B69 /* SRelatedProcessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37F9968318EACDB500A27B69 /* SRelatedProcessCell.xib */; };
 		37FA4C9818DBE153004AB106 /* SProblemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA4C9718DBE153004AB106 /* SProblemViewController.m */; };
 		37FA4C9B18DBE16F004AB106 /* SChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA4C9A18DBE16F004AB106 /* SChangeViewController.m */; };
 		37FA4C9E18DBE196004AB106 /* SIncidentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA4C9D18DBE196004AB106 /* SIncidentViewController.m */; };
@@ -174,14 +176,19 @@
 		370B677A18DC35820071CDE4 /* SChangeContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SChangeContentViewController.m; sourceTree = "<group>"; };
 		370B677C18DC364E0071CDE4 /* SIncidentBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentBaseViewController.h; sourceTree = "<group>"; };
 		370B677D18DC364E0071CDE4 /* SIncidentBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentBaseViewController.m; sourceTree = "<group>"; };
+		371F2E7B18EABF7500CC06BB /* UIBarButtonItem+WEPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WEPopover.h"; sourceTree = "<group>"; };
+		371F2E7C18EABF7500CC06BB /* UIBarButtonItem+WEPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WEPopover.m"; sourceTree = "<group>"; };
+		371F2E7D18EABF7500CC06BB /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
+		371F2E7E18EABF7500CC06BB /* WEPopoverContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContainerView.m; sourceTree = "<group>"; };
+		371F2E7F18EABF7500CC06BB /* WEPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverController.h; sourceTree = "<group>"; };
+		371F2E8018EABF7500CC06BB /* WEPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverController.m; sourceTree = "<group>"; };
+		371F2E8118EABF7500CC06BB /* WEPopoverParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverParentView.h; sourceTree = "<group>"; };
+		371F2E8218EABF7500CC06BB /* WETouchableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WETouchableView.h; sourceTree = "<group>"; };
+		371F2E8318EABF7500CC06BB /* WETouchableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETouchableView.m; sourceTree = "<group>"; };
 		374363C418EA49DF005E5312 /* SProblemBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProblemBaseViewController.h; sourceTree = "<group>"; };
 		374363C518EA49DF005E5312 /* SProblemBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProblemBaseViewController.m; sourceTree = "<group>"; };
 		374363C718EA5EF0005E5312 /* SChangeBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SChangeBaseViewController.h; sourceTree = "<group>"; };
 		374363C818EA5EF0005E5312 /* SChangeBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SChangeBaseViewController.m; sourceTree = "<group>"; };
-		374363CA18EA70A6005E5312 /* SProblemOperationPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProblemOperationPopoverController.h; sourceTree = "<group>"; };
-		374363CB18EA70A6005E5312 /* SProblemOperationPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProblemOperationPopoverController.m; sourceTree = "<group>"; };
-		374363CD18EA7235005E5312 /* SProblemProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProblemProcessViewController.h; sourceTree = "<group>"; };
-		374363CE18EA7235005E5312 /* SProblemProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProblemProcessViewController.m; sourceTree = "<group>"; };
 		374363D018EA84EF005E5312 /* SProcessCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SProcessCell.xib; sourceTree = "<group>"; };
 		3776A38718E14B2A0075B57F /* SIncidentOperationPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentOperationPopoverController.h; sourceTree = "<group>"; };
 		3776A38818E14B2A0075B57F /* SIncidentOperationPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentOperationPopoverController.m; sourceTree = "<group>"; };
@@ -317,15 +324,6 @@
 		379357AF18E3C4F20062265C /* SDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDatabase.m; sourceTree = "<group>"; };
 		379357B118E3C4F20062265C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		379357B218E3C4F20062265C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		379357B418E3C4F20062265C /* UIBarButtonItem+WEPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WEPopover.h"; sourceTree = "<group>"; };
-		379357B518E3C4F20062265C /* UIBarButtonItem+WEPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+WEPopover.m"; sourceTree = "<group>"; };
-		379357B618E3C4F20062265C /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
-		379357B718E3C4F20062265C /* WEPopoverContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContainerView.m; sourceTree = "<group>"; };
-		379357B818E3C4F20062265C /* WEPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverController.h; sourceTree = "<group>"; };
-		379357B918E3C4F20062265C /* WEPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverController.m; sourceTree = "<group>"; };
-		379357BA18E3C4F20062265C /* WEPopoverParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverParentView.h; sourceTree = "<group>"; };
-		379357BB18E3C4F20062265C /* WETouchableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WETouchableView.h; sourceTree = "<group>"; };
-		379357BC18E3C4F20062265C /* WETouchableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WETouchableView.m; sourceTree = "<group>"; };
 		379357BE18E3C4F20062265C /* PlanLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanLine.h; sourceTree = "<group>"; };
 		379357BF18E3C4F20062265C /* PlanLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanLine.m; sourceTree = "<group>"; };
 		379357C118E3C4F20062265C /* HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexColor.h; sourceTree = "<group>"; };
@@ -363,6 +361,13 @@
 		37E289B318E27A54004E8A4A /* SIncidentContentTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentContentTabBarController.m; sourceTree = "<group>"; };
 		37E289B518E29CBB004E8A4A /* SProcessCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProcessCell.h; sourceTree = "<group>"; };
 		37E289B618E29CBB004E8A4A /* SProcessCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProcessCell.m; sourceTree = "<group>"; };
+		37F9967A18EAC79900A27B69 /* SProblemOperationPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProblemOperationPopoverController.h; sourceTree = "<group>"; };
+		37F9967B18EAC79900A27B69 /* SProblemOperationPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProblemOperationPopoverController.m; sourceTree = "<group>"; };
+		37F9967D18EAC85C00A27B69 /* SProblemProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProblemProcessViewController.h; sourceTree = "<group>"; };
+		37F9967E18EAC85C00A27B69 /* SProblemProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProblemProcessViewController.m; sourceTree = "<group>"; };
+		37F9968018EACD9200A27B69 /* SRelatedProcessCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRelatedProcessCell.h; sourceTree = "<group>"; };
+		37F9968118EACD9200A27B69 /* SRelatedProcessCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRelatedProcessCell.m; sourceTree = "<group>"; };
+		37F9968318EACDB500A27B69 /* SRelatedProcessCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRelatedProcessCell.xib; sourceTree = "<group>"; };
 		37FA4C9618DBE153004AB106 /* SProblemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProblemViewController.h; sourceTree = "<group>"; };
 		37FA4C9718DBE153004AB106 /* SProblemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProblemViewController.m; sourceTree = "<group>"; };
 		37FA4C9918DBE16F004AB106 /* SChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SChangeViewController.h; sourceTree = "<group>"; };
@@ -474,6 +479,22 @@
 				37948F3A18DFD05B00A5BBDA /* SMessageContentViewController.m */,
 			);
 			name = Message;
+			sourceTree = "<group>";
+		};
+		371F2E7A18EABF7500CC06BB /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				371F2E7B18EABF7500CC06BB /* UIBarButtonItem+WEPopover.h */,
+				371F2E7C18EABF7500CC06BB /* UIBarButtonItem+WEPopover.m */,
+				371F2E7D18EABF7500CC06BB /* WEPopoverContainerView.h */,
+				371F2E7E18EABF7500CC06BB /* WEPopoverContainerView.m */,
+				371F2E7F18EABF7500CC06BB /* WEPopoverController.h */,
+				371F2E8018EABF7500CC06BB /* WEPopoverController.m */,
+				371F2E8118EABF7500CC06BB /* WEPopoverParentView.h */,
+				371F2E8218EABF7500CC06BB /* WETouchableView.h */,
+				371F2E8318EABF7500CC06BB /* WETouchableView.m */,
+			);
+			path = Popover;
 			sourceTree = "<group>";
 		};
 		3777A09A18E3CCF000398191 /* RETableViewManager */ = {
@@ -619,12 +640,12 @@
 		3793578918E3C4F20062265C /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				371F2E7A18EABF7500CC06BB /* Popover */,
 				3793578A18E3C4F20062265C /* Calendar */,
 				379357A218E3C4F20062265C /* DataBase */,
 				44959ED718E3ECA3009F8E35 /* JBChartView */,
 				379357B018E3C4F20062265C /* MBProgressHUD */,
 				3777A09A18E3CCF000398191 /* RETableViewManager */,
-				379357B318E3C4F20062265C /* Popover */,
 				379357BD18E3C4F20062265C /* TimeLine */,
 				379357C018E3C4F20062265C /* TSMessage */,
 			);
@@ -695,22 +716,6 @@
 				379357B218E3C4F20062265C /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
-			sourceTree = "<group>";
-		};
-		379357B318E3C4F20062265C /* Popover */ = {
-			isa = PBXGroup;
-			children = (
-				379357B418E3C4F20062265C /* UIBarButtonItem+WEPopover.h */,
-				379357B518E3C4F20062265C /* UIBarButtonItem+WEPopover.m */,
-				379357B618E3C4F20062265C /* WEPopoverContainerView.h */,
-				379357B718E3C4F20062265C /* WEPopoverContainerView.m */,
-				379357B818E3C4F20062265C /* WEPopoverController.h */,
-				379357B918E3C4F20062265C /* WEPopoverController.m */,
-				379357BA18E3C4F20062265C /* WEPopoverParentView.h */,
-				379357BB18E3C4F20062265C /* WETouchableView.h */,
-				379357BC18E3C4F20062265C /* WETouchableView.m */,
-			);
-			path = Popover;
 			sourceTree = "<group>";
 		};
 		379357BD18E3C4F20062265C /* TimeLine */ = {
@@ -792,10 +797,10 @@
 				370B677418DC35520071CDE4 /* SProblemContentTabBarController.m */,
 				374363C418EA49DF005E5312 /* SProblemBaseViewController.h */,
 				374363C518EA49DF005E5312 /* SProblemBaseViewController.m */,
-				374363CA18EA70A6005E5312 /* SProblemOperationPopoverController.h */,
-				374363CB18EA70A6005E5312 /* SProblemOperationPopoverController.m */,
-				374363CD18EA7235005E5312 /* SProblemProcessViewController.h */,
-				374363CE18EA7235005E5312 /* SProblemProcessViewController.m */,
+				37F9967A18EAC79900A27B69 /* SProblemOperationPopoverController.h */,
+				37F9967B18EAC79900A27B69 /* SProblemOperationPopoverController.m */,
+				37F9967D18EAC85C00A27B69 /* SProblemProcessViewController.h */,
+				37F9967E18EAC85C00A27B69 /* SProblemProcessViewController.m */,
 			);
 			name = Problem;
 			sourceTree = "<group>";
@@ -976,6 +981,9 @@
 				37E289AA18E27728004E8A4A /* SLogViewController.m */,
 				37E289AC18E27754004E8A4A /* SAttachmentViewController.h */,
 				37E289AD18E27754004E8A4A /* SAttachmentViewController.m */,
+				37F9968018EACD9200A27B69 /* SRelatedProcessCell.h */,
+				37F9968118EACD9200A27B69 /* SRelatedProcessCell.m */,
+				37F9968318EACDB500A27B69 /* SRelatedProcessCell.xib */,
 			);
 			name = Own;
 			sourceTree = "<group>";
@@ -1104,6 +1112,7 @@
 				37948F7118DFFAC100A5BBDA /* SmartITSM.db in Resources */,
 				4417CF8A18AC74C700E6E09F /* Images.xcassets in Resources */,
 				4442D69018E2A60C00FEC872 /* Localizable.strings in Resources */,
+				37F9968418EACDB500A27B69 /* SRelatedProcessCell.xib in Resources */,
 				4417CF7C18AC74C700E6E09F /* InfoPlist.strings in Resources */,
 				4417CF8518AC74C700E6E09F /* Main.storyboard in Resources */,
 				3777A10418E3CCF000398191 /* RETableViewManager.bundle in Resources */,
@@ -1126,7 +1135,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3700750D18EAB90800EC1849 /* WEPopoverContainerView.h in Sources */,
 				4AC37C9A18E13792001A82C5 /* SResourceListViewController.m in Sources */,
 				3777A12218E3D8CD00398191 /* NSError+REValidation.m in Sources */,
 				3777A0E818E3CCF000398191 /* RETableViewInlineDatePickerCell.m in Sources */,
@@ -1143,11 +1151,12 @@
 				4A92F10118AC9C4900EB594B /* SDiscoveryDetailViewController.m in Sources */,
 				379357D718E3C4F20062265C /* FMResultSet.m in Sources */,
 				3777A0F818E3CCF000398191 /* RENumberItem.m in Sources */,
+				371F2E8718EABF7500CC06BB /* WETouchableView.m in Sources */,
 				3777A0FB18E3CCF000398191 /* RESegmentedItem.m in Sources */,
-				379357DD18E3C4F20062265C /* WETouchableView.m in Sources */,
 				37948F4A18DFD5CA00A5BBDA /* SInspection.m in Sources */,
 				37E289AB18E27728004E8A4A /* SLogViewController.m in Sources */,
 				4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */,
+				37F9968218EACD9200A27B69 /* SRelatedProcessCell.m in Sources */,
 				37948F4E18DFD5CA00A5BBDA /* SIncidentDao.m in Sources */,
 				3777A0F918E3CCF000398191 /* REPickerItem.m in Sources */,
 				379357D018E3C4F20062265C /* NSDate+Convenience.m in Sources */,
@@ -1169,6 +1178,7 @@
 				4417CF8218AC74C700E6E09F /* AppDelegate.m in Sources */,
 				44B02BFB18ADAD7B0001451F /* Contacts.m in Sources */,
 				379357E118E3C4F20062265C /* TSMessage.m in Sources */,
+				37F9967F18EAC85C00A27B69 /* SProblemProcessViewController.m in Sources */,
 				4A085DF918D8564E0078CDF1 /* Reachability.m in Sources */,
 				3777A0EE18E3CCF000398191 /* RETableViewSegmentedCell.m in Sources */,
 				3777A0FE18E3CCF000398191 /* REActionBar.m in Sources */,
@@ -1198,10 +1208,13 @@
 				374363C918EA5EF0005E5312 /* SChangeBaseViewController.m in Sources */,
 				44959EDF18E3ECC7009F8E35 /* JBChartView.m in Sources */,
 				4A92F11118ACAEBE00EB594B /* RootViewController.m in Sources */,
+				371F2E8418EABF7500CC06BB /* UIBarButtonItem+WEPopover.m in Sources */,
 				44959EDE18E3ECC7009F8E35 /* JBBarChartView.m in Sources */,
 				379357D818E3C4F20062265C /* SDatabase.m in Sources */,
 				3777A0E918E3CCF000398191 /* RETableViewInlinePickerCell.m in Sources */,
+				37F9967C18EAC79900A27B69 /* SProblemOperationPopoverController.m in Sources */,
 				3777A10618E3CCF000398191 /* RETableViewOptionsController.m in Sources */,
+				371F2E8518EABF7500CC06BB /* WEPopoverContainerView.m in Sources */,
 				37E289AE18E27754004E8A4A /* SAttachmentViewController.m in Sources */,
 				379357C918E3C4F20062265C /* CalDataSource.m in Sources */,
 				3777A0F018E3CCF000398191 /* REBoolItem.m in Sources */,
@@ -1213,12 +1226,11 @@
 				379357CE18E3C4F20062265C /* CalView.m in Sources */,
 				37948F4D18DFD5CA00A5BBDA /* SProblemDao.m in Sources */,
 				379357CF18E3C4F20062265C /* CalViewController.m in Sources */,
-				379357DA18E3C4F20062265C /* UIBarButtonItem+WEPopover.m in Sources */,
 				44959EE018E3ECC7009F8E35 /* JBLineChartView.m in Sources */,
 				3777A0F518E3CCF000398191 /* REInlinePickerItem.m in Sources */,
 				3777A12618E3D8CD00398191 /* RELengthValidator.m in Sources */,
 				37FA4C9B18DBE16F004AB106 /* SChangeViewController.m in Sources */,
-				379357DC18E3C4F20062265C /* WEPopoverController.m in Sources */,
+				371F2E8618EABF7500CC06BB /* WEPopoverController.m in Sources */,
 				379357D518E3C4F20062265C /* FMDatabasePool.m in Sources */,
 				370B676B18DC33200071CDE4 /* SInspectionViewController.m in Sources */,
 				379357D918E3C4F20062265C /* MBProgressHUD.m in Sources */,
@@ -1233,7 +1245,6 @@
 				370B677B18DC35820071CDE4 /* SChangeContentViewController.m in Sources */,
 				37948F4C18DFD5CA00A5BBDA /* SProblem.m in Sources */,
 				37E289B418E27A54004E8A4A /* SIncidentContentTabBarController.m in Sources */,
-				374363CC18EA70A6005E5312 /* SProblemOperationPopoverController.m in Sources */,
 				37948F5118DFD6E300A5BBDA /* SUser.m in Sources */,
 				3777A0E718E3CCF000398191 /* RETableViewFloatCell.m in Sources */,
 				3776A38918E14B2A0075B57F /* SIncidentOperationPopoverController.m in Sources */,
@@ -1245,7 +1256,6 @@
 				3777A0FA18E3CCF000398191 /* RERadioItem.m in Sources */,
 				4AB79DAC18DEEF6700ECEC27 /* SAlarmViewController.m in Sources */,
 				44B02BF518ADA7DE0001451F /* StatusListener.m in Sources */,
-				374363CF18EA7235005E5312 /* SProblemProcessViewController.m in Sources */,
 				379357E018E3C4F20062265C /* TSBlurView.m in Sources */,
 				3777A12818E3D8CD00398191 /* REURLValidator.m in Sources */,
 				3777A0F418E3CCF000398191 /* REInlineDatePickerItem.m in Sources */,
@@ -1397,12 +1407,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartITSM/SmartITSM-Prefix.pch";
 				INFOPLIST_FILE = "SmartITSM/SmartITSM-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "../nucleus/bin/Debug-iphonesimulator ";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1415,12 +1427,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartITSM/SmartITSM-Prefix.pch";
 				INFOPLIST_FILE = "SmartITSM/SmartITSM-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "../nucleus/bin/Debug-iphonesimulator ";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos7.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

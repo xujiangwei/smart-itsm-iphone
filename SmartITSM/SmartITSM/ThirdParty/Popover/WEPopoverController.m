@@ -400,7 +400,6 @@ static BOOL OSVersionIsAtLeast(float version) {
         if ([contentViewController respondsToSelector:@selector(preferredContentSize)]) {
             effectivePopoverContentSize = contentViewController.preferredContentSize;
         } else {
-//    upadte by dweng 2014-03-25,消除ios7下的告警
             effectivePopoverContentSize = contentViewController.preferredContentSize;
         }
 	} else {
