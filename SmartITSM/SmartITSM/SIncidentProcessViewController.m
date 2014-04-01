@@ -95,6 +95,7 @@
     }
     
     self.impactItem = [REPickerItem itemWithTitle:@"影响度:" value:@[@"一般"] placeholder:nil options:@[@[@"重大",@"大", @"中",@"一般", @"小",@"很小"]]];
+  
     self.impactItem.onChange = ^(REPickerItem *item){
         NSLog(@"Value: %@", item.value);
     };

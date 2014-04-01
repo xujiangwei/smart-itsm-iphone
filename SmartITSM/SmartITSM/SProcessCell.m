@@ -7,14 +7,29 @@
 //
 
 #import "SProcessCell.h"
-
 @implementation SProcessCell
+
+@synthesize codeLabel;
+@synthesize stateImage;
+@synthesize updateTimeLabel;
+@synthesize summaryLabel;
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder: aDecoder];
+    if (self)
+    {
+        [self build];
+    }
+    return self;
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
+    if (self)
+    {
+        
     }
     return self;
 }
@@ -22,8 +37,12 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+}
 
-    // Configure the view for the selected state
+- (void)build
+{
+    self.backgroundColor = [UIColor clearColor];
 }
 
 @end
+

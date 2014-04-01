@@ -1,18 +1,18 @@
 //
-//  SProblemContentViewController.m
+//  SProblemBaseViewController.m
 //  SmartITSM
 //
-//  Created by dweng on 14-3-21.
+//  Created by dweng on 14-4-1.
 //  Copyright (c) 2014年 Ambrose. All rights reserved.
 //
 
-#import "SProblemContentViewController.h"
+#import "SProblemBaseViewController.h"
 
-@interface SProblemContentViewController ()
+@interface SProblemBaseViewController ()
 
 @end
 
-@implementation SProblemContentViewController
+@implementation SProblemBaseViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

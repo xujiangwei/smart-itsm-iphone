@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "SIncident.h"
-//#import "SIncidentListener.h"
-//#import "MBProgressHUD.h"
 #import "SIncidentContentTabBarController.h"
 
 @protocol SIncidentListDelegate <NSObject>

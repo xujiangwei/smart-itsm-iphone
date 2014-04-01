@@ -8,7 +8,7 @@
 
 #import "SIncidentViewController.h"
 #import "SIncidentDao.h"
-#import "SIncidentBaseInfoCell.h"
+#import "SProcessCell.h"
 
 #define kCellHeight 60
 
@@ -87,9 +87,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"SIncidentBaseInfoCell";
+    static NSString *cellIdentifier = @"SProcessCell";
     
-    SIncidentBaseInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    SProcessCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(nil == cell)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil];
@@ -123,7 +123,7 @@
 {
     if ([segue.identifier isEqualToString:@"IncidentDetail"])
     {
-        SIncidentBaseInfoCell *selectCell = (SIncidentBaseInfoCell *)sender;
+        SProcessCell *selectCell = (SProcessCell *)sender;
        SIncidentContentTabBarController *contentVC = (SIncidentContentTabBarController *)[segue destinationViewController];
         [contentVC setTitle:[NSString stringWithFormat:@"%@",selectCell.codeLabel.text]];
     }
