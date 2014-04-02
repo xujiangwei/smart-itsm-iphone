@@ -10,4 +10,11 @@
 
 @interface SProcessTemplate : NSObject
 
+@property(nonatomic,strong) NSString  *code;// 工单号
+
+//@property(nonatomic,strong) NSString *state;// 状态
+
+@property(nonatomic,strong) NSString *summary;// 摘要
+
+
 @end

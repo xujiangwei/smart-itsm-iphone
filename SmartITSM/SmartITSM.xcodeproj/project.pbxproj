@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370B3FAE18EBA46100915739 /* SProcessTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B3FAD18EBA46100915739 /* SProcessTemplate.m */; };
 		370B676B18DC33200071CDE4 /* SInspectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676A18DC33200071CDE4 /* SInspectionViewController.m */; };
 		370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676E18DC344F0071CDE4 /* SMessageViewController.m */; };
 		370B677518DC35520071CDE4 /* SProblemContentTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677418DC35520071CDE4 /* SProblemContentTabBarController.m */; };
@@ -164,6 +165,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		370B3FAC18EBA46100915739 /* SProcessTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProcessTemplate.h; sourceTree = "<group>"; };
+		370B3FAD18EBA46100915739 /* SProcessTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProcessTemplate.m; sourceTree = "<group>"; };
 		370B676918DC33200071CDE4 /* SInspectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SInspectionViewController.h; sourceTree = "<group>"; };
 		370B676A18DC33200071CDE4 /* SInspectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SInspectionViewController.m; sourceTree = "<group>"; };
 		370B676D18DC344F0071CDE4 /* SMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageViewController.h; sourceTree = "<group>"; };
@@ -984,6 +987,8 @@
 				37F9968018EACD9200A27B69 /* SRelatedProcessCell.h */,
 				37F9968118EACD9200A27B69 /* SRelatedProcessCell.m */,
 				37F9968318EACDB500A27B69 /* SRelatedProcessCell.xib */,
+				370B3FAC18EBA46100915739 /* SProcessTemplate.h */,
+				370B3FAD18EBA46100915739 /* SProcessTemplate.m */,
 			);
 			name = Own;
 			sourceTree = "<group>";
@@ -1221,6 +1226,7 @@
 				4A085DEE18D81B1B0078CDF1 /* SSigninViewController.m in Sources */,
 				37FA4C9E18DBE196004AB106 /* SIncidentViewController.m in Sources */,
 				3777A0EB18E3CCF000398191 /* RETableViewNumberCell.m in Sources */,
+				370B3FAE18EBA46100915739 /* SProcessTemplate.m in Sources */,
 				374363C618EA49DF005E5312 /* SProblemBaseViewController.m in Sources */,
 				3777A10318E3CCF000398191 /* RETableViewItem.m in Sources */,
 				379357CE18E3C4F20062265C /* CalView.m in Sources */,

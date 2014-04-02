@@ -10,4 +10,8 @@
 
 @implementation SProcessTemplate
 
+@synthesize code;
+
+@synthesize summary;
+
 @end

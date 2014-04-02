@@ -53,15 +53,6 @@
     
 }
 
-- (void)viewDidUnload
-{
-    [self setIncidentListView:nil];
-//    [self setIncidentPopVC:nil];
-    
-    
-    [super viewDidUnload];
-}
-
 - (void)updateIncidentList:(NSMutableArray *)incidentArray
 {
     incidents = incidentArray;
