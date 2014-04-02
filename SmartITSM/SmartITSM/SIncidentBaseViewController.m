@@ -19,6 +19,8 @@
     
     UITapGestureRecognizer *_tapGesture;
     
+    NSString *content;
+    
 //    SIncidentContentListener *_listener;
 //    
 //    SIncidentContentFailureListener *_failureListener;
@@ -55,6 +57,9 @@
     
     [self initData];
     
+    content=@"（测试文本自适应高度）我的电脑是联想天逸F40M，最近出现个问题电脑在用的过程中自动关机就（像断电那种）有两次了，而且一关了机，在开机还开不了，得等一会才能开，我觉的是天气热散热不好的原因。请问这是怎么了，该怎么解决？这是属于正常现象，还是出现故障了呢？（测试文本自适应高度）我的电脑是联想天逸F40M，最近出现个问题电脑在用的过程中自动关机就（像断电那种）有两次了，而且一关了机，在开机还开不了，得等一会才能开，我觉的是天气热散热不好的原因。请问这是怎么了，该怎么解决？这是属于正常现象，还是出现故障了呢？";
+
+    
 
 //    [[MastEngine sharedSingleton] addListener:@"requestIncidentDetail" listener:_listener];
 //    [[MastEngine sharedSingleton] addFailureListener:_failureListener];
@@ -71,9 +76,6 @@
         [self._tableView setBackgroundColor:[UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0]];
     }
 }
-
-
-
 
 
 - (void)didReceiveMemoryWarning
@@ -142,18 +144,11 @@
         [cell.detailTextLabel setText: incident.summary];
     }else if([attribute isEqualToString:@"description"]){
         cell.textLabel.text=@"描述";
-//        [cell.detailTextLabel setText: incident.description];
-        
-        UITextField *textField = [[UITextField alloc] initWithFrame: CGRectMake(80, 0, 320, 44)];
-        [textField setText:@"描述"];
-        textField.clearsOnBeginEditing = NO;//鼠标点上时，不清空
-//        textField.delegate= self;
-        [textField setBorderStyle:UITextBorderStyleRoundedRect];
-        textField.textAlignment=NSTextAlignmentRight;
-        [textField setTextColor:[UIColor colorWithRed:48.0/255.0 green:128.0/255.0 blue:192.0/255.0 alpha:1.0]];
-        textField.returnKeyType = UIReturnKeyDone;
-
-        [cell.contentView addSubview: textField];
+        cell.detailTextLabel.text=content;
+        cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        cell.detailTextLabel.numberOfLines = 0;
+        cell.detailTextLabel.textAlignment=NSTextAlignmentLeft;
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
         
     }else if([attribute isEqualToString:@"occurTime"]){
         cell.textLabel.text=@"发生时间";
@@ -292,7 +287,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 && indexPath.row == 3) {
-        return 44;
+        
+        UIFont *cellFont = [UIFont systemFontOfSize:14];
+        CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
+        CGSize labelSize = [content sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
+        
+        return labelSize.height + 20;
     } else {
         return 44;
     }
