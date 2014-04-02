@@ -32,7 +32,7 @@
 
 - (void)build
 {
-    [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"signin_view_panel.png"]]];
+    //[self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"signin_view_panel.png"]]];
 }
 
 /*
