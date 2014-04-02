@@ -127,18 +127,16 @@
 {
     SDatabase *db = [SDatabase sharedSingleton];
     
-    NSString *password = @"";
-    if (user.rememberable)
-    {
-        password  = user.userPsw ;
-    }
+//    NSString *password = @"";
+//    if (user.rememberable)
+//    {
+//        password  = user.userPsw ;
+//    }
 
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"INSERT INTO tb_user (user_id,user_name, user_psw,rmb_psw,auto_signin,last_signin, is_signin) VALUES ("];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"INSERT INTO tb_user (user_id,user_name, user_psw,last_signin, is_signin) VALUES ("];
     [sql appendFormat:@"%d,",0];
     [sql appendFormat:@"'%@',",user.userName];
-    [sql appendFormat:@"'%@',", password];
-    [sql appendFormat:@"%d,",user.rememberable];
-    [sql appendFormat:@"%d,",user.autoSignin];
+    [sql appendFormat:@"'%@',", user.userPsw];
     [sql appendFormat:@"%d,",1];
     [sql appendFormat:@"%d)",0];
 //    NSLog(@"sql = %@",sql);
@@ -288,41 +286,6 @@
     return userId;
 }
 
-+ (NSString *)getLastSigninIp
-{
-    SDatabase *db = [SDatabase sharedSingleton];
-    FMResultSet *rs;
-    
-    NSString *ip = nil;
-    
-    NSString *sql =[NSString stringWithFormat:@"SELECT ip FROM tb_ip_port WHERE last_signin = 1"];
-    
-    rs = [db executeQuery:sql];
-    
-    while ([rs next])
-    {
-        ip = [rs stringForColumnIndex:0];
-    }
-    return ip;
-}
-
-+ (NSInteger )getLastSigninPort
-{
-    SDatabase *db = [SDatabase sharedSingleton];
-    FMResultSet *rs;
-    
-    NSInteger port = 0;
-    
-    NSString *sql =[NSString stringWithFormat:@"SELECT port FROM tb_ip_port WHERE last_signin = 1"];
-    
-    rs = [db executeQuery:sql];
-    
-    while ([rs next])
-    {
-        port = [rs intForColumnIndex:0];
-    }
-    return port;
-}
 
 + (BOOL)isSignin
 {
@@ -389,6 +352,86 @@
     return name;
 
 }
+
+//查询当前用户的ip
++ (NSString *)getLastSigninIp
+{
+    SDatabase *db = [SDatabase sharedSingleton];
+    FMResultSet *rs;
+    
+    NSString *ip = nil;
+    
+    NSString *sql =[NSString stringWithFormat:@"SELECT ip FROM tb_ip_port WHERE last_signin = 1"];
+    
+    rs = [db executeQuery:sql];
+    
+    while ([rs next])
+    {
+        ip = [rs stringForColumnIndex:0];
+    }
+    return ip;
+}
+
+//查询当前用户的port
++ (NSInteger )getLastSigninPort
+{
+    SDatabase *db = [SDatabase sharedSingleton];
+    FMResultSet *rs;
+    
+    NSInteger port = 0;
+    
+    NSString *sql =[NSString stringWithFormat:@"SELECT port FROM tb_ip_port WHERE last_signin = 1"];
+    
+    rs = [db executeQuery:sql];
+    
+    while ([rs next])
+    {
+        port = [rs intForColumnIndex:0];
+    }
+    return port;
+}
+
+//更新服务器ip, port
++ (BOOL)updateSeverIp:(NSString *)ip andPort:(NSUInteger)port
+{
+    BOOL result;
+    
+    SDatabase *db = [SDatabase sharedSingleton];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"UPDATE tb_ip_port SET last_signin = 0 WHERE last_signin = 1"];
+    if([db executeUpdate:sql])
+    {
+        result = YES;
+    }
+    else
+    {
+        result = NO;
+    }
+    return result;
+
+}
+
+//插入服务器ip,port
++ (BOOL)insertSeverIp:(NSString *)ip andPort:(NSUInteger)port
+{
+    BOOL result;
+    
+    SDatabase *db = [SDatabase sharedSingleton];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"INSERT INTO tb_ip_port (ip, port, last_signin) VALUES (\"%@\",%d,%d)",ip, port, 1];
+   
+    if ([db executeUpdate:sql])
+    {
+        result = YES;
+        NSLog(@"insert ip port successed");
+    }
+    else
+    {
+        result = NO;
+        NSLog(@"insert ip port failed");
+    }
+    return result;
+}
+
+
 
 
 @end

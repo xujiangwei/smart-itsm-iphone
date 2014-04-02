@@ -16,6 +16,7 @@
 #import "Reachability.h"
 #import "MastEngine.h"
 #import "Contacts.h"
+#import "SUser.h"
 
 
 #define kDemoCelletName @"SmartITOM"
@@ -31,6 +32,8 @@
     NSInteger _port;
 
     Reachability* _hostReach;
+    
+    SUser *currentUser;
 }
 
 @end
@@ -75,24 +78,26 @@
                                               otherButtonTitles:@"现在设置", nil];
         [alert show];
     }
-    else
+    else if([self loadLocalUserData])
     {
         // 加载成功
+        // TODO
+        [self sendSigninData:currentUser];
         // 隐藏登录信息界面
         self.signinView.hidden = YES;
-
+        
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeIndeterminate;
         hud.labelText = @"正在登录请稍后";
-
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-
+            
             // 初始化引擎
             if ([self initEngine])
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hide:YES];
-
+                    
                     // TODO 执行登录流程
                     [self didSignin];
                 });
@@ -101,15 +106,21 @@
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hide:YES];
-
+                    
                     self.signinView.hidden = NO;
-
+                    
                     [TSMessage showNotificationWithTitle:@"网络连接异常"
                                                 subtitle:@"请检查您的服务器信息并确认服务器是否已启动"
                                                     type:TSMessageNotificationTypeError];
                 });
             }
         });
+
+    }
+    else
+    {
+        //用户数据加载失败
+        //显示登录界面
     }
 }
 
@@ -209,7 +220,19 @@
 // 登录
 - (IBAction)btnSigninAction:(id)sender
 {
-    // TODO
+   
+    [SUser updateLastLogin];
+    
+    SUser *user = [[SUser alloc]init];
+    [user setUserName:_user];
+    [user setUserPsw:_password];
+    currentUser = user;
+    [SUser insertUser:user];
+    
+    [self sendSigninData:currentUser];
+    //TODO
+    //发送网络请求， 监听器监听到登录成功执行登录方法
+    
     [self didSignin];
 }
 
@@ -217,6 +240,17 @@
 - (IBAction)btnCheckConfigAction:(id)sender
 {
     // TODO
+    if (nil != _address && 0 != [_address length])
+    {
+        if ([SUser updateSeverIp:_address andPort:_port])
+        {
+            [SUser insertSeverIp:_address andPort:_port];
+        }
+    }
+    
+    
+    [self serverConnectCheck];
+    
 }
 
 // 确认
@@ -313,12 +347,62 @@
 
 #pragma mark - Private
 
+//发送登录网络请求
+- (void)sendSigninData:(SUser *)user
+{
+    //TODO
+    //发送网络请求， 监听器监听到登录成功执行登录方法
+}
+
+// 加载本地用户数据
+- (BOOL)loadLocalUserData
+{
+    //查询数据库
+    NSMutableArray *userList = [[NSMutableArray alloc]initWithCapacity:2];
+    
+    userList = [SUser getAllUserNameList];
+    
+    SUser *user = nil;
+    if (0 != [userList count])
+    {
+        //有用户,得到最近一次登录且未注销的用户
+        //未注销的密码不为空
+        user = [SUser getLastUser];
+        currentUser = user;
+        
+        if (nil == user.userPsw || 0 == user.userPsw.length)
+        {
+            //注销的用户 密码为空，
+            return FALSE;
+        }
+    }
+    else
+    {
+        //没有用户
+        return FALSE;
+    }
+    
+    [self updateCurrentUser:user];
+    
+    return TRUE;
+
+}
+
+- (void)updateCurrentUser:(SUser *)user
+{
+    self.tfUser.text = user.userName;
+    _user = user.userName;
+    self.tfPassword.text = user.userPsw;
+    _password = user.userPsw;
+
+}
+
 // 加载本地数据
 - (BOOL)loadLocalData
 {
     // TODO 将数据库内数据读取到界面
-    _address = @"192.168.2.3";
-    _port = 7000;
+    _address = [SUser getLastSigninIp];
+    _port = [SUser getLastSigninPort];
 
     if (nil == _address || [_address length] == 0)
     {
@@ -328,6 +412,7 @@
     self.tfAddress.text = _address;
     self.tfPort.text = [NSString stringWithFormat:@"%d", _port];
     return TRUE;
+    
 }
 
 // 初始化网络引擎
@@ -361,6 +446,27 @@
 //    }];
     
     [self performSegueWithIdentifier:@"Signin" sender:self];
+}
+
+- (void)serverConnectCheck
+{
+    //测试
+//    [TSMessage showNotificationWithTitle:@"conneting..." type:TSMessageNotificationTypeMessage];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"connecting...";
+    [hud setDimBackground:YES];
+    [hud showWhileExecuting:@selector(waitMoment) onTarget:self withObject:nil animated:YES];
+    
+      
+    //TODO
+
+//    [TSMessage showNotificationWithTitle:@"successed" type:TSMessageNotificationTypeMessage];
+}
+
+- (void)waitMoment
+{
+    sleep(1);
 }
 
 #pragma mark - Encrypt MD5

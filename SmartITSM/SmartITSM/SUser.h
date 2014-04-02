@@ -59,10 +59,6 @@
 
 + (long long)getUserId;
 
-+ (NSString *)getLastSigninIp;
-
-+ (NSInteger )getLastSigninPort;
-
 + (BOOL)isSignin;
 
 + (void)updateIsSignin:(long long)userId;
@@ -70,4 +66,16 @@
 + (void)SignOut;
 
 + (NSString *)getUserName:(long long)userId;
+
+//更新服务器ip, port
++ (BOOL)updateSeverIp:(NSString *)ip andPort:(NSUInteger)port;
+
+//插入服务器ip,port
++ (BOOL)insertSeverIp:(NSString *)ip andPort:(NSUInteger)port;
+
+//查询当前用户的ip
++ (NSString *)getLastSigninIp;
+
+//查询当前用户的port
++ (NSInteger )getLastSigninPort;
 @end
