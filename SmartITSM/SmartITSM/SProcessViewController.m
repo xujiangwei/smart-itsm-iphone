@@ -36,22 +36,12 @@
 	relatedProcessListView.dataSource = self;
     relatedProcessListView.delegate = self;
   
-//    NSMutableArray *array=[[NSMutableArray alloc]initWithCapacity:15];
-    NSString *code =@"Change0003";
-    NSString *summary = @"邮件服务器更新";
-    SProcessTemplate *pt = [[SProcessTemplate alloc]init];
-    [pt setCode:code];
-    [pt setSummary:summary];
-    [relatedProcesses addObject:pt];
- 
-
-
+    relatedProcesses=[self generateDemoData];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UITableViewDelegate
@@ -93,19 +83,16 @@
     return 1;
 }
 
-//
-//- (NSMutableArray * )initData
-//{
-//    NSMutableArray *array=[[NSMutableArray alloc]initWithCapacity:15];
-//    NSString *code =@"Change0003";
-//    NSString *summary = @"邮件服务器更新";
-//    SProcessTemplate *pt = [[SProcessTemplate alloc]init];
-//    [pt setCode:code];
-//    [pt setSummary:summary];
-//    [array addObject:pt];
-//    
-//    return array;
-//    
-//}
+- (NSMutableArray *)generateDemoData
+{
+    NSMutableArray *ma=[[NSMutableArray alloc]initWithCapacity:15];
+    SProcessTemplate *pt=[[SProcessTemplate alloc]init];
+    [pt setCode:@"Change00037"];
+    [pt setSummary:@"邮件服务器定于2014年3月12日进行扩容升级"];
+    
+    [ma addObject:pt];
+    return  ma;
+
+}
 
 @end

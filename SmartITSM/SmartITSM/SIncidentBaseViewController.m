@@ -142,7 +142,19 @@
         [cell.detailTextLabel setText: incident.summary];
     }else if([attribute isEqualToString:@"description"]){
         cell.textLabel.text=@"描述";
-        [cell.detailTextLabel setText: incident.description];
+//        [cell.detailTextLabel setText: incident.description];
+        
+        UITextField *textField = [[UITextField alloc] initWithFrame: CGRectMake(80, 0, 320, 44)];
+        [textField setText:@"描述"];
+        textField.clearsOnBeginEditing = NO;//鼠标点上时，不清空
+//        textField.delegate= self;
+        [textField setBorderStyle:UITextBorderStyleRoundedRect];
+        textField.textAlignment=NSTextAlignmentRight;
+        [textField setTextColor:[UIColor colorWithRed:48.0/255.0 green:128.0/255.0 blue:192.0/255.0 alpha:1.0]];
+        textField.returnKeyType = UIReturnKeyDone;
+
+        [cell.contentView addSubview: textField];
+        
     }else if([attribute isEqualToString:@"occurTime"]){
         cell.textLabel.text=@"发生时间";
         [cell.detailTextLabel setText: incident.occurTime];
@@ -161,10 +173,46 @@
     }else if([attribute isEqualToString:@"creator"]){
         cell.textLabel.text=@"创建人";
         [cell.detailTextLabel setText:incident.creator];
-    }else if([attribute isEqualToString:@"contact"]){
+    }else if([attribute isEqualToString:@"contactName"]){
         cell.textLabel.text=@"联系人";
         [cell.detailTextLabel setText: incident.contact];
-    }else if([attribute isEqualToString:@"category"]){
+    }else if([attribute isEqualToString:@"mobile"]){
+        cell.textLabel.text=@"手机";
+         UILabel *mobile = [[UILabel alloc]initWithFrame:CGRectMake(110.0, 0.0, 200.0, 44.0)];
+        [mobile setText:@"13811133726"];
+        [mobile setTextColor:[UIColor colorWithRed:48.0/255.0 green:128.0/255.0 blue:192.0/255.0 alpha:1.0]];
+        UIImage *phoneImg = [UIImage imageNamed:@"phone.png"];
+        UIImageView *phoneView = [[UIImageView alloc] initWithFrame:CGRectMake(240,7, 30, 30)];
+        [phoneView setImage:phoneImg];
+        UIImage *smsImg = [UIImage imageNamed:@"sms.png"];
+        UIImageView *smsView = [[UIImageView alloc] initWithFrame:CGRectMake(280,7, 30, 30)];
+        [smsView setImage:smsImg];
+
+        [cell.contentView addSubview:mobile];
+        [cell.contentView addSubview:phoneView];
+        [cell.contentView addSubview:smsView];
+    }else if([attribute isEqualToString:@"phone"]){
+        cell.textLabel.text=@"座机";
+        UILabel *phone = [[UILabel alloc]initWithFrame:CGRectMake(110.0, 0.0, 200.0, 44.0)];
+        [phone setText:@"010-62662110"];
+        [phone setTextColor:[UIColor colorWithRed:48.0/255.0 green:128.0/255.0 blue:192.0/255.0 alpha:1.0]];
+        UIImage *phoneImg = [UIImage imageNamed:@"phone.png"];
+        UIImageView *phoneView = [[UIImageView alloc] initWithFrame:CGRectMake(270,7, 30, 30)];
+        [phoneView setImage:phoneImg];
+        [cell.contentView addSubview:phone];
+        [cell.contentView addSubview:phoneView];
+    }else if([attribute isEqualToString:@"email"]){
+        cell.textLabel.text=@"邮箱";
+        UILabel *email = [[UILabel alloc]initWithFrame:CGRectMake(70.0, 0.0, 200.0, 44.0)];
+        [email setText:@"duanwenguo@dhcc.com.cn"];
+        [email setTextColor:[UIColor colorWithRed:48.0/255.0 green:128.0/255.0 blue:192.0/255.0 alpha:1.0]];
+        UIImage *emailImg = [UIImage imageNamed:@"email.png"];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(270,7, 30, 30)];
+        [imageView setImage:emailImg];
+        [cell.contentView addSubview:email];
+        [cell.contentView addSubview:imageView];
+    }
+    else if([attribute isEqualToString:@"category"]){
         cell.textLabel.text=@"事故类型";
         [cell.detailTextLabel setText:incident.category];
     }else if([attribute isEqualToString:@"reportWays"]){
@@ -319,19 +367,21 @@
 
 -(void)initData
 {
-    fieldSetArray =[NSArray arrayWithObjects:@"基本信息",@"来源",@"优先级",@"影响配置项", nil];
-    NSArray  *basicInfo=[[NSArray alloc]initWithObjects:@"code",@"state",@"summary",@"description",@"creator",@"contact",@"category",@"occurTime", nil];
+    fieldSetArray =[NSArray arrayWithObjects:@"基本信息",@"联系人",@"优先级",@"报告源",@"影响配置项", nil];
+    NSArray  *basicInfo=[[NSArray alloc]initWithObjects:@"code",@"state",@"summary",@"description",@"creator",@"category",@"occurTime", nil];
     NSArray  *source   =[[NSArray alloc] initWithObjects:@"applicant",@"reportWays",@"influencer", nil];
     NSArray  *priority =[[NSArray alloc] initWithObjects:@"impact",@"urgent",@"propoity", @"isMajor",nil];
     NSArray  *cis  =[[NSArray alloc] initWithObjects:@"cis",nil];
+    NSArray  *contact= [[NSArray alloc]initWithObjects:@"contactName",@"mobile" ,@"phone",@"email",nil];
 //    NSArray  *relatedTickets  =[[NSArray alloc] initWithObjects:@"tickets",nil];
 //    NSArray  *attachments  =[[NSArray alloc] initWithObjects:@"attachments",nil];
 //    NSArray  *logs  =[[NSArray alloc] initWithObjects:@"logs",nil];
     
     attributeDic=[[NSMutableDictionary alloc] initWithObjectsAndKeys:basicInfo,[fieldSetArray objectAtIndex:0],
-                  source   ,[fieldSetArray objectAtIndex:1],
+                  contact   ,[fieldSetArray objectAtIndex:1],
                   priority ,[fieldSetArray objectAtIndex:2],
-                  cis    ,[fieldSetArray objectAtIndex:3],
+                  source,[fieldSetArray objectAtIndex:3],
+                  cis    ,[fieldSetArray objectAtIndex:4],
 //                  relatedTickets ,[fieldSetArray objectAtIndex:4],
 //                  attachments,[fieldSetArray objectAtIndex:5],
 //                  logs ,[fieldSetArray objectAtIndex:6],
