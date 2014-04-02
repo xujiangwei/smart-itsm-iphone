@@ -120,7 +120,6 @@
 		4417CF7C18AC74C700E6E09F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4417CF7A18AC74C700E6E09F /* InfoPlist.strings */; };
 		4417CF7E18AC74C700E6E09F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4417CF7D18AC74C700E6E09F /* main.m */; };
 		4417CF8218AC74C700E6E09F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4417CF8118AC74C700E6E09F /* AppDelegate.m */; };
-		4417CF8518AC74C700E6E09F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4417CF8318AC74C700E6E09F /* Main.storyboard */; };
 		4417CF8A18AC74C700E6E09F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4417CF8918AC74C700E6E09F /* Images.xcassets */; };
 		4417CF9118AC74C700E6E09F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4417CF9018AC74C700E6E09F /* XCTest.framework */; };
 		4417CF9218AC74C700E6E09F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4417CF7118AC74C700E6E09F /* Foundation.framework */; };
@@ -152,6 +151,7 @@
 		4AB79DA918DEEC8200ECEC27 /* SAlarmContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB79DA818DEEC8200ECEC27 /* SAlarmContentViewController.m */; };
 		4AB79DAC18DEEF6700ECEC27 /* SAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB79DAB18DEEF6700ECEC27 /* SAlarmViewController.m */; };
 		4AC37C9A18E13792001A82C5 /* SResourceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37C9918E13792001A82C5 /* SResourceListViewController.m */; };
+		4AE7234418EC17E500CFCB1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE7234218EC17E400CFCB1F /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -388,7 +388,6 @@
 		4417CF7F18AC74C700E6E09F /* SmartITSM-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartITSM-Prefix.pch"; sourceTree = "<group>"; };
 		4417CF8018AC74C700E6E09F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4417CF8118AC74C700E6E09F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4417CF8418AC74C700E6E09F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4417CF8918AC74C700E6E09F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4417CF8F18AC74C700E6E09F /* SmartITSMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartITSMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4417CF9018AC74C700E6E09F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -445,6 +444,7 @@
 		4AB79DAB18DEEF6700ECEC27 /* SAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmViewController.m; sourceTree = "<group>"; };
 		4AC37C9818E13792001A82C5 /* SResourceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResourceListViewController.h; sourceTree = "<group>"; };
 		4AC37C9918E13792001A82C5 /* SResourceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResourceListViewController.m; sourceTree = "<group>"; };
+		4AE7234318EC17E400CFCB1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -879,7 +879,7 @@
 				4A92F11018ACAEBE00EB594B /* RootViewController.m */,
 				4417CF8018AC74C700E6E09F /* AppDelegate.h */,
 				4417CF8118AC74C700E6E09F /* AppDelegate.m */,
-				4417CF8318AC74C700E6E09F /* Main.storyboard */,
+				4AE7234218EC17E400CFCB1F /* Main.storyboard */,
 				4417CF8918AC74C700E6E09F /* Images.xcassets */,
 				4417CF7818AC74C700E6E09F /* Supporting Files */,
 			);
@@ -1117,9 +1117,9 @@
 				37948F7118DFFAC100A5BBDA /* SmartITSM.db in Resources */,
 				4417CF8A18AC74C700E6E09F /* Images.xcassets in Resources */,
 				4442D69018E2A60C00FEC872 /* Localizable.strings in Resources */,
+				4AE7234418EC17E500CFCB1F /* Main.storyboard in Resources */,
 				37F9968418EACDB500A27B69 /* SRelatedProcessCell.xib in Resources */,
 				4417CF7C18AC74C700E6E09F /* InfoPlist.strings in Resources */,
-				4417CF8518AC74C700E6E09F /* Main.storyboard in Resources */,
 				3777A10418E3CCF000398191 /* RETableViewManager.bundle in Resources */,
 				374363D118EA84EF005E5312 /* SProcessCell.xib in Resources */,
 			);
@@ -1297,14 +1297,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		4417CF8318AC74C700E6E09F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4417CF8418AC74C700E6E09F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4417CF9918AC74C700E6E09F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1320,6 +1312,14 @@
 				4442D69318E2A66600FEC872 /* en */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4AE7234218EC17E400CFCB1F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4AE7234318EC17E400CFCB1F /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
