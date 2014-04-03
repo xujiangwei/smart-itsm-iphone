@@ -143,7 +143,7 @@
 		4A44F44618ECF03E00F8D886 /* TSMessage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44418ECF03E00F8D886 /* TSMessage.bundle */; };
 		4A44F44718ECF03E00F8D886 /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44518ECF03E00F8D886 /* TSMessagesDefaultDesign.json */; };
 		4A44F44918ECF05C00F8D886 /* Calendar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44818ECF05C00F8D886 /* Calendar.bundle */; };
-		4A44F44D18ECFAFA00F8D886 /* SmartITOM.db in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44C18ECFAFA00F8D886 /* SmartITOM.db */; };
+		4A44F44D18ECFAFA00F8D886 /* SmartITSM.db in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44C18ECFAFA00F8D886 /* SmartITSM.db */; };
 		4A6ACFB918B361DE00DBDD11 /* libnucleus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4485DC5A18ACC81F00D17061 /* libnucleus.a */; };
 		4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F218AC958F00EB594B /* SOwnViewController.m */; };
 		4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F518AC95B000EB594B /* SDiscoveryViewController.m */; };
@@ -431,7 +431,7 @@
 		4A44F44418ECF03E00F8D886 /* TSMessage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TSMessage.bundle; path = SmartITSM/TSMessage.bundle; sourceTree = SOURCE_ROOT; };
 		4A44F44518ECF03E00F8D886 /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TSMessagesDefaultDesign.json; path = SmartITSM/TSMessagesDefaultDesign.json; sourceTree = SOURCE_ROOT; };
 		4A44F44818ECF05C00F8D886 /* Calendar.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Calendar.bundle; path = SmartITSM/Calendar.bundle; sourceTree = SOURCE_ROOT; };
-		4A44F44C18ECFAFA00F8D886 /* SmartITOM.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartITOM.db; sourceTree = "<group>"; };
+		4A44F44C18ECFAFA00F8D886 /* SmartITSM.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartITSM.db; sourceTree = "<group>"; };
 		4A92F0F118AC958F00EB594B /* SOwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOwnViewController.h; sourceTree = "<group>"; };
 		4A92F0F218AC958F00EB594B /* SOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOwnViewController.m; sourceTree = "<group>"; };
 		4A92F0F418AC95B000EB594B /* SDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiscoveryViewController.h; sourceTree = "<group>"; };
@@ -778,7 +778,7 @@
 		37948F6F18DFF8EB00A5BBDA /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				4A44F44C18ECFAFA00F8D886 /* SmartITOM.db */,
+				4A44F44C18ECFAFA00F8D886 /* SmartITSM.db */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1130,7 +1130,7 @@
 				4A44F44618ECF03E00F8D886 /* TSMessage.bundle in Resources */,
 				4AE7234418EC17E500CFCB1F /* Main.storyboard in Resources */,
 				37F9968418EACDB500A27B69 /* SRelatedProcessCell.xib in Resources */,
-				4A44F44D18ECFAFA00F8D886 /* SmartITOM.db in Resources */,
+				4A44F44D18ECFAFA00F8D886 /* SmartITSM.db in Resources */,
 				4417CF7C18AC74C700E6E09F /* InfoPlist.strings in Resources */,
 				3777A10418E3CCF000398191 /* RETableViewManager.bundle in Resources */,
 				374363D118EA84EF005E5312 /* SProcessCell.xib in Resources */,
