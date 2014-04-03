@@ -451,22 +451,11 @@
 - (void)serverConnectCheck
 {
     //测试
-//    [TSMessage showNotificationWithTitle:@"conneting..." type:TSMessageNotificationTypeMessage];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"connecting...";
-    [hud setDimBackground:YES];
-    [hud showWhileExecuting:@selector(waitMoment) onTarget:self withObject:nil animated:YES];
-    
-      
+    [TSMessage showNotificationWithTitle:@"conneting..." type:TSMessageNotificationTypeMessage];
+
     //TODO
 
-//    [TSMessage showNotificationWithTitle:@"successed" type:TSMessageNotificationTypeMessage];
-}
-
-- (void)waitMoment
-{
-    sleep(1);
+    [TSMessage showNotificationWithTitle:@"successed" type:TSMessageNotificationTypeSuccess];
 }
 
 #pragma mark - Encrypt MD5

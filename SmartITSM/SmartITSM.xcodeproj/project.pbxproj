@@ -100,7 +100,6 @@
 		37948F4D18DFD5CA00A5BBDA /* SProblemDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F4618DFD5CA00A5BBDA /* SProblemDao.m */; };
 		37948F4E18DFD5CA00A5BBDA /* SIncidentDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F4818DFD5CA00A5BBDA /* SIncidentDao.m */; };
 		37948F5118DFD6E300A5BBDA /* SUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37948F5018DFD6E300A5BBDA /* SUser.m */; };
-		37948F7118DFFAC100A5BBDA /* SmartITSM.db in Resources */ = {isa = PBXBuildFile; fileRef = 37948F7018DFFAC100A5BBDA /* SmartITSM.db */; };
 		37E289A818E27712004E8A4A /* SProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E289A718E27712004E8A4A /* SProcessViewController.m */; };
 		37E289AB18E27728004E8A4A /* SLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E289AA18E27728004E8A4A /* SLogViewController.m */; };
 		37E289AE18E27754004E8A4A /* SAttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E289AD18E27754004E8A4A /* SAttachmentViewController.m */; };
@@ -141,6 +140,9 @@
 		4A085DF118D829E10078CDF1 /* SSigninView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DF018D829E10078CDF1 /* SSigninView.m */; };
 		4A085DF418D829FB0078CDF1 /* SConfigServerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DF318D829FB0078CDF1 /* SConfigServerView.m */; };
 		4A085DF918D8564E0078CDF1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DF818D8564E0078CDF1 /* Reachability.m */; };
+		4A44F44618ECF03E00F8D886 /* TSMessage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44418ECF03E00F8D886 /* TSMessage.bundle */; };
+		4A44F44718ECF03E00F8D886 /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44518ECF03E00F8D886 /* TSMessagesDefaultDesign.json */; };
+		4A44F44918ECF05C00F8D886 /* Calendar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44818ECF05C00F8D886 /* Calendar.bundle */; };
 		4A6ACFB918B361DE00DBDD11 /* libnucleus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4485DC5A18ACC81F00D17061 /* libnucleus.a */; };
 		4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F218AC958F00EB594B /* SOwnViewController.m */; };
 		4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F518AC95B000EB594B /* SDiscoveryViewController.m */; };
@@ -353,7 +355,6 @@
 		37948F4818DFD5CA00A5BBDA /* SIncidentDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentDao.m; sourceTree = "<group>"; };
 		37948F4F18DFD6E300A5BBDA /* SUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUser.h; sourceTree = "<group>"; };
 		37948F5018DFD6E300A5BBDA /* SUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUser.m; sourceTree = "<group>"; };
-		37948F7018DFFAC100A5BBDA /* SmartITSM.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartITSM.db; sourceTree = "<group>"; };
 		37E289A618E27712004E8A4A /* SProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProcessViewController.h; sourceTree = "<group>"; };
 		37E289A718E27712004E8A4A /* SProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProcessViewController.m; sourceTree = "<group>"; };
 		37E289A918E27728004E8A4A /* SLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLogViewController.h; sourceTree = "<group>"; };
@@ -426,6 +427,9 @@
 		4A085DF318D829FB0078CDF1 /* SConfigServerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SConfigServerView.m; sourceTree = "<group>"; };
 		4A085DF718D8564E0078CDF1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4A085DF818D8564E0078CDF1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4A44F44418ECF03E00F8D886 /* TSMessage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TSMessage.bundle; path = SmartITSM/TSMessage.bundle; sourceTree = SOURCE_ROOT; };
+		4A44F44518ECF03E00F8D886 /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TSMessagesDefaultDesign.json; path = SmartITSM/TSMessagesDefaultDesign.json; sourceTree = SOURCE_ROOT; };
+		4A44F44818ECF05C00F8D886 /* Calendar.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Calendar.bundle; path = SmartITSM/Calendar.bundle; sourceTree = SOURCE_ROOT; };
 		4A92F0F118AC958F00EB594B /* SOwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOwnViewController.h; sourceTree = "<group>"; };
 		4A92F0F218AC958F00EB594B /* SOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOwnViewController.m; sourceTree = "<group>"; };
 		4A92F0F418AC95B000EB594B /* SDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiscoveryViewController.h; sourceTree = "<group>"; };
@@ -658,6 +662,7 @@
 		3793578A18E3C4F20062265C /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				4A44F44818ECF05C00F8D886 /* Calendar.bundle */,
 				3793578B18E3C4F20062265C /* Cal.h */,
 				3793578C18E3C4F20062265C /* CalDataSource.h */,
 				3793578D18E3C4F20062265C /* CalDataSource.m */,
@@ -733,6 +738,8 @@
 		379357C018E3C4F20062265C /* TSMessage */ = {
 			isa = PBXGroup;
 			children = (
+				4A44F44418ECF03E00F8D886 /* TSMessage.bundle */,
+				4A44F44518ECF03E00F8D886 /* TSMessagesDefaultDesign.json */,
 				379357C118E3C4F20062265C /* HexColor.h */,
 				379357C218E3C4F20062265C /* HexColor.m */,
 				379357C318E3C4F20062265C /* TSBlurView.h */,
@@ -769,7 +776,6 @@
 		37948F6F18DFF8EB00A5BBDA /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				37948F7018DFFAC100A5BBDA /* SmartITSM.db */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1114,9 +1120,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37948F7118DFFAC100A5BBDA /* SmartITSM.db in Resources */,
+				4A44F44918ECF05C00F8D886 /* Calendar.bundle in Resources */,
 				4417CF8A18AC74C700E6E09F /* Images.xcassets in Resources */,
+				4A44F44718ECF03E00F8D886 /* TSMessagesDefaultDesign.json in Resources */,
 				4442D69018E2A60C00FEC872 /* Localizable.strings in Resources */,
+				4A44F44618ECF03E00F8D886 /* TSMessage.bundle in Resources */,
 				4AE7234418EC17E500CFCB1F /* Main.storyboard in Resources */,
 				37F9968418EACDB500A27B69 /* SRelatedProcessCell.xib in Resources */,
 				4417CF7C18AC74C700E6E09F /* InfoPlist.strings in Resources */,
