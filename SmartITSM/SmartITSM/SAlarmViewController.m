@@ -7,6 +7,8 @@
 //
 
 #import "SAlarmViewController.h"
+#import "SAlarmListViewController.h"
+#import "SAlarmViewCell.h"
 
 @interface SAlarmViewController ()
 
@@ -14,11 +16,29 @@
 
 @implementation SAlarmViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style {
+    
+    if ((self = [super initWithStyle:style])) {
+        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警", nil];
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警", nil];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警", nil];
     }
     return self;
 }
@@ -26,6 +46,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    [self.tableView registerClass:[SAlarmViewCell class] forCellReuseIdentifier:@"SAlarmViewCell"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -46,23 +68,33 @@
 {
 
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-    return 0;
+    return [self.alarmLevelList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+//    static NSString *CellIdentifier = @"SAlarmViewCell";
+//    
+//    SAlarmViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+//    if (nil == cell)
+//    {
+//        NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:CellIdentifier owner:self options:nil];
+//        cell = [nibs objectAtIndex:0];
+//        
+//    }
+//
+//    [cell.lbName setText:[self.alarmLevelList objectAtIndex:indexPath.row]];
+    static NSString *CellIdentifier = @"alarmLevelCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+    [cell.textLabel setText:[self.alarmLevelList objectAtIndex:indexPath.row]];
     return cell;
 }
 
@@ -105,7 +137,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -113,8 +145,13 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UITableViewCell *cell = (UITableViewCell *)sender;
+    
+    SAlarmListViewController *viewController = (SAlarmListViewController *)[segue destinationViewController];
+    viewController.title = [cell.textLabel text];
+    
 }
 
- */
+
 
 @end

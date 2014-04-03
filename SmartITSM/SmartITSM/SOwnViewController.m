@@ -125,7 +125,7 @@
         [self performSegueWithIdentifier:@"MessageList" sender:cell];
     }
     else if(section==2 && row==0){
-        [self performSegueWithIdentifier:@"AlarmList" sender:cell];
+        [self performSegueWithIdentifier:@"AlarmLevelList" sender:cell];
     }
 }
 
@@ -157,7 +157,7 @@
         SInspectionViewController *detailVC = (SInspectionViewController *)[segue destinationViewController];
         [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
     }
-    else if ([segue.identifier isEqualToString:@"AlarmList"])
+    else if ([segue.identifier isEqualToString:@"AlarmLevelList"])
     {
         UITableViewCell *selectCell = (UITableViewCell *)sender;
         SAlarmViewController *detailVC = (SAlarmViewController *)[segue destinationViewController];

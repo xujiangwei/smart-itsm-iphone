@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
@@ -230,36 +230,68 @@
             <point key="canvasLocation" x="2744" y="-396"/>
         </scene>
         <!--Alarm View Controller-->
-        <scene sceneID="l9l-y3-6RP">
+        <scene sceneID="JaJ-to-dmu">
             <objects>
-                <tableViewController id="S5J-YJ-1MW" customClass="SAlarmViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pGX-ft-No8">
+                <tableViewController id="qiq-Cs-DWb" customClass="SAlarmViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Djc-mS-kZ9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="tau-Se-N8a">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alarmLevelCell" id="z8s-be-YKy">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tau-Se-N8a" id="wPF-pD-Uq9">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z8s-be-YKy" id="963-jj-SXK">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="h2T-n1-dxk" kind="push" id="Q8p-4Q-Jcy"/>
+                                    <segue destination="PUc-TA-txl" kind="push" identifier="AlarmList" id="0cK-7g-lXg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="S5J-YJ-1MW" id="Dhr-Vp-XJe"/>
-                            <outlet property="delegate" destination="S5J-YJ-1MW" id="hK5-l2-pmD"/>
+                            <outlet property="dataSource" destination="qiq-Cs-DWb" id="O0m-Dh-FJX"/>
+                            <outlet property="delegate" destination="qiq-Cs-DWb" id="25v-cW-k9d"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ize-gJ-k7F"/>
+                    <navigationItem key="navigationItem" id="CFO-rg-pVG"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Atx-Nf-OKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iTQ-rt-xIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1976" y="494"/>
+            <point key="canvasLocation" x="1884" y="490"/>
+        </scene>
+        <!--Alarm List View Controller-->
+        <scene sceneID="RSK-In-fni">
+            <objects>
+                <tableViewController id="PUc-TA-txl" customClass="SAlarmListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="DWy-hi-eWK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alarmListCell" id="3yC-fz-wHo">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3yC-fz-wHo" id="IHY-bz-2ZJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="h2T-n1-dxk" kind="push" identifier="AlarmContent" id="7Ho-He-FT6"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PUc-TA-txl" id="caQ-EG-c6I"/>
+                            <outlet property="delegate" destination="PUc-TA-txl" id="CCT-JS-DQz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="EWn-2l-2Av"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SJu-YA-U6N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2407" y="490"/>
         </scene>
         <!--Alarm Content View Controller-->
         <scene sceneID="SWo-Gh-sb4">
@@ -278,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTK-fL-ti5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2724" y="494"/>
+            <point key="canvasLocation" x="2935" y="490"/>
         </scene>
         <!--Own View Controller - 我的-->
         <scene sceneID="cCK-aN-tVX">
@@ -306,8 +338,8 @@
                         <segue destination="o6e-bV-MAT" kind="push" identifier="ProblemList" id="Gbl-Xg-nrU"/>
                         <segue destination="TkX-tZ-wi8" kind="push" identifier="ChangeList" id="DNm-JG-tPg"/>
                         <segue destination="kcu-e6-waB" kind="push" identifier="InspectionList" id="uGp-J6-deL"/>
-                        <segue destination="S5J-YJ-1MW" kind="push" identifier="AlarmList" id="SeH-jB-tgp"/>
                         <segue destination="Hgg-2j-q3A" kind="push" identifier="MessageList" id="cnp-Ag-T6c"/>
+                        <segue destination="qiq-Cs-DWb" kind="push" identifier="AlarmLevelList" id="dDf-Im-8Gm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uHc-JA-deY" userLabel="First Responder" sceneMemberID="firstResponder"/>

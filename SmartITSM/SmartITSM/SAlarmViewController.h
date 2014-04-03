@@ -10,4 +10,6 @@
 
 @interface SAlarmViewController : UITableViewController
 
+@property (nonatomic, strong) NSArray *alarmLevelList;
+
 @end
