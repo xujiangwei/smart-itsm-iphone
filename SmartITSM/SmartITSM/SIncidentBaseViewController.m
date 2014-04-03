@@ -131,6 +131,7 @@
     cell.textLabel.font=[UIFont systemFontOfSize:14];
     [cell.textLabel setTextColor:[UIColor colorWithRed:45.0/255.0 green:45.0/255.0 blue:45.0/255.0 alpha:1.0]];
     [cell.detailTextLabel setTextColor:[UIColor colorWithRed:48.0/255.0 green:128.0/255.0 blue:192.0/255.0 alpha:1.0]];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
     NSString * attribute=[attributes objectAtIndex:index];
     if([attribute isEqualToString:@"code"]){

@@ -12,7 +12,6 @@
 		370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676E18DC344F0071CDE4 /* SMessageViewController.m */; };
 		370B677518DC35520071CDE4 /* SProblemContentTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677418DC35520071CDE4 /* SProblemContentTabBarController.m */; };
 		370B677818DC35660071CDE4 /* SInspectionContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677718DC35660071CDE4 /* SInspectionContentViewController.m */; };
-		370B677B18DC35820071CDE4 /* SChangeContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677A18DC35820071CDE4 /* SChangeContentViewController.m */; };
 		370B677E18DC364E0071CDE4 /* SIncidentBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B677D18DC364E0071CDE4 /* SIncidentBaseViewController.m */; };
 		371F2E8418EABF7500CC06BB /* UIBarButtonItem+WEPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 371F2E7C18EABF7500CC06BB /* UIBarButtonItem+WEPopover.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		371F2E8518EABF7500CC06BB /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 371F2E7E18EABF7500CC06BB /* WEPopoverContainerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -178,8 +177,6 @@
 		370B677418DC35520071CDE4 /* SProblemContentTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProblemContentTabBarController.m; sourceTree = "<group>"; };
 		370B677618DC35660071CDE4 /* SInspectionContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SInspectionContentViewController.h; sourceTree = "<group>"; };
 		370B677718DC35660071CDE4 /* SInspectionContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SInspectionContentViewController.m; sourceTree = "<group>"; };
-		370B677918DC35820071CDE4 /* SChangeContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SChangeContentViewController.h; sourceTree = "<group>"; };
-		370B677A18DC35820071CDE4 /* SChangeContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SChangeContentViewController.m; sourceTree = "<group>"; };
 		370B677C18DC364E0071CDE4 /* SIncidentBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentBaseViewController.h; sourceTree = "<group>"; };
 		370B677D18DC364E0071CDE4 /* SIncidentBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentBaseViewController.m; sourceTree = "<group>"; };
 		371F2E7B18EABF7500CC06BB /* UIBarButtonItem+WEPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+WEPopover.h"; sourceTree = "<group>"; };
@@ -822,8 +819,6 @@
 			children = (
 				37FA4C9918DBE16F004AB106 /* SChangeViewController.h */,
 				37FA4C9A18DBE16F004AB106 /* SChangeViewController.m */,
-				370B677918DC35820071CDE4 /* SChangeContentViewController.h */,
-				370B677A18DC35820071CDE4 /* SChangeContentViewController.m */,
 				374363C718EA5EF0005E5312 /* SChangeBaseViewController.h */,
 				374363C818EA5EF0005E5312 /* SChangeBaseViewController.m */,
 			);
@@ -1260,7 +1255,6 @@
 				379357E218E3C4F20062265C /* TSMessageView.m in Sources */,
 				3777A0F118E3CCF000398191 /* RECreditCardItem.m in Sources */,
 				37948F4B18DFD5CA00A5BBDA /* SInspectionDao.m in Sources */,
-				370B677B18DC35820071CDE4 /* SChangeContentViewController.m in Sources */,
 				37948F4C18DFD5CA00A5BBDA /* SProblem.m in Sources */,
 				37E289B418E27A54004E8A4A /* SIncidentContentTabBarController.m in Sources */,
 				37948F5118DFD6E300A5BBDA /* SUser.m in Sources */,

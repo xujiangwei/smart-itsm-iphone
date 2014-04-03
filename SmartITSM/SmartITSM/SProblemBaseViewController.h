@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SProblemBaseViewController : UIViewController
+@interface SProblemBaseViewController : UITableViewController
+{
+    NSMutableArray  * problems;
+}
+
+@property (nonatomic, strong) SProblem *problem;
 
 @end
