@@ -57,15 +57,7 @@
     
     [self initData];
     
-    content=@"（测试文本自适应高度）我的电脑是联想天逸F40M，最近出现个问题电脑在用的过程中自动关机就（像断电那种）有两次了，而且一关了机，在开机还开不了，得等一会才能开，我觉的是天气热散热不好的原因。请问这是怎么了，该怎么解决？这是属于正常现象，还是出现故障了呢？（测试文本自适应高度）我的电脑是联想天逸F40M，最近出现个问题电脑在用的过程中自动关机就（像断电那种）有两次了，而且一关了机，在开机还开不了，得等一会才能开，我觉的是天气热散热不好的原因。请问这是怎么了，该怎么解决？这是属于正常现象，还是出现故障了呢？";
-
-    
-
-//    [[MastEngine sharedSingleton] addListener:@"requestIncidentDetail" listener:_listener];
-//    [[MastEngine sharedSingleton] addFailureListener:_failureListener];
-   
-//    [[MastEngine sharedSingleton] addListener:@"requestIncidentRelatedCis" listener:_listener];
-//    [[MastEngine sharedSingleton] addFailureListener:_failureListener];
+    content=@"（测试文本自适应高度）我的电脑是联想天逸F40M，最近出现个问题电脑在用的过程中自动关机就（像断电那种）有两次了，而且一关了机，在开机还开不了，得等一会才能开，我觉的是天气热散热不好的原因。请问这是怎么了，该怎么解决？这是属于正常现象，还是出现故障了呢？";
     
   
     if (nil == self._tableView)
@@ -171,7 +163,7 @@
         [cell.detailTextLabel setText:incident.creator];
     }else if([attribute isEqualToString:@"contactName"]){
         cell.textLabel.text=@"联系人";
-        [cell.detailTextLabel setText: incident.contact];
+        [cell.detailTextLabel setText: @"段文国"];
     }else if([attribute isEqualToString:@"mobile"]){
         cell.textLabel.text=@"手机";
          UILabel *mobile = [[UILabel alloc]initWithFrame:CGRectMake(110.0, 0.0, 200.0, 44.0)];
@@ -264,7 +256,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-//    Theme *theme = [ThemeManager sharedSingleton].theme;
+
     UILabel *label=[[UILabel alloc] init];
     label.frame=CGRectMake(10, 0, 300, 30);
     label.backgroundColor=[UIColor clearColor];

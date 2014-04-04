@@ -7,18 +7,20 @@
 //
 
 #import "SProblemBaseViewController.h"
-#define originalHeight 44.0f
-#define isOpen @"120.0f"
 
 @interface SProblemBaseViewController ()
-
+{
+ 
+    NSArray  *fieldSetArray;
+    
+    NSDictionary *attributeDic;
+}
 @end
 
 @implementation SProblemBaseViewController
-{
-    NSMutableDictionary *dicClicked;
-    NSInteger count;
-}
+
+@synthesize  problem;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,82 +34,133 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    count = 0;
-    dicClicked = [NSMutableDictionary dictionaryWithCapacity:3];
+    
+     [self initData];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    return 5;
+    return [attributeDic count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    NSString * index=[fieldSetArray objectAtIndex:section];
+    return  [[attributeDic objectForKey:index] count];
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *contentIndentifer = @"Container";
-    if (indexPath.row == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:contentIndentifer];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:contentIndentifer];
-        }
-        NSString *statisticsContent = @"岁月流芳，花开几度，走在岁月里，醉在流香里，总在时光里辗转徘徊。花开几许，落花几度，岁月寒香，飘进谁的诗行，一抹幽香，掺入几许愁伤，流年似花，春来秋往，睁开迷离的双眼，回首张望，随风的尘烟荡漾着迷忙，昨日的光阴已逝去，留下无尽的回忆让人留恋与追忆";
-        cell.textLabel.font = [UIFont systemFontOfSize:12.0f];
-        cell.textLabel.text = statisticsContent;
-        cell.textLabel.textColor = [UIColor brownColor]
-        ;
-        cell.textLabel.opaque = NO; // 选中Opaque表示视图后面的任何内容都不应该绘制
-        cell.textLabel.numberOfLines = 0;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    }
-    static NSString *CellIdentifier = @"Cell";
+    NSUInteger section=indexPath.section;
+    NSInteger index = indexPath.row;
+    
+    
+     NSString *CellIdentifier = [NSString stringWithFormat:@"Cell%d%d", section, index];
+    
+    NSString *headTitle=[fieldSetArray objectAtIndex:section];
+    NSArray *attributes=[attributeDic objectForKey:headTitle];
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    
+    if(nil==cell){
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1  reuseIdentifier:CellIdentifier];
     }
-    //    cell.imageView.image = [UIImage imageNamed:@"email.png"];
-    //    cell.textLabel.text = [NSString stringWithFormat:@"%d",count];
-    count++;
+    [cell setBackgroundColor:[UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]];
+    cell.textLabel.font=[UIFont systemFontOfSize:14];
+    [cell.textLabel setTextColor:[UIColor colorWithRed:45.0/255.0 green:45.0/255.0 blue:45.0/255.0 alpha:1.0]];
+    [cell.detailTextLabel setTextColor:[UIColor colorWithRed:48.0/255.0 green:128.0/255.0 blue:192.0/255.0 alpha:1.0]];
+    
+    NSString * attribute=[attributes objectAtIndex:index];
+    if([attribute isEqualToString:@"code"]){
+        cell.textLabel.text=@"工单号";
+        [cell.detailTextLabel setText:problem.code];
+    }else if([attribute isEqualToString:@"state"]){
+        cell.textLabel.text=@"状态";
+        [cell.detailTextLabel setText:problem.state];
+    }else if([attribute isEqualToString:@"problemSource"]){
+        cell.textLabel.text=@"问题来源";
+        [cell.detailTextLabel setText: problem.problemSource];
+    }else if([attribute isEqualToString:@"summary"]){
+        cell.textLabel.text=@"摘要";
+        [cell.detailTextLabel setText: problem.summary];
+    }
+    else if([attribute isEqualToString:@"description"]){
+        cell.textLabel.text=@"描述";
+        cell.detailTextLabel.numberOfLines=0;
+        cell.detailTextLabel.textAlignment=NSTextAlignmentLeft;
+        [cell.detailTextLabel setText: problem.description];
+    }
+    else if([attribute isEqualToString:@"occurTime"]){
+        cell.textLabel.text=@"发现时间";
+        [cell.detailTextLabel setText: problem.occurTime];
+    }else if([attribute isEqualToString:@"findWay"]){
+        cell.textLabel.text=@"发现方式";
+        [cell.detailTextLabel setText: problem.findType];
+    }else if([attribute isEqualToString:@"category"]){
+        cell.textLabel.text=@"问题类型";
+        [cell.detailTextLabel setText:problem.category];
+    }else if([attribute isEqualToString:@"impact"]){
+        cell.textLabel.text=@"影响程度";
+        [cell.detailTextLabel setText: problem.impact];
+    }else if([attribute isEqualToString:@"urgent"]){
+        cell.textLabel.text=@"紧急程度";
+        [cell.detailTextLabel setText:problem.urgent];
+    }else if([attribute isEqualToString:@"propoity"]){
+        cell.textLabel.text=@"优先级";
+        [cell.detailTextLabel setText:problem.serviceLevel];
+    }else if([attribute isEqualToString:@"applicant"]){
+        cell.textLabel.text=@"申请人";
+        [cell.detailTextLabel setText: problem.applicant];
+    }else if([attribute isEqualToString:@"influencer"]){
+        cell.textLabel.text=@"影响人";
+        [cell.detailTextLabel setText: problem.influencer];
+    }else if([attribute isEqualToString:@"cis"]){
+        cell.textLabel.text=@"影响配置项";
+        if([problem.ciSet count]>0){
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        [cell.detailTextLabel setText: [NSString stringWithFormat:@"%d项",[problem.ciSet count]]];
+    }
+    
     return cell;
-}
 
+}
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        UITableViewCell *targetCell = [tableView cellForRowAtIndexPath:indexPath];
-        if (targetCell.frame.size.height == originalHeight){
-            [dicClicked setObject:isOpen forKey:indexPath];
-        }
-        else{
-            [dicClicked removeObjectForKey:indexPath];
-        }
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    NSLog(@"indexPath=%@",indexPath);
-    NSLog(@"dicClicked=%@",dicClicked);
+    
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (indexPath.row == 0) {
-        if ([[dicClicked objectForKey:indexPath] isEqualToString: isOpen])
-            return [[dicClicked objectForKey:indexPath] floatValue];
-        else
-            return originalHeight;
-    }
-    else {
-        return 45.0f;
-    }
+    return 30;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *key = [fieldSetArray objectAtIndex:section];
+    return key;
+}
+
+
+-(void)initData
+{
+    fieldSetArray =[NSArray arrayWithObjects:@"基本信息",@"用户信息",@"配置项信息", nil];
+    NSArray  *basicInfo=[[NSArray alloc]initWithObjects:@"code",@"state",@"problemSource",@"summary",@"description",@"category",@"occurTime",@"findWay",@"impact",@"urgent",@"propoity", nil];
+    NSArray  *userInfo   =[[NSArray alloc] initWithObjects:@"applicant",@"influencer", nil];
+    NSArray  *ciInfo =[[NSArray alloc] initWithObjects:@"cis",nil];
+  
+    
+    attributeDic=[[NSMutableDictionary alloc] initWithObjectsAndKeys:basicInfo,[fieldSetArray objectAtIndex:0],
+                  userInfo   ,[fieldSetArray objectAtIndex:1],
+                  ciInfo ,[fieldSetArray objectAtIndex:2],
+                 Nil];
+}
+
 
 @end

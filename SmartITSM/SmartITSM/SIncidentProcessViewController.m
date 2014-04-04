@@ -69,8 +69,14 @@
     self.manager = [[RETableViewManager alloc] initWithTableView:self.tableView delegate:self];
 
     self.basicSection = [self addBasicSection];
-//    self.acceptSection=[self addAcceptSection];
+    self.acceptSection=[self addAcceptSection];
+    self.assignSection=[self addAssignSection];
     self.solveSection=[self addSolveSection];
+    self.returnSection=[self addReturnSection];
+    self.feedBackSection=[self addFeedBackSection];
+    self.closeSection=[self addCloseSection];
+    self.evaluateSection=[self addEvaluateSection];
+    
      self.buttonSection = [self addButton];
 }
 
@@ -169,6 +175,42 @@
     return acceptSection;
 }
 
+//分派一线或分派二线
+- (RETableViewSection *)addAssignSection
+{
+    __typeof (&*self) __weak weakSelf = self;
+    RETableViewSection *assignSection = [RETableViewSection sectionWithHeaderTitle:@"分派"];
+    [self.manager addSection:assignSection];
+    self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
+    
+    self.assignerItem = [RERadioItem itemWithTitle:@"分派人员" value:nil selectionHandler:^(RERadioItem *item) {
+        [item deselectRowAnimated:YES];
+        //        NSArray *actors =taskActorDic.allKeys;
+        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:nil multipleChoice:NO completionHandler:^{
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+            [item reloadRowWithAnimation:UITableViewRowAnimationNone];
+        }];
+        
+        optionsController.delegate = weakSelf;
+        optionsController.style = assignSection.style;
+        if (weakSelf.tableView.backgroundView == nil) {
+            optionsController.tableView.backgroundColor = weakSelf.tableView.backgroundColor;
+            optionsController.tableView.backgroundView = nil;
+        }
+        [weakSelf.navigationController pushViewController:optionsController animated:YES];
+        
+    }];
+    
+    self.markItem = [RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写备注信息"];
+    self.markItem.cellHeight=132;
+    
+    [assignSection addItem:self.assignerItem];
+    [assignSection addItem:self.markItem];
+    
+    return assignSection;
+}
+
+
 
 //解决（一线解决与二线解决的界面不一致）
 - (RETableViewSection *)addSolveSection
@@ -201,9 +243,7 @@
 {
     RETableViewSection *returnSection = [RETableViewSection sectionWithHeaderTitle:@"退回"];
     [self.manager addSection:returnSection];
-    //    self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
-    
-    self.markItem=[RELongTextItem itemWithTitle:@"退回原因" value:nil placeholder:nil];
+    self.markItem=[RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写退回理由"];
     //    [self.markItem setUserInteractionEnabled:YES];
     self.markItem.cellHeight=132;
     
@@ -220,17 +260,55 @@
     [self.manager addSection:feedBackSection];
     //    self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
     
-    self.isSolveItem = [REBoolItem itemWithTitle:@"是否解决" value:YES switchValueChangeHandler:^(REBoolItem *item) {
+    self.isSolveItem = [REBoolItem itemWithTitle:@"是否解决:" value:YES switchValueChangeHandler:^(REBoolItem *item) {
         
     }];
-    self.markItem = [RELongTextItem itemWithTitle:@"备注" value:nil placeholder:nil];
+    self.markItem = [RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写回访信息"];
     //    [self.markItem setUserInteractionEnabled:YES];
-    self.markItem.cellHeight=132;
+    self.markItem.cellHeight=88;
     
     [feedBackSection addItem:self.isSolveItem];
     [feedBackSection addItem:self.markItem];
     
     return feedBackSection;
+}
+
+
+//关闭
+- (RETableViewSection *)addCloseSection
+{
+    __typeof (&*self) __weak weakSelf = self;
+    RETableViewSection *closeSection = [RETableViewSection sectionWithHeaderTitle:@"关闭"];
+    
+    [self.manager addSection:closeSection];
+    self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
+    
+    
+    self.closeCodeItem = [RERadioItem itemWithTitle:@"关闭代码:" value:nil selectionHandler:^(RERadioItem *item) {
+        [item deselectRowAnimated:YES];
+//        NSArray *closeCodeArray =closeCodeDic.allKeys;
+        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:nil multipleChoice:NO completionHandler:^{
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+            [item reloadRowWithAnimation:UITableViewRowAnimationNone];
+        }];
+        
+        optionsController.delegate = weakSelf;
+        optionsController.style = closeSection.style;
+        if (weakSelf.tableView.backgroundView == nil) {
+            optionsController.tableView.backgroundColor = weakSelf.tableView.backgroundColor;
+            optionsController.tableView.backgroundView = nil;
+        }
+        [weakSelf.navigationController pushViewController:optionsController animated:YES];
+        
+    }];
+    
+    self.markItem=[RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写备注信息"];
+    self.markItem.cellHeight=132;
+    
+    [closeSection addItem:self.closeCodeItem];
+    [closeSection addItem:self.markItem];
+    
+    return closeSection;
 }
 
 
@@ -245,7 +323,7 @@
     self.satisfactionItem = [REBoolItem itemWithTitle:@"用户满意度" value:YES switchValueChangeHandler:^(REBoolItem *item) {
         
     }];
-    self.markItem = [RELongTextItem itemWithTitle:@"评价" value:nil placeholder:nil];
+    self.markItem = [RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写评价信息"];
     //    [self.markItem setUserInteractionEnabled:YES];
     self.markItem.cellHeight=132;
     
@@ -262,7 +340,7 @@
     [self.manager addSection:section];
     
     RETableViewItem *buttonItem = [RETableViewItem itemWithTitle:@"保存" accessoryType:UITableViewCellAccessoryNone selectionHandler:^(RETableViewItem *item) {
-        item.title = @"Pressed!";
+        item.title = @"保存";
         [item reloadRowWithAnimation:UITableViewRowAnimationAutomatic];
     }];
     buttonItem.textAlignment = NSTextAlignmentCenter;
