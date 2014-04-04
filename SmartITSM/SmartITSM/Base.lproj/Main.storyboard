@@ -238,15 +238,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alarmLevelCell" id="z8s-be-YKy">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="dpt-2J-rrg" customClass="SAlarmViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z8s-be-YKy" id="963-jj-SXK">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dpt-2J-rrg" id="Fvt-fG-Byx">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="PUc-TA-txl" kind="push" identifier="AlarmList" id="0cK-7g-lXg"/>
+                                    <segue destination="PUc-TA-txl" kind="push" identifier="AlarmList" id="YwJ-e9-RQK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -264,7 +264,7 @@
         <!--Alarm List View Controller-->
         <scene sceneID="RSK-In-fni">
             <objects>
-                <tableViewController id="PUc-TA-txl" customClass="SAlarmListViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SAlarmListVC" id="PUc-TA-txl" customClass="SAlarmListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="DWy-hi-eWK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
