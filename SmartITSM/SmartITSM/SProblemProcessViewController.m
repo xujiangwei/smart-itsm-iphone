@@ -8,6 +8,7 @@
 
 #import "SProblemProcessViewController.h"
 #import "RETableViewOptionsController.h"
+#import "MultilineTextItem.h"
 
 @interface SProblemProcessViewController ()
 
@@ -27,10 +28,10 @@
 @property (strong, readwrite, nonatomic) RETableViewSection *buttonSection;
 
 
-@property (strong, readwrite, nonatomic) RELongTextItem *descriptionItem;    //症状及描述
+@property (strong, readwrite, nonatomic) RETextItem *descriptionItem;    //症状及描述
 @property (strong, readwrite, nonatomic) RERadioItem  *categoryItem;         //问题类别
-@property (strong, readwrite, nonatomic) RERadioItem *urgentItem;            //紧急程度
-@property (strong, readwrite, nonatomic) RERadioItem *impactItem;            //影响程度
+@property (strong, readwrite, nonatomic) REPickerItem *urgentItem;            //紧急程度
+@property (strong, readwrite, nonatomic) REPickerItem *impactItem;            //影响程度
 
 
 @property (strong, readwrite, nonatomic) RERadioItem  *directorItem;     //责任人
@@ -54,14 +55,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"问题解决";
+    self.title = @"问题处理（demo）";
     self.manager = [[RETableViewManager alloc] initWithTableView:self.tableView delegate:self];
     
     self.basicSection = [self addBasicSection];
-    //    self.acceptSection=[self addAcceptSection];
+    self.acceptSection=[self addAcceptSection];
+    self.rejectSection=[self addRejectSection];
+    self.acceptSection=[self addAcceptSection];
+    self.processSection=[self addProcessSection];
+    self.closeSection=[self addCloseSection];
+    self.reviewSection=[self addReviewSection];
+    
+    
     self.solveSection=[self addSolveSection];
     self.buttonSection = [self addButton];
-
+    
 }
 
 - (RETableViewSection *)addBasicSection
@@ -73,55 +81,60 @@
     [self.manager addSection:basicSection];
     self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
     
-    self.descriptionItem = [RELongTextItem itemWithTitle:@"症状及描述" value:self.problem.description  placeholder:nil];
-    self.descriptionItem.cellHeight=88;
     
-    
-    self.categoryItem = [RERadioItem itemWithTitle:@"类型" value:self.problem.category selectionHandler:^(RERadioItem *item) {
-        }];
-    
-    self.urgentItem = [RERadioItem itemWithTitle:@"紧急程度" value:self.problem.urgent selectionHandler:^(RERadioItem *item) {
-        [item deselectRowAnimated:YES];
+    self.descriptionItem=[RETextItem itemWithTitle:@"症状描述:" value:nil placeholder:@"服务器出现错误,请尽快协助解决！"];
+    self.descriptionItem.cellHeight=44;
+
+    self.categoryItem = [RERadioItem itemWithTitle:@"类型" value:@"Option 4" selectionHandler:^(RERadioItem *item) {
+        [item deselectRowAnimated:YES]; // same as [weakSelf.tableView deselectRowAtIndexPath:item.indexPath animated:YES];
         
-        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:nil multipleChoice:NO completionHandler:^{
+        NSMutableArray *options = [[NSMutableArray alloc] init];
+        for (NSInteger i = 1; i < 40; i++)
+            [options addObject:[NSString stringWithFormat:@"Option %li", (long) i]];
+        
+      
+        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:options multipleChoice:NO completionHandler:^{
             [weakSelf.navigationController popViewControllerAnimated:YES];
-            [item reloadRowWithAnimation:UITableViewRowAnimationNone];
+            
+            [item reloadRowWithAnimation:UITableViewRowAnimationNone]; // same as [weakSelf.tableView reloadRowsAtIndexPaths:@[item.indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }];
         
+    
         optionsController.delegate = weakSelf;
-        optionsController.style = basicSection.style;
+//        optionsController.style = section.style;
         if (weakSelf.tableView.backgroundView == nil) {
             optionsController.tableView.backgroundColor = weakSelf.tableView.backgroundColor;
             optionsController.tableView.backgroundView = nil;
         }
+  
         [weakSelf.navigationController pushViewController:optionsController animated:YES];
-        
     }];
-    self.impactItem = [RERadioItem itemWithTitle:@"影响程度" value:self.problem.impact  selectionHandler:^(RERadioItem *item) {
-        [item deselectRowAnimated:YES];
-        
-        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:nil multipleChoice:NO completionHandler:^{
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-            //            [StackControllerHelper leaveSwap];
-            [item reloadRowWithAnimation:UITableViewRowAnimationNone];
-        }];
-        
-        optionsController.delegate = weakSelf;
-        optionsController.style = basicSection.style;
-        if (weakSelf.tableView.backgroundView == nil) {
-            optionsController.tableView.backgroundColor = weakSelf.tableView.backgroundColor;
-            optionsController.tableView.backgroundView = nil;
-        }
-        [weakSelf.navigationController pushViewController:optionsController animated:YES];
-        
-    }];
+    
+    
+    self.impactItem = [REPickerItem itemWithTitle:@"影响度:" value:@[@"一般"] placeholder:nil options:@[@[@"重大",@"大", @"中",@"一般", @"小",@"很小"]]];
+    
+    self.impactItem.onChange = ^(REPickerItem *item){
+        NSLog(@"Value: %@", item.value);
+    };
+    if (REUIKitIsFlatMode()) {
+        self.impactItem.inlinePicker = YES;
+    }
+    
+    
+    self.urgentItem = [REPickerItem itemWithTitle:@"紧急度:" value:@[@"大"] placeholder:nil options:@[@[@"大", @"中", @"小"]]];
+    self.urgentItem.onChange = ^(REPickerItem *item){
+        NSLog(@"Value: %@", item.value);
+    };
+    if (REUIKitIsFlatMode()) {
+        self.urgentItem.inlinePicker = YES;
+    }
     
     [basicSection addItem:self.descriptionItem];
     [basicSection addItem:self.categoryItem];
     [basicSection addItem:self.urgentItem];
     [basicSection addItem:self.impactItem];
     
-    [basicSection.tableViewManager.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+//    [basicSection.tableViewManager.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     return basicSection;
 }
 
@@ -136,44 +149,57 @@
     [self.manager addSection:assignSection];
     self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
     
-    self.directorItem = [RERadioItem itemWithTitle:@"负责人" value:nil selectionHandler:^(RERadioItem *item) {
+    self.directorItem = [RERadioItem itemWithTitle:@"负责人:" value:@"Option 4" selectionHandler:^(RERadioItem *item) {
+        [item deselectRowAnimated:YES]; // same as [weakSelf.tableView deselectRowAtIndexPath:item.indexPath animated:YES];
         
-        [item deselectRowAnimated:YES];
+        NSMutableArray *options = [[NSMutableArray alloc] init];
+        for (NSInteger i = 1; i < 40; i++)
+            [options addObject:[NSString stringWithFormat:@"Option %li", (long) i]];
         
-        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:nil multipleChoice:NO completionHandler:^{
+        
+        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:options multipleChoice:NO completionHandler:^{
             [weakSelf.navigationController popViewControllerAnimated:YES];
-            [item reloadRowWithAnimation:UITableViewRowAnimationNone];
+            
+            [item reloadRowWithAnimation:UITableViewRowAnimationNone]; // same as [weakSelf.tableView reloadRowsAtIndexPaths:@[item.indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }];
         
+        
         optionsController.delegate = weakSelf;
-        optionsController.style = assignSection.style;
+        //        optionsController.style = section.style;
         if (weakSelf.tableView.backgroundView == nil) {
             optionsController.tableView.backgroundColor = weakSelf.tableView.backgroundColor;
             optionsController.tableView.backgroundView = nil;
         }
+        
         [weakSelf.navigationController pushViewController:optionsController animated:YES];
     }];
     
-    self.memberItem = [RERadioItem itemWithTitle:@"小组成员" value:nil selectionHandler:^(RERadioItem *item) {
+    self.memberItem = [RERadioItem itemWithTitle:@"小组成员:" value:@"Option 4" selectionHandler:^(RERadioItem *item) {
+        [item deselectRowAnimated:YES]; // same as [weakSelf.tableView deselectRowAtIndexPath:item.indexPath animated:YES];
         
-        [item deselectRowAnimated:YES];
-               RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:nil multipleChoice:NO completionHandler:^{
+        NSMutableArray *options = [[NSMutableArray alloc] init];
+        for (NSInteger i = 1; i < 40; i++)
+            [options addObject:[NSString stringWithFormat:@"Option %li", (long) i]];
+        
+        
+        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:options multipleChoice:NO completionHandler:^{
             [weakSelf.navigationController popViewControllerAnimated:YES];
-            [item reloadRowWithAnimation:UITableViewRowAnimationNone];
+            
+            [item reloadRowWithAnimation:UITableViewRowAnimationNone]; // same as [weakSelf.tableView reloadRowsAtIndexPaths:@[item.indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }];
-        
-        optionsController.delegate = weakSelf;
-        optionsController.style = assignSection.style;
+         optionsController.delegate = weakSelf;
+        //        optionsController.style = section.style;
         if (weakSelf.tableView.backgroundView == nil) {
             optionsController.tableView.backgroundColor = weakSelf.tableView.backgroundColor;
             optionsController.tableView.backgroundView = nil;
         }
+        
         [weakSelf.navigationController pushViewController:optionsController animated:YES];
     }];
     
     
-    self.commentItem = [RELongTextItem itemWithTitle:@"备注" value:nil placeholder:@"请填写备注信息"];
-    self.commentItem.cellHeight=132;
+    self.commentItem = [RELongTextItem itemWithTitle:@"备注:" value:nil placeholder:@"请填写备注信息"];
+    self.commentItem.cellHeight=88;
     
     [assignSection addItem:self.directorItem];
     [assignSection addItem:self.memberItem];
@@ -191,28 +217,32 @@
     [self.manager addSection:rejectSection];
     self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
     
-    self.closeCodeItem = [RERadioItem itemWithTitle:@"关闭代码" value:nil selectionHandler:^(RERadioItem *item) {
+    self.closeCodeItem = [RERadioItem itemWithTitle:@"关闭代码:" value:@"Option 4" selectionHandler:^(RERadioItem *item) {
+        [item deselectRowAnimated:YES]; // same as [weakSelf.tableView deselectRowAtIndexPath:item.indexPath animated:YES];
         
-        [item deselectRowAnimated:YES];
-//       NSArray *users =closeCodeDic.allKeys;
+        NSMutableArray *options = [[NSMutableArray alloc] init];
+        for (NSInteger i = 1; i < 40; i++)
+            [options addObject:[NSString stringWithFormat:@"Option %li", (long) i]];
         
-        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:nil multipleChoice:NO completionHandler:^{
+        
+        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:options multipleChoice:NO completionHandler:^{
             [weakSelf.navigationController popViewControllerAnimated:YES];
-            [item reloadRowWithAnimation:UITableViewRowAnimationNone];
+            
+            [item reloadRowWithAnimation:UITableViewRowAnimationNone]; // same as [weakSelf.tableView reloadRowsAtIndexPaths:@[item.indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }];
         optionsController.delegate = weakSelf;
-        optionsController.style = rejectSection.style;
+        //        optionsController.style = section.style;
         if (weakSelf.tableView.backgroundView == nil) {
             optionsController.tableView.backgroundColor = weakSelf.tableView.backgroundColor;
             optionsController.tableView.backgroundView = nil;
         }
+        
         [weakSelf.navigationController pushViewController:optionsController animated:YES];
     }];
     
-    
-    self.commentItem=[RELongTextItem itemWithTitle:@"拒绝理由" value:nil placeholder:nil];
+    self.commentItem=[RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写拒绝理由"];
 
-    self.commentItem.cellHeight=132;
+    self.commentItem.cellHeight=88;
     
     
     [rejectSection addItem:self.commentItem];
@@ -228,9 +258,9 @@
     [self.manager addSection:acceptSection];
     self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
     
-    self.commentItem = [RELongTextItem itemWithTitle:@"工作日志" value:nil placeholder:nil];
+    self.commentItem = [RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写备注信息"];
 
-    self.commentItem.cellHeight=132;
+    self.commentItem.cellHeight=88;
     
     [acceptSection addItem:self.commentItem];
     
@@ -238,25 +268,41 @@
 }
 
 
-
 //支持人员处理
 - (RETableViewSection *)addProcessSection
 {
+    __typeof (&*self) __weak weakSelf = self;
     RETableViewSection *processSection = [RETableViewSection sectionWithHeaderTitle:@"支持人员处理"];
     [self.manager addSection:processSection];
     self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
     
-    self.commentItem = [RELongTextItem itemWithTitle:@"调查诊断" value:nil placeholder:nil];
-    self.reasonItem=[RELongTextItem itemWithTitle:@"根本原因" value:nil placeholder:nil];
-    self.reasonCategoryItem = [RERadioItem itemWithTitle:@"原因类型" value:self.problem.category selectionHandler:^(RERadioItem *item) {
-       
+    self.commentItem = [RELongTextItem itemWithTitle:nil value:nil placeholder:@"调查诊断"];
+    self.commentItem.cellHeight=88;
+    self.reasonItem=[RELongTextItem itemWithTitle:nil value:nil placeholder:@"根本原因"];
+    self.reasonItem.cellHeight=88;
+   
+    self.reasonCategoryItem = [RERadioItem itemWithTitle:@"类型" value:@"Option 4" selectionHandler:^(RERadioItem *item) {
+        [item deselectRowAnimated:YES]; // same as [weakSelf.tableView deselectRowAtIndexPath:item.indexPath animated:YES];
+        NSMutableArray *options = [[NSMutableArray alloc] init];
+        for (NSInteger i = 1; i < 10; i++)
+            [options addObject:[NSString stringWithFormat:@"Option %li", (long) i]];
+ 
+        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:options multipleChoice:NO completionHandler:^{
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+            
+            [item reloadRowWithAnimation:UITableViewRowAnimationNone]; // same as [weakSelf.tableView reloadRowsAtIndexPaths:@[item.indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }];
+        optionsController.delegate = weakSelf;
+        //        optionsController.style = section.style;
+        if (weakSelf.tableView.backgroundView == nil) {
+            optionsController.tableView.backgroundColor = weakSelf.tableView.backgroundColor;
+            optionsController.tableView.backgroundView = nil;
+        }
+        
+        [weakSelf.navigationController pushViewController:optionsController animated:YES];
     }];
-    
-    
-    self.resolutionItem = [RELongTextItem itemWithTitle:@"解决方案" value:nil placeholder:nil];
-  
-    
-    self.resolutionItem.cellHeight=132;
+    self.resolutionItem = [RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写解决方案"];
+    self.resolutionItem.cellHeight=88;
     
     [processSection addItem:self.commentItem];
     [processSection addItem:self.reasonItem];
@@ -266,9 +312,6 @@
     return processSection;
 }
 
-
-
-
 //支持人员解决
 - (RETableViewSection *)addSolveSection
 {
@@ -276,11 +319,12 @@
     [self.manager addSection:solveSection];
     self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
     
-    self.commentItem = [RELongTextItem itemWithTitle:@"工作日志" value:nil placeholder:nil];
-    self.commentItem.cellHeight=132;
+    self.commentItem = [RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写工作日志"];
+    self.commentItem.cellHeight=88;
     [solveSection addItem:self.commentItem];
     return solveSection;
 }
+
 
 //支持人员退回
 - (RETableViewSection *)addReturnSection
@@ -289,8 +333,8 @@
     [self.manager addSection:returnSection];
     self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
     
-    self.commentItem=[RELongTextItem itemWithTitle:@"退回原因" value:nil placeholder:nil];
-    self.commentItem.cellHeight=132;
+    self.commentItem=[RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写退回原因"];
+    self.commentItem.cellHeight=88;
     
     [returnSection addItem:self.commentItem];
     
@@ -306,34 +350,39 @@
     [self.manager addSection:closeSection];
     self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
     
-    self.closeCodeItem = [RERadioItem itemWithTitle:@"关闭代码" value:nil selectionHandler:^(RERadioItem *item) {
+    self.closeCodeItem = [RERadioItem itemWithTitle:@"关闭代码:" value:@"Option 4" selectionHandler:^(RERadioItem *item) {
+        [item deselectRowAnimated:YES]; // same as [weakSelf.tableView deselectRowAtIndexPath:item.indexPath animated:YES];
         
-        [item deselectRowAnimated:YES];
-//        NSArray *users =closeCodeDic.allKeys;
+        NSMutableArray *options = [[NSMutableArray alloc] init];
+        for (NSInteger i = 1; i < 40; i++)
+            [options addObject:[NSString stringWithFormat:@"Option %li", (long) i]];
         
-        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:nil multipleChoice:NO completionHandler:^{
+        
+        RETableViewOptionsController *optionsController = [[RETableViewOptionsController alloc] initWithItem:item options:options multipleChoice:NO completionHandler:^{
             [weakSelf.navigationController popViewControllerAnimated:YES];
-            [item reloadRowWithAnimation:UITableViewRowAnimationNone];
+            
+            [item reloadRowWithAnimation:UITableViewRowAnimationNone]; // same as [weakSelf.tableView reloadRowsAtIndexPaths:@[item.indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }];
         optionsController.delegate = weakSelf;
-        optionsController.style = closeSection.style;
+        //        optionsController.style = section.style;
         if (weakSelf.tableView.backgroundView == nil) {
             optionsController.tableView.backgroundColor = weakSelf.tableView.backgroundColor;
             optionsController.tableView.backgroundView = nil;
         }
+        
         [weakSelf.navigationController pushViewController:optionsController animated:YES];
     }];
     
-    self.isMajorItem = [REBoolItem itemWithTitle:@"重大问题" value:YES switchValueChangeHandler:^(REBoolItem *item) {
+    self.isMajorItem = [REBoolItem itemWithTitle:@"重大问题:" value:YES switchValueChangeHandler:^(REBoolItem *item) {
         NSLog(@"Value: %@", item.value ? @"YES" : @"NO");
     }];
-    self.isSoluationItem = [REBoolItem itemWithTitle:@"解决方案是否有效" value:YES switchValueChangeHandler:^(REBoolItem *item) {
+    self.isSoluationItem = [REBoolItem itemWithTitle:@"方案是否有效:" value:YES switchValueChangeHandler:^(REBoolItem *item) {
         NSLog(@"Value: %@", item.value ? @"YES" : @"NO");
     }];
     
     
-    self.commentItem=[RELongTextItem itemWithTitle:@"备注" value:nil placeholder:nil];
-    self.commentItem.cellHeight=132;
+    self.commentItem=[RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写备注信息"];
+    self.commentItem.cellHeight=88;
     
     [closeSection addItem:self.closeCodeItem];
     [closeSection addItem:self.isMajorItem];
@@ -351,8 +400,8 @@
     [self.manager addSection:reviewSection];
     self.manager[@"MultilineTextItem"] = @"MultilineTextCell";
     
-    self.commentItem=[RELongTextItem itemWithTitle:@"工作日志" value:nil placeholder:nil];
-    self.commentItem.cellHeight=132;
+    self.commentItem=[RELongTextItem itemWithTitle:nil value:nil placeholder:@"请填写评审日志信息"];
+    self.commentItem.cellHeight=88;
     
     [reviewSection addItem:self.commentItem];
     return reviewSection;
@@ -381,7 +430,7 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 
