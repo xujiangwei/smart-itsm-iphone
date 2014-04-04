@@ -148,6 +148,8 @@
 		4A44F45518ED5FBE00F8D886 /* SAlarmViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F45318ED5FBE00F8D886 /* SAlarmViewCell.xib */; };
 		4A44F45918ED67E700F8D886 /* SAlarmListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A44F45718ED67E700F8D886 /* SAlarmListViewCell.m */; };
 		4A44F45A18ED67E700F8D886 /* SAlarmListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F45818ED67E700F8D886 /* SAlarmListViewCell.xib */; };
+		4A581FD718EE94F200B7C5D8 /* SMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */; };
+		4A581FD818EE94F200B7C5D8 /* SMessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */; };
 		4A6ACFB918B361DE00DBDD11 /* libnucleus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4485DC5A18ACC81F00D17061 /* libnucleus.a */; };
 		4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F218AC958F00EB594B /* SOwnViewController.m */; };
 		4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F518AC95B000EB594B /* SDiscoveryViewController.m */; };
@@ -442,6 +444,9 @@
 		4A44F45618ED67E700F8D886 /* SAlarmListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmListViewCell.h; sourceTree = "<group>"; };
 		4A44F45718ED67E700F8D886 /* SAlarmListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmListViewCell.m; sourceTree = "<group>"; };
 		4A44F45818ED67E700F8D886 /* SAlarmListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAlarmListViewCell.xib; sourceTree = "<group>"; };
+		4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageViewCell.h; sourceTree = "<group>"; };
+		4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageViewCell.m; sourceTree = "<group>"; };
+		4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMessageViewCell.xib; sourceTree = "<group>"; };
 		4A92F0F118AC958F00EB594B /* SOwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOwnViewController.h; sourceTree = "<group>"; };
 		4A92F0F218AC958F00EB594B /* SOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOwnViewController.m; sourceTree = "<group>"; };
 		4A92F0F418AC95B000EB594B /* SDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiscoveryViewController.h; sourceTree = "<group>"; };
@@ -496,6 +501,9 @@
 				370B676E18DC344F0071CDE4 /* SMessageViewController.m */,
 				37948F3918DFD05B00A5BBDA /* SMessageContentViewController.h */,
 				37948F3A18DFD05B00A5BBDA /* SMessageContentViewController.m */,
+				4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */,
+				4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */,
+				4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */,
 			);
 			name = Message;
 			sourceTree = "<group>";
@@ -1149,6 +1157,7 @@
 				4A44F45A18ED67E700F8D886 /* SAlarmListViewCell.xib in Resources */,
 				37F9968418EACDB500A27B69 /* SRelatedProcessCell.xib in Resources */,
 				4A44F44D18ECFAFA00F8D886 /* SmartITSM.db in Resources */,
+				4A581FD818EE94F200B7C5D8 /* SMessageViewCell.xib in Resources */,
 				4417CF7C18AC74C700E6E09F /* InfoPlist.strings in Resources */,
 				3777A10418E3CCF000398191 /* RETableViewManager.bundle in Resources */,
 				374363D118EA84EF005E5312 /* SProcessCell.xib in Resources */,
@@ -1206,6 +1215,7 @@
 				379357DE18E3C4F20062265C /* PlanLine.m in Sources */,
 				3777A0EC18E3CCF000398191 /* RETableViewOptionCell.m in Sources */,
 				37948F3B18DFD05B00A5BBDA /* SMessageContentViewController.m in Sources */,
+				4A581FD718EE94F200B7C5D8 /* SMessageViewCell.m in Sources */,
 				3777A0E418E3CCF000398191 /* RETableViewBoolCell.m in Sources */,
 				3777A0FF18E3CCF000398191 /* RECommonFunctions.m in Sources */,
 				3777A0F318E3CCF000398191 /* REFloatItem.m in Sources */,

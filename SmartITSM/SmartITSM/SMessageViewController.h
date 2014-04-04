@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SMessageViewController : UIViewController
+@interface SMessageViewController : UITableViewController
+
+@property (nonatomic, strong) NSArray *messageList;
 
 @end
