@@ -139,7 +139,6 @@
 		4A085DF118D829E10078CDF1 /* SSigninView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DF018D829E10078CDF1 /* SSigninView.m */; };
 		4A085DF418D829FB0078CDF1 /* SConfigServerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DF318D829FB0078CDF1 /* SConfigServerView.m */; };
 		4A085DF918D8564E0078CDF1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DF818D8564E0078CDF1 /* Reachability.m */; };
-		4A30DEBC18F52ECB00A93982 /* libnucleus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A30DEBB18F52ECB00A93982 /* libnucleus.a */; };
 		4A44F44618ECF03E00F8D886 /* TSMessage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44418ECF03E00F8D886 /* TSMessage.bundle */; };
 		4A44F44718ECF03E00F8D886 /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44518ECF03E00F8D886 /* TSMessagesDefaultDesign.json */; };
 		4A44F44918ECF05C00F8D886 /* Calendar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44818ECF05C00F8D886 /* Calendar.bundle */; };
@@ -151,6 +150,7 @@
 		4A44F45A18ED67E700F8D886 /* SAlarmListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F45818ED67E700F8D886 /* SAlarmListViewCell.xib */; };
 		4A581FD718EE94F200B7C5D8 /* SMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */; };
 		4A581FD818EE94F200B7C5D8 /* SMessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */; };
+		4A6ACFB918B361DE00DBDD11 /* libnucleus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4485DC5A18ACC81F00D17061 /* libnucleus.a */; };
 		4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F218AC958F00EB594B /* SOwnViewController.m */; };
 		4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F518AC95B000EB594B /* SDiscoveryViewController.m */; };
 		4A92F0F918AC972B00EB594B /* SToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F818AC972B00EB594B /* SToolViewController.m */; };
@@ -404,6 +404,7 @@
 		4442D69318E2A66600FEC872 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4485DC2E18ACBA2500D17061 /* MastEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MastEngine.h; sourceTree = "<group>"; };
 		4485DC2F18ACBA2500D17061 /* MastEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MastEngine.m; sourceTree = "<group>"; };
+		4485DC5A18ACC81F00D17061 /* libnucleus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnucleus.a; path = "../nucleus/bin/Debug-iphonesimulator/libnucleus.a"; sourceTree = "<group>"; };
 		44959ED818E3ECC7009F8E35 /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBBarChartView.h; path = JBChartView/JBBarChartView.h; sourceTree = "<group>"; };
 		44959ED918E3ECC7009F8E35 /* JBBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBBarChartView.m; path = JBChartView/JBBarChartView.m; sourceTree = "<group>"; };
 		44959EDA18E3ECC7009F8E35 /* JBChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBChartView.h; path = JBChartView/JBChartView.h; sourceTree = "<group>"; };
@@ -431,7 +432,6 @@
 		4A085DF318D829FB0078CDF1 /* SConfigServerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SConfigServerView.m; sourceTree = "<group>"; };
 		4A085DF718D8564E0078CDF1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4A085DF818D8564E0078CDF1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		4A30DEBB18F52ECB00A93982 /* libnucleus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnucleus.a; path = ../nucleus/bin/universal/libnucleus.a; sourceTree = "<group>"; };
 		4A44F44418ECF03E00F8D886 /* TSMessage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TSMessage.bundle; path = SmartITSM/TSMessage.bundle; sourceTree = SOURCE_ROOT; };
 		4A44F44518ECF03E00F8D886 /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TSMessagesDefaultDesign.json; path = SmartITSM/TSMessagesDefaultDesign.json; sourceTree = SOURCE_ROOT; };
 		4A44F44818ECF05C00F8D886 /* Calendar.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Calendar.bundle; path = SmartITSM/Calendar.bundle; sourceTree = SOURCE_ROOT; };
@@ -473,8 +473,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A30DEBC18F52ECB00A93982 /* libnucleus.a in Frameworks */,
 				4414453518D7DB3A00B9FFE0 /* libsqlite3.dylib in Frameworks */,
+				4A6ACFB918B361DE00DBDD11 /* libnucleus.a in Frameworks */,
 				4417CF7418AC74C700E6E09F /* CoreGraphics.framework in Frameworks */,
 				4417CF7618AC74C700E6E09F /* UIKit.framework in Frameworks */,
 				4417CF7218AC74C700E6E09F /* Foundation.framework in Frameworks */,
@@ -522,6 +522,13 @@
 				371F2E8318EABF7500CC06BB /* WETouchableView.m */,
 			);
 			path = Popover;
+			sourceTree = "<group>";
+		};
+		375B565B18F51098005DE63D /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 		3777A09A18E3CCF000398191 /* RETableViewManager */ = {
@@ -879,8 +886,8 @@
 		4417CF7018AC74C700E6E09F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4A30DEBB18F52ECB00A93982 /* libnucleus.a */,
 				4414453418D7DB3A00B9FFE0 /* libsqlite3.dylib */,
+				4485DC5A18ACC81F00D17061 /* libnucleus.a */,
 				4417CF7118AC74C700E6E09F /* Foundation.framework */,
 				4417CF7318AC74C700E6E09F /* CoreGraphics.framework */,
 				4417CF7518AC74C700E6E09F /* UIKit.framework */,
@@ -892,6 +899,7 @@
 		4417CF7718AC74C700E6E09F /* SmartITSM */ = {
 			isa = PBXGroup;
 			children = (
+				375B565B18F51098005DE63D /* iPad */,
 				3793578918E3C4F20062265C /* ThirdParty */,
 				37948F6F18DFF8EB00A5BBDA /* Assets */,
 				37948F3C18DFD4CD00A5BBDA /* Model */,
@@ -1405,8 +1413,9 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "../nucleus/include  ";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1441,28 +1450,34 @@
 					"/Applications/Xcode\\ 5.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				SDKROOT = iphoneos7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "../nucleus/include  ";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
 		4417CFA118AC74C700E6E09F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartITSM/SmartITSM-Prefix.pch";
 				INFOPLIST_FILE = "SmartITSM/SmartITSM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "../nucleus/bin/universal ";
+				LIBRARY_SEARCH_PATHS = "../nucleus/bin/Debug-iphonesimulator ";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos7.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1476,13 +1491,16 @@
 				GCC_PREFIX_HEADER = "SmartITSM/SmartITSM-Prefix.pch";
 				INFOPLIST_FILE = "SmartITSM/SmartITSM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = "../nucleus/bin/universal ";
+				LIBRARY_SEARCH_PATHS = "../nucleus/bin/Debug-iphonesimulator ";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos7.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
