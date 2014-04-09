@@ -10,6 +10,8 @@
 
 @interface SAlarmViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *lbName;
+
+@property (strong, nonatomic) IBOutlet UILabel *alarmLevel;
+
 
 @end

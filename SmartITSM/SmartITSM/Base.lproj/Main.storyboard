@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
@@ -169,28 +169,6 @@
             </objects>
             <point key="canvasLocation" x="1966" y="-1236"/>
         </scene>
-        <!--Message View Controller-->
-        <scene sceneID="Ahm-XM-mXR">
-            <objects>
-                <viewController id="Hgg-2j-q3A" customClass="SMessageViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XhC-An-U5K"/>
-                        <viewControllerLayoutGuide type="bottom" id="YUc-9l-PEg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CXv-ZI-eQQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="teS-gB-XjW"/>
-                    <connections>
-                        <segue destination="KHU-qi-LkS" kind="push" id="8Nf-tY-b2b"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8r5-4u-TSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1966" y="-396"/>
-        </scene>
         <!--Inspection Content View Controller-->
         <scene sceneID="s6V-XC-ijC">
             <objects>
@@ -210,10 +188,42 @@
             </objects>
             <point key="canvasLocation" x="2744" y="-1268"/>
         </scene>
+        <!--Message View Controller-->
+        <scene sceneID="RMz-lJ-hCG">
+            <objects>
+                <tableViewController id="HTL-KR-sAP" customClass="SMessageViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fwN-H7-MJQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="NFa-Ym-WTk">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NFa-Ym-WTk" id="olK-o1-u0d">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="KHU-qi-LkS" kind="push" id="8uS-07-Qo5"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HTL-KR-sAP" id="VQD-gV-pbC"/>
+                            <outlet property="delegate" destination="HTL-KR-sAP" id="zer-YY-24s"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="V1k-UU-DR2"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lwj-1I-YGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2101" y="-396"/>
+        </scene>
         <!--Message Content View Controller-->
         <scene sceneID="l4y-vl-UAo">
             <objects>
-                <viewController id="KHU-qi-LkS" customClass="SMessageContentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SMessageContentVC" id="KHU-qi-LkS" customClass="SMessageContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="td1-bc-iI5"/>
                         <viewControllerLayoutGuide type="bottom" id="90S-57-yJX"/>
@@ -238,15 +248,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alarmLevelCell" id="z8s-be-YKy">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="dpt-2J-rrg" customClass="SAlarmViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z8s-be-YKy" id="963-jj-SXK">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dpt-2J-rrg" id="Fvt-fG-Byx">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="PUc-TA-txl" kind="push" identifier="AlarmList" id="0cK-7g-lXg"/>
+                                    <segue destination="PUc-TA-txl" kind="push" identifier="AlarmList" id="YwJ-e9-RQK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -264,7 +274,7 @@
         <!--Alarm List View Controller-->
         <scene sceneID="RSK-In-fni">
             <objects>
-                <tableViewController id="PUc-TA-txl" customClass="SAlarmListViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SAlarmListVC" id="PUc-TA-txl" customClass="SAlarmListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="DWy-hi-eWK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -338,8 +348,8 @@
                         <segue destination="o6e-bV-MAT" kind="push" identifier="ProblemList" id="Gbl-Xg-nrU"/>
                         <segue destination="TkX-tZ-wi8" kind="push" identifier="ChangeList" id="DNm-JG-tPg"/>
                         <segue destination="kcu-e6-waB" kind="push" identifier="InspectionList" id="uGp-J6-deL"/>
-                        <segue destination="Hgg-2j-q3A" kind="push" identifier="MessageList" id="cnp-Ag-T6c"/>
                         <segue destination="qiq-Cs-DWb" kind="push" identifier="AlarmLevelList" id="dDf-Im-8Gm"/>
+                        <segue destination="HTL-KR-sAP" kind="push" identifier="MessageList" id="oDB-cd-fg5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uHc-JA-deY" userLabel="First Responder" sceneMemberID="firstResponder"/>
