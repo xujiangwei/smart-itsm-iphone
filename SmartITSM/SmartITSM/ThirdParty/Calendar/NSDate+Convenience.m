@@ -78,8 +78,9 @@
 }
 
 - (NSString *)weekString {
+//    update by dweng 20140409
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *dateComponents = [calendar components:NSCalendarUnitWeekday fromDate:self];
+    NSDateComponents *dateComponents = [calendar components:NSWeekdayCalendarUnit fromDate:self];
     switch (dateComponents.weekday) {
         case 1: {
             return NSLocalizedString(@"sunday", @"");
