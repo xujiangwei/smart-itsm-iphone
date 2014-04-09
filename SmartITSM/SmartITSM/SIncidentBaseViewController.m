@@ -281,10 +281,13 @@
 {
     if (indexPath.section == 0 && indexPath.row == 3) {
         
-        UIFont *cellFont = [UIFont systemFontOfSize:14];
+//        UIFont *cellFont = [UIFont systemFontOfSize:14];
+      
         CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
-        CGSize labelSize = [content sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
+//        CGSize labelSize = [content sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
         
+        NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:13]};
+        CGSize labelSize = [content boundingRectWithSize:constraintSize options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
         return labelSize.height + 20;
     } else {
         return 44;
