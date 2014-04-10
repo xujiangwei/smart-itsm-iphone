@@ -8,6 +8,8 @@
 
 @interface MastEngine : NSObject <CCTalkListener, CCActionDelegate>
 
+@property (nonatomic, strong) Contacts *contacts;
+
 /** 返回单例。
  */
 + (MastEngine *)sharedSingleton;
@@ -41,6 +43,14 @@
 /** 移除状态监听器
  */
 - (void)removeStatusListener:(NSString *)identifier statusListener:(StatusListener *)statusListener;
+
+/** 发送动作方言。
+ */
+- (BOOL)sendAction:(NSString *)celletIdentifier action:(CCActionDialect *)action;
+
+/** 异步发送方言。
+ */
+- (BOOL)asynSendAction:(NSString *)celletIdentifier action:(CCActionDialect *)action;
 
 
 @end

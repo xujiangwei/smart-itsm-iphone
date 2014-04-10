@@ -29,7 +29,7 @@
     {
         list = [[NSMutableArray alloc] initWithCapacity:1];
         [list addObject:listener];
-        [self.listeners setObject:listener forKey:name];
+        [self.listeners setObject:list forKey:name];
     }
 }
 

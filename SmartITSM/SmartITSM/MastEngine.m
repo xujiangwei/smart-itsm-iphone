@@ -52,6 +52,8 @@ static MastEngine *sharedInstance = nil;
 
 - (BOOL)start:(Contacts *)contacts
 {
+    self.contacts  = contacts;
+    
     if (_started)
     {
         return YES;
@@ -161,6 +163,37 @@ static MastEngine *sharedInstance = nil;
     }
 }
 
+#pragma mark - Action Methods
+
+- (BOOL)sendAction:(NSString *)celletIdentifier action:(CCActionDialect *)action
+{
+    NSArray *addrList = [self.contacts getAddresses];
+    if (addrList.count == 0)
+        return FALSE;
+    
+    ContactAddress *addr = [addrList objectAtIndex:0];
+    CCInetAddress *address = [[CCInetAddress alloc]initWithAddress:addr.host port:addr.port];
+    CCTalker *talker = [[CCTalker alloc] initWithIdentifier:celletIdentifier address:address];
+    [talker talkWithDialect:action];
+    return TRUE;
+}
+
+- (BOOL)asynSendAction:(NSString *)celletIdentifier action:(CCActionDialect *)action
+{
+    NSArray *addrList = [self.contacts getAddresses];
+    if (addrList.count == 0)
+        return FALSE;
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        ContactAddress *addr = [addrList objectAtIndex:0];
+        CCInetAddress *address = [[CCInetAddress alloc] initWithAddress:addr.host port:addr.port];
+        CCTalker *talker = [[CCTalker alloc] initWithIdentifier:celletIdentifier address:address];
+        [talker talkWithDialect:action];
+    });
+    return TRUE;
+}
+
 #pragma mark - Action dialect
 
 - (void)doAction:(CCActionDialect *)dialect
@@ -207,11 +240,29 @@ static MastEngine *sharedInstance = nil;
 - (void)contacted:(NSString *)identifier tag:(NSString *)tag
 {
     [CCLogger d:@"contacted : identifier=%@ tag=%@", identifier, tag];
+    
+    NSMutableArray *list = [self.statusListeners objectForKey:identifier];
+    if (nil != list)
+    {
+        for (StatusListener *statusListener in list)
+        {
+            [statusListener didConnected:identifier];
+        }
+    }
 }
 
 - (void)quitted:(NSString *)identifier tag:(NSString *)tag
 {
     [CCLogger d:@"quitted : identifier=%@ tag=%@", identifier, tag];
+    
+    NSMutableArray *list = [self.statusListeners objectForKey:identifier];
+    if (nil != list)
+    {
+        for (StatusListener *statusListener in list)
+        {
+            [statusListener didDisconnected:identifier];
+        }
+    }
 }
 
 - (void)suspended:(NSString *)identifier tag:(NSString *)tag
@@ -229,6 +280,16 @@ static MastEngine *sharedInstance = nil;
 - (void)failed:(CCTalkServiceFailure *)failure
 {
     [CCLogger d:@"failed - Code:%d - Reason:%@ - Desc:%@", failure.code, failure.reason, failure.description];
+    
+    NSMutableArray *list = [self.statusListeners objectForKey:failure.sourceCelletIdentifier];
+    if (nil != list)
+    {
+        for (StatusListener *statusListener in list)
+        {
+            Failure *fail = [[Failure alloc] initWith:failure.code description:failure.description reason:failure.reason];
+            [statusListener didFailed:failure.sourceCelletIdentifier failure:fail];
+        }
+    }
 }
 
 @end

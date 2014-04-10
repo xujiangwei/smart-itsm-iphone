@@ -139,6 +139,7 @@
 		4A085DF118D829E10078CDF1 /* SSigninView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DF018D829E10078CDF1 /* SSigninView.m */; };
 		4A085DF418D829FB0078CDF1 /* SConfigServerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DF318D829FB0078CDF1 /* SConfigServerView.m */; };
 		4A085DF918D8564E0078CDF1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DF818D8564E0078CDF1 /* Reachability.m */; };
+		4A27ED1418F67E6900D6890D /* SSigninViewListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27ED1318F67E6900D6890D /* SSigninViewListener.m */; };
 		4A30DEBE18F5321200A93982 /* libnucleus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A30DEBD18F5321200A93982 /* libnucleus.a */; };
 		4A44F44618ECF03E00F8D886 /* TSMessage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44418ECF03E00F8D886 /* TSMessage.bundle */; };
 		4A44F44718ECF03E00F8D886 /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44518ECF03E00F8D886 /* TSMessagesDefaultDesign.json */; };
@@ -431,6 +432,8 @@
 		4A085DF318D829FB0078CDF1 /* SConfigServerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SConfigServerView.m; sourceTree = "<group>"; };
 		4A085DF718D8564E0078CDF1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4A085DF818D8564E0078CDF1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4A27ED1218F67E6900D6890D /* SSigninViewListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSigninViewListener.h; sourceTree = "<group>"; };
+		4A27ED1318F67E6900D6890D /* SSigninViewListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSigninViewListener.m; sourceTree = "<group>"; };
 		4A30DEBD18F5321200A93982 /* libnucleus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnucleus.a; path = ../nucleus/bin/universal/libnucleus.a; sourceTree = "<group>"; };
 		4A44F44418ECF03E00F8D886 /* TSMessage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TSMessage.bundle; path = SmartITSM/TSMessage.bundle; sourceTree = SOURCE_ROOT; };
 		4A44F44518ECF03E00F8D886 /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TSMessagesDefaultDesign.json; path = SmartITSM/TSMessagesDefaultDesign.json; sourceTree = SOURCE_ROOT; };
@@ -993,6 +996,8 @@
 				4A085DF018D829E10078CDF1 /* SSigninView.m */,
 				4A085DF218D829FB0078CDF1 /* SConfigServerView.h */,
 				4A085DF318D829FB0078CDF1 /* SConfigServerView.m */,
+				4A27ED1218F67E6900D6890D /* SSigninViewListener.h */,
+				4A27ED1318F67E6900D6890D /* SSigninViewListener.m */,
 			);
 			name = Signin;
 			sourceTree = "<group>";
@@ -1294,6 +1299,7 @@
 				3777A10218E3CCF000398191 /* RETableViewCellStyle.m in Sources */,
 				3777A0ED18E3CCF000398191 /* RETableViewPickerCell.m in Sources */,
 				4485DC3018ACBA2500D17061 /* MastEngine.m in Sources */,
+				4A27ED1418F67E6900D6890D /* SSigninViewListener.m in Sources */,
 				37948F4918DFD5CA00A5BBDA /* SIncident.m in Sources */,
 				4A44F45918ED67E700F8D886 /* SAlarmListViewCell.m in Sources */,
 				379357E218E3C4F20062265C /* TSMessageView.m in Sources */,

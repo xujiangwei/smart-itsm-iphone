@@ -34,6 +34,9 @@
     Reachability* _hostReach;
     
     SUser *currentUser;
+    
+    SSigninViewListener *_listener;
+    SSigninViewStatusListener *_statusListener;
 }
 
 @end
@@ -57,6 +60,9 @@
     {
         _signed = FALSE;
         _hostReach = nil;
+        
+        _listener = [[SSigninViewListener alloc] init];
+        _statusListener = [[SSigninViewStatusListener alloc] init];
     }
     return self;
 }
@@ -81,8 +87,7 @@
     else if([self loadLocalUserData])
     {
         // 加载成功
-        // TODO
-        [self sendSigninData:currentUser];
+        
         // 隐藏登录信息界面
         self.signinView.hidden = YES;
         
@@ -95,6 +100,8 @@
             // 初始化引擎
             if ([self initEngine])
             {
+                // TODO
+                [self sendSigninData:currentUser];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [hud hide:YES];
                     
@@ -136,9 +143,13 @@
     [super viewDidAppear:animated];
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    
+    [[MastEngine sharedSingleton] removeListener:@"SmartITSM" action:@"login" listener:_listener];
+    [[MastEngine sharedSingleton] removeStatusListener:@"SmartITSM" statusListener:_statusListener];
 }
 
 #pragma mark - Check network
@@ -351,7 +362,21 @@
 - (void)sendSigninData:(SUser *)user
 {
     //TODO
-    //发送网络请求， 监听器监听到登录成功执行登录方法
+    //发送网络请求,监听器监听到登录成功执行登录方法
+    CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton] createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
+    dialect.action = @"login";
+    NSDictionary *valueDic = [NSDictionary dictionaryWithObjectsAndKeys:user.userName,@"username",user.userPsw,@"password", nil];
+    NSString *value = @"";
+    if ([NSJSONSerialization isValidJSONObject:valueDic])
+    {
+        NSError *error;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:valueDic options:NSJSONWritingPrettyPrinted error:&error];
+        value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    
+    [dialect appendParam:@"data" stringValue:value];
+    [[MastEngine sharedSingleton] asynSendAction:@"SmartITOM" action:dialect];
+    
 }
 
 // 加载本地用户数据
@@ -418,6 +443,9 @@
 // 初始化网络引擎
 - (BOOL)initEngine
 {
+    [[MastEngine sharedSingleton] addListener:@"SmartITSM" action:@"login" listener:_listener];
+    [[MastEngine sharedSingleton] addStatusListener:@"SmartITSM" statusListener:_statusListener];
+    
     if ([[MastEngine sharedSingleton] hasStarted])
     {
         return TRUE;
@@ -450,6 +478,7 @@
 
 - (void)serverConnectCheck
 {
+    
     //测试
     [TSMessage showNotificationWithTitle:@"conneting..." type:TSMessageNotificationTypeMessage];
 

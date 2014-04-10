@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SSigninViewListener.h"
 
 @class SSigninView;
 
