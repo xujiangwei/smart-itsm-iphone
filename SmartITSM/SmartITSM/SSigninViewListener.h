@@ -9,7 +9,17 @@
 #import "ActionListener.h"
 #import "StatusListener.h"
 
+@protocol SSigninVListenerDelegate <NSObject>
+
+- (void)didSignin:(NSDictionary *)dic;
+
+- (void)didConnectServer:(NSInteger)statusCode;
+
+@end
+
 @interface SSigninViewListener : ActionListener
+
+@property (nonatomic, assign) id <SSigninVListenerDelegate> delegate;
 
 - (void)didAction:(CCActionDialect *)dialect;
 

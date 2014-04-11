@@ -30,10 +30,13 @@
 
     NSString *_address;
     NSInteger _port;
+    
+    MBProgressHUD *_signinHUD;
+    MBProgressHUD *_connectHUD;
 
     Reachability* _hostReach;
     
-    SUser *currentUser;
+    SUser *_currentUser;
     
     SSigninViewListener *_listener;
     SSigninViewStatusListener *_statusListener;
@@ -62,6 +65,8 @@
         _hostReach = nil;
         
         _listener = [[SSigninViewListener alloc] init];
+        _listener.delegate = self;
+        
         _statusListener = [[SSigninViewStatusListener alloc] init];
     }
     return self;
@@ -72,6 +77,10 @@
     [super viewDidLoad];
 
     self.signinView.hidden = NO;
+    
+    [[MastEngine sharedSingleton] addListener:kDemoCelletName action:@"login" listener:_listener];
+    [[MastEngine sharedSingleton] addListener:kDemoCelletName action:@"connectionCheck" listener:_listener];
+    [[MastEngine sharedSingleton] addStatusListener:kDemoCelletName statusListener:_statusListener];
 
     // 加载本地数据
     if (![self loadLocalData])
@@ -91,9 +100,9 @@
         // 隐藏登录信息界面
         self.signinView.hidden = YES;
         
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeIndeterminate;
-        hud.labelText = @"正在登录请稍后";
+        _signinHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _signinHUD.mode = MBProgressHUDModeIndeterminate;
+        _signinHUD.labelText = @"正在登录请稍后";
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             
@@ -101,18 +110,12 @@
             if ([self initEngine])
             {
                 // TODO
-                [self sendSigninData:currentUser];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [hud hide:YES];
-                    
-                    // TODO 执行登录流程
-                    [self didSignin];
-                });
+                [self sendSigninData:_currentUser];
             }
             else
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [hud hide:YES];
+                    [_signinHUD hide:YES];
                     
                     self.signinView.hidden = NO;
                     
@@ -148,8 +151,9 @@
 {
     [super didReceiveMemoryWarning];
     
-    [[MastEngine sharedSingleton] removeListener:@"SmartITSM" action:@"login" listener:_listener];
-    [[MastEngine sharedSingleton] removeStatusListener:@"SmartITSM" statusListener:_statusListener];
+    [[MastEngine sharedSingleton] removeListener:kDemoCelletName action:@"login" listener:_listener];
+    [[MastEngine sharedSingleton] removeListener:kDemoCelletName action:@"connectionCheck" listener:_listener];
+    [[MastEngine sharedSingleton] removeStatusListener:kDemoCelletName statusListener:_statusListener];
 }
 
 #pragma mark - Check network
@@ -237,14 +241,22 @@
     SUser *user = [[SUser alloc]init];
     [user setUserName:_user];
     [user setUserPsw:_password];
-    currentUser = user;
+    _currentUser = user;
     [SUser insertUser:user];
     
-    [self sendSigninData:currentUser];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        if ([self initEngine])
+        {
+            [self sendSigninData:_currentUser];
+        }
+        
+    });
+    
     //TODO
     //发送网络请求， 监听器监听到登录成功执行登录方法
     
-    [self didSignin];
+//    [self didSignin];
 }
 
 // 测试
@@ -258,7 +270,6 @@
             [SUser insertSeverIp:_address andPort:_port];
         }
     }
-    
     
     [self serverConnectCheck];
     
@@ -356,12 +367,90 @@
     }
 }
 
+#pragma mark - SSigninVListenerDelegate
+
+- (void)didSignin:(NSDictionary *)dic
+{
+    NSInteger statusCode = [[dic objectForKey:@"status"] integerValue];
+    
+    NSDictionary *userInfo = [dic objectForKey:@"userInfo"];
+    
+    NSString *token = [userInfo objectForKey:@"token"];
+    
+    [SUser updateToken:token];
+    
+    long long userId = [[userInfo objectForKey:@"userID"] longLongValue];
+    
+    [SUser updateUserId:userId];
+    
+    switch (statusCode)
+    {
+        case 300:
+        {
+            [SUser updateIsSignin:userId];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_signinHUD hide:YES];
+                self.signinView.hidden = NO;
+                // 执行登录流程
+                [self didSignin];
+            });
+            
+        }
+            break;
+        case 101:           //  用户不存在
+        {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"身份验证失败" message:@"用户名不存在，请重新设置" delegate:self
+                                                 cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+            alert.tag = 101;
+            [alert show];
+        }
+            break;
+        case 102:            //密码错误！！
+        {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"身份验证失败" message:@"密码错误，请重新设置" delegate:self
+                                                 cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+            alert.tag = 102;
+            [alert show];
+        }
+            break;
+        case 103:            //服务器出现错误，请联系管理员
+        {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"身份验证失败" message:@"服务器出现错误，请联系管理员" delegate:self
+                                                 cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+            alert.tag = 103;
+            [alert show];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)didConnectServer:(NSInteger)statusCode
+{
+    if (300 == statusCode)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_connectHUD hide:YES];
+            [self.configServerView setHidden:NO];
+            [TSMessage showNotificationWithTitle:@"connected" type:TSMessageNotificationTypeSuccess];
+        });
+    }else
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_connectHUD hide:YES];
+            [self.configServerView setHidden:NO];
+            [TSMessage showNotificationWithTitle:@"disConnected" type:TSMessageNotificationTypeError];
+        });
+    }
+}
+
 #pragma mark - Private
 
 //发送登录网络请求
 - (void)sendSigninData:(SUser *)user
 {
-    //TODO
     //发送网络请求,监听器监听到登录成功执行登录方法
     CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton] createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
     dialect.action = @"login";
@@ -379,6 +468,26 @@
     
 }
 
+- (void)connectingCheck
+{
+    //测试服务器连接
+    CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton]createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
+    dialect.action = @"connectionCheck";
+    
+    NSDictionary *valueDic = [NSDictionary dictionaryWithObject:@"value" forKey:@"key"];
+    NSString *value = @"";
+    if ([NSJSONSerialization isValidJSONObject:valueDic])
+    {
+        NSError *error;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:valueDic options:NSJSONWritingPrettyPrinted error:&error];
+        value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    
+    [dialect appendParam:@"data" stringValue:value];
+    
+    [[MastEngine sharedSingleton] asynSendAction:@"SmartITOM" action:dialect];
+}
+
 // 加载本地用户数据
 - (BOOL)loadLocalUserData
 {
@@ -393,7 +502,7 @@
         //有用户,得到最近一次登录且未注销的用户
         //未注销的密码不为空
         user = [SUser getLastUser];
-        currentUser = user;
+        _currentUser = user;
         
         if (nil == user.userPsw || 0 == user.userPsw.length)
         {
@@ -443,9 +552,6 @@
 // 初始化网络引擎
 - (BOOL)initEngine
 {
-    [[MastEngine sharedSingleton] addListener:@"SmartITSM" action:@"login" listener:_listener];
-    [[MastEngine sharedSingleton] addStatusListener:@"SmartITSM" statusListener:_statusListener];
-    
     if ([[MastEngine sharedSingleton] hasStarted])
     {
         return TRUE;
@@ -466,25 +572,40 @@
 
 - (void)didSignin
 {
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UITabBarController *tabbarViewController = [storyboard instantiateViewControllerWithIdentifier:@"tab"];
-//
-//    [self presentViewController:tabbarViewController animated:YES completion:^{
-//
-//    }];
-    
     [self performSegueWithIdentifier:@"Signin" sender:self];
 }
 
 - (void)serverConnectCheck
 {
-    
     //测试
-    [TSMessage showNotificationWithTitle:@"conneting..." type:TSMessageNotificationTypeMessage];
-
-    //TODO
-
-    [TSMessage showNotificationWithTitle:@"successed" type:TSMessageNotificationTypeSuccess];
+    self.configServerView.hidden = YES;
+    
+    _connectHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _connectHUD.mode = MBProgressHUDModeIndeterminate;
+    _connectHUD.labelText = @"正在建立连接...";
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+    
+        // 初始化引擎
+        if ([self initEngine])
+        {
+            [self connectingCheck];
+            
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_connectHUD hide:YES];
+                
+                self.configServerView.hidden = NO;
+                
+                [TSMessage showNotificationWithTitle:@"网络连接异常"
+                                            subtitle:@"请检查您的服务器信息并确认服务器是否已启动"
+                                                type:TSMessageNotificationTypeError];
+            });
+        }
+    });
+    
 }
 
 #pragma mark - Encrypt MD5
