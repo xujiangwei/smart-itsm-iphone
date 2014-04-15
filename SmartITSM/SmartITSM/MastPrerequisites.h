@@ -16,6 +16,6 @@
 // 状态监听器
 @class StatusListener;
 
-@class Contacts;
+@class Contact;
 
 #endif

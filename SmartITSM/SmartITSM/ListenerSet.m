@@ -4,6 +4,7 @@
 //
 
 #import "ListenerSet.h"
+#import "ActionListener.h"
 
 @implementation ListenerSet
 
@@ -13,14 +14,14 @@
     {
         self.listeners = [[NSMutableDictionary alloc] initWithCapacity:8];
     }
-    
+
     return self;
 }
 
 
-- (void)add:(NSString *)name listener:(ActionListener *)listener
+- (void)add:(ActionListener *)listener
 {
-    NSMutableArray *list = [self.listeners objectForKey:name];
+    NSMutableArray *list = [self.listeners objectForKey:[listener getAction]];
     if (nil != list)
     {
         [list addObject:listener];
@@ -29,20 +30,20 @@
     {
         list = [[NSMutableArray alloc] initWithCapacity:1];
         [list addObject:listener];
-        [self.listeners setObject:list forKey:name];
+        [self.listeners setObject:list forKey:[listener getAction]];
     }
 }
 
 
-- (void)remove:(NSString *)name listener:(ActionListener *)listener
+- (void)remove:(ActionListener *)listener
 {
-    NSMutableArray *list = [self.listeners objectForKey:name];
+    NSMutableArray *list = [self.listeners objectForKey:[listener getAction]];
     if (nil != list)
     {
         [list removeObject:listener];
         if (list.count == 0)
         {
-            [self.listeners removeObjectForKey:name];
+            [self.listeners removeObjectForKey:[listener getAction]];
         }
     }
 }
