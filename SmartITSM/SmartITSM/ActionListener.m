@@ -13,24 +13,26 @@
 
 @implementation ActionListener
 
-- (id)initWith:(NSString *)action
+@synthesize action;
+
+- (id)initWith:(NSString *)pAction
 {
     self = [super init];
     if (self)
     {
-        self.action = action;
+        self.action = pAction;
     }
     return self;
 }
 
-- (void)setAction:(NSString *)action
+- (void)setAction:(NSString *)pAction
 {
-    self.action = action;
+    action = pAction;
 }
 
 - (NSString *)getAction
 {
-    return self.action;
+    return action;
 }
 
 - (void)didAction:(CCActionDialect *)dialect

@@ -29,7 +29,19 @@
  * SSigninViewStatusListener
  */
 
+@protocol SSigninVStatusListenerDelegate <NSObject>
+
+- (void)didConnected:(NSString *)identifier;
+
+@end
+
 @interface SSigninViewStatusListener : StatusListener
+
+@property (nonatomic, assign) id<SSigninVStatusListenerDelegate> delegate;
+
+- (void)didConnected:(NSString *)identifier;
+
+- (void)didDisconnected:(NSString *)identifier;
 
 - (void)didFailed:(NSString *)identifier failure:(Failure *)failure;
 

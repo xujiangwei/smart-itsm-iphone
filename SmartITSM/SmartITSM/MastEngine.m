@@ -4,6 +4,7 @@
 //
 
 #import "MastEngine.h"
+#import "SDatabase.h"
 #import "ActionListener.h"
 #import "StatusListener.h"
 #import "Contact.h"
@@ -50,6 +51,23 @@ static MastEngine *sharedInstance = nil;
     }
 
     return self;
+}
+
+- (void)applicationDidFinishLaunchingWithOptions:(UIApplication *)application
+{
+    [[SDatabase sharedSingleton] open];
+    [self start];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [[SDatabase sharedSingleton] open];
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+    [[SDatabase sharedSingleton] close];
+    [self stop];
 }
 
 - (BOOL)start
@@ -180,11 +198,19 @@ static MastEngine *sharedInstance = nil;
 
 - (BOOL)performAction:(NSString *)celletIdentifier action:(CCActionDialect *)action
 {
+    if (0 == self.contacts.count)
+    {
+        return FALSE;
+    }
     return [[CCTalkService sharedSingleton] talk:celletIdentifier dialect:action];
 }
 
 - (BOOL)asynPerformAction:(NSString *)celletIdentifier action:(CCActionDialect *)action
 {
+    if (0 == self.contacts.count)
+    {
+        return FALSE;
+    }
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         [[CCTalkService sharedSingleton] talk:celletIdentifier dialect:action];

@@ -24,6 +24,7 @@
 @interface SSigninViewController ()
 {
     BOOL _signed;
+    BOOL _connected;
 
     NSString *_user;
     NSString *_password;
@@ -38,7 +39,9 @@
     
     SUser *_currentUser;
     
-    SSigninViewListener *_listener;
+    SSigninViewListener *_signinListener;
+    SSigninViewListener *_connectListener;
+    
     SSigninViewStatusListener *_statusListener;
 }
 
@@ -62,12 +65,17 @@
     if (self)
     {
         _signed = FALSE;
+        _connected = FALSE;
         _hostReach = nil;
         
-        _listener = [[SSigninViewListener alloc] init];
-        _listener.delegate = self;
+        _signinListener = [[SSigninViewListener alloc] initWith:@"login"];
+        _signinListener.delegate = self;
+        
+        _connectListener = [[SSigninViewListener alloc] initWith:@"connectionCheck"];
+        _connectListener.delegate = self;
         
         _statusListener = [[SSigninViewStatusListener alloc] init];
+        _statusListener.delegate = self;
     }
     return self;
 }
@@ -78,9 +86,9 @@
 
     self.signinView.hidden = NO;
     
-//    [[MastEngine sharedSingleton] addListener:kDemoCelletName action:@"login" listener:_listener];
-//    [[MastEngine sharedSingleton] addListener:kDemoCelletName action:@"connectionCheck" listener:_listener];
-//    [[MastEngine sharedSingleton] addStatusListener:kDemoCelletName statusListener:_statusListener];
+    [[MastEngine sharedSingleton] addListener:kDemoCelletName listener:_signinListener];
+    [[MastEngine sharedSingleton] addListener:kDemoCelletName listener:_connectListener];
+    [[MastEngine sharedSingleton] addStatusListener:kDemoCelletName statusListener:_statusListener];
 
     // 加载本地数据
     if (![self loadLocalData])
@@ -96,22 +104,22 @@
     else if([self loadLocalUserData])
     {
         // 加载成功
-        
         // 隐藏登录信息界面
         self.signinView.hidden = YES;
         
         _signinHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _signinHUD.mode = MBProgressHUDModeIndeterminate;
         _signinHUD.labelText = @"正在登录请稍后";
-        
+   
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             
             // 初始化引擎
-            if ([self initEngine])
+            if ([self initEngine] && _connected)
             {
                 // TODO
-//                [self sendSigninData:_currentUser];
-                [self didSignin];
+                
+                [self sendSigninData:_currentUser];
+//                [self didSignin];
             }
             else
             {
@@ -152,9 +160,9 @@
 {
     [super didReceiveMemoryWarning];
     
-//    [[MastEngine sharedSingleton] removeListener:kDemoCelletName action:@"login" listener:_listener];
-//    [[MastEngine sharedSingleton] removeListener:kDemoCelletName action:@"connectionCheck" listener:_listener];
-//    [[MastEngine sharedSingleton] removeStatusListener:kDemoCelletName statusListener:_statusListener];
+    [[MastEngine sharedSingleton] removeListener:kDemoCelletName listener:_signinListener];
+    [[MastEngine sharedSingleton] removeListener:kDemoCelletName listener:_connectListener];
+    [[MastEngine sharedSingleton] removeStatusListener:kDemoCelletName statusListener:_statusListener];
 }
 
 #pragma mark - Check network
@@ -245,19 +253,38 @@
     _currentUser = user;
     [SUser insertUser:user];
     
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-//        
-//        if ([self initEngine])
-//        {
-//            [self sendSigninData:_currentUser];
-//        }
-//        
-//    });
+    [[MastEngine sharedSingleton] resetContact];
+    
+    self.signinView.hidden = YES;
+    
+    _signinHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _signinHUD.mode = MBProgressHUDModeIndeterminate;
+    _signinHUD.labelText = @"正在登录请稍后";
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        if ([self initEngine] && _connected)
+        {
+            [self sendSigninData:_currentUser];
+        }else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_signinHUD hide:YES];
+                
+                self.signinView.hidden = NO;
+                
+                [TSMessage showNotificationWithTitle:@"网络连接异常"
+                                            subtitle:@"请检查您的服务器信息并确认服务器是否已启动"
+                                                type:TSMessageNotificationTypeError];
+            });
+        }
+        
+    });
     
     //TODO
     //发送网络请求， 监听器监听到登录成功执行登录方法
     
-    [self didSignin];
+//    [self didSignin];
 }
 
 // 测试
@@ -270,6 +297,12 @@
         {
             [SUser insertSeverIp:_address andPort:_port];
         }
+        
+        [[MastEngine sharedSingleton] removeContact:@"SmartITOM"];
+        Contact *contact = [[Contact alloc]initWith:@"SmartITOM" address:_address port:_port];
+        [[MastEngine sharedSingleton] addContact:contact];
+        [[MastEngine sharedSingleton] resetContact];
+        
     }
     
     [self serverConnectCheck];
@@ -279,6 +312,10 @@
 // 确认
 - (IBAction)btnConfirmAction:(id)sender
 {
+    [[MastEngine sharedSingleton] removeContact:@"SmartITOM"];
+    Contact *contact = [[Contact alloc] initWith:@"SmartITOM" address:_address port:_port];
+    [[MastEngine sharedSingleton] addContact:contact];
+    
     [UIView animateWithDuration:0.3
                           delay:0
                         options:UIViewAnimationOptionCurveLinear
@@ -368,6 +405,13 @@
     }
 }
 
+#pragma mark - SSigninVStatusListenerDelegate
+
+- (void)didConnected:(NSString *)identifier
+{
+    _connected = TRUE;
+}
+
 #pragma mark - SSigninVListenerDelegate
 
 - (void)didSignin:(NSDictionary *)dic
@@ -452,21 +496,20 @@
 //发送登录网络请求
 - (void)sendSigninData:(SUser *)user
 {
-    //发送网络请求,监听器监听到登录成功执行登录方法
-    CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton] createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
-    dialect.action = @"login";
-    NSDictionary *valueDic = [NSDictionary dictionaryWithObjectsAndKeys:user.userName,@"username",user.userPsw,@"password", nil];
-    NSString *value = @"";
-    if ([NSJSONSerialization isValidJSONObject:valueDic])
-    {
-        NSError *error;
-        NSData *data = [NSJSONSerialization dataWithJSONObject:valueDic options:NSJSONWritingPrettyPrinted error:&error];
-        value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    }
-    
-    [dialect appendParam:@"data" stringValue:value];
-//    [[MastEngine sharedSingleton] asynSendAction:@"SmartITOM" action:dialect];
-    
+        //发送网络请求,监听器监听到登录成功执行登录方法
+        CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton] createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
+        dialect.action = @"login";
+        NSDictionary *valueDic = [NSDictionary dictionaryWithObjectsAndKeys:user.userName,@"username",user.userPsw,@"password", nil];
+        NSString *value = @"";
+        if ([NSJSONSerialization isValidJSONObject:valueDic])
+        {
+            NSError *error;
+            NSData *data = [NSJSONSerialization dataWithJSONObject:valueDic options:NSJSONWritingPrettyPrinted error:&error];
+            value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        }
+        [dialect appendParam:@"data" stringValue:value];
+        [[MastEngine sharedSingleton] asynPerformAction:@"SmartITOM" action:dialect];
+
 }
 
 - (void)connectingCheck
@@ -474,7 +517,6 @@
     //测试服务器连接
     CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton]createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
     dialect.action = @"connectionCheck";
-    
     NSDictionary *valueDic = [NSDictionary dictionaryWithObject:@"value" forKey:@"key"];
     NSString *value = @"";
     if ([NSJSONSerialization isValidJSONObject:valueDic])
@@ -486,7 +528,7 @@
     
     [dialect appendParam:@"data" stringValue:value];
     
-//    [[MastEngine sharedSingleton] asynSendAction:@"SmartITOM" action:dialect];
+    [[MastEngine sharedSingleton] asynPerformAction:@"SmartITOM" action:dialect];
 }
 
 // 加载本地用户数据
@@ -543,6 +585,11 @@
     {
         return FALSE;
     }
+    
+    [[MastEngine sharedSingleton] removeContact:@"SmartITOM"];
+    Contact *contact = [[Contact alloc]initWith:@"SmartITOM" address:_address port:_port];
+    [[MastEngine sharedSingleton] addContact:contact];
+    [[MastEngine sharedSingleton] resetContact];
 
     self.tfAddress.text = _address;
     self.tfPort.text = [NSString stringWithFormat:@"%d", _port];
@@ -557,10 +604,6 @@
     {
         return TRUE;
     }
-
-    // 服务器
-//    Contacts *contacts = [[Contacts alloc] init];
-//    [contacts addAddress:kDemoCelletName host:_address port:_port];
 
     //启动引擎
     if (![[MastEngine sharedSingleton] start])
@@ -584,11 +627,12 @@
     _connectHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _connectHUD.mode = MBProgressHUDModeIndeterminate;
     _connectHUD.labelText = @"正在建立连接...";
+
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
     
         // 初始化引擎
-        if ([self initEngine])
+        if ([self initEngine] && _connected)
         {
             [self connectingCheck];
             

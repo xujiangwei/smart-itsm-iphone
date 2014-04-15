@@ -52,6 +52,21 @@
 
 @implementation SSigninViewStatusListener
 
+@synthesize delegate;
+
+- (void)didConnected:(NSString *)identifier
+{
+    if (nil != delegate && [delegate respondsToSelector:@selector(didConnected:)])
+    {
+        [delegate didConnected:identifier ];
+    }
+}
+
+- (void)didDisconnected:(NSString *)identifier
+{
+    
+}
+
 - (void)didFailed:(NSString *)identifier failure:(Failure *)failure
 {
     

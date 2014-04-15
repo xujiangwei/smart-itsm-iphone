@@ -12,6 +12,12 @@
  */
 + (MastEngine *)sharedSingleton;
 
+- (void)applicationDidFinishLaunchingWithOptions:(UIApplication *)application;
+
+- (void)applicationDidBecomeActive:(UIApplication *)application;
+
+- (void)applicationWillResignActive:(UIApplication *)application;
+
 
 /** 启动引擎。
  */

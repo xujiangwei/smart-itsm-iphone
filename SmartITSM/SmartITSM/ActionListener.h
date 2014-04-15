@@ -8,11 +8,11 @@
 
 @interface ActionListener : NSObject
 
-- (id)initWith:(NSString *)action;
+- (id)initWith:(NSString *)pAction;
 
 /** 设置动作名。
  */
-- (void)setAction:(NSString *)action;
+- (void)setAction:(NSString *)pAction;
 
 /** 返回动作名。
  */
