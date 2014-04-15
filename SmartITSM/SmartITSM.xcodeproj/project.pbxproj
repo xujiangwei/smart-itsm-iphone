@@ -152,6 +152,11 @@
 		4A44F45A18ED67E700F8D886 /* SAlarmListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F45818ED67E700F8D886 /* SAlarmListViewCell.xib */; };
 		4A581FD718EE94F200B7C5D8 /* SMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */; };
 		4A581FD818EE94F200B7C5D8 /* SMessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */; };
+		4A5EDF3C18FB89F20047B923 /* SResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF3B18FB89F20047B923 /* SResource.m */; };
+		4A5EDF3F18FB8A150047B923 /* SResourceDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF3E18FB8A150047B923 /* SResourceDao.m */; };
+		4A5EDF4218FB8B150047B923 /* SResourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4118FB8B150047B923 /* SResourceList.m */; };
+		4A5EDF4B18FBE0DE0047B923 /* SResourceListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4918FBE0DE0047B923 /* SResourceListViewCell.m */; };
+		4A5EDF4C18FBE0DE0047B923 /* SResourceListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */; };
 		4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F218AC958F00EB594B /* SOwnViewController.m */; };
 		4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F518AC95B000EB594B /* SDiscoveryViewController.m */; };
 		4A92F0F918AC972B00EB594B /* SToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F818AC972B00EB594B /* SToolViewController.m */; };
@@ -450,6 +455,15 @@
 		4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageViewCell.h; sourceTree = "<group>"; };
 		4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageViewCell.m; sourceTree = "<group>"; };
 		4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMessageViewCell.xib; sourceTree = "<group>"; };
+		4A5EDF3A18FB89F20047B923 /* SResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResource.h; sourceTree = "<group>"; };
+		4A5EDF3B18FB89F20047B923 /* SResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResource.m; sourceTree = "<group>"; };
+		4A5EDF3D18FB8A150047B923 /* SResourceDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResourceDao.h; sourceTree = "<group>"; };
+		4A5EDF3E18FB8A150047B923 /* SResourceDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResourceDao.m; sourceTree = "<group>"; };
+		4A5EDF4018FB8B150047B923 /* SResourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResourceList.h; sourceTree = "<group>"; };
+		4A5EDF4118FB8B150047B923 /* SResourceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResourceList.m; sourceTree = "<group>"; };
+		4A5EDF4818FBE0DE0047B923 /* SResourceListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResourceListViewCell.h; sourceTree = "<group>"; };
+		4A5EDF4918FBE0DE0047B923 /* SResourceListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResourceListViewCell.m; sourceTree = "<group>"; };
+		4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SResourceListViewCell.xib; sourceTree = "<group>"; };
 		4A92F0F118AC958F00EB594B /* SOwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOwnViewController.h; sourceTree = "<group>"; };
 		4A92F0F218AC958F00EB594B /* SOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOwnViewController.m; sourceTree = "<group>"; };
 		4A92F0F418AC95B000EB594B /* SDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiscoveryViewController.h; sourceTree = "<group>"; };
@@ -799,6 +813,12 @@
 				37948F4618DFD5CA00A5BBDA /* SProblemDao.m */,
 				37948F4718DFD5CA00A5BBDA /* SIncidentDao.h */,
 				37948F4818DFD5CA00A5BBDA /* SIncidentDao.m */,
+				4A5EDF3A18FB89F20047B923 /* SResource.h */,
+				4A5EDF3B18FB89F20047B923 /* SResource.m */,
+				4A5EDF4018FB8B150047B923 /* SResourceList.h */,
+				4A5EDF4118FB8B150047B923 /* SResourceList.m */,
+				4A5EDF3D18FB8A150047B923 /* SResourceDao.h */,
+				4A5EDF3E18FB8A150047B923 /* SResourceDao.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1080,6 +1100,9 @@
 			children = (
 				4AC37C9818E13792001A82C5 /* SResourceListViewController.h */,
 				4AC37C9918E13792001A82C5 /* SResourceListViewController.m */,
+				4A5EDF4818FBE0DE0047B923 /* SResourceListViewCell.h */,
+				4A5EDF4918FBE0DE0047B923 /* SResourceListViewCell.m */,
+				4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -1162,6 +1185,7 @@
 			files = (
 				4A44F44918ECF05C00F8D886 /* Calendar.bundle in Resources */,
 				4417CF8A18AC74C700E6E09F /* Images.xcassets in Resources */,
+				4A5EDF4C18FBE0DE0047B923 /* SResourceListViewCell.xib in Resources */,
 				4A44F44718ECF03E00F8D886 /* TSMessagesDefaultDesign.json in Resources */,
 				4442D69018E2A60C00FEC872 /* Localizable.strings in Resources */,
 				4A44F44618ECF03E00F8D886 /* TSMessage.bundle in Resources */,
@@ -1293,6 +1317,7 @@
 				37FA4C9B18DBE16F004AB106 /* SChangeViewController.m in Sources */,
 				371F2E8618EABF7500CC06BB /* WEPopoverController.m in Sources */,
 				379357D518E3C4F20062265C /* FMDatabasePool.m in Sources */,
+				4A5EDF3F18FB8A150047B923 /* SResourceDao.m in Sources */,
 				370B676B18DC33200071CDE4 /* SInspectionViewController.m in Sources */,
 				379357D918E3C4F20062265C /* MBProgressHUD.m in Sources */,
 				4417CF7E18AC74C700E6E09F /* main.m in Sources */,
@@ -1317,12 +1342,15 @@
 				3777A12518E3D8CD00398191 /* REEmailValidator.m in Sources */,
 				3777A0FA18E3CCF000398191 /* RERadioItem.m in Sources */,
 				4AB79DAC18DEEF6700ECEC27 /* SAlarmViewController.m in Sources */,
+				4A5EDF3C18FB89F20047B923 /* SResource.m in Sources */,
 				44B02BF518ADA7DE0001451F /* StatusListener.m in Sources */,
 				379357E018E3C4F20062265C /* TSBlurView.m in Sources */,
 				3777A12818E3D8CD00398191 /* REURLValidator.m in Sources */,
 				3777A0F418E3CCF000398191 /* REInlineDatePickerItem.m in Sources */,
 				379357D618E3C4F20062265C /* FMDatabaseQueue.m in Sources */,
 				3777A0EF18E3CCF000398191 /* RETableViewTextCell.m in Sources */,
+				4A5EDF4B18FBE0DE0047B923 /* SResourceListViewCell.m in Sources */,
+				4A5EDF4218FB8B150047B923 /* SResourceList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

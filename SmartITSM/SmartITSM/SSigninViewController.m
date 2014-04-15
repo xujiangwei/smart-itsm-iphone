@@ -110,7 +110,8 @@
             if ([self initEngine])
             {
                 // TODO
-                [self sendSigninData:_currentUser];
+//                [self sendSigninData:_currentUser];
+                [self didSignin];
             }
             else
             {
@@ -244,19 +245,19 @@
     _currentUser = user;
     [SUser insertUser:user];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        
-        if ([self initEngine])
-        {
-            [self sendSigninData:_currentUser];
-        }
-        
-    });
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+//        
+//        if ([self initEngine])
+//        {
+//            [self sendSigninData:_currentUser];
+//        }
+//        
+//    });
     
     //TODO
     //发送网络请求， 监听器监听到登录成功执行登录方法
     
-//    [self didSignin];
+    [self didSignin];
 }
 
 // 测试

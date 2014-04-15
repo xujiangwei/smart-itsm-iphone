@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SResourceList.h"
 
 @interface SResourceListViewController : UITableViewController <UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@property (strong, nonatomic) SResourceList *resourceList;
 
 @end

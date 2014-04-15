@@ -7,8 +7,12 @@
 //
 
 #import "SResourceListViewController.h"
+#import "SResourceListViewCell.h"
+#import "SResourceDao.h"
 
 @interface SResourceListViewController ()
+
+@property (strong) SResourceListViewCell *cellPrototype;
 
 @end
 
@@ -23,9 +27,24 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        
+    }
+    return self;
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    static NSString *CellIdentifier = @"SResourceListViewCell";
+    [self.tableView registerNib:[UINib nibWithNibName:@"SResourceListViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
+    self.cellPrototype = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //加载数据
+    [self loadData];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -40,28 +59,43 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.cellPrototype.frame.size.height;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-    return 0;
+    return [self.resourceList.resourceArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"SResourceListViewCell";
     
-    // Configure the cell...
+    SResourceListViewCell *cell = (SResourceListViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    if (nil == cell)
+    {
+        [tableView registerNib:[UINib nibWithNibName:@"SResourceListViewCell" bundle:nil] forCellReuseIdentifier:@"SResourceListViewCell"];
+    }
+    
+    SResource *resource = [self.resourceList.resourceArray objectAtIndex:indexPath.row];
+    
+    [cell.resourceName setText:resource.resourceName];
+    [cell.resourceIp setText:resource.resourceIp];
     
     return cell;
 }
@@ -116,5 +150,11 @@
 }
 
  */
+
+#pragma mark - Private
+- (void)loadData
+{
+    self.resourceList = [SResourceDao getAllResource];
+}
 
 @end

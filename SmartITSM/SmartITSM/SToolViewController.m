@@ -5,6 +5,7 @@
 
 #import "SToolViewController.h"
 #import "SToolDetailViewController.h"
+#import "SResourceListViewController.h"
 #import "STool.h"
 
 
@@ -52,11 +53,17 @@
     STool *manualPolling = [[STool alloc] init];
     manualPolling.name = @"巡检";
     manualPolling.desc = @"电子报单巡检";
+    
+    STool *resourceList = [[STool alloc] init];
+    resourceList.name = @"资源";
+    resourceList.desc = @"资源列表";
+    
     // 常用工具
-    NSArray *commonTools = [NSArray arrayWithObjects:manualPolling, nil];
+    NSArray *commonTools = [NSArray arrayWithObjects:manualPolling,nil];
+    NSArray *commonTools1 = [NSArray arrayWithObjects:resourceList, nil];
 
     // 段落
-    self.sections = [NSArray arrayWithObjects:commonTools, nil];
+    self.sections = [NSArray arrayWithObjects:commonTools, commonTools1, nil];
 }
 
 - (void)viewDidLoad
@@ -89,27 +96,39 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"secton: %d", section);
-    return 3;
+    NSArray *tools = [self.sections objectAtIndex:section];
+    return [tools count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    UITableViewCell *cell = nil;
+    if (0 == indexPath.section)
+    {
         static NSString *CellIdentifier = @"ToolCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        NSArray *tools = [self.sections objectAtIndex:indexPath.section];
+        STool *tool = [tools objectAtIndex:indexPath.row];
         // Configure the cell...
-        [cell.textLabel setText:[NSString stringWithFormat:@"工具%d", indexPath.row]];
-    
-
-
+        [cell.textLabel setText:tool.desc];
+    }
+    else if (1 == indexPath.section)
+    {
+        static NSString *CellIdentifier = @"resourceListCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        NSArray *tools = [self.sections objectAtIndex:indexPath.section];
+        STool *tool = [tools objectAtIndex:indexPath.row];
+        // Configure the cell...
+        [cell.textLabel setText:tool.desc];
+    }
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *result = @"This is title";
+    NSArray *tools = [self.sections objectAtIndex:section];
+    STool *tool = [tools objectAtIndex:0];
+    NSString *result = tool.name;
     return result;
 }
 
@@ -170,6 +189,12 @@
         SToolDetailViewController *detailVC = (SToolDetailViewController *)[segue destinationViewController];
         [detailVC setTitle:[NSString stringWithFormat:@"%@", selectCell.textLabel.text]];
 
+    }else if ([segue.identifier isEqualToString:@"resourceList"])
+    {
+        UITableViewCell *selectCell = (UITableViewCell *)sender;
+        
+        SResourceListViewController *resourceListVC = (SResourceListViewController *)[segue destinationViewController];
+        [resourceListVC setTitle:[NSString stringWithFormat:@"%@", selectCell.textLabel.text]];
     }
     
    

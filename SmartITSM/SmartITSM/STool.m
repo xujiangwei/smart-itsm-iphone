@@ -7,4 +7,7 @@
 
 @implementation STool
 
+@synthesize name, desc;
+
+
 @end
