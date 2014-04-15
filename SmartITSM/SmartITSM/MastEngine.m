@@ -6,7 +6,7 @@
 #import "MastEngine.h"
 #import "ActionListener.h"
 #import "StatusListener.h"
-#import "Contacts.h"
+#import "Contact.h"
 #import "ListenerSet.h"
 
 @interface MastEngine ()
@@ -18,6 +18,8 @@
 @property (strong, nonatomic) NSMutableDictionary *listeners;
 // 状态监听器：key: cellet identifier
 @property (strong, nonatomic) NSMutableDictionary *statusListeners;
+
+@property (strong, nonatomic) NSMutableDictionary *contacts;
 
 @end
 
@@ -43,25 +45,18 @@ static MastEngine *sharedInstance = nil;
         _started = NO;
 
         self.listeners = [[NSMutableDictionary alloc] initWithCapacity:2];
-        
         self.statusListeners = [[NSMutableDictionary alloc] initWithCapacity:2];
+        self.contacts = [[NSMutableDictionary alloc] initWithCapacity:2];
     }
 
     return self;
 }
 
-- (BOOL)start:(Contacts *)contacts
+- (BOOL)start
 {
-    self.contacts  = contacts;
-    
     if (_started)
     {
         return YES;
-    }
-
-    if ([[contacts getAddresses] count] == 0)
-    {
-        return NO;
     }
 
     CCNucleusConfig *config = [[CCNucleusConfig alloc] init:CONSUMER device:PHONE];
@@ -75,13 +70,6 @@ static MastEngine *sharedInstance = nil;
     // 设置监听器
     [CCTalkService sharedSingleton].listener = self;
 
-    NSArray *list = [contacts getAddresses];
-    for (ContactAddress *addr in list)
-    {
-        CCInetAddress *address = [[CCInetAddress alloc] initWithAddress:addr.host port:addr.port];
-        [[CCTalkService sharedSingleton] call:addr.identifier hostAddress:address];
-    }
-    
     _started = YES;
 
     return YES;
@@ -105,29 +93,54 @@ static MastEngine *sharedInstance = nil;
     return _started;
 }
 
+#pragma mark - Management contacts
+
+- (void)addContact:(Contact *)contact
+{
+    [self.contacts removeObjectForKey:contact.identifier];
+    [self.contacts setObject:contact forKey:contact.identifier];
+}
+
+- (void)removeContact:(NSString *)identifier
+{
+    [self.contacts removeObjectForKey:identifier];
+}
+
+- (void)resetContact
+{
+    NSEnumerator *enumerator = [self.contacts objectEnumerator];
+    id value;
+    while ((value = [enumerator nextObject]))
+    {
+        Contact *contact = value;
+        CCInetAddress *address = [[CCInetAddress alloc] initWithAddress:contact.address port:contact.port];
+        [[CCTalkService sharedSingleton] call:contact.identifier hostAddress:address];
+    }
+}
+
 #pragma mark - Listener methods
 
-- (void)addListener:(NSString *)identifier action:(NSString *)action listener:(ActionListener *)listener
+- (void)addListener:(NSString *)identifier listener:(ActionListener *)listener
 {
     ListenerSet *set = [self.listeners objectForKey:identifier];
     if (nil != set)
     {
-        [set add:action listener:listener];
+        [set add:listener];
     }
     else
     {
         set = [[ListenerSet alloc] init];
-        [set add:action listener:listener];
+        [set add:listener];
         [self.listeners setObject:set forKey:identifier];
     }
 }
 
-- (void)removeListener:(NSString *)identifier action:(NSString *)action listener:(ActionListener *)listener
+- (void)removeListener:(NSString *)identifier listener:(ActionListener *)listener
 {
     ListenerSet *set = [self.listeners objectForKey:identifier];
     if (nil != set)
     {
-        [set remove:action listener:listener];
+        [set remove:listener];
         if ([set isEmpty])
         {
             [self.listeners removeObjectForKey:identifier];
@@ -165,31 +178,16 @@ static MastEngine *sharedInstance = nil;
 
 #pragma mark - Action Methods
 
-- (BOOL)sendAction:(NSString *)celletIdentifier action:(CCActionDialect *)action
+- (BOOL)performAction:(NSString *)celletIdentifier action:(CCActionDialect *)action
 {
-    NSArray *addrList = [self.contacts getAddresses];
-    if (addrList.count == 0)
-        return FALSE;
-    
-    ContactAddress *addr = [addrList objectAtIndex:0];
-    CCInetAddress *address = [[CCInetAddress alloc]initWithAddress:addr.host port:addr.port];
-    CCTalker *talker = [[CCTalker alloc] initWithIdentifier:celletIdentifier address:address];
-    [talker talkWithDialect:action];
-    return TRUE;
+    return [[CCTalkService sharedSingleton] talk:celletIdentifier dialect:action];
 }
 
-- (BOOL)asynSendAction:(NSString *)celletIdentifier action:(CCActionDialect *)action
+- (BOOL)asynPerformAction:(NSString *)celletIdentifier action:(CCActionDialect *)action
 {
-    NSArray *addrList = [self.contacts getAddresses];
-    if (addrList.count == 0)
-        return FALSE;
-    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        ContactAddress *addr = [addrList objectAtIndex:0];
-        CCInetAddress *address = [[CCInetAddress alloc] initWithAddress:addr.host port:addr.port];
-        CCTalker *talker = [[CCTalker alloc] initWithIdentifier:celletIdentifier address:address];
-        [talker talkWithDialect:action];
+        [[CCTalkService sharedSingleton] talk:celletIdentifier dialect:action];
     });
     return TRUE;
 }

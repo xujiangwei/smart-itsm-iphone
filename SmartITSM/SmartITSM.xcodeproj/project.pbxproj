@@ -132,7 +132,7 @@
 		44B02BF118ADA5990001451F /* ActionListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BF018ADA5990001451F /* ActionListener.m */; };
 		44B02BF518ADA7DE0001451F /* StatusListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BF418ADA7DE0001451F /* StatusListener.m */; };
 		44B02BF818ADAA2D0001451F /* Failure.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BF718ADAA2D0001451F /* Failure.m */; };
-		44B02BFB18ADAD7B0001451F /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BFA18ADAD7B0001451F /* Contacts.m */; };
+		44B02BFB18ADAD7B0001451F /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BFA18ADAD7B0001451F /* Contact.m */; };
 		44B02BFE18ADAEB40001451F /* ListenerSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B02BFD18ADAEB40001451F /* ListenerSet.m */; };
 		44B1182C18DADF7B00539D0C /* STool.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B1182B18DADF7B00539D0C /* STool.m */; };
 		4A085DEE18D81B1B0078CDF1 /* SSigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A085DED18D81B1B0078CDF1 /* SSigninViewController.m */; };
@@ -423,8 +423,8 @@
 		44B02BF418ADA7DE0001451F /* StatusListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusListener.m; sourceTree = "<group>"; };
 		44B02BF618ADAA2D0001451F /* Failure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Failure.h; sourceTree = "<group>"; };
 		44B02BF718ADAA2D0001451F /* Failure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Failure.m; sourceTree = "<group>"; };
-		44B02BF918ADAD7B0001451F /* Contacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contacts.h; sourceTree = "<group>"; };
-		44B02BFA18ADAD7B0001451F /* Contacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contacts.m; sourceTree = "<group>"; };
+		44B02BF918ADAD7B0001451F /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		44B02BFA18ADAD7B0001451F /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		44B02BFC18ADAEB40001451F /* ListenerSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListenerSet.h; sourceTree = "<group>"; };
 		44B02BFD18ADAEB40001451F /* ListenerSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListenerSet.m; sourceTree = "<group>"; };
 		44B1182A18DADF7B00539D0C /* STool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STool.h; sourceTree = "<group>"; };
@@ -986,8 +986,8 @@
 				44B02BF418ADA7DE0001451F /* StatusListener.m */,
 				44B02BF618ADAA2D0001451F /* Failure.h */,
 				44B02BF718ADAA2D0001451F /* Failure.m */,
-				44B02BF918ADAD7B0001451F /* Contacts.h */,
-				44B02BFA18ADAD7B0001451F /* Contacts.m */,
+				44B02BF918ADAD7B0001451F /* Contact.h */,
+				44B02BFA18ADAD7B0001451F /* Contact.m */,
 				44B02BFC18ADAEB40001451F /* ListenerSet.h */,
 				44B02BFD18ADAEB40001451F /* ListenerSet.m */,
 			);
@@ -1259,7 +1259,7 @@
 				379357CB18E3C4F20062265C /* CalLogic.m in Sources */,
 				3777A13418E41AB800398191 /* SIncidentProcessViewController.m in Sources */,
 				4417CF8218AC74C700E6E09F /* AppDelegate.m in Sources */,
-				44B02BFB18ADAD7B0001451F /* Contacts.m in Sources */,
+				44B02BFB18ADAD7B0001451F /* Contact.m in Sources */,
 				379357E118E3C4F20062265C /* TSMessage.m in Sources */,
 				37F9967F18EAC85C00A27B69 /* SProblemProcessViewController.m in Sources */,
 				4A085DF918D8564E0078CDF1 /* Reachability.m in Sources */,

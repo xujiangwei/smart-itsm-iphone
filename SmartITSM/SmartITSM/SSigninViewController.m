@@ -15,7 +15,7 @@
 #import "SConfigServerView.h"
 #import "Reachability.h"
 #import "MastEngine.h"
-#import "Contacts.h"
+#import "Contact.h"
 #import "SUser.h"
 
 
@@ -78,9 +78,9 @@
 
     self.signinView.hidden = NO;
     
-    [[MastEngine sharedSingleton] addListener:kDemoCelletName action:@"login" listener:_listener];
-    [[MastEngine sharedSingleton] addListener:kDemoCelletName action:@"connectionCheck" listener:_listener];
-    [[MastEngine sharedSingleton] addStatusListener:kDemoCelletName statusListener:_statusListener];
+//    [[MastEngine sharedSingleton] addListener:kDemoCelletName action:@"login" listener:_listener];
+//    [[MastEngine sharedSingleton] addListener:kDemoCelletName action:@"connectionCheck" listener:_listener];
+//    [[MastEngine sharedSingleton] addStatusListener:kDemoCelletName statusListener:_statusListener];
 
     // 加载本地数据
     if (![self loadLocalData])
@@ -152,9 +152,9 @@
 {
     [super didReceiveMemoryWarning];
     
-    [[MastEngine sharedSingleton] removeListener:kDemoCelletName action:@"login" listener:_listener];
-    [[MastEngine sharedSingleton] removeListener:kDemoCelletName action:@"connectionCheck" listener:_listener];
-    [[MastEngine sharedSingleton] removeStatusListener:kDemoCelletName statusListener:_statusListener];
+//    [[MastEngine sharedSingleton] removeListener:kDemoCelletName action:@"login" listener:_listener];
+//    [[MastEngine sharedSingleton] removeListener:kDemoCelletName action:@"connectionCheck" listener:_listener];
+//    [[MastEngine sharedSingleton] removeStatusListener:kDemoCelletName statusListener:_statusListener];
 }
 
 #pragma mark - Check network
@@ -465,7 +465,7 @@
     }
     
     [dialect appendParam:@"data" stringValue:value];
-    [[MastEngine sharedSingleton] asynSendAction:@"SmartITOM" action:dialect];
+//    [[MastEngine sharedSingleton] asynSendAction:@"SmartITOM" action:dialect];
     
 }
 
@@ -486,7 +486,7 @@
     
     [dialect appendParam:@"data" stringValue:value];
     
-    [[MastEngine sharedSingleton] asynSendAction:@"SmartITOM" action:dialect];
+//    [[MastEngine sharedSingleton] asynSendAction:@"SmartITOM" action:dialect];
 }
 
 // 加载本地用户数据
@@ -559,11 +559,11 @@
     }
 
     // 服务器
-    Contacts *contacts = [[Contacts alloc] init];
-    [contacts addAddress:kDemoCelletName host:_address port:_port];
+//    Contacts *contacts = [[Contacts alloc] init];
+//    [contacts addAddress:kDemoCelletName host:_address port:_port];
 
     //启动引擎
-    if (![[MastEngine sharedSingleton] start:contacts])
+    if (![[MastEngine sharedSingleton] start])
     {
         return FALSE;
     }

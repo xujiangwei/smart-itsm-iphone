@@ -10,9 +10,9 @@
 
 @property (strong, nonatomic) NSMutableDictionary *listeners;
 
-- (void)add:(NSString *)name listener:(ActionListener *)listener;
+- (void)add:(ActionListener *)listener;
 
-- (void)remove:(NSString *)name listener:(ActionListener *)listener;
+- (void)remove:(ActionListener *)listener;
 
 - (NSArray *)getListenersWithName:(NSString *)name;
 
