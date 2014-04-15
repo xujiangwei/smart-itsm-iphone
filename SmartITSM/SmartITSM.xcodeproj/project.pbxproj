@@ -527,13 +527,6 @@
 			path = Popover;
 			sourceTree = "<group>";
 		};
-		375B565B18F51098005DE63D /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = iPad;
-			sourceTree = "<group>";
-		};
 		3777A09A18E3CCF000398191 /* RETableViewManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -902,7 +895,6 @@
 		4417CF7718AC74C700E6E09F /* SmartITSM */ = {
 			isa = PBXGroup;
 			children = (
-				375B565B18F51098005DE63D /* iPad */,
 				3793578918E3C4F20062265C /* ThirdParty */,
 				37948F6F18DFF8EB00A5BBDA /* Assets */,
 				37948F3C18DFD4CD00A5BBDA /* Model */,
