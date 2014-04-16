@@ -28,19 +28,6 @@
    
     }
     
-    else if([dialect.action isEqualToString:@"connectionCheck"])
-    {
-        NSString *jsonStr = [dialect getParamAsString:@"data"];
-        NSData * data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *error;
-        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        NSInteger statusCode = [[jsonDic objectForKey:@"status"] integerValue];
-        
-        if (nil != delegate && [delegate respondsToSelector:@selector(didConnectServer:)])
-        {
-            [delegate didConnectServer:statusCode ];
-        }
-    }
 }
 
 @end

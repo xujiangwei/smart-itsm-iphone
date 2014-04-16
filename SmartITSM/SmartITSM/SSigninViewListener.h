@@ -13,8 +13,6 @@
 
 - (void)didSignin:(NSDictionary *)dic;
 
-- (void)didConnectServer:(NSInteger)statusCode;
-
 @end
 
 @interface SSigninViewListener : ActionListener

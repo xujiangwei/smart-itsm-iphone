@@ -24,6 +24,16 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        self.dicoverys = [[NSMutableArray alloc] initWithCapacity:2];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -54,7 +64,7 @@
 {
 
     // Return the number of rows in the section.
-    return 2;
+    return [self.dicoverys count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,7 +73,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    [cell.textLabel setText:[NSString stringWithFormat:@"发现%d",indexPath.row ]];
+    NSString *discovery = [self.dicoverys objectAtIndex:indexPath.row];
+    [cell.textLabel setText:discovery];
     
     return cell;
 }
@@ -155,6 +166,8 @@
         {
             //设备
             [self performSegueWithIdentifier:@"resourceList" sender:self];
+//            [self.dicoverys addObject:@"资源列表"];
+//            [self.tableView reloadData];
             
         }
             break;
