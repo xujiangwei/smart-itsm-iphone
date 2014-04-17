@@ -10,6 +10,7 @@
 #import "SMessageContentViewController.h"
 #import "SMessageViewCell.h"
 #import "SMessageDao.h"
+#import "SMessageSortingPopoverController.h"
 
 #define kCellHeight 80
 
@@ -20,8 +21,9 @@
 @implementation SMessageViewController
 
 @synthesize messages;
-//@synthesize messageListView;
+@synthesize messageListView;
 @synthesize delegate;
+@synthesize popoverController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -56,13 +58,48 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self.tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
-    
-//    messageListView.dataSource = self;
-//    messageListView.delegate = self;
-    
+    //添加列表
+    messageListView.dataSource = self;
+    messageListView.delegate = self;
+
     messages = [SMessageDao getTaskList];
+    
+    //添加rightBarButton
+    popoverClass = [WEPopoverController class];
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,44,40)];
+    
+    [rightButton setTitle:@"操作" forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    rightButton.titleLabel.font=[UIFont systemFontOfSize:14];
+    [rightButton addTarget:self action:@selector(sorting:)forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.rightBarButtonItem= rightItem;
+}
+
+-(void)sorting:(UIButton*)sender
+{
+    
+	if (!self.popoverController) {
+		
+		SMessageSortingPopoverController *sortingPopoverController = [[SMessageSortingPopoverController alloc] initWithStyle:UITableViewStylePlain];
+//        sortingPopoverController.messageContentViewController = self;
+        
+        
+		self.popoverController = [[popoverClass alloc] initWithContentViewController:sortingPopoverController];
+		self.popoverController.delegate = self;
+		self.popoverController.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
+		
+		[self.popoverController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem
+									   permittedArrowDirections:(UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown)
+													   animated:YES];
+        
+	} else {
+		[self.popoverController dismissPopoverAnimated:YES];
+		self.popoverController = nil;
+	}
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,7 +123,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"MessageDetail" sender:cell];
 }
 
 #pragma mark - Table view data source
@@ -127,21 +165,19 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    UITableViewCell *cell = (UITableViewCell *)sender;
+    //设置sender为标题
+    SMessageViewCell *cell = (SMessageViewCell *)sender;
     
     SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
-    viewController.title = [cell.textLabel text];
+    viewController.title = [cell.senderLabel text];
  
 }
- */
 
 
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18F891C818FF7DA900C65650 /* SMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891C718FF7DA900C65650 /* SMessage.m */; };
 		18F891CB18FF852500C65650 /* SMessageDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891CA18FF852500C65650 /* SMessageDao.m */; };
+		18F891CE18FFB6EA00C65650 /* SMessageSortingPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */; };
 		370B3FAE18EBA46100915739 /* SProcessTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B3FAD18EBA46100915739 /* SProcessTemplate.m */; };
 		370B676B18DC33200071CDE4 /* SInspectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676A18DC33200071CDE4 /* SInspectionViewController.m */; };
 		370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676E18DC344F0071CDE4 /* SMessageViewController.m */; };
@@ -154,7 +155,8 @@
 		4A5EDF4218FB8B150047B923 /* SResourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4118FB8B150047B923 /* SResourceList.m */; };
 		4A5EDF4B18FBE0DE0047B923 /* SResourceListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4918FBE0DE0047B923 /* SResourceListViewCell.m */; };
 		4A5EDF4C18FBE0DE0047B923 /* SResourceListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */; };
-		4A7E379818FFC61200EFD7C3 /* SAlarmDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E379718FFC61200EFD7C3 /* SAlarmDao.m */; };
+		4A7E379D18FFD57A00EFD7C3 /* SAlarmDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E379A18FFD57A00EFD7C3 /* SAlarmDao.m */; };
+		4A7E379E18FFD57A00EFD7C3 /* SAlarmSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E379C18FFD57A00EFD7C3 /* SAlarmSet.m */; };
 		4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F218AC958F00EB594B /* SOwnViewController.m */; };
 		4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F518AC95B000EB594B /* SDiscoveryViewController.m */; };
 		4A92F0F918AC972B00EB594B /* SToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F818AC972B00EB594B /* SToolViewController.m */; };
@@ -170,7 +172,6 @@
 		7212653118FF764900460F62 /* SAlarmViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7212652518FF764900460F62 /* SAlarmViewCell.xib */; };
 		7212653218FF764900460F62 /* SAlarmListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652718FF764900460F62 /* SAlarmListViewCell.m */; };
 		7212653318FF764900460F62 /* SAlarmListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7212652818FF764900460F62 /* SAlarmListViewCell.xib */; };
-		7212653418FF764900460F62 /* SAlarmSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652A18FF764900460F62 /* SAlarmSet.m */; };
 		7212653518FF764900460F62 /* SAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652C18FF764900460F62 /* SAlarm.m */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +190,8 @@
 		18F891C718FF7DA900C65650 /* SMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessage.m; sourceTree = "<group>"; };
 		18F891C918FF852500C65650 /* SMessageDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageDao.h; sourceTree = "<group>"; };
 		18F891CA18FF852500C65650 /* SMessageDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageDao.m; sourceTree = "<group>"; };
+		18F891CC18FFB6EA00C65650 /* SMessageSortingPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageSortingPopoverController.h; sourceTree = "<group>"; };
+		18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageSortingPopoverController.m; sourceTree = "<group>"; };
 		370B3FAC18EBA46100915739 /* SProcessTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProcessTemplate.h; sourceTree = "<group>"; };
 		370B3FAD18EBA46100915739 /* SProcessTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProcessTemplate.m; sourceTree = "<group>"; };
 		370B676918DC33200071CDE4 /* SInspectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SInspectionViewController.h; sourceTree = "<group>"; };
@@ -465,8 +468,10 @@
 		4A5EDF4818FBE0DE0047B923 /* SResourceListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResourceListViewCell.h; sourceTree = "<group>"; };
 		4A5EDF4918FBE0DE0047B923 /* SResourceListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResourceListViewCell.m; sourceTree = "<group>"; };
 		4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SResourceListViewCell.xib; sourceTree = "<group>"; };
-		4A7E379618FFC61200EFD7C3 /* SAlarmDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmDao.h; sourceTree = "<group>"; };
-		4A7E379718FFC61200EFD7C3 /* SAlarmDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmDao.m; sourceTree = "<group>"; };
+		4A7E379918FFD57A00EFD7C3 /* SAlarmDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmDao.h; sourceTree = "<group>"; };
+		4A7E379A18FFD57A00EFD7C3 /* SAlarmDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmDao.m; sourceTree = "<group>"; };
+		4A7E379B18FFD57A00EFD7C3 /* SAlarmSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmSet.h; sourceTree = "<group>"; };
+		4A7E379C18FFD57A00EFD7C3 /* SAlarmSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmSet.m; sourceTree = "<group>"; };
 		4A92F0F118AC958F00EB594B /* SOwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOwnViewController.h; sourceTree = "<group>"; };
 		4A92F0F218AC958F00EB594B /* SOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOwnViewController.m; sourceTree = "<group>"; };
 		4A92F0F418AC95B000EB594B /* SDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiscoveryViewController.h; sourceTree = "<group>"; };
@@ -494,8 +499,6 @@
 		7212652618FF764900460F62 /* SAlarmListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmListViewCell.h; sourceTree = "<group>"; };
 		7212652718FF764900460F62 /* SAlarmListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmListViewCell.m; sourceTree = "<group>"; };
 		7212652818FF764900460F62 /* SAlarmListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAlarmListViewCell.xib; sourceTree = "<group>"; };
-		7212652918FF764900460F62 /* SAlarmSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmSet.h; sourceTree = "<group>"; };
-		7212652A18FF764900460F62 /* SAlarmSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmSet.m; sourceTree = "<group>"; };
 		7212652B18FF764900460F62 /* SAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarm.h; sourceTree = "<group>"; };
 		7212652C18FF764900460F62 /* SAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarm.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -531,6 +534,8 @@
 			children = (
 				370B676D18DC344F0071CDE4 /* SMessageViewController.h */,
 				370B676E18DC344F0071CDE4 /* SMessageViewController.m */,
+				18F891CC18FFB6EA00C65650 /* SMessageSortingPopoverController.h */,
+				18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */,
 				37948F3918DFD05B00A5BBDA /* SMessageContentViewController.h */,
 				37948F3A18DFD05B00A5BBDA /* SMessageContentViewController.m */,
 				4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */,
@@ -827,12 +832,12 @@
 				4A5EDF4118FB8B150047B923 /* SResourceList.m */,
 				4A5EDF3D18FB8A150047B923 /* SResourceDao.h */,
 				4A5EDF3E18FB8A150047B923 /* SResourceDao.m */,
+				4A7E379918FFD57A00EFD7C3 /* SAlarmDao.h */,
+				4A7E379A18FFD57A00EFD7C3 /* SAlarmDao.m */,
+				4A7E379B18FFD57A00EFD7C3 /* SAlarmSet.h */,
+				4A7E379C18FFD57A00EFD7C3 /* SAlarmSet.m */,
 				7212652B18FF764900460F62 /* SAlarm.h */,
 				7212652C18FF764900460F62 /* SAlarm.m */,
-				7212652918FF764900460F62 /* SAlarmSet.h */,
-				7212652A18FF764900460F62 /* SAlarmSet.m */,
-				4A7E379618FFC61200EFD7C3 /* SAlarmDao.h */,
-				4A7E379718FFC61200EFD7C3 /* SAlarmDao.m */,
 				18F891C618FF7DA900C65650 /* SMessage.h */,
 				18F891C718FF7DA900C65650 /* SMessage.m */,
 				18F891C918FF852500C65650 /* SMessageDao.h */,
@@ -1275,6 +1280,7 @@
 				3777A0F318E3CCF000398191 /* REFloatItem.m in Sources */,
 				379357CB18E3C4F20062265C /* CalLogic.m in Sources */,
 				3777A13418E41AB800398191 /* SIncidentProcessViewController.m in Sources */,
+				18F891CE18FFB6EA00C65650 /* SMessageSortingPopoverController.m in Sources */,
 				4417CF8218AC74C700E6E09F /* AppDelegate.m in Sources */,
 				44B02BFB18ADAD7B0001451F /* Contact.m in Sources */,
 				379357E118E3C4F20062265C /* TSMessage.m in Sources */,
@@ -1287,7 +1293,6 @@
 				44B02BF118ADA5990001451F /* ActionListener.m in Sources */,
 				7212653218FF764900460F62 /* SAlarmListViewCell.m in Sources */,
 				44B02BFE18ADAEB40001451F /* ListenerSet.m in Sources */,
-				4A7E379818FFC61200EFD7C3 /* SAlarmDao.m in Sources */,
 				379357D218E3C4F20062265C /* UIViewAdditions.m in Sources */,
 				370B677518DC35520071CDE4 /* SProblemContentTabBarController.m in Sources */,
 				3777A0EA18E3CCF000398191 /* RETableViewLongTextCell.m in Sources */,
@@ -1298,6 +1303,7 @@
 				37E289A818E27712004E8A4A /* SProcessViewController.m in Sources */,
 				370B677E18DC364E0071CDE4 /* SIncidentBaseViewController.m in Sources */,
 				3777A12E18E40DB700398191 /* MultilineTextItem.m in Sources */,
+				4A7E379E18FFD57A00EFD7C3 /* SAlarmSet.m in Sources */,
 				37E289B718E29CBB004E8A4A /* SProcessCell.m in Sources */,
 				3777A0E618E3CCF000398191 /* RETableViewDateTimeCell.m in Sources */,
 				3777A10518E3CCF000398191 /* RETableViewManager.m in Sources */,
@@ -1311,6 +1317,7 @@
 				3777A10018E3CCF000398191 /* REPlaceholderTextView.m in Sources */,
 				374363C918EA5EF0005E5312 /* SChangeBaseViewController.m in Sources */,
 				7212652E18FF764900460F62 /* SAlarmListViewController.m in Sources */,
+				4A7E379D18FFD57A00EFD7C3 /* SAlarmDao.m in Sources */,
 				7212652F18FF764900460F62 /* SAlarmContentViewController.m in Sources */,
 				44959EDF18E3ECC7009F8E35 /* JBChartView.m in Sources */,
 				4A92F11118ACAEBE00EB594B /* RootViewController.m in Sources */,
@@ -1320,7 +1327,6 @@
 				3777A0E918E3CCF000398191 /* RETableViewInlinePickerCell.m in Sources */,
 				37F9967C18EAC79900A27B69 /* SProblemOperationPopoverController.m in Sources */,
 				3777A10618E3CCF000398191 /* RETableViewOptionsController.m in Sources */,
-				7212653418FF764900460F62 /* SAlarmSet.m in Sources */,
 				371F2E8518EABF7500CC06BB /* WEPopoverContainerView.m in Sources */,
 				37E289AE18E27754004E8A4A /* SAttachmentViewController.m in Sources */,
 				379357C918E3C4F20062265C /* CalDataSource.m in Sources */,

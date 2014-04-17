@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SMessage.h"
+#import "WEPopoverController.h"
 
 @protocol SMessageListDelegate <NSObject>
 
@@ -16,13 +17,19 @@
 
 @end
 
-@interface SMessageViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
+@interface SMessageViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, UIPopoverControllerDelegate>
+{
+//    WEPopoverController *popoverController;
+    Class popoverClass;
+}
 
 @property (nonatomic, strong) NSMutableArray  * messages;
 
 @property (nonatomic,strong)  UITableView *messageListView;
 
 @property (nonatomic, assign) id<SMessageListDelegate> delegate;
+
+@property (nonatomic,retain) WEPopoverController *popoverController;
 
 //更新事故工单列表
 - (void)updateMessageList:(NSMutableArray *)messageArray;
