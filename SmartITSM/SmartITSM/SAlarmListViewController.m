@@ -8,9 +8,12 @@
 
 #import "SAlarmListViewController.h"
 #import "SAlarmContentViewController.h"
+#import "SAlarmListViewCell.h"
 
 @interface SAlarmListViewController ()
-
+{
+    NSArray *imageName;
+}
 @end
 
 @implementation SAlarmListViewController
@@ -35,8 +38,11 @@
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.alarmList = [[NSArray alloc] initWithObjects:@"严重告警1",@"严重告警2", nil];
+    if (self)
+    {
+        imageName = [NSArray arrayWithObjects:@"alarm_serious_lamp@2x.png",@"alarm_main_lamp@2x.png",@"alarm_minor_lamp@2x.png",@"alarm_lamp@2x.png",@"alarm_unkown_lamp@2x.png" ,nil];
+//        imageName = [NSArray arrayWithObjects:@"alarm_serious_lamp.png",@"alarm_main_lamp.png",@"alarm_minor_lamp.png",@"alarm_lamp.png",@"alarm_unkown_lamp.png" ,nil];
+
     }
     return self;
 }
@@ -44,7 +50,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"SAlarmListViewCell" bundle:nil] forCellReuseIdentifier:@"SAlarmListViewCell"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,14 +78,41 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"alarmListCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"SAlarmListViewCell";
+    SAlarmListViewCell *cell =(SAlarmListViewCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
+    if (!cell)
+    {
+        [tableView registerNib:[UINib nibWithNibName:@"SAlarmListViewCell" bundle:nil] forCellReuseIdentifier:@"SAlarmListViewCell"];
+    }
     
-    // Configure the cell...
-    [cell.textLabel setText:[self.alarmList objectAtIndex:indexPath.row]];
+    SAlarm *alarm = [self.alarmList objectAtIndex:indexPath.row];
+    cell.nameLabel.text = alarm.objectOfManagement;
+    cell.IPLabel.text = alarm.deviceIp;
+    cell.IPLabel.font = [UIFont systemFontOfSize:14.0];
+    cell.imageV.image = [UIImage imageNamed:[imageName objectAtIndex:self.index]];
+    cell.imageView.contentMode = UIViewContentModeCenter;
     
     return cell;
 }
+
+#pragma mark -TableView Delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SAlarmContentViewController *contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"SAlarmContentVC"];
+    SAlarm *alarm = [self.alarmList objectAtIndex:indexPath.row];
+    SAlarm *myAlarm = [SAlarm getAlarmDetailWithAlarmId:alarm.ID];
+    contentViewController.alarm = myAlarm;
+    contentViewController.index = self.index;
+    [self.navigationController pushViewController:contentViewController animated:YES];
+}
+
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 60 ;
+//}
 
 /*
  // Override to support conditional editing of the table view.

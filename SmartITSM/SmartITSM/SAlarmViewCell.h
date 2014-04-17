@@ -13,5 +13,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *alarmLevel;
 
+@property (strong, nonatomic) IBOutlet UILabel *alarmCount;
+
+@property (strong, nonatomic) IBOutlet UIImageView *alarmImageV;
 
 @end
