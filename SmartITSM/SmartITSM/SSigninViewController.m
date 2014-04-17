@@ -250,7 +250,7 @@
 // 登录
 - (IBAction)btnSigninAction:(id)sender
 {
-    [self didSignin];
+//    [self didSignin];
    
     [SUser updateLastLogin];
     

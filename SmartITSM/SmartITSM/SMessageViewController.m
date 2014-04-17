@@ -20,7 +20,7 @@
 @implementation SMessageViewController
 
 @synthesize messages;
-@synthesize messageListView;
+//@synthesize messageListView;
 @synthesize delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -43,24 +43,25 @@
     return self;
 }
 
-//- (id)initWithCoder:(NSCoder *)aDecoder
-//{
-//    self = [super initWithCoder:aDecoder];
-//    if (self)
-//    {
-//        self.messageList = [[NSArray alloc] initWithObjects:@"消息1",@"工单消息2", nil];
-//    }
-//    return self;
-//}
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-//    [self.tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
     
-    messageListView.dataSource = self;
-    messageListView.delegate = self;
+//    messageListView.dataSource = self;
+//    messageListView.delegate = self;
+    
     messages = [SMessageDao getTaskList];
 }
 
@@ -73,7 +74,7 @@
 - (void)updateMessageList:(NSMutableArray *)messageArray
 {
     messages = messageArray;
-    [messageListView reloadData];
+//    [messageListView reloadData];
 }
 
 #pragma mark - Table view delegate

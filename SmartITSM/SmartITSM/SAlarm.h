@@ -6,6 +6,21 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum
+{
+    //严重警告
+    seriousAlarm = 5,
+    //主要警告
+    mainAlarm = 4,
+    //次要警告
+    minorAlarm = 3,
+    //警告
+    Alarm = 2,
+    //未知
+    UnkownAlarm = 1,
+    
+}  AlarmLevel;
+
 @interface SAlarm : NSObject
 
 @property (nonatomic, assign) long ID;                   //告警id
@@ -14,7 +29,7 @@
 
 @property (nonatomic, strong) NSString *location;             //定位
 
-@property (nonatomic, assign) NSInteger level;                //级别
+@property (nonatomic, assign) AlarmLevel level;                //级别
 
 @property (nonatomic, assign) long resourceId;                //设备ID
 
@@ -56,10 +71,6 @@
 //
 //@property (nonatomic, strong) NSString *effectArea;           //影响范围   类型需修改
 
-+ (BOOL)insertAlarm:(NSDictionary *)dic;
 
-+ (SAlarm *)getAlarmDetailWithAlarmId:(long)index;
-
-+ (BOOL)updateAlarm:(NSDictionary *)dic;
 
 @end

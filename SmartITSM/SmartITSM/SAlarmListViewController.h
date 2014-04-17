@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SAlarm.h"
+#import "SAlarmDao.h"
 
 @interface SAlarmListViewController : UITableViewController
 

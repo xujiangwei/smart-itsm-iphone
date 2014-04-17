@@ -56,7 +56,7 @@
 - (void)updateIncidentList:(NSMutableArray *)incidentArray
 {
     incidents = incidentArray;
-    [incidentListView reloadData];
+//    [incidentListView reloadData];
 }
 
 

@@ -103,7 +103,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SAlarmContentViewController *contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"SAlarmContentVC"];
     SAlarm *alarm = [self.alarmList objectAtIndex:indexPath.row];
-    SAlarm *myAlarm = [SAlarm getAlarmDetailWithAlarmId:alarm.ID];
+    SAlarm *myAlarm = [SAlarmDao getAlarmDetailWithAlarmId:alarm.ID];
     contentViewController.alarm = myAlarm;
     contentViewController.index = self.index;
     [self.navigationController pushViewController:contentViewController animated:YES];

@@ -154,6 +154,7 @@
 		4A5EDF4218FB8B150047B923 /* SResourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4118FB8B150047B923 /* SResourceList.m */; };
 		4A5EDF4B18FBE0DE0047B923 /* SResourceListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4918FBE0DE0047B923 /* SResourceListViewCell.m */; };
 		4A5EDF4C18FBE0DE0047B923 /* SResourceListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */; };
+		4A7E379818FFC61200EFD7C3 /* SAlarmDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E379718FFC61200EFD7C3 /* SAlarmDao.m */; };
 		4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F218AC958F00EB594B /* SOwnViewController.m */; };
 		4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F518AC95B000EB594B /* SDiscoveryViewController.m */; };
 		4A92F0F918AC972B00EB594B /* SToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F818AC972B00EB594B /* SToolViewController.m */; };
@@ -169,28 +170,8 @@
 		7212653118FF764900460F62 /* SAlarmViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7212652518FF764900460F62 /* SAlarmViewCell.xib */; };
 		7212653218FF764900460F62 /* SAlarmListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652718FF764900460F62 /* SAlarmListViewCell.m */; };
 		7212653318FF764900460F62 /* SAlarmListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7212652818FF764900460F62 /* SAlarmListViewCell.xib */; };
-		7212653418FF764900460F62 /* SAlarmList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652A18FF764900460F62 /* SAlarmList.m */; };
+		7212653418FF764900460F62 /* SAlarmSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652A18FF764900460F62 /* SAlarmSet.m */; };
 		7212653518FF764900460F62 /* SAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652C18FF764900460F62 /* SAlarm.m */; };
-		7212654B18FF767100460F62 /* alarm_lamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212653718FF767100460F62 /* alarm_lamp.png */; };
-		7212654C18FF767100460F62 /* alarm_lamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212653818FF767100460F62 /* alarm_lamp@2x.png */; };
-		7212654D18FF767100460F62 /* alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212653918FF767100460F62 /* alarm.png */; };
-		7212654E18FF767100460F62 /* alarm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212653A18FF767100460F62 /* alarm@2x.png */; };
-		7212654F18FF767100460F62 /* alarm_main_lamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212653B18FF767100460F62 /* alarm_main_lamp.png */; };
-		7212655018FF767100460F62 /* alarm_main_lamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212653C18FF767100460F62 /* alarm_main_lamp@2x.png */; };
-		7212655118FF767100460F62 /* alarm_main.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212653D18FF767100460F62 /* alarm_main.png */; };
-		7212655218FF767100460F62 /* alarm_main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212653E18FF767100460F62 /* alarm_main@2x.png */; };
-		7212655318FF767100460F62 /* alarm_minor_lamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212653F18FF767100460F62 /* alarm_minor_lamp.png */; };
-		7212655418FF767100460F62 /* alarm_minor_lamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212654018FF767100460F62 /* alarm_minor_lamp@2x.png */; };
-		7212655518FF767100460F62 /* alarm_minor.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212654118FF767100460F62 /* alarm_minor.png */; };
-		7212655618FF767100460F62 /* alarm_minor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212654218FF767100460F62 /* alarm_minor@2x.png */; };
-		7212655718FF767100460F62 /* alarm_serious_lamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212654318FF767100460F62 /* alarm_serious_lamp.png */; };
-		7212655818FF767100460F62 /* alarm_serious_lamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212654418FF767100460F62 /* alarm_serious_lamp@2x.png */; };
-		7212655918FF767100460F62 /* alarm_serious.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212654518FF767100460F62 /* alarm_serious.png */; };
-		7212655A18FF767100460F62 /* alarm_serious@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212654618FF767100460F62 /* alarm_serious@2x.png */; };
-		7212655B18FF767100460F62 /* alarm_unkown_lamp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212654718FF767100460F62 /* alarm_unkown_lamp.png */; };
-		7212655C18FF767100460F62 /* alarm_unkown_lamp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212654818FF767100460F62 /* alarm_unkown_lamp@2x.png */; };
-		7212655D18FF767100460F62 /* alarm_unkown.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212654918FF767100460F62 /* alarm_unkown.png */; };
-		7212655E18FF767100460F62 /* alarm_unkown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7212654A18FF767100460F62 /* alarm_unkown@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -484,6 +465,8 @@
 		4A5EDF4818FBE0DE0047B923 /* SResourceListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResourceListViewCell.h; sourceTree = "<group>"; };
 		4A5EDF4918FBE0DE0047B923 /* SResourceListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResourceListViewCell.m; sourceTree = "<group>"; };
 		4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SResourceListViewCell.xib; sourceTree = "<group>"; };
+		4A7E379618FFC61200EFD7C3 /* SAlarmDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmDao.h; sourceTree = "<group>"; };
+		4A7E379718FFC61200EFD7C3 /* SAlarmDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmDao.m; sourceTree = "<group>"; };
 		4A92F0F118AC958F00EB594B /* SOwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOwnViewController.h; sourceTree = "<group>"; };
 		4A92F0F218AC958F00EB594B /* SOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOwnViewController.m; sourceTree = "<group>"; };
 		4A92F0F418AC95B000EB594B /* SDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiscoveryViewController.h; sourceTree = "<group>"; };
@@ -511,30 +494,10 @@
 		7212652618FF764900460F62 /* SAlarmListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmListViewCell.h; sourceTree = "<group>"; };
 		7212652718FF764900460F62 /* SAlarmListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmListViewCell.m; sourceTree = "<group>"; };
 		7212652818FF764900460F62 /* SAlarmListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAlarmListViewCell.xib; sourceTree = "<group>"; };
-		7212652918FF764900460F62 /* SAlarmList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmList.h; sourceTree = "<group>"; };
-		7212652A18FF764900460F62 /* SAlarmList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmList.m; sourceTree = "<group>"; };
+		7212652918FF764900460F62 /* SAlarmSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmSet.h; sourceTree = "<group>"; };
+		7212652A18FF764900460F62 /* SAlarmSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmSet.m; sourceTree = "<group>"; };
 		7212652B18FF764900460F62 /* SAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarm.h; sourceTree = "<group>"; };
 		7212652C18FF764900460F62 /* SAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarm.m; sourceTree = "<group>"; };
-		7212653718FF767100460F62 /* alarm_lamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_lamp.png; sourceTree = "<group>"; };
-		7212653818FF767100460F62 /* alarm_lamp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarm_lamp@2x.png"; sourceTree = "<group>"; };
-		7212653918FF767100460F62 /* alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm.png; sourceTree = "<group>"; };
-		7212653A18FF767100460F62 /* alarm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarm@2x.png"; sourceTree = "<group>"; };
-		7212653B18FF767100460F62 /* alarm_main_lamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_main_lamp.png; sourceTree = "<group>"; };
-		7212653C18FF767100460F62 /* alarm_main_lamp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarm_main_lamp@2x.png"; sourceTree = "<group>"; };
-		7212653D18FF767100460F62 /* alarm_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_main.png; sourceTree = "<group>"; };
-		7212653E18FF767100460F62 /* alarm_main@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarm_main@2x.png"; sourceTree = "<group>"; };
-		7212653F18FF767100460F62 /* alarm_minor_lamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_minor_lamp.png; sourceTree = "<group>"; };
-		7212654018FF767100460F62 /* alarm_minor_lamp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarm_minor_lamp@2x.png"; sourceTree = "<group>"; };
-		7212654118FF767100460F62 /* alarm_minor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_minor.png; sourceTree = "<group>"; };
-		7212654218FF767100460F62 /* alarm_minor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarm_minor@2x.png"; sourceTree = "<group>"; };
-		7212654318FF767100460F62 /* alarm_serious_lamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_serious_lamp.png; sourceTree = "<group>"; };
-		7212654418FF767100460F62 /* alarm_serious_lamp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarm_serious_lamp@2x.png"; sourceTree = "<group>"; };
-		7212654518FF767100460F62 /* alarm_serious.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_serious.png; sourceTree = "<group>"; };
-		7212654618FF767100460F62 /* alarm_serious@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarm_serious@2x.png"; sourceTree = "<group>"; };
-		7212654718FF767100460F62 /* alarm_unkown_lamp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_unkown_lamp.png; sourceTree = "<group>"; };
-		7212654818FF767100460F62 /* alarm_unkown_lamp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarm_unkown_lamp@2x.png"; sourceTree = "<group>"; };
-		7212654918FF767100460F62 /* alarm_unkown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_unkown.png; sourceTree = "<group>"; };
-		7212654A18FF767100460F62 /* alarm_unkown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarm_unkown@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -568,10 +531,6 @@
 			children = (
 				370B676D18DC344F0071CDE4 /* SMessageViewController.h */,
 				370B676E18DC344F0071CDE4 /* SMessageViewController.m */,
-				18F891C618FF7DA900C65650 /* SMessage.h */,
-				18F891C718FF7DA900C65650 /* SMessage.m */,
-				18F891C918FF852500C65650 /* SMessageDao.h */,
-				18F891CA18FF852500C65650 /* SMessageDao.m */,
 				37948F3918DFD05B00A5BBDA /* SMessageContentViewController.h */,
 				37948F3A18DFD05B00A5BBDA /* SMessageContentViewController.m */,
 				4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */,
@@ -868,6 +827,16 @@
 				4A5EDF4118FB8B150047B923 /* SResourceList.m */,
 				4A5EDF3D18FB8A150047B923 /* SResourceDao.h */,
 				4A5EDF3E18FB8A150047B923 /* SResourceDao.m */,
+				7212652B18FF764900460F62 /* SAlarm.h */,
+				7212652C18FF764900460F62 /* SAlarm.m */,
+				7212652918FF764900460F62 /* SAlarmSet.h */,
+				7212652A18FF764900460F62 /* SAlarmSet.m */,
+				4A7E379618FFC61200EFD7C3 /* SAlarmDao.h */,
+				4A7E379718FFC61200EFD7C3 /* SAlarmDao.m */,
+				18F891C618FF7DA900C65650 /* SMessage.h */,
+				18F891C718FF7DA900C65650 /* SMessage.m */,
+				18F891C918FF852500C65650 /* SMessageDao.h */,
+				18F891CA18FF852500C65650 /* SMessageDao.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1127,7 +1096,6 @@
 		4AB79DA318DEEC0E00ECEC27 /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
-				7212653618FF766100460F62 /* images */,
 				7212651D18FF764900460F62 /* SAlarmViewController.h */,
 				7212651E18FF764900460F62 /* SAlarmViewController.m */,
 				7212651F18FF764900460F62 /* SAlarmListViewController.h */,
@@ -1140,10 +1108,6 @@
 				7212652618FF764900460F62 /* SAlarmListViewCell.h */,
 				7212652718FF764900460F62 /* SAlarmListViewCell.m */,
 				7212652818FF764900460F62 /* SAlarmListViewCell.xib */,
-				7212652918FF764900460F62 /* SAlarmList.h */,
-				7212652A18FF764900460F62 /* SAlarmList.m */,
-				7212652B18FF764900460F62 /* SAlarm.h */,
-				7212652C18FF764900460F62 /* SAlarm.m */,
 			);
 			name = Alarm;
 			sourceTree = "<group>";
@@ -1158,33 +1122,6 @@
 				4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */,
 			);
 			name = Resource;
-			sourceTree = "<group>";
-		};
-		7212653618FF766100460F62 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				7212653718FF767100460F62 /* alarm_lamp.png */,
-				7212653818FF767100460F62 /* alarm_lamp@2x.png */,
-				7212653918FF767100460F62 /* alarm.png */,
-				7212653A18FF767100460F62 /* alarm@2x.png */,
-				7212653B18FF767100460F62 /* alarm_main_lamp.png */,
-				7212653C18FF767100460F62 /* alarm_main_lamp@2x.png */,
-				7212653D18FF767100460F62 /* alarm_main.png */,
-				7212653E18FF767100460F62 /* alarm_main@2x.png */,
-				7212653F18FF767100460F62 /* alarm_minor_lamp.png */,
-				7212654018FF767100460F62 /* alarm_minor_lamp@2x.png */,
-				7212654118FF767100460F62 /* alarm_minor.png */,
-				7212654218FF767100460F62 /* alarm_minor@2x.png */,
-				7212654318FF767100460F62 /* alarm_serious_lamp.png */,
-				7212654418FF767100460F62 /* alarm_serious_lamp@2x.png */,
-				7212654518FF767100460F62 /* alarm_serious.png */,
-				7212654618FF767100460F62 /* alarm_serious@2x.png */,
-				7212654718FF767100460F62 /* alarm_unkown_lamp.png */,
-				7212654818FF767100460F62 /* alarm_unkown_lamp@2x.png */,
-				7212654918FF767100460F62 /* alarm_unkown.png */,
-				7212654A18FF767100460F62 /* alarm_unkown@2x.png */,
-			);
-			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1266,38 +1203,18 @@
 				4A44F44918ECF05C00F8D886 /* Calendar.bundle in Resources */,
 				4417CF8A18AC74C700E6E09F /* Images.xcassets in Resources */,
 				4A5EDF4C18FBE0DE0047B923 /* SResourceListViewCell.xib in Resources */,
-				7212655018FF767100460F62 /* alarm_main_lamp@2x.png in Resources */,
-				7212655818FF767100460F62 /* alarm_serious_lamp@2x.png in Resources */,
 				4A44F44718ECF03E00F8D886 /* TSMessagesDefaultDesign.json in Resources */,
 				7212653118FF764900460F62 /* SAlarmViewCell.xib in Resources */,
 				4442D69018E2A60C00FEC872 /* Localizable.strings in Resources */,
 				4A44F44618ECF03E00F8D886 /* TSMessage.bundle in Resources */,
-				7212654B18FF767100460F62 /* alarm_lamp.png in Resources */,
-				7212655218FF767100460F62 /* alarm_main@2x.png in Resources */,
-				7212654F18FF767100460F62 /* alarm_main_lamp.png in Resources */,
-				7212655518FF767100460F62 /* alarm_minor.png in Resources */,
-				7212655D18FF767100460F62 /* alarm_unkown.png in Resources */,
-				7212654E18FF767100460F62 /* alarm@2x.png in Resources */,
 				4AE7234418EC17E500CFCB1F /* Main.storyboard in Resources */,
 				37F9968418EACDB500A27B69 /* SRelatedProcessCell.xib in Resources */,
 				4A44F44D18ECFAFA00F8D886 /* SmartITSM.db in Resources */,
-				7212655618FF767100460F62 /* alarm_minor@2x.png in Resources */,
-				7212654D18FF767100460F62 /* alarm.png in Resources */,
 				7212653318FF764900460F62 /* SAlarmListViewCell.xib in Resources */,
-				7212655918FF767100460F62 /* alarm_serious.png in Resources */,
-				7212655E18FF767100460F62 /* alarm_unkown@2x.png in Resources */,
-				7212655318FF767100460F62 /* alarm_minor_lamp.png in Resources */,
-				7212655C18FF767100460F62 /* alarm_unkown_lamp@2x.png in Resources */,
-				7212655718FF767100460F62 /* alarm_serious_lamp.png in Resources */,
-				7212655118FF767100460F62 /* alarm_main.png in Resources */,
-				7212655A18FF767100460F62 /* alarm_serious@2x.png in Resources */,
 				4A581FD818EE94F200B7C5D8 /* SMessageViewCell.xib in Resources */,
-				7212655418FF767100460F62 /* alarm_minor_lamp@2x.png in Resources */,
 				4417CF7C18AC74C700E6E09F /* InfoPlist.strings in Resources */,
 				3777A10418E3CCF000398191 /* RETableViewManager.bundle in Resources */,
 				374363D118EA84EF005E5312 /* SProcessCell.xib in Resources */,
-				7212654C18FF767100460F62 /* alarm_lamp@2x.png in Resources */,
-				7212655B18FF767100460F62 /* alarm_unkown_lamp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1370,6 +1287,7 @@
 				44B02BF118ADA5990001451F /* ActionListener.m in Sources */,
 				7212653218FF764900460F62 /* SAlarmListViewCell.m in Sources */,
 				44B02BFE18ADAEB40001451F /* ListenerSet.m in Sources */,
+				4A7E379818FFC61200EFD7C3 /* SAlarmDao.m in Sources */,
 				379357D218E3C4F20062265C /* UIViewAdditions.m in Sources */,
 				370B677518DC35520071CDE4 /* SProblemContentTabBarController.m in Sources */,
 				3777A0EA18E3CCF000398191 /* RETableViewLongTextCell.m in Sources */,
@@ -1386,7 +1304,6 @@
 				379357D418E3C4F20062265C /* FMDatabaseAdditions.m in Sources */,
 				4A92F10518AC9CF400EB594B /* SToolDetailViewController.m in Sources */,
 				3777A0FC18E3CCF000398191 /* RETextItem.m in Sources */,
-				4A44F45018ED520200F8D886 /* SAlarmListViewController.m in Sources */,
 				18F891C818FF7DA900C65650 /* SMessage.m in Sources */,
 				3777A12718E3D8CD00398191 /* REPresenceValidator.m in Sources */,
 				3777A12418E3D8CD00398191 /* REValidator.m in Sources */,
@@ -1403,7 +1320,7 @@
 				3777A0E918E3CCF000398191 /* RETableViewInlinePickerCell.m in Sources */,
 				37F9967C18EAC79900A27B69 /* SProblemOperationPopoverController.m in Sources */,
 				3777A10618E3CCF000398191 /* RETableViewOptionsController.m in Sources */,
-				7212653418FF764900460F62 /* SAlarmList.m in Sources */,
+				7212653418FF764900460F62 /* SAlarmSet.m in Sources */,
 				371F2E8518EABF7500CC06BB /* WEPopoverContainerView.m in Sources */,
 				37E289AE18E27754004E8A4A /* SAttachmentViewController.m in Sources */,
 				379357C918E3C4F20062265C /* CalDataSource.m in Sources */,

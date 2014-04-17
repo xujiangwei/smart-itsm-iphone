@@ -9,7 +9,7 @@
 #import "SAlarmViewController.h"
 #import "SAlarmListViewController.h"
 #import "SAlarmViewCell.h"
-#import "SAlarmList.h"
+#import "SAlarmSet.h"
 
 @interface SAlarmViewController ()
 
@@ -38,16 +38,6 @@
     }
     return self;
 }
-
-//- (id)initWithCoder:(NSCoder *)aDecoder
-//{
-//    self = [super initWithCoder:aDecoder];
-//    if (self)
-//    {
-//        self.salarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警",@"次要告警",@"告警",@"未知告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警", nil];
-//    }
-//    return self;
-//}
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -85,7 +75,7 @@
     NSInteger index = indexPath.row + 1;
     NSString *row = [NSString stringWithFormat:@"%d",index];
 //    NSLog(@"the row is %@",row);
-    NSMutableArray *array = [SAlarmList getAlarmListOrderByTime:*[row UTF8String]];
+    NSMutableArray *array = [SAlarmDao getAlarmListOrderByTime:*[row UTF8String]];
 //    NSLog(@"the array is %@",array);
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SAlarmListViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"SAlarmListVC"];
@@ -126,31 +116,31 @@
     if (indexPath.row == 0)
     {
         cell.alarmImageV.image = [UIImage imageNamed:@"alarm_serious_lamp@2x.png"];
-        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmList getAlarmListOrderByTime:'1'].count];
+        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmDao getAlarmListOrderByTime:'1'].count];
 
     }
     else if (indexPath.row == 1)
     {
         cell.alarmImageV.image = [UIImage imageNamed:@"alarm_main_lamp@2x.png"];
-        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmList getAlarmListOrderByTime:'2'].count];
+        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmDao getAlarmListOrderByTime:'2'].count];
     }
     else if (indexPath.row == 2)
     {
         cell.alarmImageV.image = [UIImage imageNamed:@"alarm_minor_lamp@2x.png"];
-        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmList getAlarmListOrderByTime:'3'].count];
+        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmDao getAlarmListOrderByTime:'3'].count];
 
 
     }
     else if(indexPath.row == 3)
     {
         cell.alarmImageV.image = [UIImage imageNamed:@"alarm_lamp@2x.png"];
-        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmList getAlarmListOrderByTime:'4'].count];
+        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmDao getAlarmListOrderByTime:'4'].count];
 
     }
     else
     {
         cell.alarmImageV.image = [UIImage imageNamed:@"alarm_unkown_lamp@2x.png"];
-        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmList getAlarmListOrderByTime:'5'].count];
+        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmDao getAlarmListOrderByTime:'5'].count];
 
     }
 
