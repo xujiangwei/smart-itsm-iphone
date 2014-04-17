@@ -9,12 +9,19 @@
 #import "SMessageViewController.h"
 #import "SMessageContentViewController.h"
 #import "SMessageViewCell.h"
+#import "SMessageDao.h"
+
+#define kCellHeight 80
 
 @interface SMessageViewController ()
 
 @end
 
 @implementation SMessageViewController
+
+@synthesize messages;
+@synthesize messageListView;
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,21 +43,25 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self)
-    {
-        self.messageList = [[NSArray alloc] initWithObjects:@"消息1",@"工单消息2", nil];
-    }
-    return self;
-}
+//- (id)initWithCoder:(NSCoder *)aDecoder
+//{
+//    self = [super initWithCoder:aDecoder];
+//    if (self)
+//    {
+//        self.messageList = [[NSArray alloc] initWithObjects:@"消息1",@"工单消息2", nil];
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
+    
+    messageListView.dataSource = self;
+    messageListView.delegate = self;
+    messages = [SMessageDao getTaskList];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,20 +70,21 @@
     
 }
 
+- (void)updateMessageList:(NSMutableArray *)messageArray
+{
+    messages = messageArray;
+    [messageListView reloadData];
+}
 
 #pragma mark - Table view delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kCellHeight;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    SMessageContentViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"SMessageContentVC"];
-    
-    SMessageViewCell *cell = (SMessageViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    
-    [viewController setTitle:[cell.lbMessageName text]];
-    
-    [self.navigationController pushViewController:viewController animated:YES];
     
 }
 
@@ -85,20 +97,30 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.messageList count];
+    return [messages count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"SMessageViewCell";
-    SMessageViewCell *cell = (SMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    SMessageViewCell *cell = (SMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (nil == cell)
     {
-        [tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier
+                                                     owner:self
+                                                   options:nil];
+        cell = [nib objectAtIndex:0];
     }
     
-    [cell.lbMessageName setText:[self.messageList objectAtIndex:indexPath.row]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    SMessage *tempMessage= [messages objectAtIndex:indexPath.row];
+    cell.messageIdLabel.text = tempMessage.messageId;
+    cell.senderLabel.text = tempMessage.sender;
+    cell.messageTextLabel.text = tempMessage.messageText;
+    cell.summaryLabel.text = tempMessage.summary;
+    cell.sendTimeLabel.text = tempMessage.sendTime;
+//    NSString *stateImage=[SIncidentDao getStateIcon:tempMessage];
     
     return cell;
 }

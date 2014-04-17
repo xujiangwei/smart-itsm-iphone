@@ -7,9 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMessage.h"
 
-@interface SMessageViewController : UITableViewController
+@protocol SMessageListDelegate <NSObject>
 
-@property (nonatomic, strong) NSArray *messageList;
+//获取当前工单可用的操作，由产品提供接口
+-(NSArray *)getTaskOperation:(SMessage *)message;
+
+@end
+
+@interface SMessageViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) NSMutableArray  * messages;
+
+@property (nonatomic,strong)  UITableView *messageListView;
+
+@property (nonatomic, assign) id<SMessageListDelegate> delegate;
+
+//更新事故工单列表
+- (void)updateMessageList:(NSMutableArray *)messageArray;
 
 @end
