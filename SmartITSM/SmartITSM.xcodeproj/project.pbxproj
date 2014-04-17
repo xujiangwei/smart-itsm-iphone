@@ -1387,8 +1387,11 @@
 				4A92F10518AC9CF400EB594B /* SToolDetailViewController.m in Sources */,
 				3777A0FC18E3CCF000398191 /* RETextItem.m in Sources */,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				4A44F45018ED520200F8D886 /* SAlarmListViewController.m in Sources */,
 				18F891C818FF7DA900C65650 /* SMessage.m in Sources */,
+=======
+>>>>>>> FETCH_HEAD
 =======
 >>>>>>> FETCH_HEAD
 				3777A12718E3D8CD00398191 /* REPresenceValidator.m in Sources */,
