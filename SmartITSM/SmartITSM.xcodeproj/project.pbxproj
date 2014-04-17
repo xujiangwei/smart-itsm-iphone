@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18F891C818FF7DA900C65650 /* SMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891C718FF7DA900C65650 /* SMessage.m */; };
 		18F891CB18FF852500C65650 /* SMessageDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891CA18FF852500C65650 /* SMessageDao.m */; };
+		18F891CE18FFB6EA00C65650 /* SMessageSortingPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */; };
 		370B3FAE18EBA46100915739 /* SProcessTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B3FAD18EBA46100915739 /* SProcessTemplate.m */; };
 		370B676B18DC33200071CDE4 /* SInspectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676A18DC33200071CDE4 /* SInspectionViewController.m */; };
 		370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676E18DC344F0071CDE4 /* SMessageViewController.m */; };
@@ -208,6 +209,8 @@
 		18F891C718FF7DA900C65650 /* SMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessage.m; sourceTree = "<group>"; };
 		18F891C918FF852500C65650 /* SMessageDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageDao.h; sourceTree = "<group>"; };
 		18F891CA18FF852500C65650 /* SMessageDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageDao.m; sourceTree = "<group>"; };
+		18F891CC18FFB6EA00C65650 /* SMessageSortingPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageSortingPopoverController.h; sourceTree = "<group>"; };
+		18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageSortingPopoverController.m; sourceTree = "<group>"; };
 		370B3FAC18EBA46100915739 /* SProcessTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProcessTemplate.h; sourceTree = "<group>"; };
 		370B3FAD18EBA46100915739 /* SProcessTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProcessTemplate.m; sourceTree = "<group>"; };
 		370B676918DC33200071CDE4 /* SInspectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SInspectionViewController.h; sourceTree = "<group>"; };
@@ -568,6 +571,8 @@
 			children = (
 				370B676D18DC344F0071CDE4 /* SMessageViewController.h */,
 				370B676E18DC344F0071CDE4 /* SMessageViewController.m */,
+				18F891CC18FFB6EA00C65650 /* SMessageSortingPopoverController.h */,
+				18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */,
 				18F891C618FF7DA900C65650 /* SMessage.h */,
 				18F891C718FF7DA900C65650 /* SMessage.m */,
 				18F891C918FF852500C65650 /* SMessageDao.h */,
@@ -1358,6 +1363,7 @@
 				3777A0F318E3CCF000398191 /* REFloatItem.m in Sources */,
 				379357CB18E3C4F20062265C /* CalLogic.m in Sources */,
 				3777A13418E41AB800398191 /* SIncidentProcessViewController.m in Sources */,
+				18F891CE18FFB6EA00C65650 /* SMessageSortingPopoverController.m in Sources */,
 				4417CF8218AC74C700E6E09F /* AppDelegate.m in Sources */,
 				44B02BFB18ADAD7B0001451F /* Contact.m in Sources */,
 				379357E118E3C4F20062265C /* TSMessage.m in Sources */,
@@ -1386,7 +1392,6 @@
 				379357D418E3C4F20062265C /* FMDatabaseAdditions.m in Sources */,
 				4A92F10518AC9CF400EB594B /* SToolDetailViewController.m in Sources */,
 				3777A0FC18E3CCF000398191 /* RETextItem.m in Sources */,
-				4A44F45018ED520200F8D886 /* SAlarmListViewController.m in Sources */,
 				18F891C818FF7DA900C65650 /* SMessage.m in Sources */,
 				3777A12718E3D8CD00398191 /* REPresenceValidator.m in Sources */,
 				3777A12418E3D8CD00398191 /* REValidator.m in Sources */,
