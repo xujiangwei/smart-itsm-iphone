@@ -7,6 +7,7 @@
 //
 
 #import "SOwnViewController.h"
+#import "SAlarmList.h"
 
 
 @interface SOwnViewController ()
@@ -100,7 +101,7 @@
           [cell.detailTextLabel setText:@"36"];
     }else if ([attribute isEqualToString:@"alarm"]){
         cell.textLabel.text=@"告警";
-        [cell.detailTextLabel setText:@"3"];
+       [cell.detailTextLabel setText:[NSString stringWithFormat:@"%d",[SAlarmList getAlarmList].count]];
     }
 
     

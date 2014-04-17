@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SAlarm.h"
 
 @interface SAlarmListViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *alarmList;
+
+@property (nonatomic,strong) UIImage *image;
+
+@property (nonatomic,assign) NSInteger index;
 
 @end

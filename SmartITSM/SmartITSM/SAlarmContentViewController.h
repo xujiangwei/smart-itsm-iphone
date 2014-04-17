@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SAlarm.h"
 
-@interface SAlarmContentViewController : UIViewController
+@interface SAlarmContentViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic,strong) SAlarm *alarm;
+@property (nonatomic,assign) NSInteger index;
 
 @end

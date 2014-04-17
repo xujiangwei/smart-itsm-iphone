@@ -9,8 +9,10 @@
 #import "SAlarmViewController.h"
 #import "SAlarmListViewController.h"
 #import "SAlarmViewCell.h"
+#import "SAlarmList.h"
 
 @interface SAlarmViewController ()
+
 
 @end
 
@@ -37,21 +39,36 @@
     return self;
 }
 
+//- (id)initWithCoder:(NSCoder *)aDecoder
+//{
+//    self = [super initWithCoder:aDecoder];
+//    if (self)
+//    {
+//        self.salarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警",@"次要告警",@"告警",@"未知告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警", nil];
+//    }
+//    return self;
+//}
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警",@"次要告警",@"告警",@"未知告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警", nil];
+        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警",@"次要告警",@"告警",@"未知告警",nil];
     }
     return self;
 }
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    [self initData];
+    
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"SAlarmViewCell" bundle:nil] forCellReuseIdentifier:@"SAlarmViewCell"];
+    
 
 }
 
@@ -65,12 +82,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger index = indexPath.row + 1;
+    NSString *row = [NSString stringWithFormat:@"%d",index];
+//    NSLog(@"the row is %@",row);
+    NSMutableArray *array = [SAlarmList getAlarmListOrderByTime:*[row UTF8String]];
+//    NSLog(@"the array is %@",array);
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SAlarmListViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"SAlarmListVC"];
     
     SAlarmViewCell *cell = (SAlarmViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     
     [viewController setTitle:[cell.alarmLevel text]];
+    [viewController setAlarmList:array];
+    [viewController setIndex:indexPath.row];
     
     [self.navigationController pushViewController:viewController animated:YES];
 
@@ -98,6 +122,37 @@
         [tableView registerNib:[UINib nibWithNibName:@"SAlarmViewCell" bundle:nil] forCellReuseIdentifier:@"SAlarmViewCell"];
     }
     [cell.alarmLevel setText:[self.alarmLevelList objectAtIndex:indexPath.row]];
+    
+    if (indexPath.row == 0)
+    {
+        cell.alarmImageV.image = [UIImage imageNamed:@"alarm_serious_lamp@2x.png"];
+        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmList getAlarmListOrderByTime:'1'].count];
+
+    }
+    else if (indexPath.row == 1)
+    {
+        cell.alarmImageV.image = [UIImage imageNamed:@"alarm_main_lamp@2x.png"];
+        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmList getAlarmListOrderByTime:'2'].count];
+    }
+    else if (indexPath.row == 2)
+    {
+        cell.alarmImageV.image = [UIImage imageNamed:@"alarm_minor_lamp@2x.png"];
+        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmList getAlarmListOrderByTime:'3'].count];
+
+
+    }
+    else if(indexPath.row == 3)
+    {
+        cell.alarmImageV.image = [UIImage imageNamed:@"alarm_lamp@2x.png"];
+        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmList getAlarmListOrderByTime:'4'].count];
+
+    }
+    else
+    {
+        cell.alarmImageV.image = [UIImage imageNamed:@"alarm_unkown_lamp@2x.png"];
+        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmList getAlarmListOrderByTime:'5'].count];
+
+    }
 
     return cell;
 }
@@ -115,6 +170,14 @@
     
 }
 */
+
+#pragma mark -private
+
+-(void)initData
+{
+                     
+    
+}
 
 
 

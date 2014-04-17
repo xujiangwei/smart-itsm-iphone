@@ -494,19 +494,20 @@
 //发送登录网络请求
 - (void)sendSigninData:(SUser *)user
 {
-        //发送网络请求,监听器监听到登录成功执行登录方法
-        CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton] createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
-        dialect.action = @"login";
-        NSDictionary *valueDic = [NSDictionary dictionaryWithObjectsAndKeys:user.userName,@"username",user.userPsw,@"password", nil];
-        NSString *value = @"";
-        if ([NSJSONSerialization isValidJSONObject:valueDic])
-        {
-            NSError *error;
-            NSData *data = [NSJSONSerialization dataWithJSONObject:valueDic options:NSJSONWritingPrettyPrinted error:&error];
-            value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        }
-        [dialect appendParam:@"data" stringValue:value];
-        [[MastEngine sharedSingleton] asynPerformAction:@"SmartITOM" action:dialect];
+    //发送网络请求,监听器监听到登录成功执行登录方法
+    CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton] createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
+    dialect.action = @"login";
+    NSDictionary *valueDic = [NSDictionary dictionaryWithObjectsAndKeys:user.userName,@"username",user.userPsw,@"password", nil];
+    NSString *value = @"";
+    if ([NSJSONSerialization isValidJSONObject:valueDic])
+    {
+        NSError *error;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:valueDic options:NSJSONWritingPrettyPrinted error:&error];
+        value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    [dialect appendParam:@"data" stringValue:value];
+    [[MastEngine sharedSingleton] asynPerformAction:@"SmartITOM" action:dialect];
+    
 
 }
 
