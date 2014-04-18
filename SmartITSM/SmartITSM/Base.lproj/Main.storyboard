@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -206,7 +206,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="KHU-qi-LkS" kind="push" id="8uS-07-Qo5"/>
+                                    <segue destination="KHU-qi-LkS" kind="push" identifier="MessageDetail" id="8uS-07-Qo5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -240,89 +240,6 @@
             </objects>
             <point key="canvasLocation" x="2744" y="-396"/>
         </scene>
-        <!--Alarm View Controller-->
-        <scene sceneID="JaJ-to-dmu">
-            <objects>
-                <tableViewController id="qiq-Cs-DWb" customClass="SAlarmViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Djc-mS-kZ9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="dpt-2J-rrg" customClass="SAlarmViewCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dpt-2J-rrg" id="Fvt-fG-Byx">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="PUc-TA-txl" kind="push" identifier="AlarmList" id="YwJ-e9-RQK"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="qiq-Cs-DWb" id="O0m-Dh-FJX"/>
-                            <outlet property="delegate" destination="qiq-Cs-DWb" id="25v-cW-k9d"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="CFO-rg-pVG"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iTQ-rt-xIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1884" y="490"/>
-        </scene>
-        <!--Alarm List View Controller-->
-        <scene sceneID="RSK-In-fni">
-            <objects>
-                <tableViewController storyboardIdentifier="SAlarmListVC" id="PUc-TA-txl" customClass="SAlarmListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="DWy-hi-eWK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alarmListCell" id="3yC-fz-wHo">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3yC-fz-wHo" id="IHY-bz-2ZJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="h2T-n1-dxk" kind="push" identifier="AlarmContent" id="7Ho-He-FT6"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="PUc-TA-txl" id="caQ-EG-c6I"/>
-                            <outlet property="delegate" destination="PUc-TA-txl" id="CCT-JS-DQz"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="EWn-2l-2Av"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SJu-YA-U6N" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2407" y="490"/>
-        </scene>
-        <!--Alarm Content View Controller-->
-        <scene sceneID="SWo-Gh-sb4">
-            <objects>
-                <viewController id="h2T-n1-dxk" customClass="SAlarmContentViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7YG-1d-wg3"/>
-                        <viewControllerLayoutGuide type="bottom" id="5hp-rd-uf1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="h2o-tC-SeF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="W1m-0H-air"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YTK-fL-ti5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2935" y="490"/>
-        </scene>
         <!--Own View Controller - 我的-->
         <scene sceneID="cCK-aN-tVX">
             <objects>
@@ -349,8 +266,8 @@
                         <segue destination="o6e-bV-MAT" kind="push" identifier="ProblemList" id="Gbl-Xg-nrU"/>
                         <segue destination="TkX-tZ-wi8" kind="push" identifier="ChangeList" id="DNm-JG-tPg"/>
                         <segue destination="kcu-e6-waB" kind="push" identifier="InspectionList" id="uGp-J6-deL"/>
-                        <segue destination="qiq-Cs-DWb" kind="push" identifier="AlarmLevelList" id="dDf-Im-8Gm"/>
                         <segue destination="HTL-KR-sAP" kind="push" identifier="MessageList" id="oDB-cd-fg5"/>
+                        <segue destination="5OX-Dp-TxO" kind="push" identifier="AlarmLevelList" id="Y0C-zo-iSk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uHc-JA-deY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1072,6 +989,92 @@
             </objects>
             <point key="canvasLocation" x="3976" y="-4151"/>
         </scene>
+        <!--Alarm View Controller-->
+        <scene sceneID="QKr-9w-LGv">
+            <objects>
+                <tableViewController id="5OX-Dp-TxO" customClass="SAlarmViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="UrL-Fd-Fol">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="8eb-aN-U9b" customClass="SAlarmViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8eb-aN-U9b" id="Zbr-Ig-ohj">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="3nv-9v-nxT" kind="push" identifier="AlarmList" id="WmQ-YV-pbX"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5OX-Dp-TxO" id="TdK-1d-hKr"/>
+                            <outlet property="delegate" destination="5OX-Dp-TxO" id="jlO-D4-tyF"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="U46-8W-qWQ"/>
+                    <connections>
+                        <outlet property="view" destination="UrL-Fd-Fol" id="Qzr-ae-ajC"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="is4-Sh-nJS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2076" y="426"/>
+        </scene>
+        <!--Alarm List View Controller-->
+        <scene sceneID="wQ0-4O-u6n">
+            <objects>
+                <tableViewController storyboardIdentifier="SAlarmListVC" id="3nv-9v-nxT" customClass="SAlarmListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wBx-7e-z4O">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alarmListCell" id="CYg-G9-N6p">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CYg-G9-N6p" id="H6c-AJ-l7s">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="9fq-gK-pfB" kind="push" identifier="AlarmContent" id="liS-1y-NjM"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3nv-9v-nxT" id="psw-Dm-Mde"/>
+                            <outlet property="delegate" destination="3nv-9v-nxT" id="FgP-26-qFl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="FCn-j1-VRP"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6N2-0u-s1s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2563" y="450"/>
+        </scene>
+        <!--Alarm Content View Controller-->
+        <scene sceneID="BxY-SB-LxB">
+            <objects>
+                <viewController storyboardIdentifier="SAlarmContentVC" id="9fq-gK-pfB" customClass="SAlarmContentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aAX-Fe-kP5"/>
+                        <viewControllerLayoutGuide type="bottom" id="Py8-aR-8YU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HN3-3j-1hk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yLE-Cj-81J"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0f2-lt-ZaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3135" y="450"/>
+        </scene>
     </scenes>
     <resources>
         <image name="config_frame" width="276" height="110"/>
@@ -1086,6 +1089,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3rS-GE-HP7"/>
+        <segue reference="CaM-wH-BGh"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18F891C818FF7DA900C65650 /* SMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891C718FF7DA900C65650 /* SMessage.m */; };
+		18F891CB18FF852500C65650 /* SMessageDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891CA18FF852500C65650 /* SMessageDao.m */; };
+		18F891CE18FFB6EA00C65650 /* SMessageSortingPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */; };
 		370B3FAE18EBA46100915739 /* SProcessTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B3FAD18EBA46100915739 /* SProcessTemplate.m */; };
 		370B676B18DC33200071CDE4 /* SInspectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676A18DC33200071CDE4 /* SInspectionViewController.m */; };
 		370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676E18DC344F0071CDE4 /* SMessageViewController.m */; };
@@ -145,11 +148,6 @@
 		4A44F44718ECF03E00F8D886 /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44518ECF03E00F8D886 /* TSMessagesDefaultDesign.json */; };
 		4A44F44918ECF05C00F8D886 /* Calendar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44818ECF05C00F8D886 /* Calendar.bundle */; };
 		4A44F44D18ECFAFA00F8D886 /* SmartITSM.db in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44C18ECFAFA00F8D886 /* SmartITSM.db */; };
-		4A44F45018ED520200F8D886 /* SAlarmListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A44F44F18ED520200F8D886 /* SAlarmListViewController.m */; };
-		4A44F45418ED5FBE00F8D886 /* SAlarmViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A44F45218ED5FBE00F8D886 /* SAlarmViewCell.m */; };
-		4A44F45518ED5FBE00F8D886 /* SAlarmViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F45318ED5FBE00F8D886 /* SAlarmViewCell.xib */; };
-		4A44F45918ED67E700F8D886 /* SAlarmListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A44F45718ED67E700F8D886 /* SAlarmListViewCell.m */; };
-		4A44F45A18ED67E700F8D886 /* SAlarmListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F45818ED67E700F8D886 /* SAlarmListViewCell.xib */; };
 		4A581FD718EE94F200B7C5D8 /* SMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */; };
 		4A581FD818EE94F200B7C5D8 /* SMessageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */; };
 		4A5EDF3C18FB89F20047B923 /* SResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF3B18FB89F20047B923 /* SResource.m */; };
@@ -157,16 +155,24 @@
 		4A5EDF4218FB8B150047B923 /* SResourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4118FB8B150047B923 /* SResourceList.m */; };
 		4A5EDF4B18FBE0DE0047B923 /* SResourceListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4918FBE0DE0047B923 /* SResourceListViewCell.m */; };
 		4A5EDF4C18FBE0DE0047B923 /* SResourceListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */; };
+		4A7E379D18FFD57A00EFD7C3 /* SAlarmDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E379A18FFD57A00EFD7C3 /* SAlarmDao.m */; };
+		4A7E379E18FFD57A00EFD7C3 /* SAlarmSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E379C18FFD57A00EFD7C3 /* SAlarmSet.m */; };
 		4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F218AC958F00EB594B /* SOwnViewController.m */; };
 		4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F518AC95B000EB594B /* SDiscoveryViewController.m */; };
 		4A92F0F918AC972B00EB594B /* SToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F818AC972B00EB594B /* SToolViewController.m */; };
 		4A92F10118AC9C4900EB594B /* SDiscoveryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F10018AC9C4900EB594B /* SDiscoveryDetailViewController.m */; };
 		4A92F10518AC9CF400EB594B /* SToolDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F10418AC9CF400EB594B /* SToolDetailViewController.m */; };
 		4A92F11118ACAEBE00EB594B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F11018ACAEBE00EB594B /* RootViewController.m */; };
-		4AB79DA918DEEC8200ECEC27 /* SAlarmContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB79DA818DEEC8200ECEC27 /* SAlarmContentViewController.m */; };
-		4AB79DAC18DEEF6700ECEC27 /* SAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB79DAB18DEEF6700ECEC27 /* SAlarmViewController.m */; };
 		4AC37C9A18E13792001A82C5 /* SResourceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37C9918E13792001A82C5 /* SResourceListViewController.m */; };
 		4AE7234418EC17E500CFCB1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE7234218EC17E400CFCB1F /* Main.storyboard */; };
+		7212652D18FF764900460F62 /* SAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212651E18FF764900460F62 /* SAlarmViewController.m */; };
+		7212652E18FF764900460F62 /* SAlarmListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652018FF764900460F62 /* SAlarmListViewController.m */; };
+		7212652F18FF764900460F62 /* SAlarmContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652218FF764900460F62 /* SAlarmContentViewController.m */; };
+		7212653018FF764900460F62 /* SAlarmViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652418FF764900460F62 /* SAlarmViewCell.m */; };
+		7212653118FF764900460F62 /* SAlarmViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7212652518FF764900460F62 /* SAlarmViewCell.xib */; };
+		7212653218FF764900460F62 /* SAlarmListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652718FF764900460F62 /* SAlarmListViewCell.m */; };
+		7212653318FF764900460F62 /* SAlarmListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7212652818FF764900460F62 /* SAlarmListViewCell.xib */; };
+		7212653518FF764900460F62 /* SAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652C18FF764900460F62 /* SAlarm.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +186,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18F891C618FF7DA900C65650 /* SMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessage.h; sourceTree = "<group>"; };
+		18F891C718FF7DA900C65650 /* SMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessage.m; sourceTree = "<group>"; };
+		18F891C918FF852500C65650 /* SMessageDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageDao.h; sourceTree = "<group>"; };
+		18F891CA18FF852500C65650 /* SMessageDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageDao.m; sourceTree = "<group>"; };
+		18F891CC18FFB6EA00C65650 /* SMessageSortingPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageSortingPopoverController.h; sourceTree = "<group>"; };
+		18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageSortingPopoverController.m; sourceTree = "<group>"; };
 		370B3FAC18EBA46100915739 /* SProcessTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProcessTemplate.h; sourceTree = "<group>"; };
 		370B3FAD18EBA46100915739 /* SProcessTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProcessTemplate.m; sourceTree = "<group>"; };
 		370B676918DC33200071CDE4 /* SInspectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SInspectionViewController.h; sourceTree = "<group>"; };
@@ -444,14 +456,6 @@
 		4A44F44518ECF03E00F8D886 /* TSMessagesDefaultDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TSMessagesDefaultDesign.json; path = SmartITSM/TSMessagesDefaultDesign.json; sourceTree = SOURCE_ROOT; };
 		4A44F44818ECF05C00F8D886 /* Calendar.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Calendar.bundle; path = SmartITSM/Calendar.bundle; sourceTree = SOURCE_ROOT; };
 		4A44F44C18ECFAFA00F8D886 /* SmartITSM.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmartITSM.db; sourceTree = "<group>"; };
-		4A44F44E18ED520200F8D886 /* SAlarmListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmListViewController.h; sourceTree = "<group>"; };
-		4A44F44F18ED520200F8D886 /* SAlarmListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmListViewController.m; sourceTree = "<group>"; };
-		4A44F45118ED5FBE00F8D886 /* SAlarmViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmViewCell.h; sourceTree = "<group>"; };
-		4A44F45218ED5FBE00F8D886 /* SAlarmViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmViewCell.m; sourceTree = "<group>"; };
-		4A44F45318ED5FBE00F8D886 /* SAlarmViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAlarmViewCell.xib; sourceTree = "<group>"; };
-		4A44F45618ED67E700F8D886 /* SAlarmListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmListViewCell.h; sourceTree = "<group>"; };
-		4A44F45718ED67E700F8D886 /* SAlarmListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmListViewCell.m; sourceTree = "<group>"; };
-		4A44F45818ED67E700F8D886 /* SAlarmListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAlarmListViewCell.xib; sourceTree = "<group>"; };
 		4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageViewCell.h; sourceTree = "<group>"; };
 		4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageViewCell.m; sourceTree = "<group>"; };
 		4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMessageViewCell.xib; sourceTree = "<group>"; };
@@ -464,6 +468,10 @@
 		4A5EDF4818FBE0DE0047B923 /* SResourceListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResourceListViewCell.h; sourceTree = "<group>"; };
 		4A5EDF4918FBE0DE0047B923 /* SResourceListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResourceListViewCell.m; sourceTree = "<group>"; };
 		4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SResourceListViewCell.xib; sourceTree = "<group>"; };
+		4A7E379918FFD57A00EFD7C3 /* SAlarmDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmDao.h; sourceTree = "<group>"; };
+		4A7E379A18FFD57A00EFD7C3 /* SAlarmDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmDao.m; sourceTree = "<group>"; };
+		4A7E379B18FFD57A00EFD7C3 /* SAlarmSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmSet.h; sourceTree = "<group>"; };
+		4A7E379C18FFD57A00EFD7C3 /* SAlarmSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmSet.m; sourceTree = "<group>"; };
 		4A92F0F118AC958F00EB594B /* SOwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOwnViewController.h; sourceTree = "<group>"; };
 		4A92F0F218AC958F00EB594B /* SOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOwnViewController.m; sourceTree = "<group>"; };
 		4A92F0F418AC95B000EB594B /* SDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiscoveryViewController.h; sourceTree = "<group>"; };
@@ -476,13 +484,23 @@
 		4A92F10418AC9CF400EB594B /* SToolDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SToolDetailViewController.m; sourceTree = "<group>"; };
 		4A92F10F18ACAEBE00EB594B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		4A92F11018ACAEBE00EB594B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		4AB79DA718DEEC8200ECEC27 /* SAlarmContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmContentViewController.h; sourceTree = "<group>"; };
-		4AB79DA818DEEC8200ECEC27 /* SAlarmContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmContentViewController.m; sourceTree = "<group>"; };
-		4AB79DAA18DEEF6700ECEC27 /* SAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmViewController.h; sourceTree = "<group>"; };
-		4AB79DAB18DEEF6700ECEC27 /* SAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmViewController.m; sourceTree = "<group>"; };
 		4AC37C9818E13792001A82C5 /* SResourceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResourceListViewController.h; sourceTree = "<group>"; };
 		4AC37C9918E13792001A82C5 /* SResourceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResourceListViewController.m; sourceTree = "<group>"; };
 		4AE7234318EC17E400CFCB1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7212651D18FF764900460F62 /* SAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmViewController.h; sourceTree = "<group>"; };
+		7212651E18FF764900460F62 /* SAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmViewController.m; sourceTree = "<group>"; };
+		7212651F18FF764900460F62 /* SAlarmListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmListViewController.h; sourceTree = "<group>"; };
+		7212652018FF764900460F62 /* SAlarmListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmListViewController.m; sourceTree = "<group>"; };
+		7212652118FF764900460F62 /* SAlarmContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmContentViewController.h; sourceTree = "<group>"; };
+		7212652218FF764900460F62 /* SAlarmContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmContentViewController.m; sourceTree = "<group>"; };
+		7212652318FF764900460F62 /* SAlarmViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmViewCell.h; sourceTree = "<group>"; };
+		7212652418FF764900460F62 /* SAlarmViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmViewCell.m; sourceTree = "<group>"; };
+		7212652518FF764900460F62 /* SAlarmViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAlarmViewCell.xib; sourceTree = "<group>"; };
+		7212652618FF764900460F62 /* SAlarmListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmListViewCell.h; sourceTree = "<group>"; };
+		7212652718FF764900460F62 /* SAlarmListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmListViewCell.m; sourceTree = "<group>"; };
+		7212652818FF764900460F62 /* SAlarmListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAlarmListViewCell.xib; sourceTree = "<group>"; };
+		7212652B18FF764900460F62 /* SAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarm.h; sourceTree = "<group>"; };
+		7212652C18FF764900460F62 /* SAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarm.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,6 +534,8 @@
 			children = (
 				370B676D18DC344F0071CDE4 /* SMessageViewController.h */,
 				370B676E18DC344F0071CDE4 /* SMessageViewController.m */,
+				18F891CC18FFB6EA00C65650 /* SMessageSortingPopoverController.h */,
+				18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */,
 				37948F3918DFD05B00A5BBDA /* SMessageContentViewController.h */,
 				37948F3A18DFD05B00A5BBDA /* SMessageContentViewController.m */,
 				4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */,
@@ -812,6 +832,16 @@
 				4A5EDF4118FB8B150047B923 /* SResourceList.m */,
 				4A5EDF3D18FB8A150047B923 /* SResourceDao.h */,
 				4A5EDF3E18FB8A150047B923 /* SResourceDao.m */,
+				4A7E379918FFD57A00EFD7C3 /* SAlarmDao.h */,
+				4A7E379A18FFD57A00EFD7C3 /* SAlarmDao.m */,
+				4A7E379B18FFD57A00EFD7C3 /* SAlarmSet.h */,
+				4A7E379C18FFD57A00EFD7C3 /* SAlarmSet.m */,
+				7212652B18FF764900460F62 /* SAlarm.h */,
+				7212652C18FF764900460F62 /* SAlarm.m */,
+				18F891C618FF7DA900C65650 /* SMessage.h */,
+				18F891C718FF7DA900C65650 /* SMessage.m */,
+				18F891C918FF852500C65650 /* SMessageDao.h */,
+				18F891CA18FF852500C65650 /* SMessageDao.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1071,18 +1101,18 @@
 		4AB79DA318DEEC0E00ECEC27 /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
-				4AB79DA718DEEC8200ECEC27 /* SAlarmContentViewController.h */,
-				4AB79DA818DEEC8200ECEC27 /* SAlarmContentViewController.m */,
-				4AB79DAA18DEEF6700ECEC27 /* SAlarmViewController.h */,
-				4AB79DAB18DEEF6700ECEC27 /* SAlarmViewController.m */,
-				4A44F44E18ED520200F8D886 /* SAlarmListViewController.h */,
-				4A44F44F18ED520200F8D886 /* SAlarmListViewController.m */,
-				4A44F45118ED5FBE00F8D886 /* SAlarmViewCell.h */,
-				4A44F45218ED5FBE00F8D886 /* SAlarmViewCell.m */,
-				4A44F45318ED5FBE00F8D886 /* SAlarmViewCell.xib */,
-				4A44F45618ED67E700F8D886 /* SAlarmListViewCell.h */,
-				4A44F45718ED67E700F8D886 /* SAlarmListViewCell.m */,
-				4A44F45818ED67E700F8D886 /* SAlarmListViewCell.xib */,
+				7212651D18FF764900460F62 /* SAlarmViewController.h */,
+				7212651E18FF764900460F62 /* SAlarmViewController.m */,
+				7212651F18FF764900460F62 /* SAlarmListViewController.h */,
+				7212652018FF764900460F62 /* SAlarmListViewController.m */,
+				7212652118FF764900460F62 /* SAlarmContentViewController.h */,
+				7212652218FF764900460F62 /* SAlarmContentViewController.m */,
+				7212652318FF764900460F62 /* SAlarmViewCell.h */,
+				7212652418FF764900460F62 /* SAlarmViewCell.m */,
+				7212652518FF764900460F62 /* SAlarmViewCell.xib */,
+				7212652618FF764900460F62 /* SAlarmListViewCell.h */,
+				7212652718FF764900460F62 /* SAlarmListViewCell.m */,
+				7212652818FF764900460F62 /* SAlarmListViewCell.xib */,
 			);
 			name = Alarm;
 			sourceTree = "<group>";
@@ -1179,13 +1209,13 @@
 				4417CF8A18AC74C700E6E09F /* Images.xcassets in Resources */,
 				4A5EDF4C18FBE0DE0047B923 /* SResourceListViewCell.xib in Resources */,
 				4A44F44718ECF03E00F8D886 /* TSMessagesDefaultDesign.json in Resources */,
+				7212653118FF764900460F62 /* SAlarmViewCell.xib in Resources */,
 				4442D69018E2A60C00FEC872 /* Localizable.strings in Resources */,
 				4A44F44618ECF03E00F8D886 /* TSMessage.bundle in Resources */,
 				4AE7234418EC17E500CFCB1F /* Main.storyboard in Resources */,
-				4A44F45518ED5FBE00F8D886 /* SAlarmViewCell.xib in Resources */,
-				4A44F45A18ED67E700F8D886 /* SAlarmListViewCell.xib in Resources */,
 				37F9968418EACDB500A27B69 /* SRelatedProcessCell.xib in Resources */,
 				4A44F44D18ECFAFA00F8D886 /* SmartITSM.db in Resources */,
+				7212653318FF764900460F62 /* SAlarmListViewCell.xib in Resources */,
 				4A581FD818EE94F200B7C5D8 /* SMessageViewCell.xib in Resources */,
 				4417CF7C18AC74C700E6E09F /* InfoPlist.strings in Resources */,
 				3777A10418E3CCF000398191 /* RETableViewManager.bundle in Resources */,
@@ -1209,6 +1239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AC37C9A18E13792001A82C5 /* SResourceListViewController.m in Sources */,
+				7212653518FF764900460F62 /* SAlarm.m in Sources */,
 				3777A12218E3D8CD00398191 /* NSError+REValidation.m in Sources */,
 				3777A0E818E3CCF000398191 /* RETableViewInlineDatePickerCell.m in Sources */,
 				4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */,
@@ -1218,7 +1249,6 @@
 				44B1182C18DADF7B00539D0C /* STool.m in Sources */,
 				3777A11118E3D8C200398191 /* REFormattedNumberField.m in Sources */,
 				44B02BF818ADAA2D0001451F /* Failure.m in Sources */,
-				4AB79DA918DEEC8200ECEC27 /* SAlarmContentViewController.m in Sources */,
 				379357DF18E3C4F20062265C /* HexColor.m in Sources */,
 				370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */,
 				4A92F10118AC9C4900EB594B /* SDiscoveryDetailViewController.m in Sources */,
@@ -1230,7 +1260,6 @@
 				37E289AB18E27728004E8A4A /* SLogViewController.m in Sources */,
 				4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */,
 				37F9968218EACD9200A27B69 /* SRelatedProcessCell.m in Sources */,
-				4A44F45418ED5FBE00F8D886 /* SAlarmViewCell.m in Sources */,
 				37948F4E18DFD5CA00A5BBDA /* SIncidentDao.m in Sources */,
 				3777A0F918E3CCF000398191 /* REPickerItem.m in Sources */,
 				379357D018E3C4F20062265C /* NSDate+Convenience.m in Sources */,
@@ -1241,6 +1270,7 @@
 				3777A0F218E3CCF000398191 /* REDateTimeItem.m in Sources */,
 				4A085DF418D829FB0078CDF1 /* SConfigServerView.m in Sources */,
 				3777A0E518E3CCF000398191 /* RETableViewCreditCardCell.m in Sources */,
+				18F891CB18FF852500C65650 /* SMessageDao.m in Sources */,
 				379357DE18E3C4F20062265C /* PlanLine.m in Sources */,
 				3777A0EC18E3CCF000398191 /* RETableViewOptionCell.m in Sources */,
 				37948F3B18DFD05B00A5BBDA /* SMessageContentViewController.m in Sources */,
@@ -1250,15 +1280,18 @@
 				3777A0F318E3CCF000398191 /* REFloatItem.m in Sources */,
 				379357CB18E3C4F20062265C /* CalLogic.m in Sources */,
 				3777A13418E41AB800398191 /* SIncidentProcessViewController.m in Sources */,
+				18F891CE18FFB6EA00C65650 /* SMessageSortingPopoverController.m in Sources */,
 				4417CF8218AC74C700E6E09F /* AppDelegate.m in Sources */,
 				44B02BFB18ADAD7B0001451F /* Contact.m in Sources */,
 				379357E118E3C4F20062265C /* TSMessage.m in Sources */,
 				37F9967F18EAC85C00A27B69 /* SProblemProcessViewController.m in Sources */,
 				4A085DF918D8564E0078CDF1 /* Reachability.m in Sources */,
+				7212652D18FF764900460F62 /* SAlarmViewController.m in Sources */,
 				3777A0EE18E3CCF000398191 /* RETableViewSegmentedCell.m in Sources */,
 				3777A0FE18E3CCF000398191 /* REActionBar.m in Sources */,
 				37FA4C9818DBE153004AB106 /* SProblemViewController.m in Sources */,
 				44B02BF118ADA5990001451F /* ActionListener.m in Sources */,
+				7212653218FF764900460F62 /* SAlarmListViewCell.m in Sources */,
 				44B02BFE18ADAEB40001451F /* ListenerSet.m in Sources */,
 				379357D218E3C4F20062265C /* UIViewAdditions.m in Sources */,
 				370B677518DC35520071CDE4 /* SProblemContentTabBarController.m in Sources */,
@@ -1270,18 +1303,22 @@
 				37E289A818E27712004E8A4A /* SProcessViewController.m in Sources */,
 				370B677E18DC364E0071CDE4 /* SIncidentBaseViewController.m in Sources */,
 				3777A12E18E40DB700398191 /* MultilineTextItem.m in Sources */,
+				4A7E379E18FFD57A00EFD7C3 /* SAlarmSet.m in Sources */,
 				37E289B718E29CBB004E8A4A /* SProcessCell.m in Sources */,
 				3777A0E618E3CCF000398191 /* RETableViewDateTimeCell.m in Sources */,
 				3777A10518E3CCF000398191 /* RETableViewManager.m in Sources */,
 				379357D418E3C4F20062265C /* FMDatabaseAdditions.m in Sources */,
 				4A92F10518AC9CF400EB594B /* SToolDetailViewController.m in Sources */,
 				3777A0FC18E3CCF000398191 /* RETextItem.m in Sources */,
-				4A44F45018ED520200F8D886 /* SAlarmListViewController.m in Sources */,
+				18F891C818FF7DA900C65650 /* SMessage.m in Sources */,
 				3777A12718E3D8CD00398191 /* REPresenceValidator.m in Sources */,
 				3777A12418E3D8CD00398191 /* REValidator.m in Sources */,
 				379357D118E3C4F20062265C /* NSDateAdditions.m in Sources */,
 				3777A10018E3CCF000398191 /* REPlaceholderTextView.m in Sources */,
 				374363C918EA5EF0005E5312 /* SChangeBaseViewController.m in Sources */,
+				7212652E18FF764900460F62 /* SAlarmListViewController.m in Sources */,
+				4A7E379D18FFD57A00EFD7C3 /* SAlarmDao.m in Sources */,
+				7212652F18FF764900460F62 /* SAlarmContentViewController.m in Sources */,
 				44959EDF18E3ECC7009F8E35 /* JBChartView.m in Sources */,
 				4A92F11118ACAEBE00EB594B /* RootViewController.m in Sources */,
 				371F2E8418EABF7500CC06BB /* UIBarButtonItem+WEPopover.m in Sources */,
@@ -1318,11 +1355,11 @@
 				4485DC3018ACBA2500D17061 /* MastEngine.m in Sources */,
 				4A27ED1418F67E6900D6890D /* SSigninViewListener.m in Sources */,
 				37948F4918DFD5CA00A5BBDA /* SIncident.m in Sources */,
-				4A44F45918ED67E700F8D886 /* SAlarmListViewCell.m in Sources */,
 				379357E218E3C4F20062265C /* TSMessageView.m in Sources */,
 				3777A0F118E3CCF000398191 /* RECreditCardItem.m in Sources */,
 				37948F4B18DFD5CA00A5BBDA /* SInspectionDao.m in Sources */,
 				37948F4C18DFD5CA00A5BBDA /* SProblem.m in Sources */,
+				7212653018FF764900460F62 /* SAlarmViewCell.m in Sources */,
 				37E289B418E27A54004E8A4A /* SIncidentContentTabBarController.m in Sources */,
 				37948F5118DFD6E300A5BBDA /* SUser.m in Sources */,
 				3777A0E718E3CCF000398191 /* RETableViewFloatCell.m in Sources */,
@@ -1333,7 +1370,6 @@
 				3777A0FD18E3CCF000398191 /* NSString+RETableViewManagerAdditions.m in Sources */,
 				3777A12518E3D8CD00398191 /* REEmailValidator.m in Sources */,
 				3777A0FA18E3CCF000398191 /* RERadioItem.m in Sources */,
-				4AB79DAC18DEEF6700ECEC27 /* SAlarmViewController.m in Sources */,
 				4A5EDF3C18FB89F20047B923 /* SResource.m in Sources */,
 				44B02BF518ADA7DE0001451F /* StatusListener.m in Sources */,
 				379357E018E3C4F20062265C /* TSBlurView.m in Sources */,

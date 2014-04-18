@@ -378,10 +378,10 @@
     {
         _address = self.tfAddress.text;
     }
-    else if (103 == textField.tag)
-    {
+//    else if (103 == textField.tag)
+//    {
         _port = [self.tfPort.text integerValue];
-    }
+//    }
 }
 
 #pragma mark - UIAlertViewDelegate

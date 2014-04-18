@@ -2,7 +2,7 @@
 //  SAlarmListViewCell.m
 //  SmartITSM
 //
-//  Created by 朱国强 on 14-4-3.
+//  Created by Apple001 on 14-4-16.
 //  Copyright (c) 2014年 Ambrose. All rights reserved.
 //
 
@@ -10,9 +10,13 @@
 
 @implementation SAlarmListViewCell
 
-- (void)awakeFromNib
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    // Initialization code
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

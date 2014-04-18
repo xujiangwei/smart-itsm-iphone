@@ -9,8 +9,10 @@
 #import "SAlarmViewController.h"
 #import "SAlarmListViewController.h"
 #import "SAlarmViewCell.h"
+#import "SAlarmSet.h"
 
 @interface SAlarmViewController ()
+
 
 @end
 
@@ -21,7 +23,7 @@
     
     if ((self = [super initWithStyle:style]))
     {
-        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警", nil];
+        self.alarmLevelList = [[NSMutableArray alloc] initWithObjects:@"严重告警",@"主要告警", nil];
     }
     return self;
 }
@@ -32,7 +34,7 @@
     if (self)
     {
         
-        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警", nil];
+        self.alarmLevelList = [[NSMutableArray  alloc] initWithObjects:@"严重告警",@"主要告警", nil];
     }
     return self;
 }
@@ -42,16 +44,22 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警",@"次要告警",@"告警",@"未知告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警",@"严重告警",@"主要告警", nil];
+//        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警",@"次要告警",@"告警",@"未知告警",nil];
+        self.alarmLevelList = [[NSMutableArray alloc] init];
     }
     return self;
 }
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    [self initData];
+    
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"SAlarmViewCell" bundle:nil] forCellReuseIdentifier:@"SAlarmViewCell"];
+    
 
 }
 
@@ -65,12 +73,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSArray *array = [self.alarmLevelList objectAtIndex:indexPath.row];
+    SAlarm *alarm = [array objectAtIndex:0];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SAlarmListViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"SAlarmListVC"];
     
     SAlarmViewCell *cell = (SAlarmViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     
     [viewController setTitle:[cell.alarmLevel text]];
+    [viewController setAlarmList:array];
+    [viewController setIndex:alarm.level - 1];
     
     [self.navigationController pushViewController:viewController animated:YES];
 
@@ -97,8 +109,38 @@
     {
         [tableView registerNib:[UINib nibWithNibName:@"SAlarmViewCell" bundle:nil] forCellReuseIdentifier:@"SAlarmViewCell"];
     }
-    [cell.alarmLevel setText:[self.alarmLevelList objectAtIndex:indexPath.row]];
-
+    NSArray *array = [self.alarmLevelList objectAtIndex:indexPath.row];
+    SAlarm *alarm = [array objectAtIndex:0];
+    
+    switch (alarm.level)
+    {
+        case seriousAlarm:
+            cell.alarmImageV.image = [UIImage imageNamed:@"alarm_serious_lamp.png"];
+            cell.alarmLevel.text = @"严重告警";
+            cell.alarmCount.text = [NSString stringWithFormat:@"%d",array.count];
+            break;
+        case mainAlarm:
+            cell.alarmImageV.image = [UIImage imageNamed:@"alarm_main_lamp.png"];
+            cell.alarmLevel.text = @"主要告警";
+            cell.alarmCount.text = [NSString stringWithFormat:@"%d",array.count];
+            break;
+        case minorAlarm:
+            cell.alarmImageV.image = [UIImage imageNamed:@"alarm_minor_lamp.png"];
+            cell.alarmLevel.text = @"次要告警";
+            cell.alarmCount.text = [NSString stringWithFormat:@"%d",array.count];
+            break;
+        case Alarm:
+            cell.alarmImageV.image = [UIImage imageNamed:@"alarm_lamp.png"];
+            cell.alarmLevel.text = @"告警";
+            cell.alarmCount.text = [NSString stringWithFormat:@"%d",array.count];
+            break;
+        default:
+            cell.alarmImageV.image = [UIImage imageNamed:@"alarm_unkown_lamp.png"];
+            cell.alarmLevel.text = @"未知告警";
+            cell.alarmCount.text = [NSString stringWithFormat:@"%d",array.count];
+            break;
+    }
+    
     return cell;
 }
 
@@ -115,6 +157,25 @@
     
 }
 */
+
+#pragma mark -private
+
+-(void)initData
+{
+  
+    for (int i = 1; i < 6; i++)
+    {
+        NSString *index = [NSString stringWithFormat:@"%d",i];
+
+        NSMutableArray *array = [SAlarmDao getAlarmListOrderByTimeWithLevel:*[index UTF8String]];
+        if (array.count)
+        {
+            [self.alarmLevelList addObject:array];
+        }
+
+    }
+    
+}
 
 
 

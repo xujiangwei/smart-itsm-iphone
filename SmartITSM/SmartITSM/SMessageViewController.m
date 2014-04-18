@@ -9,12 +9,21 @@
 #import "SMessageViewController.h"
 #import "SMessageContentViewController.h"
 #import "SMessageViewCell.h"
+#import "SMessageDao.h"
+#import "SMessageSortingPopoverController.h"
+
+#define kCellHeight 80
 
 @interface SMessageViewController ()
 
 @end
 
 @implementation SMessageViewController
+
+@synthesize messages;
+//@synthesize messageListView;
+@synthesize delegate;
+@synthesize popoverController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -41,7 +50,7 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        self.messageList = [[NSArray alloc] initWithObjects:@"消息1",@"工单消息2", nil];
+        
     }
     return self;
 }
@@ -50,7 +59,81 @@
 {
     [super viewDidLoad];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
+    
+    //添加列表
+    messages = [SMessageDao getTaskList];
+    
+    //刷新列表
+    [self addRefreshViewControl];
+    
+    //添加rightBarButton
+    popoverClass = [WEPopoverController class];
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,44,40)];
+    
+    [rightButton setTitle:@"操作" forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    rightButton.titleLabel.font=[UIFont systemFontOfSize:14];
+    [rightButton addTarget:self action:@selector(sorting:)forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.rightBarButtonItem= rightItem;
+
+}
+
+// 添加UIRefreshControl下拉刷新控件到UITableViewController的view中
+-(void)addRefreshViewControl
+{
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    self.refreshControl.tintColor = [UIColor blueColor];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新"];
+    [self.refreshControl addTarget:self action:@selector(RefreshViewControlEventValueChanged) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void)RefreshViewControlEventValueChanged
+{
+    if (self.refreshControl.refreshing) {
+        NSLog(@"refreshing");
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"刷新中"];
+        //模拟网络加载数据，延迟2秒
+        [self performSelector:@selector(handleData) withObject:nil afterDelay:2];
+    }
+}
+
+- (void) handleData
+{
+//    messages = [SMessageDao getTaskList];
+    
+    
+    NSLog(@"refreshed");
+    [self.refreshControl endRefreshing];
+
+    [self.tableView reloadData];
+}
+
+//排序
+-(void)sorting:(UIButton*)sender
+{
+    
+	if (!self.popoverController) {
+		
+		SMessageSortingPopoverController *sortingPopoverController = [[SMessageSortingPopoverController alloc] initWithStyle:UITableViewStylePlain];
+//        sortingPopoverController.messageContentViewController = self;
+        
+        
+		self.popoverController = [[popoverClass alloc] initWithContentViewController:sortingPopoverController];
+		self.popoverController.delegate = self;
+		self.popoverController.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
+		
+		[self.popoverController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem
+									   permittedArrowDirections:(UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown)
+													   animated:YES];
+        
+	} else {
+		[self.popoverController dismissPopoverAnimated:YES];
+		self.popoverController = nil;
+	}
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,21 +142,17 @@
     
 }
 
-
 #pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kCellHeight;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    SMessageContentViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"SMessageContentVC"];
-    
-    SMessageViewCell *cell = (SMessageViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    
-    [viewController setTitle:[cell.lbMessageName text]];
-    
-    [self.navigationController pushViewController:viewController animated:YES];
-    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"MessageDetail" sender:cell];
 }
 
 #pragma mark - Table view data source
@@ -85,40 +164,48 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.messageList count];
+    return [messages count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"SMessageViewCell";
-    SMessageViewCell *cell = (SMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    SMessageViewCell *cell = (SMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (nil == cell)
     {
-        [tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier
+                                                     owner:self
+                                                   options:nil];
+        cell = [nib objectAtIndex:0];
     }
     
-    [cell.lbMessageName setText:[self.messageList objectAtIndex:indexPath.row]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    SMessage *tempMessage= [messages objectAtIndex:indexPath.row];
+    cell.messageIdLabel.text = tempMessage.messageId;
+    cell.senderLabel.text = tempMessage.sender;
+    cell.messageTextLabel.text = tempMessage.messageText;
+    cell.summaryLabel.text = tempMessage.summary;
+    cell.sendTimeLabel.text = tempMessage.sendTime;
+//    NSString *stateImage=[SIncidentDao getStateIcon:tempMessage];
     
     return cell;
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    UITableViewCell *cell = (UITableViewCell *)sender;
+    //设置sender为标题
+    SMessageViewCell *cell = (SMessageViewCell *)sender;
     
     SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
-    viewController.title = [cell.textLabel text];
+    viewController.title = [cell.senderLabel text];
  
 }
- */
 
 
 

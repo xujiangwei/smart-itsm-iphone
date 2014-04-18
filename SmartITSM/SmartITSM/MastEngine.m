@@ -78,7 +78,7 @@ static MastEngine *sharedInstance = nil;
     }
 
     CCNucleusConfig *config = [[CCNucleusConfig alloc] init:CONSUMER device:PHONE];
-    CCNucleus *nucleus = [CCNucleus sharedSingletonWithConfig:config];
+    CCNucleus *nucleus = [CCNucleus createSingletonWith:config];
 
     if (![nucleus startup])
     {
@@ -302,6 +302,7 @@ static MastEngine *sharedInstance = nil;
 }
 
 - (void)failed:(CCTalkServiceFailure *)failure
+
 {
     [CCLogger d:@"failed - Code:%d - Reason:%@ - Desc:%@", failure.code, failure.reason, failure.description];
     

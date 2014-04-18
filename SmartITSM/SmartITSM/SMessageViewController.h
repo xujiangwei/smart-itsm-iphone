@@ -7,9 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMessage.h"
+#import "WEPopoverController.h"
 
-@interface SMessageViewController : UITableViewController
+@protocol SMessageListDelegate <NSObject>
 
-@property (nonatomic, strong) NSArray *messageList;
+//获取当前消息可用的操作，由产品提供接口
+-(NSArray *)getTaskOperation:(SMessage *)message;
+
+@end
+
+@interface SMessageViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, UIPopoverControllerDelegate>
+{
+//    WEPopoverController *popoverController;
+    Class popoverClass;
+}
+
+@property (nonatomic, strong) NSMutableArray  * messages;
+
+//@property (nonatomic,strong)  UITableView *messageListView;
+
+@property (nonatomic, assign) id<SMessageListDelegate> delegate;
+
+@property (nonatomic,retain) WEPopoverController *popoverController;
 
 @end

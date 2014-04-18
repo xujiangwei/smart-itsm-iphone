@@ -10,6 +10,10 @@
 
 @interface SMessageViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *lbMessageName;
+@property (strong, nonatomic) IBOutlet UILabel *messageIdLabel;
+@property (strong, nonatomic) IBOutlet UILabel *senderLabel;
+@property (strong, nonatomic) IBOutlet UILabel *messageTextLabel;
+@property (strong, nonatomic) IBOutlet UILabel *summaryLabel;
+@property (strong, nonatomic) IBOutlet UILabel *sendTimeLabel;
 
 @end
