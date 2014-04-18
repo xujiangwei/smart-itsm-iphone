@@ -302,6 +302,7 @@ static MastEngine *sharedInstance = nil;
 }
 
 - (void)failed:(CCTalkServiceFailure *)failure
+
 {
     [CCLogger d:@"failed - Code:%d - Reason:%@ - Desc:%@", failure.code, failure.reason, failure.description];
     

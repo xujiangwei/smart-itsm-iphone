@@ -250,7 +250,7 @@
 // 登录
 - (IBAction)btnSigninAction:(id)sender
 {
-//    [self didSignin];
+    [self didSignin];
    
     [SUser updateLastLogin];
     
@@ -378,10 +378,10 @@
     {
         _address = self.tfAddress.text;
     }
-    else if (103 == textField.tag)
-    {
+//    else if (103 == textField.tag)
+//    {
         _port = [self.tfPort.text integerValue];
-    }
+//    }
 }
 
 #pragma mark - UIAlertViewDelegate
