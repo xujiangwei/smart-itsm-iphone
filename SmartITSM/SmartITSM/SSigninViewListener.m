@@ -56,7 +56,10 @@
 
 - (void)didFailed:(NSString *)identifier failure:(Failure *)failure
 {
-    
+    if (nil != delegate && [delegate respondsToSelector:@selector(didFailed:)])
+    {
+        [delegate didFailed:identifier ];
+    }
 }
 
 @end

@@ -428,6 +428,16 @@
     });
 }
 
+- (void)didFailed:(NSString *)identifier
+{
+    _connected = FALSE;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_connectHUD hide:YES];
+        [TSMessage showNotificationWithTitle:@"disConnected" type:TSMessageNotificationTypeError];
+    });
+
+}
+
 #pragma mark - SSigninVListenerDelegate
 
 - (void)didSignin:(NSDictionary *)dic

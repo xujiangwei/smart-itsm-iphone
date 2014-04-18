@@ -260,7 +260,13 @@
                         </prototypes>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="我的" id="a5C-Pk-5xH"/>
+                    <navigationItem key="navigationItem" title="我的" id="a5C-Pk-5xH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QyL-gS-wWl">
+                            <connections>
+                                <action selector="addItemAction:" destination="3D8-oi-0Gt" id="Anv-BQ-iDl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="xy1-XI-rRw" kind="push" identifier="IncidentList" id="wmi-FR-65d"/>
                         <segue destination="o6e-bV-MAT" kind="push" identifier="ProblemList" id="Gbl-Xg-nrU"/>

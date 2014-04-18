@@ -13,9 +13,11 @@
 #import "SAlarmViewController.h"
 #import "SInspectionViewController.h"
 #import "SMessageViewController.h"
+#import "WEPopoverController.h"
 
+@interface SOwnViewController : UITableViewController <WEPopoverControllerDelegate>
 
-@interface SOwnViewController : UITableViewController
+@property (nonatomic, strong) WEPopoverController *wePopoverController;
 
 @property(nonatomic ,strong)NSArray *sectionArray;
 
