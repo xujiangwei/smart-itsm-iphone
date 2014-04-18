@@ -7,6 +7,7 @@
 //
 
 #import "SOwnViewController.h"
+#import "SOwnPopoverController.h"
 #import "SAlarmDao.h"
 
 
@@ -130,6 +131,31 @@
     }
 }
 
+#pragma mark - IBAction
+
+- (IBAction)addItemAction:(id)sender
+{
+    UIBarButtonItem *addBarButtonItem = (UIBarButtonItem *)sender;
+    if (!self.wePopoverController)
+    {
+		
+		SOwnPopoverController *ownPopoverController = [[SOwnPopoverController alloc] initWithStyle:UITableViewStylePlain];
+        
+		self.wePopoverController = [[WEPopoverController alloc] initWithContentViewController:ownPopoverController];
+		self.wePopoverController.delegate = self;
+		self.wePopoverController.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
+		
+		[self.wePopoverController presentPopoverFromBarButtonItem:addBarButtonItem
+									   permittedArrowDirections:(UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown)
+													   animated:YES];
+        
+	}
+    else
+    {
+		[self.wePopoverController dismissPopoverAnimated:YES];
+		self.wePopoverController = nil;
+	}
+}
 
 #pragma mark - Navigation
 
