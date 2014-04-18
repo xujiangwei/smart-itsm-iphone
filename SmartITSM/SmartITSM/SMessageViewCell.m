@@ -10,11 +10,12 @@
 
 @implementation SMessageViewCell
 
-@synthesize messageIdLabel;
+@synthesize imageVRead;
+@synthesize icon;
 @synthesize senderLabel;
-@synthesize messageTextLabel;
 @synthesize summaryLabel;
 @synthesize sendTimeLabel;
+@synthesize messageIdLabel;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -44,6 +45,70 @@
 - (void)build
 {
     self.backgroundColor = [UIColor clearColor];
+}
+
+- (void) updateMessage:(SMessage *)msg
+{
+//    Theme *theme = [[ThemeManager sharedSingleton] theme];
+//    NSLog(@"%@",msg.receiveTime);
+//    messageId = msg.messageId;
+    
+    self.senderLabel.text = msg.sender;
+    self.summaryLabel.text = msg.summary;
+    self.sendTimeLabel.text = msg.sendTime;
+    
+    if ([msg.sender isEqualToString:@"admin"])
+    {
+        [self.icon setImage:[UIImage imageNamed:@"user.png"]];
+    }
+    else
+    {
+        [self.icon setImage:[UIImage imageNamed:@"system.png"]];
+    }
+    
+    //是否已读
+//    if (msg.hasRead)
+//    {
+//        [self.imageVRead setImage:[UIImage imageNamed:theme.readed]];
+//    }
+//    else
+//    {
+//        [self.imageVRead setImage:[UIImage imageNamed:theme.unread]];
+//        
+//    }
+    
+/*
+    if (msg.hasAttachments)
+    {
+        [self.imageVAttachment setImage:[UIImage imageNamed:theme.attachment]];
+    }
+    else
+    {
+        [self.imageVAttachment setImage:nil];
+    }
+    
+    markTop = msg.hasTop;
+    
+    if (msg.hasTop)
+    {
+        [self.btnMarkTop setBackgroundImage:[UIImage imageNamed:theme.markTopHighlight] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.btnMarkTop setBackgroundImage:[UIImage imageNamed:theme.markTopNormal] forState:UIControlStateNormal];
+    }
+    
+    if (msg.hasThumbnailPic)
+    {
+        [self.imageVContentBg setImage:[UIImage imageNamed:theme.thumbnail]];
+        [self.imageVContent setImage:[UIImage imageNamed:msg.thumbnailPic]];
+    }
+    else
+    {
+        [self.imageVContentBg setImage:nil];
+        [self.imageVContent setImage:nil];
+    }
+*/
 }
 
 @end

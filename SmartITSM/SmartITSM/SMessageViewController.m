@@ -181,14 +181,19 @@
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    SMessage *tempMessage= [messages objectAtIndex:indexPath.row];
-    cell.messageIdLabel.text = tempMessage.messageId;
-    cell.senderLabel.text = tempMessage.sender;
-    cell.messageTextLabel.text = tempMessage.messageText;
-    cell.summaryLabel.text = tempMessage.summary;
-    cell.sendTimeLabel.text = tempMessage.sendTime;
-//    NSString *stateImage=[SIncidentDao getStateIcon:tempMessage];
+    SMessage *msg= [messages objectAtIndex:indexPath.row];
+    if (nil != messages)
+    {
+        [cell updateMessage:msg];
+    }
     
+//    cell.cellSelected = TRUE;
+    
+    cell.senderLabel.text = msg.sender;
+//    cell.summaryLabel.text = msg.summary;
+//    cell.sendTimeLabel.text = msg.sendTime;
+//    NSString *stateImage=[SIncidentDao getStateIcon:msg];
+
     return cell;
 }
 
