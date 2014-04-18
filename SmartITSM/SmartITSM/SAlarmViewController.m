@@ -23,7 +23,7 @@
     
     if ((self = [super initWithStyle:style]))
     {
-        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警", nil];
+        self.alarmLevelList = [[NSMutableArray alloc] initWithObjects:@"严重告警",@"主要告警", nil];
     }
     return self;
 }
@@ -34,7 +34,7 @@
     if (self)
     {
         
-        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警", nil];
+        self.alarmLevelList = [[NSMutableArray  alloc] initWithObjects:@"严重告警",@"主要告警", nil];
     }
     return self;
 }
@@ -44,7 +44,8 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警",@"次要告警",@"告警",@"未知告警",nil];
+//        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警",@"次要告警",@"告警",@"未知告警",nil];
+        self.alarmLevelList = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -72,11 +73,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger index = indexPath.row + 1;
-    NSString *row = [NSString stringWithFormat:@"%d",index];
-//    NSLog(@"the row is %@",row);
-    NSMutableArray *array = [SAlarmDao getAlarmListOrderByTime:*[row UTF8String]];
-//    NSLog(@"the array is %@",array);
+    NSArray *array = [self.alarmLevelList objectAtIndex:indexPath.row];
+    SAlarm *alarm = [array objectAtIndex:0];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SAlarmListViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"SAlarmListVC"];
     
@@ -84,7 +82,7 @@
     
     [viewController setTitle:[cell.alarmLevel text]];
     [viewController setAlarmList:array];
-    [viewController setIndex:indexPath.row];
+    [viewController setIndex:alarm.level - 1];
     
     [self.navigationController pushViewController:viewController animated:YES];
 
@@ -111,39 +109,38 @@
     {
         [tableView registerNib:[UINib nibWithNibName:@"SAlarmViewCell" bundle:nil] forCellReuseIdentifier:@"SAlarmViewCell"];
     }
-    [cell.alarmLevel setText:[self.alarmLevelList objectAtIndex:indexPath.row]];
+    NSArray *array = [self.alarmLevelList objectAtIndex:indexPath.row];
+    SAlarm *alarm = [array objectAtIndex:0];
     
-    if (indexPath.row == 0)
+    switch (alarm.level)
     {
-        cell.alarmImageV.image = [UIImage imageNamed:@"alarm_serious_lamp@2x.png"];
-        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmDao getAlarmListOrderByTime:'1'].count];
-
+        case seriousAlarm:
+            cell.alarmImageV.image = [UIImage imageNamed:@"alarm_serious_lamp.png"];
+            cell.alarmLevel.text = @"严重告警";
+            cell.alarmCount.text = [NSString stringWithFormat:@"%d",array.count];
+            break;
+        case mainAlarm:
+            cell.alarmImageV.image = [UIImage imageNamed:@"alarm_main_lamp.png"];
+            cell.alarmLevel.text = @"主要告警";
+            cell.alarmCount.text = [NSString stringWithFormat:@"%d",array.count];
+            break;
+        case minorAlarm:
+            cell.alarmImageV.image = [UIImage imageNamed:@"alarm_minor_lamp.png"];
+            cell.alarmLevel.text = @"次要告警";
+            cell.alarmCount.text = [NSString stringWithFormat:@"%d",array.count];
+            break;
+        case Alarm:
+            cell.alarmImageV.image = [UIImage imageNamed:@"alarm_lamp.png"];
+            cell.alarmLevel.text = @"告警";
+            cell.alarmCount.text = [NSString stringWithFormat:@"%d",array.count];
+            break;
+        default:
+            cell.alarmImageV.image = [UIImage imageNamed:@"alarm_unkown_lamp.png"];
+            cell.alarmLevel.text = @"未知告警";
+            cell.alarmCount.text = [NSString stringWithFormat:@"%d",array.count];
+            break;
     }
-    else if (indexPath.row == 1)
-    {
-        cell.alarmImageV.image = [UIImage imageNamed:@"alarm_main_lamp@2x.png"];
-        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmDao getAlarmListOrderByTime:'2'].count];
-    }
-    else if (indexPath.row == 2)
-    {
-        cell.alarmImageV.image = [UIImage imageNamed:@"alarm_minor_lamp@2x.png"];
-        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmDao getAlarmListOrderByTime:'3'].count];
-
-
-    }
-    else if(indexPath.row == 3)
-    {
-        cell.alarmImageV.image = [UIImage imageNamed:@"alarm_lamp@2x.png"];
-        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmDao getAlarmListOrderByTime:'4'].count];
-
-    }
-    else
-    {
-        cell.alarmImageV.image = [UIImage imageNamed:@"alarm_unkown_lamp@2x.png"];
-        cell.alarmCount.text = [NSString stringWithFormat:@"%d",[SAlarmDao getAlarmListOrderByTime:'5'].count];
-
-    }
-
+    
     return cell;
 }
 
@@ -165,7 +162,18 @@
 
 -(void)initData
 {
-                     
+  
+    for (int i = 1; i < 6; i++)
+    {
+        NSString *index = [NSString stringWithFormat:@"%d",i];
+
+        NSMutableArray *array = [SAlarmDao getAlarmListOrderByTimeWithLevel:*[index UTF8String]];
+        if (array.count)
+        {
+            [self.alarmLevelList addObject:array];
+        }
+
+    }
     
 }
 

@@ -21,7 +21,7 @@
 +(NSMutableArray *)getAlarmList;
 
 //按时间排序
-+(NSMutableArray *)getAlarmListOrderByTime:(char)level;
++(NSMutableArray *)getAlarmListOrderByTimeWithLevel:(char)level;
 
 
 @end

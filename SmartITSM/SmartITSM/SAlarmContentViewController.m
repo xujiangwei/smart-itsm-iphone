@@ -34,7 +34,7 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        imageName = [NSArray arrayWithObjects:@"alarm_serious@2x.png",@"alarm_main@2x.png",@"alarm_minor@2x.png",@"alarm@2x.png",@"alarm_unkown@2x.png", nil];
+        imageName = [NSArray arrayWithObjects:@"alarm_serious.png",@"alarm_main.png",@"alarm_minor.png",@"alarm.png",@"alarm_unkown.png", nil];
         rowList = [NSArray arrayWithObjects:@"管理对象",@"定位：",@"IP:",@"原因：",@"初始发生时间：",@"告警状态：",@"详情：",@"重复次数：",@"最近发生时间：",@"确认人：",@"确认时间：", nil];
     }
     return self;

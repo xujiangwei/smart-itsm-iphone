@@ -9,15 +9,15 @@
 typedef enum
 {
     //严重警告
-    seriousAlarm = 5,
+    seriousAlarm = 1,
     //主要警告
-    mainAlarm = 4,
+    mainAlarm = 2,
     //次要警告
     minorAlarm = 3,
     //警告
-    Alarm = 2,
+    Alarm = 4,
     //未知
-    UnkownAlarm = 1,
+    UnkownAlarm = 5,
     
 }  AlarmLevel;
 

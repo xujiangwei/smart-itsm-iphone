@@ -225,7 +225,7 @@
     return almArray;
 }
 
-+ (NSMutableArray *)getAlarmListOrderByTime:(char)level
++ (NSMutableArray *)getAlarmListOrderByTimeWithLevel:(char)level
 {
     NSMutableArray *almArray = [[NSMutableArray alloc]initWithCapacity:10];
     
