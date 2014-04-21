@@ -13,5 +13,6 @@
 @property (strong,nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong,nonatomic) IBOutlet UILabel *IPLabel;
 @property (strong,nonatomic) IBOutlet UIImageView *imageV;
+@property (strong,nonatomic) IBOutlet UILabel *timeLabel;
 
 @end

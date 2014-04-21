@@ -93,6 +93,21 @@
     cell.imageV.image = [UIImage imageNamed:[imageName objectAtIndex:self.index]];
     cell.imageView.contentMode = UIViewContentModeCenter;
     
+    SAlarm *myAlarm = [SAlarmDao getAlarmDetailWithAlarmId:alarm.ID];
+    
+    if (0 != myAlarm.firstTime)
+    {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"hh:mm:ss"];
+        NSDate *firstT = [NSDate dateWithTimeIntervalSince1970:myAlarm.firstTime/1000];
+        cell.timeLabel.text = [dateFormatter stringFromDate:firstT];
+    }
+    else
+    {
+        cell.timeLabel.text = @"无";
+    }
+    cell.timeLabel.font = [UIFont systemFontOfSize:14.0];
+    
     return cell;
 }
 
