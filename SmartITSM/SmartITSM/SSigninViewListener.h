@@ -31,6 +31,8 @@
 
 - (void)didConnected:(NSString *)identifier;
 
+- (void)didFailed:(NSString *)identifier;
+
 @end
 
 @interface SSigninViewStatusListener : StatusListener

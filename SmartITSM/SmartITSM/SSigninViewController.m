@@ -250,7 +250,7 @@
 // 登录
 - (IBAction)btnSigninAction:(id)sender
 {
-//    [self didSignin];
+    [self didSignin];
    
     [SUser updateLastLogin];
     
@@ -378,10 +378,10 @@
     {
         _address = self.tfAddress.text;
     }
-    else if (103 == textField.tag)
-    {
+//    else if (103 == textField.tag)
+//    {
         _port = [self.tfPort.text integerValue];
-    }
+//    }
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -426,6 +426,16 @@
         [_connectHUD hide:YES];
         [TSMessage showNotificationWithTitle:@"connected" type:TSMessageNotificationTypeSuccess];
     });
+}
+
+- (void)didFailed:(NSString *)identifier
+{
+    _connected = FALSE;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_connectHUD hide:YES];
+        [TSMessage showNotificationWithTitle:@"disConnected" type:TSMessageNotificationTypeError];
+    });
+
 }
 
 #pragma mark - SSigninVListenerDelegate

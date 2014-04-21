@@ -165,6 +165,7 @@
 		4A92F11118ACAEBE00EB594B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F11018ACAEBE00EB594B /* RootViewController.m */; };
 		4AC37C9A18E13792001A82C5 /* SResourceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37C9918E13792001A82C5 /* SResourceListViewController.m */; };
 		4AE7234418EC17E500CFCB1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE7234218EC17E400CFCB1F /* Main.storyboard */; };
+		4AE8A39C19010EBB00021A72 /* SOwnPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE8A39B19010EBB00021A72 /* SOwnPopoverController.m */; };
 		7212652D18FF764900460F62 /* SAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212651E18FF764900460F62 /* SAlarmViewController.m */; };
 		7212652E18FF764900460F62 /* SAlarmListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652018FF764900460F62 /* SAlarmListViewController.m */; };
 		7212652F18FF764900460F62 /* SAlarmContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652218FF764900460F62 /* SAlarmContentViewController.m */; };
@@ -487,6 +488,8 @@
 		4AC37C9818E13792001A82C5 /* SResourceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResourceListViewController.h; sourceTree = "<group>"; };
 		4AC37C9918E13792001A82C5 /* SResourceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResourceListViewController.m; sourceTree = "<group>"; };
 		4AE7234318EC17E400CFCB1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4AE8A39A19010EBB00021A72 /* SOwnPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOwnPopoverController.h; sourceTree = "<group>"; };
+		4AE8A39B19010EBB00021A72 /* SOwnPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOwnPopoverController.m; sourceTree = "<group>"; };
 		7212651D18FF764900460F62 /* SAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmViewController.h; sourceTree = "<group>"; };
 		7212651E18FF764900460F62 /* SAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmViewController.m; sourceTree = "<group>"; };
 		7212651F18FF764900460F62 /* SAlarmListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmListViewController.h; sourceTree = "<group>"; };
@@ -1055,6 +1058,8 @@
 				37FA4C8F18DBDF0F004AB106 /* Incident */,
 				4A92F0F118AC958F00EB594B /* SOwnViewController.h */,
 				4A92F0F218AC958F00EB594B /* SOwnViewController.m */,
+				4AE8A39A19010EBB00021A72 /* SOwnPopoverController.h */,
+				4AE8A39B19010EBB00021A72 /* SOwnPopoverController.m */,
 				37E289A618E27712004E8A4A /* SProcessViewController.h */,
 				37E289A718E27712004E8A4A /* SProcessViewController.m */,
 				37E289B518E29CBB004E8A4A /* SProcessCell.h */,
@@ -1242,6 +1247,7 @@
 				7212653518FF764900460F62 /* SAlarm.m in Sources */,
 				3777A12218E3D8CD00398191 /* NSError+REValidation.m in Sources */,
 				3777A0E818E3CCF000398191 /* RETableViewInlineDatePickerCell.m in Sources */,
+				4AE8A39C19010EBB00021A72 /* SOwnPopoverController.m in Sources */,
 				4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */,
 				370B677818DC35660071CDE4 /* SInspectionContentViewController.m in Sources */,
 				379357D318E3C4F20062265C /* FMDatabase.m in Sources */,

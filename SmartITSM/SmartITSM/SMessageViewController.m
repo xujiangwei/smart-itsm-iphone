@@ -21,7 +21,7 @@
 @implementation SMessageViewController
 
 @synthesize messages;
-@synthesize messageListView;
+//@synthesize messageListView;
 @synthesize delegate;
 @synthesize popoverController;
 
@@ -58,12 +58,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
+    
+//    [self.tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
+    
     //添加列表
-    messageListView.dataSource = self;
-    messageListView.delegate = self;
-
     messages = [SMessageDao getTaskList];
+    
+    //刷新列表
+    [self addRefreshViewControl];
     
     //添加rightBarButton
     popoverClass = [WEPopoverController class];
@@ -76,8 +78,40 @@
     [rightButton addTarget:self action:@selector(sorting:)forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem= rightItem;
+
 }
 
+// 添加UIRefreshControl下拉刷新控件到UITableViewController的view中
+-(void)addRefreshViewControl
+{
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    self.refreshControl.tintColor = [UIColor blueColor];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新"];
+    [self.refreshControl addTarget:self action:@selector(RefreshViewControlEventValueChanged) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void)RefreshViewControlEventValueChanged
+{
+    if (self.refreshControl.refreshing) {
+        NSLog(@"refreshing");
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"刷新中"];
+        //模拟网络加载数据，延迟2秒
+        [self performSelector:@selector(handleData) withObject:nil afterDelay:2];
+    }
+}
+
+- (void) handleData
+{
+//    messages = [SMessageDao getTaskList];
+    
+    
+    NSLog(@"refreshed");
+    [self.refreshControl endRefreshing];
+
+    [self.tableView reloadData];
+}
+
+//排序
 -(void)sorting:(UIButton*)sender
 {
     
@@ -106,12 +140,6 @@
 {
     [super didReceiveMemoryWarning];
     
-}
-
-- (void)updateMessageList:(NSMutableArray *)messageArray
-{
-    messages = messageArray;
-//    [messageListView reloadData];
 }
 
 #pragma mark - Table view delegate
@@ -153,14 +181,19 @@
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    SMessage *tempMessage= [messages objectAtIndex:indexPath.row];
-    cell.messageIdLabel.text = tempMessage.messageId;
-    cell.senderLabel.text = tempMessage.sender;
-    cell.messageTextLabel.text = tempMessage.messageText;
-    cell.summaryLabel.text = tempMessage.summary;
-    cell.sendTimeLabel.text = tempMessage.sendTime;
-//    NSString *stateImage=[SIncidentDao getStateIcon:tempMessage];
+    SMessage *msg= [messages objectAtIndex:indexPath.row];
+    if (nil != messages)
+    {
+        [cell updateMessage:msg];
+    }
     
+//    cell.cellSelected = TRUE;
+    
+    cell.senderLabel.text = msg.sender;
+//    cell.summaryLabel.text = msg.summary;
+//    cell.sendTimeLabel.text = msg.sendTime;
+//    NSString *stateImage=[SIncidentDao getStateIcon:msg];
+
     return cell;
 }
 

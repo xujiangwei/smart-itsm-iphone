@@ -12,7 +12,7 @@
 
 @protocol SMessageListDelegate <NSObject>
 
-//获取当前工单可用的操作，由产品提供接口
+//获取当前消息可用的操作，由产品提供接口
 -(NSArray *)getTaskOperation:(SMessage *)message;
 
 @end
@@ -25,13 +25,10 @@
 
 @property (nonatomic, strong) NSMutableArray  * messages;
 
-@property (nonatomic,strong)  UITableView *messageListView;
+//@property (nonatomic,strong)  UITableView *messageListView;
 
 @property (nonatomic, assign) id<SMessageListDelegate> delegate;
 
 @property (nonatomic,retain) WEPopoverController *popoverController;
-
-//更新事故工单列表
-- (void)updateMessageList:(NSMutableArray *)messageArray;
 
 @end
