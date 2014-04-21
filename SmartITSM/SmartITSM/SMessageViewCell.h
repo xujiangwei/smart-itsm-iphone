@@ -7,13 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMessage.h"
 
 @interface SMessageViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *messageIdLabel;
+//已读 未读
+@property (strong, nonatomic) IBOutlet UIImageView *imageVRead;
+
+//用户图表
+@property (strong, nonatomic) IBOutlet UIImageView *icon;
+
+//发送者
 @property (strong, nonatomic) IBOutlet UILabel *senderLabel;
-@property (strong, nonatomic) IBOutlet UILabel *messageTextLabel;
+
+//内容概括
 @property (strong, nonatomic) IBOutlet UILabel *summaryLabel;
+
+//发送时间
 @property (strong, nonatomic) IBOutlet UILabel *sendTimeLabel;
+
+@property (assign, nonatomic) IBOutlet UILabel *messageIdLabel;
+
+- (void) updateMessage:(SMessage *)msg;
 
 @end
