@@ -137,6 +137,7 @@
     else if ([segue.identifier isEqualToString:@"resourceList"])
     {
         SResourceListViewController *resourceListViewController = (SResourceListViewController *)[segue destinationViewController];
+        resourceListViewController.fromDiscovery = TRUE;
         [resourceListViewController setTitle:@"设备列表"];
     }
 

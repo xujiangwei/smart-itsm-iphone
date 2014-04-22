@@ -12,11 +12,15 @@
 
 @interface SResourceListViewController ()
 
+@property (nonatomic) NSMutableArray *searchResults;
+
 @property (strong) SResourceListViewCell *cellPrototype;
 
 @end
 
 @implementation SResourceListViewController
+
+@synthesize fromDiscovery, fromTool;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,12 +44,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     static NSString *CellIdentifier = @"SResourceListViewCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"SResourceListViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
+    
     self.cellPrototype = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
     //加载数据
+
     [self loadData];
 
+    self.searchResults = [NSMutableArray arrayWithCapacity:[self.resourceList.resourceArray count]];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -78,21 +88,38 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    // Return the number of rows in the section.
-    return [self.resourceList.resourceArray count];
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        return [self.searchResults count];
+    }
+	else
+	{
+        return [self.resourceList.resourceArray count];
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"SResourceListViewCell";
+    SResourceListViewCell *cell;
+    SResource *resource;
     
-    SResourceListViewCell *cell = (SResourceListViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    if (nil == cell)
-    {
-        [tableView registerNib:[UINib nibWithNibName:@"SResourceListViewCell" bundle:nil] forCellReuseIdentifier:@"SResourceListViewCell"];
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        static NSString *searchCellIdentifier = @"SResourceListSearchViewCell";
+        
+        cell = (SResourceListViewCell *)[tableView dequeueReusableCellWithIdentifier:searchCellIdentifier forIndexPath:indexPath];
+       
+        resource = [self.searchResults objectAtIndex:indexPath.row];
     }
-    
-    SResource *resource = [self.resourceList.resourceArray objectAtIndex:indexPath.row];
+	else
+	{
+        static NSString *CellIdentifier = @"SResourceListViewCell";
+        
+        cell = (SResourceListViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        
+        resource = [self.resourceList.resourceArray objectAtIndex:indexPath.row];
+    }
     
     [cell.resourceName setText:resource.resourceName];
     [cell.resourceIp setText:resource.resourceIp];
@@ -151,10 +178,67 @@
 
  */
 
+#pragma mark - UISearchDisplayDelegate
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self updateFilteredContentForSearchString:searchString];
+    
+    return YES;
+}
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
+{
+    static NSString *searchCellIdentifier = @"SResourceListSearchViewCell";
+    [tableView registerNib:[UINib nibWithNibName:@"SResourceListViewCell" bundle:nil] forCellReuseIdentifier:searchCellIdentifier];
+}
+
 #pragma mark - Private
 - (void)loadData
 {
     self.resourceList = [SResourceDao getAllResource];
+}
+
+#pragma mark - Content Filtering
+- (void)updateFilteredContentForSearchString:(NSString *)searchString
+{
+    self.searchResults = [self.resourceList.resourceArray mutableCopy];
+    
+    NSString *strippedStr = [searchString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    NSArray *searchItems = nil;
+    if (strippedStr.length > 0)
+    {
+        searchItems = [strippedStr componentsSeparatedByString:@" "];
+    }
+    
+    NSMutableArray *andMatchPredicates = [NSMutableArray array];
+    
+    for (NSString *searchString in searchItems)
+    {
+        NSMutableArray *searchItemsPredicate = [NSMutableArray array];
+        
+        NSExpression *lhs = [NSExpression expressionForKeyPath:@"resourceIp"];
+        NSExpression *rhs = [NSExpression expressionForConstantValue:searchString];
+        NSPredicate *finalPredicate = [NSComparisonPredicate
+                                       predicateWithLeftExpression:lhs
+                                       rightExpression:rhs
+                                       modifier:NSDirectPredicateModifier
+                                       type:NSContainsPredicateOperatorType
+                                       options:NSCaseInsensitivePredicateOption];
+        [searchItemsPredicate addObject:finalPredicate];
+        
+        NSCompoundPredicate *orMatchPredicates = (NSCompoundPredicate *)[NSCompoundPredicate orPredicateWithSubpredicates:searchItemsPredicate];
+        [andMatchPredicates addObject:orMatchPredicates];
+    }
+    
+    NSCompoundPredicate *finalCompoundPredicate = nil;
+  
+    finalCompoundPredicate =
+    (NSCompoundPredicate *)[NSCompoundPredicate andPredicateWithSubpredicates:andMatchPredicates];
+    
+    self.searchResults = [[self.searchResults filteredArrayUsingPredicate:finalCompoundPredicate] mutableCopy];
+
 }
 
 @end

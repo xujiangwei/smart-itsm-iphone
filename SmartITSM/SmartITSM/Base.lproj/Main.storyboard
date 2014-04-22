@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
-
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
@@ -72,16 +71,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" showsSearchResultsButton="YES" id="3Cn-WP-KpA">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="IE0-XV-bYS">
                             <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
-                            <scopeButtonTitles>
-                                <string>Title</string>
-                                <string>Title</string>
-                            </scopeButtonTitles>
                             <connections>
-                                <outlet property="delegate" destination="Mlu-B4-wbA" id="ER8-Ic-Ymq"/>
+                                <outlet property="delegate" destination="Mlu-B4-wbA" id="s8q-r0-4tt"/>
                             </connections>
                         </searchBar>
                         <prototypes>
@@ -106,10 +101,19 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
-                        <outlet property="searchBar" destination="3Cn-WP-KpA" id="8ZC-tB-Jxp"/>
+                        <outlet property="searchDisplayController" destination="Tvi-fV-Cir" id="dxy-cd-SR3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVr-Wp-sqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Tvi-fV-Cir">
+                    <connections>
+                        <outlet property="delegate" destination="Mlu-B4-wbA" id="kMk-hv-6Oa"/>
+                        <outlet property="searchBar" destination="IE0-XV-bYS" id="uqn-ZA-V4Z"/>
+                        <outlet property="searchContentsController" destination="Mlu-B4-wbA" id="AT0-TP-Vnz"/>
+                        <outlet property="searchResultsDataSource" destination="Mlu-B4-wbA" id="aOv-gh-Ryh"/>
+                        <outlet property="searchResultsDelegate" destination="Mlu-B4-wbA" id="CPy-VC-n5l"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2114" y="2034"/>
         </scene>

@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "SResourceList.h"
 
-@interface SResourceListViewController : UITableViewController <UISearchBarDelegate>
-
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@interface SResourceListViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate>
 
 @property (strong, nonatomic) SResourceList *resourceList;
+
+@property (assign, nonatomic) BOOL fromDiscovery;
+
+@property (assign, nonatomic) BOOL fromTool;
 
 @end

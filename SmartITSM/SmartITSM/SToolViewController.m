@@ -194,6 +194,7 @@
         UITableViewCell *selectCell = (UITableViewCell *)sender;
         
         SResourceListViewController *resourceListVC = (SResourceListViewController *)[segue destinationViewController];
+        resourceListVC.fromTool = TRUE;
         [resourceListVC setTitle:[NSString stringWithFormat:@"%@", selectCell.textLabel.text]];
     }
     

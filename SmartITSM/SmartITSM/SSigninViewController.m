@@ -250,8 +250,6 @@
 // 登录
 - (IBAction)btnSigninAction:(id)sender
 {
-    [self didSignin];
-   
     [SUser updateLastLogin];
     
     SUser *user = [[SUser alloc]init];
