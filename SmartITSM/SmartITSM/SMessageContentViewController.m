@@ -77,14 +77,14 @@
         //        [self updateReceiveTime:str];
         
         //置顶
-//        if (msg.hasTop)
-//        {
-//            [self.hasTopButton setBackgroundImage:[UIImage imageNamed:@"marked_highlight.png"] forState:UIControlStateNormal];
-//        }
-//        else
-//        {
-//            [self.hasTopButton setBackgroundImage:[UIImage imageNamed:@"marked_normal.png"] forState:UIControlStateNormal];
-//        }
+        if (selectMsg.hasTop)
+        {
+            [self.hasTopButton setBackgroundImage:[UIImage imageNamed:@"marked_highlight.png"] forState:UIControlStateNormal];
+        }
+        else
+        {
+            [self.hasTopButton setBackgroundImage:[UIImage imageNamed:@"marked_normal.png"] forState:UIControlStateNormal];
+        }
         
         //附件
 //        if (msg.hasAttachments) {
