@@ -7,19 +7,15 @@
 //
 
 #import "SSigninViewController.h"
-#import <QuartzCore/QuartzCore.h>
-#import <CommonCrypto/CommonDigest.h>
-#import "TSMessage.h"
-#import "MBProgressHUD.h"
+#import "MastPrerequisites.h"
+#import "MastEngine.h"
 #import "SSigninView.h"
 #import "SConfigServerView.h"
-#import "Reachability.h"
-#import "MastEngine.h"
 #import "Contact.h"
 #import "SUser.h"
 
 
-#define kDemoCelletName @"SmartITOM"
+
 
 @interface SSigninViewController ()
 {

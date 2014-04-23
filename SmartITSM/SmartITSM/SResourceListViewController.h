@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SResourceList.h"
+#import "SResourceListListener.h"
 
-@interface SResourceListViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate>
+@interface SResourceListViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate, SResourceListListenerDelegate>
 
 @property (strong, nonatomic) SResourceList *resourceList;
 

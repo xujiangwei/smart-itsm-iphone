@@ -9,8 +9,17 @@
 #import "SResourceListViewController.h"
 #import "SResourceListViewCell.h"
 #import "SResourceDao.h"
+#import "MastPrerequisites.h"
+#import "MastEngine.h"
 
 @interface SResourceListViewController ()
+{
+    ResourceCategory _currentCategory;
+    
+    SResourceListListener *_listener;
+    
+    SResourceListStatusListener *_statutsListener;
+}
 
 @property (nonatomic) NSMutableArray *searchResults;
 
@@ -34,7 +43,14 @@
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    if (self) {
+    if (self)
+    {
+        _currentCategory = All;
+        
+        _listener = [[SResourceListListener alloc] initWith:@"requestDevice"];
+        _listener.delegate = self;
+        
+        _statutsListener = [[SResourceListStatusListener alloc] init];
         
     }
     return self;
@@ -45,16 +61,20 @@
 {
     [super viewDidLoad];
     
+    [[MastEngine sharedSingleton] addListener:kDemoCelletName listener:_listener];
+    [[MastEngine sharedSingleton] addStatusListener:kDemoCelletName statusListener:_statutsListener];
+    
     static NSString *CellIdentifier = @"SResourceListViewCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"SResourceListViewCell" bundle:nil] forCellReuseIdentifier:CellIdentifier];
     
     self.cellPrototype = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-    //加载数据
-
-    [self loadData];
+    //加载本地数据
+    [self loadLoclData];
 
     self.searchResults = [NSMutableArray arrayWithCapacity:[self.resourceList.resourceArray count]];
+    
+//    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉可以刷新"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -66,7 +86,10 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    [[MastEngine sharedSingleton] removeListener:kDemoCelletName listener:_listener];
+    [[MastEngine sharedSingleton] removeStatusListener:kDemoCelletName statusListener:_statutsListener];
+    
 }
 
 #pragma mark - Table view delegate
@@ -177,6 +200,64 @@
 }
 
  */
+#pragma mark SResourceListListenerDelegate
+
+- (void)updateResourceList:(NSDictionary *)dic
+{
+    NSInteger statusCode = [[dic objectForKey:@"status"] integerValue];
+    if (300 == statusCode)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSMutableArray *resourceArray = [dic objectForKey:@"moList"];
+            
+            [SResourceDao deleteAllResource];
+            
+            for (int i = 0; i < [resourceArray count]; i++)
+            {
+                NSDictionary *dic = [resourceArray objectAtIndex:i];
+                
+                [SResourceDao insertResource:dic];
+                
+                [SResourceDao updateResource:dic];
+                
+            }
+            
+            if (All == _currentCategory)
+            {
+                self.resourceList = [SResourceDao getAllResource];
+            }else
+            {
+//                self.resourceList = [SResourceDao getResourceListArrayWithCategory:_currentCategory];
+                
+            }
+            
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"MMM d, h:mm a"];
+            NSString *lastUpdate = [NSString stringWithFormat:@"上次更新日期 %@",[dateFormatter stringFromDate:[NSDate date]]];
+            self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:lastUpdate];
+            [self.refreshControl endRefreshing];
+            [self.tableView reloadData];
+        });
+        
+    }
+    else if(900 == statusCode)
+    {
+
+    }
+}
+
+#pragma mark refreshControl 
+
+- (IBAction)refreshControlAction:(id)sender
+{
+    UIRefreshControl *refreshC = (UIRefreshControl *)sender;
+    refreshC.attributedTitle = [[NSAttributedString alloc] initWithString:@"更新数据中..."];
+
+    
+    //发送网络数据
+    [self requestData];
+
+}
 
 #pragma mark - UISearchDisplayDelegate
 
@@ -194,9 +275,25 @@
 }
 
 #pragma mark - Private
-- (void)loadData
+- (void)loadLoclData
 {
     self.resourceList = [SResourceDao getAllResource];
+}
+
+- (void)requestData
+{
+    CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton] createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
+    dialect.action = @"requestDevice";
+    NSDictionary *valueDic = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"currentIndex",@"vendor",@"orderBy",@"",@"condition", nil];
+    NSString *value = @"";
+    if ([NSJSONSerialization isValidJSONObject:valueDic])
+    {
+        NSError *error;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:valueDic options:NSJSONWritingPrettyPrinted error:&error];
+        value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    [dialect appendParam:@"data" stringValue:value];
+    [[MastEngine sharedSingleton] asynPerformAction:@"SmartITOM" action:dialect];
 }
 
 #pragma mark - Content Filtering
