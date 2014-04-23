@@ -53,6 +53,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnMarkTop" destination="14G-Bg-d9M" id="YK9-0f-okp"/>
                 <outlet property="icon" destination="rpT-3g-bIU" id="TAs-10-Y6i"/>
                 <outlet property="imageVRead" destination="BOg-C0-S3V" id="XkS-Ub-iC2"/>
                 <outlet property="sendTimeLabel" destination="00B-7a-nJa" id="vNx-Nz-jsr"/>

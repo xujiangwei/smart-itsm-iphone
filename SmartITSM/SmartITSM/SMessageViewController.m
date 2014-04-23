@@ -15,7 +15,9 @@
 #define kCellHeight 80
 
 @interface SMessageViewController ()
-
+{
+    SMessageContentViewController *messageContentViewController;
+}
 @end
 
 @implementation SMessageViewController
@@ -24,6 +26,7 @@
 //@synthesize messageListView;
 @synthesize delegate;
 @synthesize popoverController;
+@synthesize currentIndexPath;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -151,8 +154,39 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"MessageDetail" sender:cell];
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    [self performSegueWithIdentifier:@"MessageDetail" sender:cell];
+    
+    SMessage *msg = [self.messages objectAtIndex:indexPath.row];
+    NSLog(@"msg = %@",msg);
+    NSLog(@"msgId = %@",msg.messageId);
+    SMessage *selectMsg = [SMessageDao getMessageTaskDetailById:msg.messageId];
+    
+//    messageContentViewController.message = selectMsg;
+//    NSLog(@"%@",msg);
+//    [message setHasRead:YES];
+//        NSLog(@"\n%@",message.messageId);
+//    [SMessage updateMessageUnread:YES withMessageId:message.messageId];
+    
+//        [self.listView reloadData];
+    
+//    messageContentViewController = [[SMessageContentViewController alloc] initWithNibName:@"SMessageContentViewController" bundle:nil];
+//    messageContentViewController.delegate = self;
+    
+    // 设置数据源
+//    messageContentViewController.message = message;
+//    messageContentViewController.currentIndexPath = self.currentIndexPath;
+    
+//    [StackControllerHelper swapViewController:controller];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SMessageContentViewController *contentViewController = [storyboard
+                                                            instantiateViewControllerWithIdentifier:@"SMessageContentVC"];
+    
+//    messageContentViewController = [[SMessageContentViewController alloc]init];
+//    [contentViewController updateMessage:selectMsg];
+    contentViewController.message = selectMsg;
+    [self.navigationController pushViewController:contentViewController animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -186,14 +220,6 @@
     {
         [cell updateMessage:msg];
     }
-    
-//    cell.cellSelected = TRUE;
-    
-    cell.senderLabel.text = msg.sender;
-//    cell.summaryLabel.text = msg.summary;
-//    cell.sendTimeLabel.text = msg.sendTime;
-//    NSString *stateImage=[SIncidentDao getStateIcon:msg];
-
     return cell;
 }
 

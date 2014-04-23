@@ -15,4 +15,7 @@
 
 +(NSMutableArray *)getTaskList;
 
++(SMessage *)getMessageTaskDetailById:(NSString *)messageId;
+
+
 @end
