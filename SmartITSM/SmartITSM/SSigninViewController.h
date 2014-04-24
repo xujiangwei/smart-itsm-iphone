@@ -14,7 +14,7 @@
 @class SConfigServerView;
 
 
-@interface SSigninViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, SSigninVListenerDelegate, SSigninVStatusListenerDelegate>
+@interface SSigninViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, SSigninVListenerDelegate, SSigninVStatusListenerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *subView;
 

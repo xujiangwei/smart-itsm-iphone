@@ -14,6 +14,8 @@
 #import "Reachability.h"
 #import "TSMessage.h"
 #import "MBProgressHUD.h"
+#import "SDatabase.h"
+#import "FMResultSet.h"
 
 
 // 动作监听器
