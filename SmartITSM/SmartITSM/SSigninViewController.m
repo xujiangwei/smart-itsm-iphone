@@ -21,6 +21,9 @@
 {
     BOOL _signed;
     BOOL _connected;
+    BOOL _btnUserHistoryPressed;
+    BOOL _btnIpHistoryPressed;
+    BOOL _btnPortHistoryPressed;
 
     NSString *_user;
     NSString *_password;
@@ -61,6 +64,9 @@
     {
         _signed = FALSE;
         _connected = FALSE;
+        _btnUserHistoryPressed = FALSE;
+        _btnIpHistoryPressed = FALSE;
+        _btnPortHistoryPressed = FALSE;
         _hostReach = nil;
         
         _signinListener = [[SSigninViewListener alloc] initWith:@"login"];
@@ -349,6 +355,39 @@
                                               self.signinView.layer.transform = CATransform3DIdentity;
                                           }];
                      }];
+}
+
+- (IBAction)btnUserHistoryAction:(id)sender
+{
+    _btnUserHistoryPressed = !_btnUserHistoryPressed;
+    UIImageView *buttonImageView = [self.btnUserHistory valueForKey:@"imageView"];
+    buttonImageView.userInteractionEnabled = NO;
+    
+    CGAffineTransform transform = _btnUserHistoryPressed ? CGAffineTransformMakeRotation(M_PI) : CGAffineTransformMakeRotation(0);
+    
+    buttonImageView.transform = transform;
+}
+
+- (IBAction)btnIpHistoryAction:(id)sender
+{
+    _btnIpHistoryPressed = !_btnIpHistoryPressed;
+    UIImageView *buttonImageView = [self.btnIpHistory valueForKey:@"imageView"];
+    buttonImageView.userInteractionEnabled = NO;
+    
+    CGAffineTransform transform = _btnIpHistoryPressed ? CGAffineTransformMakeRotation(M_PI) : CGAffineTransformMakeRotation(0);
+    
+    buttonImageView.transform = transform;
+}
+
+- (IBAction)btnPortHistoryAction:(id)sender
+{
+    _btnPortHistoryPressed = !_btnPortHistoryPressed;
+    UIImageView *buttonImageView = [self.btnPortHistory valueForKey:@"imageView"];
+    buttonImageView.userInteractionEnabled = NO;
+    
+    CGAffineTransform transform = _btnPortHistoryPressed ? CGAffineTransformMakeRotation(M_PI) : CGAffineTransformMakeRotation(0);
+    
+    buttonImageView.transform = transform;
 }
 
 #pragma mark - UITextFieldDelegate

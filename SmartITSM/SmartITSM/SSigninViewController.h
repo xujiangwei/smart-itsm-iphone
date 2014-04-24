@@ -28,13 +28,19 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *tfPassword;
 
+@property (strong, nonatomic) IBOutlet UIButton *btnUserHistory;
+
 @property (strong, nonatomic) IBOutlet UIButton *btnConfig;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnSignin;
 
 @property (strong, nonatomic) IBOutlet UITextField *tfAddress;
 
+@property (strong, nonatomic) IBOutlet UIButton *btnIpHistory;
+
 @property (strong, nonatomic) IBOutlet UITextField *tfPort;
+
+@property (strong, nonatomic) IBOutlet UIButton *btnPortHistory;
 
 @property (strong, nonatomic) IBOutlet UIButton *btnCheckConfig;
 
