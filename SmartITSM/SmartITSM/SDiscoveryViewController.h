@@ -11,6 +11,8 @@
 
 @interface SDiscoveryViewController : UITableViewController<UIActionSheetDelegate>
 
-@property (nonatomic, strong) NSMutableArray *dicoverys;
+@property (nonatomic, strong) NSMutableDictionary *discoveryDic;
+
+@property (nonatomic, strong) NSMutableArray *sectionArray;
 
 @end

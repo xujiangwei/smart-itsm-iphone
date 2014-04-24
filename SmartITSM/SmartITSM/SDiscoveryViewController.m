@@ -29,7 +29,7 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        self.dicoverys = [[NSMutableArray alloc] initWithCapacity:2];
+        
     }
     return self;
 }
@@ -37,6 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self loadLocalData];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -55,27 +57,50 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    return [self.sectionArray count];
+}
 
-    // Return the number of sections.
-    return 1;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [self.sectionArray objectAtIndex:section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    // Return the number of rows in the section.
-    return [self.dicoverys count];
+    NSMutableArray *discoverArray = [self.discoveryDic objectForKey:[self.sectionArray objectAtIndex:section]];
+    return [discoverArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"DiscoveryCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    NSString *section =[self.sectionArray objectAtIndex:indexPath.section];
     // Configure the cell...
-    NSString *discovery = [self.dicoverys objectAtIndex:indexPath.row];
-    [cell.textLabel setText:discovery];
-    
+    if ([section isEqualToString:@"设备"])
+    {
+        NSMutableArray *resources = [self.discoveryDic objectForKey:section];
+        SResource *resource = [resources objectAtIndex:indexPath.row];
+        [cell.textLabel setText:resource.resourceName];
+    }
+    else if ([section isEqualToString:@"指标"])
+    {
+        NSMutableArray *discoverArray = [self.discoveryDic objectForKey:section];
+        NSString *discovery = [discoverArray objectAtIndex:indexPath.row];
+        [cell.textLabel setText:discovery];
+    }
+    else if ([section isEqualToString:@"通讯录"])
+    {
+        NSMutableArray *discoverArray = [self.discoveryDic objectForKey:section];
+        NSString *discovery = [discoverArray objectAtIndex:indexPath.row];
+        [cell.textLabel setText:discovery];
+    }
+    else if ([section isEqualToString:@"拨测"])
+    {
+        NSMutableArray *discoverArray = [self.discoveryDic objectForKey:section];
+        NSString *discovery = [discoverArray objectAtIndex:indexPath.row];
+        [cell.textLabel setText:discovery];
+    }
     return cell;
 }
 
@@ -117,6 +142,26 @@
     return YES;
 }
 */
+
+#pragma mark Private
+
+- (void)loadLocalData
+{
+    self.sectionArray = [[NSMutableArray alloc] initWithObjects:@"设备", @"指标", @"通讯录", @"拨测", nil];
+    SResource *resource = [[SResource alloc]init];
+    [resource setResourceName:@"dhcc_test"];
+    [resource setResourceIp:@"192.168.0.1"];
+    
+    NSMutableArray *resources = [[NSMutableArray alloc]initWithObjects:resource, nil];
+    NSMutableArray *indicators = [[NSMutableArray alloc] initWithObjects:@"flower_cpu", nil];
+    NSMutableArray *contacts = [[NSMutableArray alloc] initWithObjects:@"张三", @"李四", nil];
+    NSMutableArray *dials = [[NSMutableArray alloc]initWithObjects:@"ping 10.10.152.18", nil];
+    self.discoveryDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:resources,[self.sectionArray objectAtIndex:0],
+                         indicators,[self.sectionArray objectAtIndex:1],
+                         contacts, [self.sectionArray objectAtIndex:2],
+                         dials, [self.sectionArray objectAtIndex:3], nil];
+    
+}
 
 
 #pragma mark - Navigation
@@ -167,8 +212,6 @@
         {
             //设备
             [self performSegueWithIdentifier:@"resourceList" sender:self];
-//            [self.dicoverys addObject:@"资源列表"];
-//            [self.tableView reloadData];
             
         }
             break;

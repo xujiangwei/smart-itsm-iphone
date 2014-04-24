@@ -158,6 +158,7 @@
 		4A5EDF4C18FBE0DE0047B923 /* SResourceListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */; };
 		4A7E379D18FFD57A00EFD7C3 /* SAlarmDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E379A18FFD57A00EFD7C3 /* SAlarmDao.m */; };
 		4A7E379E18FFD57A00EFD7C3 /* SAlarmSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E379C18FFD57A00EFD7C3 /* SAlarmSet.m */; };
+		4A865EC81907ABD3009D7A13 /* SResourceContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A865EC71907ABD3009D7A13 /* SResourceContentViewController.m */; };
 		4A92F0F318AC958F00EB594B /* SOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F218AC958F00EB594B /* SOwnViewController.m */; };
 		4A92F0F618AC95B000EB594B /* SDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F518AC95B000EB594B /* SDiscoveryViewController.m */; };
 		4A92F0F918AC972B00EB594B /* SToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F0F818AC972B00EB594B /* SToolViewController.m */; };
@@ -476,6 +477,8 @@
 		4A7E379A18FFD57A00EFD7C3 /* SAlarmDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmDao.m; sourceTree = "<group>"; };
 		4A7E379B18FFD57A00EFD7C3 /* SAlarmSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmSet.h; sourceTree = "<group>"; };
 		4A7E379C18FFD57A00EFD7C3 /* SAlarmSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmSet.m; sourceTree = "<group>"; };
+		4A865EC61907ABD3009D7A13 /* SResourceContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResourceContentViewController.h; sourceTree = "<group>"; };
+		4A865EC71907ABD3009D7A13 /* SResourceContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResourceContentViewController.m; sourceTree = "<group>"; };
 		4A92F0F118AC958F00EB594B /* SOwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOwnViewController.h; sourceTree = "<group>"; };
 		4A92F0F218AC958F00EB594B /* SOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOwnViewController.m; sourceTree = "<group>"; };
 		4A92F0F418AC95B000EB594B /* SDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiscoveryViewController.h; sourceTree = "<group>"; };
@@ -1135,6 +1138,8 @@
 				4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */,
 				4A2F495A190742AC00B61478 /* SResourceListListener.h */,
 				4A2F495B190742AC00B61478 /* SResourceListListener.m */,
+				4A865EC61907ABD3009D7A13 /* SResourceContentViewController.h */,
+				4A865EC71907ABD3009D7A13 /* SResourceContentViewController.m */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -1376,6 +1381,7 @@
 				37948F5118DFD6E300A5BBDA /* SUser.m in Sources */,
 				3777A0E718E3CCF000398191 /* RETableViewFloatCell.m in Sources */,
 				3776A38918E14B2A0075B57F /* SIncidentOperationPopoverController.m in Sources */,
+				4A865EC81907ABD3009D7A13 /* SResourceContentViewController.m in Sources */,
 				3777A10118E3CCF000398191 /* RETableViewCell.m in Sources */,
 				3777A10718E3CCF000398191 /* RETableViewSection.m in Sources */,
 				379357CD18E3C4F20062265C /* CalTileView.m in Sources */,

@@ -11,6 +11,7 @@
 #import "SResourceDao.h"
 #import "MastPrerequisites.h"
 #import "MastEngine.h"
+#import "SResourceContentViewController.h"
 
 @interface SResourceListViewController ()
 {
@@ -99,6 +100,26 @@
     return self.cellPrototype.frame.size.height;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SResource *resource = nil;
+    if (self.searchDisplayController.isActive)
+    {
+        resource = [self.searchResults objectAtIndex:indexPath.row];
+        
+    }
+    else
+    {
+        resource = [self.resourceList.resourceArray objectAtIndex:indexPath.row];
+    }
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SResourceContentViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"SResourceContentVC"];
+    viewController.resource = resource;
+    
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -150,6 +171,7 @@
     return cell;
 }
 
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -189,17 +211,14 @@
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
+#pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
 
- */
+
 #pragma mark SResourceListListenerDelegate
 
 - (void)updateResourceList:(NSDictionary *)dic
