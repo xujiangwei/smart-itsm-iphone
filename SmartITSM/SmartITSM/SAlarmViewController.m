@@ -9,9 +9,17 @@
 #import "SAlarmViewController.h"
 #import "SAlarmListViewController.h"
 #import "SAlarmViewCell.h"
-#import "SAlarmSet.h"
+#import "SUser.h"
+#import "MastEngine.h"
+#import "MBProgressHUD.h"
+
+#define kDemoCelletName @"SmartITOM"
 
 @interface SAlarmViewController ()
+{
+    SAlarmViewListener *_listener;
+    MBProgressHUD *_HUD;
+}
 
 
 @end
@@ -23,7 +31,7 @@
     
     if ((self = [super initWithStyle:style]))
     {
-        self.alarmLevelList = [[NSMutableArray alloc] initWithObjects:@"严重告警",@"主要告警", nil];
+//        self.alarmLevelList = [[NSMutableArray alloc] initWithObjects:@"严重告警",@"主要告警", nil];
     }
     return self;
 }
@@ -34,7 +42,7 @@
     if (self)
     {
         
-        self.alarmLevelList = [[NSMutableArray  alloc] initWithObjects:@"严重告警",@"主要告警", nil];
+//        self.alarmLevelList = [[NSMutableArray  alloc] initWithObjects:@"严重告警",@"主要告警", nil];
     }
     return self;
 }
@@ -44,7 +52,10 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-//        self.alarmLevelList = [[NSArray alloc] initWithObjects:@"严重告警",@"主要告警",@"次要告警",@"告警",@"未知告警",nil];
+        _listener = [[SAlarmViewListener alloc] initWith:@"requestAlarmList"];
+
+        _listener.delegate = self;
+        
         self.alarmLevelList = [[NSMutableArray alloc] init];
     }
     return self;
@@ -55,8 +66,11 @@
 {
     [super viewDidLoad];
     
-    [self initData];
+    [[MastEngine sharedSingleton] addListener:kDemoCelletName listener:_listener];
+   
+    [self refresh];
     
+//    [self initData];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"SAlarmViewCell" bundle:nil] forCellReuseIdentifier:@"SAlarmViewCell"];
     
@@ -66,6 +80,8 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    
+    [[MastEngine sharedSingleton] removeListener:kDemoCelletName listener:_listener];
    
 }
 
@@ -159,9 +175,38 @@
 */
 
 #pragma mark -private
+//发送网络请求
+-(void)refresh
+{
+    _HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _HUD.mode = MBProgressHUDModeIndeterminate;
+    _HUD.labelText = @"数据加载中...";
+//    _HUD.labelText = @"loading";
+
+    if ([SUser isSignin])
+    {
+        CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton] createDialect:@"ActionDialect" tracker:@"dhcc"];
+        dialect.action = @"requestAlarmList";
+        NSDictionary *valueDic = [NSDictionary dictionaryWithObjectsAndKeys:@"10",@"pagesize",@"1",@"currentIndex", nil];
+        NSString *value;
+        if ([NSJSONSerialization isValidJSONObject:valueDic])
+        {
+            NSError *error;
+            NSData *data = [NSJSONSerialization dataWithJSONObject:valueDic options:NSJSONWritingPrettyPrinted error:&error];
+            value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        }
+        [dialect appendParam:@"data" stringValue:value];
+        [[MastEngine sharedSingleton] asynPerformAction:kDemoCelletName action:dialect];
+    }
+}
 
 -(void)initData
 {
+    if (self.alarmLevelList != nil)
+    {
+        [self.alarmLevelList removeAllObjects];
+    }
+    
   
     for (int i = 1; i < 6; i++)
     {
@@ -177,6 +222,37 @@
     
 }
 
+#pragma mark SAlarmViewListenerDelegate
+
+-(void)loadAlarmList:(NSDictionary *)dic
+{
+    NSInteger statusCode = [[dic objectForKey:@"status"] integerValue];
+    if (statusCode == 300)
+    {
+        NSArray *alarmList = [dic objectForKey:@"almList"];
+        for (int i = 0; i < [alarmList count]; i++)
+        {
+            NSDictionary *dic = [alarmList objectAtIndex:1];
+            if (![SAlarmDao insertAlarm:dic])
+            {
+                [SAlarmDao updateAlarm:dic];
+            }
+        }
+        
+        [self initData];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_HUD removeFromSuperview];
+            [self.tableView reloadData];
+        });
+    }
+    else if (statusCode == 900)
+    {
+        [_HUD removeFromSuperview];
+        NSLog(@"网络数据请求失败");
+        
+    }
+}
 
 
 @end

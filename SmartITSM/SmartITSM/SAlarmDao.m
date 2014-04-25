@@ -233,7 +233,7 @@
     FMResultSet *rs;
     
     NSString *selectSql =[NSString stringWithFormat: @"SELECT alarm_id ,object_management,location, level, resource_id, device_ip,alarm_type FROM tb_alarm WHERE alarm_status = '发生' AND level = %c  ORDER BY first_time" ,level];
-    NSLog(@"%@",selectSql);
+//    NSLog(@"%@",selectSql);
     rs = [db executeQuery:selectSql];
     while ( [rs next])
     {

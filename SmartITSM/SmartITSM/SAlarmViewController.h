@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SAlarmViewListener.h"
+#import "SAlarmSet.h"
 
-@interface SAlarmViewController : UITableViewController
+@interface SAlarmViewController : UITableViewController<SAlarmViewListenerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *alarmLevelList;
 

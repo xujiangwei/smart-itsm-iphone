@@ -174,6 +174,7 @@
 		7212653218FF764900460F62 /* SAlarmListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652718FF764900460F62 /* SAlarmListViewCell.m */; };
 		7212653318FF764900460F62 /* SAlarmListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7212652818FF764900460F62 /* SAlarmListViewCell.xib */; };
 		7212653518FF764900460F62 /* SAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212652C18FF764900460F62 /* SAlarm.m */; };
+		72763E051909FD9200B5977A /* SAlarmViewListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 72763E041909FD9200B5977A /* SAlarmViewListener.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -504,6 +505,8 @@
 		7212652818FF764900460F62 /* SAlarmListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAlarmListViewCell.xib; sourceTree = "<group>"; };
 		7212652B18FF764900460F62 /* SAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarm.h; sourceTree = "<group>"; };
 		7212652C18FF764900460F62 /* SAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarm.m; sourceTree = "<group>"; };
+		72763E031909FD9200B5977A /* SAlarmViewListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmViewListener.h; sourceTree = "<group>"; };
+		72763E041909FD9200B5977A /* SAlarmViewListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmViewListener.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1118,6 +1121,8 @@
 				7212652618FF764900460F62 /* SAlarmListViewCell.h */,
 				7212652718FF764900460F62 /* SAlarmListViewCell.m */,
 				7212652818FF764900460F62 /* SAlarmListViewCell.xib */,
+				72763E031909FD9200B5977A /* SAlarmViewListener.h */,
+				72763E041909FD9200B5977A /* SAlarmViewListener.m */,
 			);
 			name = Alarm;
 			sourceTree = "<group>";
@@ -1298,6 +1303,7 @@
 				37FA4C9818DBE153004AB106 /* SProblemViewController.m in Sources */,
 				44B02BF118ADA5990001451F /* ActionListener.m in Sources */,
 				7212653218FF764900460F62 /* SAlarmListViewCell.m in Sources */,
+				72763E051909FD9200B5977A /* SAlarmViewListener.m in Sources */,
 				44B02BFE18ADAEB40001451F /* ListenerSet.m in Sources */,
 				379357D218E3C4F20062265C /* UIViewAdditions.m in Sources */,
 				370B677518DC35520071CDE4 /* SProblemContentTabBarController.m in Sources */,
