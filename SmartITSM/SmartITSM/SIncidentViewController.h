@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SIncident.h"
 #import "SIncidentContentTabBarController.h"
+#import "SIncidentListener.h"
 
 @protocol SIncidentListDelegate <NSObject>
 
@@ -17,7 +18,7 @@
 
 @end
 
-@interface SIncidentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface SIncidentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SIncidentListenerDelegate>
 
 @property (nonatomic, strong) NSMutableArray  * incidents;
 

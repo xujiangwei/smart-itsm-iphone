@@ -9,6 +9,7 @@
 #import "SIncidentViewController.h"
 #import "SIncidentDao.h"
 #import "SProcessCell.h"
+#import "MastEngine.h"
 
 #define kCellHeight 60
 
@@ -17,6 +18,7 @@
 //    MBProgressHUD *HUD;
     NSIndexPath  *currentIndexPath;
     SIncidentContentTabBarController *incidentContentVC;
+    SIncidentListener *_listener;
 }
 
 @end
@@ -36,6 +38,19 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        
+        _listener = [[SIncidentListener alloc] initWith:@"requestIncidentList"];
+        _listener.delegate = self;
+   
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,6 +58,10 @@
     incidentListView.dataSource = self;
     incidentListView.delegate = self;
     incidents = [SIncidentDao getTaskList];
+    
+    [[MastEngine sharedSingleton] addListener:@"SmartITOM" listener:_listener];
+    
+    [self refreshIncidentList];
 
 }
 
@@ -50,6 +69,8 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    
+    [[MastEngine sharedSingleton] removeListener:@"SmartITOM" listener:_listener];
     
 }
 
@@ -109,6 +130,25 @@
     [self performSegueWithIdentifier:@"IncidentDetail" sender:cell];
 }
 
+#pragma mark - SIncidentListenerDelegate
+- (void )didRequestIncidentList:(NSDictionary *)listDic
+{
+    NSLog(@"incident");
+}
+
+#pragma mark - Private
+
+- (void)refreshIncidentList
+{
+    //刷新故障任务列表
+    CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton]createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
+    dialect.action = @"requestIncidentList";
+    NSString *value = [NSString stringWithFormat:@"{\"token\":\"%@\",\"currentIndex\" : \"0\", \"pagesize\" : \"20\",\"filterId\" :\"%@\"}",[SUser getToken],nil];
+    [dialect appendParam:@"data" stringValue:value];
+    [[MastEngine sharedSingleton] asynPerformAction:@"SmartITOM" action:dialect];
+}
+
+#pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

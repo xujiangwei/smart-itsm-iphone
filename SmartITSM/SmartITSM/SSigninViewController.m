@@ -304,7 +304,6 @@
 {
     if (nil == _address || [_address length] == 0)
     {
-        // 数据加载失败，提示配置
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                         message:@"您没有设置过服务器信息，\n请先设置服务器信息"
                                                        delegate:self
@@ -373,7 +372,6 @@
     }
     else
     {
-        // 数据加载失败，提示配置
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                         message:@"您没有设置过服务器信息，\n请先设置服务器信息"
                                                        delegate:self
@@ -381,9 +379,6 @@
                                               otherButtonTitles:@"现在设置", nil];
         [alert show];
     }
-    
-
-    
 }
 
 // 确认
@@ -393,9 +388,7 @@
     [[MastEngine sharedSingleton] removeContact:@"SmartITOM"];
     Contact *contact = [[Contact alloc] initWith:@"SmartITOM" address:_address port:_port];
     [[MastEngine sharedSingleton] addContact:contact];
-    
-    
-    
+
     [UIView animateWithDuration:0.3
                           delay:0
                         options:UIViewAnimationOptionCurveLinear
@@ -496,7 +489,6 @@
                          completion:^(BOOL finished) {
                              _ipTableView.hidden = !_ipTableView.hidden;
                          }];
-        
     }
 
 }
@@ -607,14 +599,19 @@
     {
         //userTableView
         NSString *str = [_userList objectAtIndex:indexPath.row];
+        
         SUser *user = [SUser getUserWithUserName:str];
+        
         [self updateCurrentUser:user];
+        
         [UIView animateWithDuration:0.4
                          animations:^{
                              _userTableView.frame = CGRectMake(100, 58, 175, 0);
                          } completion:^(BOOL finished) {
                              _userTableView.hidden = TRUE;
+                             
                              _btnUserHistoryPressed = !_btnUserHistoryPressed;
+                             
                              [self refreshButton:self.btnUserHistory withPressed:_btnUserHistoryPressed];
                          }];
         
@@ -623,14 +620,20 @@
     {
         //ipTableView
         NSString *str = [_ipList objectAtIndex:indexPath.row];
+        
         [self.tfAddress setText:str];
+        
         _address = str;
+        
         [UIView animateWithDuration:0.4
                          animations:^{
                              _ipTableView.frame = CGRectMake(75, 58, 200, 0);
                          } completion:^(BOOL finished) {
+                             
                              _ipTableView.hidden = TRUE;
+                             
                              _btnIpHistoryPressed = !_btnIpHistoryPressed;
+                             
                              [self refreshButton:self.btnIpHistory withPressed:_btnIpHistoryPressed];
                          }];
     }
@@ -638,15 +641,21 @@
     {
         //portTableView
         NSInteger tmpPort = [[_portList objectAtIndex:indexPath.row] intValue];
+        
         [self.tfPort setText:[NSString stringWithFormat:@"%d",tmpPort]];
+        
         _port = tmpPort;
+        
         [UIView animateWithDuration:0.4
                          animations:^{
                              _portTableView.frame = CGRectMake(75, 108, 200, 0);
                          }
                          completion:^(BOOL finished){
+                             
                              _portTableView.hidden = TRUE;
+                             
                              _btnPortHistoryPressed = !_btnPortHistoryPressed;
+                             
                              [self refreshButton:self.btnPortHistory withPressed:_btnPortHistoryPressed];
                          }];
     }
@@ -715,8 +724,11 @@
                              animations:^{
                                  _userTableView.frame = CGRectMake(100, 58, 175, 0);
                              } completion:^(BOOL finished) {
+                                 
                                  _userTableView.hidden = TRUE;
+                                 
                                  _btnUserHistoryPressed = !_btnUserHistoryPressed;
+                                 
                                  [self refreshButton:self.btnUserHistory withPressed:_btnUserHistoryPressed];
                              }];
         }
@@ -727,8 +739,11 @@
                              animations:^{
                                  _ipTableView.frame = CGRectMake(75, 58, 200, 0);
                              } completion:^(BOOL finished) {
+                                 
                                  _ipTableView.hidden = TRUE;
+                                 
                                  _btnIpHistoryPressed = !_btnIpHistoryPressed;
+                                 
                                  [self refreshButton:self.btnIpHistory withPressed:_btnIpHistoryPressed];
                              }];
         }
@@ -740,8 +755,11 @@
                                  _portTableView.frame = CGRectMake(75, 108, 200, 0);
                              }
                              completion:^(BOOL finished){
+                                 
                                  _portTableView.hidden = TRUE;
+                                 
                                  _btnPortHistoryPressed = !_btnPortHistoryPressed;
+                                 
                                  [self refreshButton:self.btnPortHistory withPressed:_btnPortHistoryPressed];
                              }];
         }
@@ -755,8 +773,10 @@
 - (void)didConnected:(NSString *)identifier
 {
     _connected = TRUE;
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [_connectHUD hide:YES];
+        
         [TSMessage showNotificationWithTitle:@"connected" type:TSMessageNotificationTypeSuccess];
     });
 }
@@ -764,8 +784,10 @@
 - (void)didFailed:(NSString *)identifier
 {
     _connected = FALSE;
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [_connectHUD hide:YES];
+        
         [TSMessage showNotificationWithTitle:@"disConnected" type:TSMessageNotificationTypeError];
     });
 
@@ -792,8 +814,10 @@
         case 300:
         {
             [SUser updateIsSignin:userId];
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_signinHUD hide:YES];
+                
                 self.signinView.hidden = NO;
                 // 执行登录流程
                 [self didSignin];

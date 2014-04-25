@@ -156,6 +156,7 @@
 		4A5EDF4218FB8B150047B923 /* SResourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4118FB8B150047B923 /* SResourceList.m */; };
 		4A5EDF4B18FBE0DE0047B923 /* SResourceListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4918FBE0DE0047B923 /* SResourceListViewCell.m */; };
 		4A5EDF4C18FBE0DE0047B923 /* SResourceListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */; };
+		4A7D66C9190A5E120013013A /* SIncidentListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7D66C8190A5E120013013A /* SIncidentListener.m */; };
 		4A7E379D18FFD57A00EFD7C3 /* SAlarmDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E379A18FFD57A00EFD7C3 /* SAlarmDao.m */; };
 		4A7E379E18FFD57A00EFD7C3 /* SAlarmSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E379C18FFD57A00EFD7C3 /* SAlarmSet.m */; };
 		4A865EC81907ABD3009D7A13 /* SResourceContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A865EC71907ABD3009D7A13 /* SResourceContentViewController.m */; };
@@ -473,6 +474,8 @@
 		4A5EDF4818FBE0DE0047B923 /* SResourceListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResourceListViewCell.h; sourceTree = "<group>"; };
 		4A5EDF4918FBE0DE0047B923 /* SResourceListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResourceListViewCell.m; sourceTree = "<group>"; };
 		4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SResourceListViewCell.xib; sourceTree = "<group>"; };
+		4A7D66C7190A5E120013013A /* SIncidentListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIncidentListener.h; sourceTree = "<group>"; };
+		4A7D66C8190A5E120013013A /* SIncidentListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIncidentListener.m; sourceTree = "<group>"; };
 		4A7E379918FFD57A00EFD7C3 /* SAlarmDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmDao.h; sourceTree = "<group>"; };
 		4A7E379A18FFD57A00EFD7C3 /* SAlarmDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAlarmDao.m; sourceTree = "<group>"; };
 		4A7E379B18FFD57A00EFD7C3 /* SAlarmSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAlarmSet.h; sourceTree = "<group>"; };
@@ -876,6 +879,8 @@
 				37E289B318E27A54004E8A4A /* SIncidentContentTabBarController.m */,
 				3777A13218E41AB800398191 /* SIncidentProcessViewController.h */,
 				3777A13318E41AB800398191 /* SIncidentProcessViewController.m */,
+				4A7D66C7190A5E120013013A /* SIncidentListener.h */,
+				4A7D66C8190A5E120013013A /* SIncidentListener.m */,
 			);
 			name = Incident;
 			sourceTree = "<group>";
@@ -1378,6 +1383,7 @@
 				37948F4C18DFD5CA00A5BBDA /* SProblem.m in Sources */,
 				7212653018FF764900460F62 /* SAlarmViewCell.m in Sources */,
 				37E289B418E27A54004E8A4A /* SIncidentContentTabBarController.m in Sources */,
+				4A7D66C9190A5E120013013A /* SIncidentListener.m in Sources */,
 				37948F5118DFD6E300A5BBDA /* SUser.m in Sources */,
 				3777A0E718E3CCF000398191 /* RETableViewFloatCell.m in Sources */,
 				3776A38918E14B2A0075B57F /* SIncidentOperationPopoverController.m in Sources */,
