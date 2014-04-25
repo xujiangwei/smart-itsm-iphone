@@ -31,4 +31,7 @@
 
 @property (nonatomic,retain) WEPopoverController *popoverController;
 
+@property (nonatomic, strong) NSIndexPath *currentIndexPath;
+
+
 @end

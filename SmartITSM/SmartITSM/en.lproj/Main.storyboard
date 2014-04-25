@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD:SmartITSM/SmartITSM/Base.lproj/Main.storyboard
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2gO-zA-odJ">
+>>>>>>> FETCH_HEAD:SmartITSM/SmartITSM/en.lproj/Main.storyboard
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
@@ -168,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mND-lg-uB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1966" y="-1236"/>
+            <point key="canvasLocation" x="1950" y="-1260"/>
         </scene>
         <!--Inspection Content View Controller-->
         <scene sceneID="s6V-XC-ijC">
@@ -187,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRM-aA-afP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2744" y="-1268"/>
+            <point key="canvasLocation" x="2596" y="-1212"/>
         </scene>
         <!--Message View Controller-->
         <scene sceneID="RMz-lJ-hCG">
@@ -219,26 +223,17 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lwj-1I-YGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2101" y="-396"/>
+            <point key="canvasLocation" x="1966" y="-388"/>
         </scene>
         <!--Message Content View Controller-->
         <scene sceneID="l4y-vl-UAo">
             <objects>
                 <viewController storyboardIdentifier="SMessageContentVC" id="KHU-qi-LkS" customClass="SMessageContentViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="td1-bc-iI5"/>
-                        <viewControllerLayoutGuide type="bottom" id="90S-57-yJX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CvR-UV-4Pk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
                     <navigationItem key="navigationItem" id="XeB-Nb-Cfn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cCd-fL-iF9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2744" y="-396"/>
+            <point key="canvasLocation" x="2596" y="-388"/>
         </scene>
         <!--Own View Controller - 我的-->
         <scene sceneID="cCK-aN-tVX">
@@ -1028,7 +1023,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="is4-Sh-nJS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2076" y="426"/>
+            <point key="canvasLocation" x="1950" y="426"/>
         </scene>
         <!--Alarm List View Controller-->
         <scene sceneID="wQ0-4O-u6n">
