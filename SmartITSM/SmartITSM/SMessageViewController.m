@@ -16,13 +16,15 @@
 #import "SUser.h"
 
 #define kCellHeight 80
+#define kDemoCelletName @"SmartITOM"
 
 @interface SMessageViewController ()
 {
     SMessageContentViewController *messageContentViewController;
     SMessageListener *_listener;
-    SMessageStatusListener *_failureListener;
+    SMessageStatusListener *_statusListener;
     MBProgressHUD *HUD;
+//    UIRefreshControl *refreshControl;
 }
 @end
 
@@ -48,10 +50,8 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        _listener = [[SMessageListener alloc] initWith:@"requestMessages"];
-        _failureListener = [[SMessageStatusListener alloc] init];
-        _listener.delegate = self;
-        _failureListener.delegate = self;
+        _statusListener = [[SMessageStatusListener alloc] init];
+        _statusListener.delegate = self;
     }
     return self;
 }
@@ -61,14 +61,14 @@
     [super viewDidLoad];
     
     //添加列表
-    messages = [SMessageDao getTaskList];
+    messages = [SMessageDao getMessageList];
     
-    //刷新列表
+    //下拉刷新列表
     [self addRefreshViewControl];
     
+    //刷新列表
     [self refresh];
     
-    [[MastEngine sharedSingleton] addListener:@"SmartITOM" listener:_listener];
     
     //添加rightBarButton
     popoverClass = [WEPopoverController class];
@@ -84,21 +84,26 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated;
+{
+    [super viewWillAppear:animated];
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
-    [[MastEngine sharedSingleton] removeListener:@"SmartITOM" listener:_listener];
 }
 
 // 添加UIRefreshControl下拉刷新控件到UITableViewController的view中
 -(void)addRefreshViewControl
 {
-    self.refreshControl = [[UIRefreshControl alloc]init];
-    self.refreshControl.tintColor = [UIColor blueColor];
-//    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新"];
-    [self.refreshControl addTarget:self action:@selector(RefreshViewControlEventValueChanged) forControlEvents:UIControlEventValueChanged];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    refreshControl.tintColor = [UIColor blueColor];
+    refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新"];
+    [refreshControl addTarget:self action:@selector(RefreshViewControlEventValueChanged) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
 }
 
 -(void)RefreshViewControlEventValueChanged
@@ -113,10 +118,10 @@
 
 - (void)handleData
 {
-    NSLog(@"refreshed");
+    [self refresh];
     [self.refreshControl endRefreshing];
-
     [self.tableView reloadData];
+    NSLog(@"refreshed");
 }
 
 //排序
@@ -154,7 +159,7 @@
     SMessage *msg = [self.messages objectAtIndex:indexPath.row];
     NSLog(@"msg = %@",msg);
     NSLog(@"msgId = %@",msg.messageId);
-    SMessage *selectMsg = [SMessageDao getMessageTaskDetailById:msg.messageId];
+    SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SMessageContentViewController *contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"SMessageContentVC"];
     contentViewController.message = selectMsg;
@@ -213,41 +218,39 @@
 #pragma mark - SMessageDelegate
 - (void)updateMessages:(NSDictionary *)dic
 {
-    NSLog(@"123456");
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        NSArray *rootArray = [dic objectForKey:@"root"];
-//        for (int i=0; i<[rootArray count]; i++) {
-//            NSDictionary *dic = [rootArray objectAtIndex:i];
-//            [SMessageList insertMessage:dic];
-//            [SMessageList updateMessage:dic];
-//        }
-//        self.messages = [SMessageList getMessageList:12];
-//        [HUD removeFromSuperview];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSArray *rootArray = [dic objectForKey:@"root"];
+        for (int i=0; i<[rootArray count]; i++) {
+            NSDictionary *dic = [rootArray objectAtIndex:i];
+            [SMessageDao insertMessage:dic];
+            [SMessageDao updateMessage:dic];
+        }
+        self.messages = [SMessageDao getMessageList];
+        [HUD removeFromSuperview];
 //        [self.listView reloadData];
-//    });
+    });
     
-}
-
-#pragma mark - ServiceDelegate
-
-- (void)startup
-{
-    [[MastEngine sharedSingleton] addListener:@"requestMessages" listener:_listener];
-//    [[MastEngine sharedSingleton] addFailureListener:_failureListener];
     
-    [self refresh];
-}
-
-- (void)shutdown
-{
     [[MastEngine sharedSingleton] removeListener:@"requestMessages" listener:_listener];
-//    [[MastEngine sharedSingleton] removeFailureListener:_failureListener];
+    
 }
+
 
 #pragma mark - Public Methods
 
 - (void)refresh
 {
+    if (nil != _listener)
+    {
+        [[MastEngine sharedSingleton] removeListener:kDemoCelletName listener:_listener];
+    }
+    else
+    {
+    _listener = [[SMessageListener alloc] initWith:@"requestMessages"];
+    _listener.delegate = self;
+    }
+    [[MastEngine sharedSingleton] addListener:kDemoCelletName listener:_listener];
+    
     //C2S
     if ([SUser isSignin])
     {
@@ -255,7 +258,7 @@
         dialect.action = @"requestMessages";
         NSString *stringValue=[NSString stringWithFormat:@"{\"pageSize\":\"50\",\"currentIndex\":\"0\",\"orderBy\":\"sender\",\"tagId\":\"2\",\"condition\":\"\",\"token\":\"%@\"}",[SUser getToken]];
         [dialect appendParam:@"data" stringValue:stringValue];
-        [[MastEngine sharedSingleton] asynPerformAction:@"SmartITOM" action:dialect];
+        [[MastEngine sharedSingleton] asynPerformAction:kDemoCelletName action:dialect];
 
 //        HUD = [[MBProgressHUD alloc]initWithView:self.view];
 //        [self.view addSubview:HUD];
@@ -273,21 +276,5 @@
 //    [iConsole info:@"message: %@",failure.description];
 }
 
-#pragma mark - Private Methods
-
-- (void)refreshView
-{
-//    self.listView.frame = CGRectMake(0, 44, 310, self.view.frame.size.height - 44);
-}
-
-- (void)requestData
-{
-    
-}
-- (void)loadData
-{
-    self.messages = [SMessageDao getTaskList];
-    
-}
 
 @end

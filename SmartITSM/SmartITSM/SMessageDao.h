@@ -13,9 +13,25 @@
 
 -(id) init;
 
-+(NSMutableArray *)getTaskList;
+//消息列表获取数据
++(NSMutableArray *)getMessageList;
 
-+(SMessage *)getMessageTaskDetailById:(NSString *)messageId;
+//删除数据
++(BOOL) deleteMessageWithMessageId:(NSString *)index;
 
+//插入数据
++ (BOOL)insertMessage:(NSDictionary *)messages;
+
+//更新数据
++ (BOOL) updateMessage:(NSDictionary *)messagesDic;
+
+//通过消息ID获取详细内容
++(SMessage *)getMessageDetailById:(NSString *)messageId;
+
+//排序
++ (NSMutableArray *)getMessageListOrderBy:(NSString *)str withMark:(MarkedType )markType;
+
+//消息MarkedType切换 已调测
++ (NSMutableArray *) getMessageListWithMark:(MarkedType )markType;
 
 @end
