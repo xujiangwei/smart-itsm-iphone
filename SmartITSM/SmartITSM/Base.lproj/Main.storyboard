@@ -548,6 +548,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="rxu-Cn-9ed"/>
                     <connections>
+                        <outlet property="incidentListView" destination="sPO-nr-Z5g" id="Due-Ea-OiK"/>
                         <segue destination="WeQ-LH-yU2" kind="push" identifier="IncidentDetail" id="Sf7-cf-rUa"/>
                     </connections>
                 </viewController>

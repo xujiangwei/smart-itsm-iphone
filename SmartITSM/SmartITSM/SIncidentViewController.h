@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SIncident.h"
+#import "STaskDao.h"
 #import "SIncidentContentTabBarController.h"
 #import "SIncidentListener.h"
+#import "MastPrerequisites.h"
 
 @protocol SIncidentListDelegate <NSObject>
 
@@ -18,11 +20,11 @@
 
 @end
 
-@interface SIncidentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SIncidentListenerDelegate>
+@interface SIncidentViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, SIncidentListenerDelegate,MBProgressHUDDelegate>
 
 @property (nonatomic, strong) NSMutableArray  * incidents;
 
-@property (nonatomic,strong)  UITableView *incidentListView;
+@property (nonatomic,strong) IBOutlet UITableView *incidentListView;
 
 @property (nonatomic, assign) id<SIncidentListDelegate> delegate;
 

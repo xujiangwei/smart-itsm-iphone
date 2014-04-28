@@ -15,10 +15,10 @@
 
 @interface SIncidentViewController ()
 {
-//    MBProgressHUD *HUD;
     NSIndexPath  *currentIndexPath;
     SIncidentContentTabBarController *incidentContentVC;
     SIncidentListener *_listener;
+    MBProgressHUD *_HUD;
 }
 
 @end
@@ -33,7 +33,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -43,10 +42,6 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        
-        _listener = [[SIncidentListener alloc] initWith:@"requestIncidentList"];
-        _listener.delegate = self;
-   
     }
     return self;
 }
@@ -54,13 +49,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    incidentListView.dataSource = self;
-    incidentListView.delegate = self;
+
     incidents = [SIncidentDao getTaskList];
-    
-    [[MastEngine sharedSingleton] addListener:@"SmartITOM" listener:_listener];
-    
+
     [self refreshIncidentList];
 
 }
@@ -69,15 +60,12 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
-    [[MastEngine sharedSingleton] removeListener:@"SmartITOM" listener:_listener];
-    
 }
 
 - (void)updateIncidentList:(NSMutableArray *)incidentArray
 {
     incidents = incidentArray;
-//    [incidentListView reloadData];
+    [incidentListView reloadData];
 }
 
 
@@ -133,19 +121,75 @@
 #pragma mark - SIncidentListenerDelegate
 - (void )didRequestIncidentList:(NSDictionary *)listDic
 {
-    NSLog(@"incident");
+    if ([listDic objectForKey:@"success"]) {
+        NSDictionary *incidentInfo=[listDic objectForKey:@"root"];
+        //以下为清理缓存数据
+        NSMutableArray *newIncidentIdArray=[[NSMutableArray alloc]init];
+        for (NSDictionary *attriDic in incidentInfo) {
+            [newIncidentIdArray addObject:[attriDic objectForKey:@"id"]];
+        }
+        
+        NSMutableArray *incidentIdArray=[STaskDao getLocalIncidentIdList];
+        for (NSString  *oldIncidentId in incidentIdArray) {
+            if(![newIncidentIdArray containsObject:oldIncidentId]){
+                [STaskDao deleteLocalIncidentById:oldIncidentId];
+            }
+        }
+        
+        for (NSDictionary *attriDic in incidentInfo) {
+            //如果是存在的数据，就执行更新操作，如果是新数据，则执行插入操作
+            if (![STaskDao insert:attriDic])
+            {
+                [STaskDao update:attriDic];
+            }
+        }
+        incidents = [STaskDao getTaskList];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_HUD removeFromSuperview];
+            
+            [self.incidentListView reloadData];
+        });
+    }else{
+        [_HUD removeFromSuperview];
+    }
+    
+    //数据处理完成，移除监听器
+    [[MastEngine sharedSingleton] removeListener:@"SmartITOM" listener:_listener];
 }
 
 #pragma mark - Private
 
 - (void)refreshIncidentList
 {
+    //实例化并添加监听器
+    _listener = [[SIncidentListener alloc] initWith:@"requestIncidentList"];
+    _listener.delegate = self;
+    [[MastEngine sharedSingleton] addListener:@"SmartITOM" listener:_listener];
+    
+    
     //刷新故障任务列表
     CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton]createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
     dialect.action = @"requestIncidentList";
-    NSString *value = [NSString stringWithFormat:@"{\"token\":\"%@\",\"currentIndex\" : \"0\", \"pagesize\" : \"20\",\"filterId\" :\"%@\"}",[SUser getToken],nil];
+
+    NSDictionary *valueDic = [NSDictionary dictionaryWithObjectsAndKeys:[SUser getToken], @"token",@"0", @"currentIndex", @"20", @"pagesize",@"", @"filterId", nil];
+    NSString  *value = nil;
+    
+    if ([NSJSONSerialization isValidJSONObject:valueDic])
+    {
+        NSError *error;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:valueDic options:NSJSONWritingPrettyPrinted error:&error];
+        value = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    }
+
     [dialect appendParam:@"data" stringValue:value];
     [[MastEngine sharedSingleton] asynPerformAction:@"SmartITOM" action:dialect];
+    
+    _HUD = [[MBProgressHUD alloc]initWithView:self.view];
+    [self.view addSubview:_HUD];
+    _HUD.mode = MBProgressHUDModeIndeterminate;
+    _HUD.labelText = @"加载中...";
+    _HUD.delegate = self;
+    [_HUD show:YES];
 }
 
 #pragma mark - Navigation
