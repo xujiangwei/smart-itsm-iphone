@@ -20,11 +20,10 @@
 
 @interface SMessageViewController ()
 {
-    SMessageContentViewController *messageContentViewController;
     SMessageListener *_listener;
     SMessageStatusListener *_statusListener;
-    MBProgressHUD *HUD;
-//    UIRefreshControl *refreshControl;
+    MBProgressHUD *_HUD;
+    BOOL _refreshControl;
 }
 @end
 
@@ -67,8 +66,8 @@
     [self addRefreshViewControl];
     
     //刷新列表
+    _refreshControl = true;
     [self refresh];
-    
     
     //添加rightBarButton
     popoverClass = [WEPopoverController class];
@@ -83,13 +82,6 @@
     self.navigationItem.rightBarButtonItem= rightItem;
 
 }
-
-- (void)viewWillAppear:(BOOL)animated;
-{
-    [super viewWillAppear:animated];
-    
-}
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -118,6 +110,7 @@
 
 - (void)handleData
 {
+    _refreshControl = false;
     [self refresh];
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
@@ -218,20 +211,22 @@
 #pragma mark - SMessageDelegate
 - (void)updateMessages:(NSDictionary *)dic
 {
+    NSArray *rootArray = [dic objectForKey:@"root"];
+    for (int i=0; i<[rootArray count]; i++) {
+        NSDictionary *dic = [rootArray objectAtIndex:i];
+        [SMessageDao insertMessage:dic];
+        [SMessageDao updateMessage:dic];
+    }
+    self.messages = [SMessageDao getMessageList];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSArray *rootArray = [dic objectForKey:@"root"];
-        for (int i=0; i<[rootArray count]; i++) {
-            NSDictionary *dic = [rootArray objectAtIndex:i];
-            [SMessageDao insertMessage:dic];
-            [SMessageDao updateMessage:dic];
-        }
-        self.messages = [SMessageDao getMessageList];
-        [HUD removeFromSuperview];
+       
+        [_HUD removeFromSuperview];
 //        [self.listView reloadData];
     });
     
     
-    [[MastEngine sharedSingleton] removeListener:@"requestMessages" listener:_listener];
+    [[MastEngine sharedSingleton] removeListener:kDemoCelletName listener:_listener];
     
 }
 
@@ -244,11 +239,10 @@
     {
         [[MastEngine sharedSingleton] removeListener:kDemoCelletName listener:_listener];
     }
-    else
-    {
+    
     _listener = [[SMessageListener alloc] initWith:@"requestMessages"];
     _listener.delegate = self;
-    }
+    
     [[MastEngine sharedSingleton] addListener:kDemoCelletName listener:_listener];
     
     //C2S
@@ -259,20 +253,23 @@
         NSString *stringValue=[NSString stringWithFormat:@"{\"pageSize\":\"50\",\"currentIndex\":\"0\",\"orderBy\":\"sender\",\"tagId\":\"2\",\"condition\":\"\",\"token\":\"%@\"}",[SUser getToken]];
         [dialect appendParam:@"data" stringValue:stringValue];
         [[MastEngine sharedSingleton] asynPerformAction:kDemoCelletName action:dialect];
-
-//        HUD = [[MBProgressHUD alloc]initWithView:self.view];
-//        [self.view addSubview:HUD];
-//        HUD.mode = MBProgressHUDModeIndeterminate;
-//        HUD.labelText = @"loading...";
-//        HUD.delegate = self;
-//        [HUD show:YES];
+        
+        if (_refreshControl)
+        {
+            _HUD = [[MBProgressHUD alloc]initWithView:self.view];
+            [self.view addSubview:_HUD];
+            _HUD.mode = MBProgressHUDModeIndeterminate;
+            _HUD.labelText = @"loading...";
+            _HUD.delegate = self;
+            [_HUD show:YES];
+        }
     }
 }
 
 #pragma mark - SMessageFailureDelegate
 - (void)didFailed:(NSString *)identifier
 {
-    [HUD removeFromSuperview];
+    [_HUD removeFromSuperview];
 //    [iConsole info:@"message: %@",failure.description];
 }
 

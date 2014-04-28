@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 #import "SMessage.h"
 #import "WEPopoverController.h"
 #import "SMessageListener.h"
@@ -18,7 +19,7 @@
 
 @end
 
-@interface SMessageViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, UIPopoverControllerDelegate, SMessageListenerDelegate, SMessageStatusListenerDelegate>
+@interface SMessageViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, UIPopoverControllerDelegate, SMessageListenerDelegate, SMessageStatusListenerDelegate, MBProgressHUDDelegate>
 {
 //    WEPopoverController *popoverController;
     Class popoverClass;
