@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1868DD7A1909FF9500847BD1 /* SMessageListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868DD791909FF9500847BD1 /* SMessageListener.m */; };
 		189B19AD1905105C007792F3 /* SSenderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 189B19AC1905105C007792F3 /* SSenderButton.m */; };
 		189BEDBD1907ABB400C1C908 /* SMessageContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189BEDBC1907ABB400C1C908 /* SMessageContentViewController.xib */; };
 		18F891C818FF7DA900C65650 /* SMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891C718FF7DA900C65650 /* SMessage.m */; };
@@ -190,6 +191,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1868DD781909FF9500847BD1 /* SMessageListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageListener.h; sourceTree = "<group>"; };
+		1868DD791909FF9500847BD1 /* SMessageListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageListener.m; sourceTree = "<group>"; };
 		189B19AB1905105C007792F3 /* SSenderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSenderButton.h; sourceTree = "<group>"; };
 		189B19AC1905105C007792F3 /* SSenderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSenderButton.m; sourceTree = "<group>"; };
 		189BEDBC1907ABB400C1C908 /* SMessageContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMessageContentViewController.xib; sourceTree = "<group>"; };
@@ -555,6 +558,8 @@
 				4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */,
 				4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */,
 				4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */,
+				1868DD781909FF9500847BD1 /* SMessageListener.h */,
+				1868DD791909FF9500847BD1 /* SMessageListener.m */,
 			);
 			name = Message;
 			sourceTree = "<group>";
@@ -1365,6 +1370,7 @@
 				44959EE018E3ECC7009F8E35 /* JBLineChartView.m in Sources */,
 				3777A0F518E3CCF000398191 /* REInlinePickerItem.m in Sources */,
 				3777A12618E3D8CD00398191 /* RELengthValidator.m in Sources */,
+				1868DD7A1909FF9500847BD1 /* SMessageListener.m in Sources */,
 				37FA4C9B18DBE16F004AB106 /* SChangeViewController.m in Sources */,
 				371F2E8618EABF7500CC06BB /* WEPopoverController.m in Sources */,
 				379357D518E3C4F20062265C /* FMDatabasePool.m in Sources */,

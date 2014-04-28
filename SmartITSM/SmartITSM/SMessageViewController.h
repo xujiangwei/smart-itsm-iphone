@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SMessage.h"
 #import "WEPopoverController.h"
+#import "SMessageListener.h"
 
 @protocol SMessageListDelegate <NSObject>
 
@@ -17,7 +18,7 @@
 
 @end
 
-@interface SMessageViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, UIPopoverControllerDelegate>
+@interface SMessageViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, UIPopoverControllerDelegate, SMessageListenerDelegate, SMessageStatusListenerDelegate>
 {
 //    WEPopoverController *popoverController;
     Class popoverClass;

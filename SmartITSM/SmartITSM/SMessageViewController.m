@@ -11,39 +11,34 @@
 #import "SMessageViewCell.h"
 #import "SMessageDao.h"
 #import "SMessageSortingPopoverController.h"
+#import "MastEngine.h"
+#import "MBProgressHUD.h"
+#import "SUser.h"
 
 #define kCellHeight 80
 
 @interface SMessageViewController ()
 {
     SMessageContentViewController *messageContentViewController;
+    SMessageListener *_listener;
+    SMessageStatusListener *_failureListener;
+    MBProgressHUD *HUD;
 }
 @end
 
 @implementation SMessageViewController
 
 @synthesize messages;
-//@synthesize messageListView;
 @synthesize delegate;
 @synthesize popoverController;
 @synthesize currentIndexPath;
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    
-    if ((self = [super initWithStyle:style]))
-    {
-        
-    }
-    return self;
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        
+
     }
     return self;
 }
@@ -53,7 +48,10 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        
+        _listener = [[SMessageListener alloc] initWith:@"requestMessages"];
+        _failureListener = [[SMessageStatusListener alloc] init];
+        _listener.delegate = self;
+        _failureListener.delegate = self;
     }
     return self;
 }
@@ -62,13 +60,15 @@
 {
     [super viewDidLoad];
     
-//    [self.tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
-    
     //添加列表
     messages = [SMessageDao getTaskList];
     
     //刷新列表
     [self addRefreshViewControl];
+    
+    [self refresh];
+    
+    [[MastEngine sharedSingleton] addListener:@"SmartITOM" listener:_listener];
     
     //添加rightBarButton
     popoverClass = [WEPopoverController class];
@@ -82,6 +82,13 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem= rightItem;
 
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    [[MastEngine sharedSingleton] removeListener:@"SmartITOM" listener:_listener];
 }
 
 // 添加UIRefreshControl下拉刷新控件到UITableViewController的view中
@@ -103,11 +110,8 @@
     }
 }
 
-- (void) handleData
+- (void)handleData
 {
-//    messages = [SMessageDao getTaskList];
-    
-    
     NSLog(@"refreshed");
     [self.refreshControl endRefreshing];
 
@@ -121,9 +125,6 @@
 	if (!self.popoverController) {
 		
 		SMessageSortingPopoverController *sortingPopoverController = [[SMessageSortingPopoverController alloc] initWithStyle:UITableViewStylePlain];
-//        sortingPopoverController.messageContentViewController = self;
-        
-        
 		self.popoverController = [[popoverClass alloc] initWithContentViewController:sortingPopoverController];
 		self.popoverController.delegate = self;
 		self.popoverController.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
@@ -139,11 +140,6 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    
-}
 
 #pragma mark - Table view delegate
 
@@ -154,37 +150,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    [self performSegueWithIdentifier:@"MessageDetail" sender:cell];
-    
     SMessage *msg = [self.messages objectAtIndex:indexPath.row];
     NSLog(@"msg = %@",msg);
     NSLog(@"msgId = %@",msg.messageId);
     SMessage *selectMsg = [SMessageDao getMessageTaskDetailById:msg.messageId];
-    
-//    messageContentViewController.message = selectMsg;
-//    NSLog(@"%@",msg);
-//    [message setHasRead:YES];
-//        NSLog(@"\n%@",message.messageId);
-//    [SMessage updateMessageUnread:YES withMessageId:message.messageId];
-    
-//        [self.listView reloadData];
-    
-//    messageContentViewController = [[SMessageContentViewController alloc] initWithNibName:@"SMessageContentViewController" bundle:nil];
-//    messageContentViewController.delegate = self;
-    
-    // 设置数据源
-//    messageContentViewController.message = message;
-//    messageContentViewController.currentIndexPath = self.currentIndexPath;
-    
-//    [StackControllerHelper swapViewController:controller];
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    SMessageContentViewController *contentViewController = [storyboard
-                                                            instantiateViewControllerWithIdentifier:@"SMessageContentVC"];
-    
-//    messageContentViewController = [[SMessageContentViewController alloc]init];
-//    [contentViewController updateMessage:selectMsg];
+    SMessageContentViewController *contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"SMessageContentVC"];
     contentViewController.message = selectMsg;
     [self.navigationController pushViewController:contentViewController animated:YES];
 }
@@ -238,6 +209,84 @@
  
 }
 
+#pragma mark - SMessageDelegate
+- (void)updateMessages:(NSDictionary *)dic
+{
+    NSLog(@"123456");
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        NSArray *rootArray = [dic objectForKey:@"root"];
+//        for (int i=0; i<[rootArray count]; i++) {
+//            NSDictionary *dic = [rootArray objectAtIndex:i];
+//            [SMessageList insertMessage:dic];
+//            [SMessageList updateMessage:dic];
+//        }
+//        self.messages = [SMessageList getMessageList:12];
+//        [HUD removeFromSuperview];
+//        [self.listView reloadData];
+//    });
+    
+}
 
+#pragma mark - ServiceDelegate
+
+- (void)startup
+{
+    [[MastEngine sharedSingleton] addListener:@"requestMessages" listener:_listener];
+//    [[MastEngine sharedSingleton] addFailureListener:_failureListener];
+    
+    [self refresh];
+}
+
+- (void)shutdown
+{
+    [[MastEngine sharedSingleton] removeListener:@"requestMessages" listener:_listener];
+//    [[MastEngine sharedSingleton] removeFailureListener:_failureListener];
+}
+
+#pragma mark - Public Methods
+
+- (void)refresh
+{
+    //C2S
+    if ([SUser isSignin])
+    {
+        CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton] createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
+        dialect.action = @"requestMessages";
+        NSString *stringValue=[NSString stringWithFormat:@"{\"pageSize\":\"50\",\"currentIndex\":\"0\",\"orderBy\":\"sender\",\"tagId\":\"2\",\"condition\":\"\",\"token\":\"%@\"}",[SUser getToken]];
+        [dialect appendParam:@"data" stringValue:stringValue];
+        [[MastEngine sharedSingleton] asynPerformAction:@"SmartITOM" action:dialect];
+
+//        HUD = [[MBProgressHUD alloc]initWithView:self.view];
+//        [self.view addSubview:HUD];
+//        HUD.mode = MBProgressHUDModeIndeterminate;
+//        HUD.labelText = @"loading...";
+//        HUD.delegate = self;
+//        [HUD show:YES];
+    }
+}
+
+#pragma mark - SMessageFailureDelegate
+- (void)didFailed:(NSString *)identifier
+{
+    [HUD removeFromSuperview];
+//    [iConsole info:@"message: %@",failure.description];
+}
+
+#pragma mark - Private Methods
+
+- (void)refreshView
+{
+//    self.listView.frame = CGRectMake(0, 44, 310, self.view.frame.size.height - 44);
+}
+
+- (void)requestData
+{
+    
+}
+- (void)loadData
+{
+    self.messages = [SMessageDao getTaskList];
+    
+}
 
 @end
