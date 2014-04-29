@@ -154,7 +154,7 @@
     }
     
     //数据处理完成，移除监听器
-    [[MastEngine sharedSingleton] removeListener:@"SmartITOM" listener:_listener];
+    [[MastEngine sharedSingleton] removeActionListener:@"SmartITOM" listener:_listener];
 }
 
 #pragma mark - Private
@@ -164,7 +164,7 @@
     //实例化并添加监听器
     _listener = [[SIncidentListener alloc] initWith:@"requestIncidentList"];
     _listener.delegate = self;
-    [[MastEngine sharedSingleton] addListener:@"SmartITOM" listener:_listener];
+    [[MastEngine sharedSingleton] addActionListener:@"SmartITOM" listener:_listener];
     
     
     //刷新故障任务列表

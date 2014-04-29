@@ -31,31 +31,23 @@
  */
 - (BOOL)hasStarted;
 
-/** 添加服务器联系人。
+/** 连接服务器。
  */
-- (void)addContact:(Contact *)contact;
+- (BOOL)contactCellet:(Contact *)contact reconnection:(BOOL)reconnection;
 
-/** 删除服务器联系人。
+/** 添加动作监听器。
  */
-- (void)removeContact:(NSString *)identifier;
+- (void)addActionListener:(NSString *)identifier listener:(ActionListener *)listener;
 
-/** 重置联系服务器。
+/** 移除动作监听器。
  */
-- (void)resetContact;
+- (void)removeActionListener:(NSString *)identifier listener:(ActionListener *)listener;
 
-/** 添加监听器
- */
-- (void)addListener:(NSString *)identifier listener:(ActionListener *)listener;
-
-/** 移除监听器
- */
-- (void)removeListener:(NSString *)identifier listener:(ActionListener *)listener;
-
-/** 添加状态监听器
+/** 添加状态监听器。
  */
 - (void)addStatusListener:(NSString *)identifier statusListener:(StatusListener *)statusListener;
 
-/** 移除状态监听器
+/** 移除状态监听器。
  */
 - (void)removeStatusListener:(NSString *)identifier statusListener:(StatusListener *)statusListener;
 

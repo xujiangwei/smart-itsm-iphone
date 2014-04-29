@@ -62,7 +62,7 @@
 {
     [super viewDidLoad];
     
-    [[MastEngine sharedSingleton] addListener:kDemoCelletName listener:_listener];
+    [[MastEngine sharedSingleton] addActionListener:kDemoCelletName listener:_listener];
     [[MastEngine sharedSingleton] addStatusListener:kDemoCelletName statusListener:_statutsListener];
     
     static NSString *CellIdentifier = @"SResourceListViewCell";
@@ -88,7 +88,7 @@
 {
     [super didReceiveMemoryWarning];
     
-    [[MastEngine sharedSingleton] removeListener:kDemoCelletName listener:_listener];
+    [[MastEngine sharedSingleton] removeActionListener:kDemoCelletName listener:_listener];
     [[MastEngine sharedSingleton] removeStatusListener:kDemoCelletName statusListener:_statutsListener];
     
 }
