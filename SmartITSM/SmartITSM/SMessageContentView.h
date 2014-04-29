@@ -1,25 +1,24 @@
 //
-//  SMessageContentViewController.h
+//  SMessageContentView.h
 //  SmartITSM
 //
-//  Created by dweng on 14-3-24.
+//  Created by Apple Developer on 14-4-29.
 //  Copyright (c) 2014年 Ambrose. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "SMessage.h"
 
-@protocol SMsgContentControlDelegate <NSObject>
+//@protocol SMsgContentControlDelegate <NSObject>
+//
+//- (void)contentViewDidClosed;
+//
+////置顶
+//- (void)btnMarkTop:(BOOL)top withId:(NSString *)index;
+//
+//@end
 
-@optional
-- (void)contentViewDidClosed;
-//置顶
-- (void)btnMarkTop:(BOOL)top withId:(NSString *)index;
-
-
-@end
-
-@interface SMessageContentViewController : UIViewController
+@interface SMessageContentView : UIView
 
 //摘要视图
 @property (strong, nonatomic) IBOutlet UIView *summaryView;
@@ -45,14 +44,12 @@
 //图表视图
 @property (strong, nonatomic) IBOutlet UIImageView *originalPicView;
 
-
-@property (nonatomic, strong) SMessage *message;
 @property (strong, nonatomic) NSMutableArray *messageArray;
 @property (nonatomic, assign) NSIndexPath *currentIndexPath;
+//@property (assign, nonatomic) id <SMsgContentControlDelegate> delegate;
+@property (nonatomic,assign)  BOOL hasTop;
 
-@property (assign, nonatomic) id<SMsgContentControlDelegate> delegate;
-@property (nonatomic,assign)    BOOL hasTop;
-
-- (void)updateMessage:(SMessage *)msg;
+//更新内容
+- (void)updateMessage:(SMessage *)message;
 
 @end

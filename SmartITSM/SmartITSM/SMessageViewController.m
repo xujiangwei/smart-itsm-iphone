@@ -34,16 +34,6 @@
 @synthesize popoverController;
 @synthesize currentIndexPath;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-
-    }
-    return self;
-}
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -150,8 +140,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SMessage *msg = [self.messages objectAtIndex:indexPath.row];
-    NSLog(@"msg = %@",msg);
-    NSLog(@"msgId = %@",msg.messageId);
     SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SMessageContentViewController *contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"SMessageContentVC"];
@@ -197,7 +185,6 @@
 
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     //设置sender为标题
@@ -222,7 +209,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
        
         [_HUD removeFromSuperview];
-//        [self.listView reloadData];
     });
     
     
@@ -250,8 +236,15 @@
     {
         CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton] createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
         dialect.action = @"requestMessages";
-        NSString *stringValue=[NSString stringWithFormat:@"{\"pageSize\":\"50\",\"currentIndex\":\"0\",\"orderBy\":\"sender\",\"tagId\":\"2\",\"condition\":\"\",\"token\":\"%@\"}",[SUser getToken]];
-        [dialect appendParam:@"data" stringValue:stringValue];
+        NSDictionary *valueDic = [NSDictionary dictionaryWithObjectsAndKeys:@"50", @"pageSize", @"0", @"currentIndex", @"sender", @"orderBy", @"2", @"tagId", @"", @"condition", @"490f4dddf9b14117bc2df41016006497", @"token", nil];
+        NSString *value;
+        if ([NSJSONSerialization isValidJSONObject:valueDic])
+        {
+            NSError *error;
+            NSData *data = [NSJSONSerialization dataWithJSONObject:valueDic options:NSJSONWritingPrettyPrinted error:&error];
+            value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        }
+        [dialect appendParam:@"data" stringValue:value];
         [[MastEngine sharedSingleton] asynPerformAction:kDemoCelletName action:dialect];
         
         if (_refreshControl)
@@ -270,7 +263,6 @@
 - (void)didFailed:(NSString *)identifier
 {
     [_HUD removeFromSuperview];
-//    [iConsole info:@"message: %@",failure.description];
 }
 
 

@@ -9,6 +9,12 @@
 #import "ActionListener.h"
 #import "StatusListener.h"
 
+/*
+ *
+ *SMessageListener
+ *
+ */
+
 @protocol SMessageListenerDelegate <NSObject>
 
 - (void)updateMessages:(NSDictionary *)dic;

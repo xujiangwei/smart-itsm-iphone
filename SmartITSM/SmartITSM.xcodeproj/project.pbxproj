@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18231091190F54F800B9C201 /* SMessageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18231090190F54F800B9C201 /* SMessageContentView.m */; };
+		18231093190F552700B9C201 /* SMessageContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18231092190F552700B9C201 /* SMessageContentView.xib */; };
 		1868DD7A1909FF9500847BD1 /* SMessageListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868DD791909FF9500847BD1 /* SMessageListener.m */; };
 		189B19AD1905105C007792F3 /* SSenderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 189B19AC1905105C007792F3 /* SSenderButton.m */; };
-		189BEDBD1907ABB400C1C908 /* SMessageContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189BEDBC1907ABB400C1C908 /* SMessageContentViewController.xib */; };
 		18F891C818FF7DA900C65650 /* SMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891C718FF7DA900C65650 /* SMessage.m */; };
 		18F891CB18FF852500C65650 /* SMessageDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891CA18FF852500C65650 /* SMessageDao.m */; };
 		18F891CE18FFB6EA00C65650 /* SMessageSortingPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */; };
@@ -191,11 +192,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1823108F190F54F800B9C201 /* SMessageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageContentView.h; sourceTree = "<group>"; };
+		18231090190F54F800B9C201 /* SMessageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageContentView.m; sourceTree = "<group>"; };
+		18231092190F552700B9C201 /* SMessageContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMessageContentView.xib; sourceTree = "<group>"; };
 		1868DD781909FF9500847BD1 /* SMessageListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageListener.h; sourceTree = "<group>"; };
 		1868DD791909FF9500847BD1 /* SMessageListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageListener.m; sourceTree = "<group>"; };
 		189B19AB1905105C007792F3 /* SSenderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSenderButton.h; sourceTree = "<group>"; };
 		189B19AC1905105C007792F3 /* SSenderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSenderButton.m; sourceTree = "<group>"; };
-		189BEDBC1907ABB400C1C908 /* SMessageContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMessageContentViewController.xib; sourceTree = "<group>"; };
 		189BEDC11907B65000C1C908 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18F891C618FF7DA900C65650 /* SMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessage.h; sourceTree = "<group>"; };
 		18F891C718FF7DA900C65650 /* SMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessage.m; sourceTree = "<group>"; };
@@ -552,7 +555,9 @@
 				18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */,
 				37948F3918DFD05B00A5BBDA /* SMessageContentViewController.h */,
 				37948F3A18DFD05B00A5BBDA /* SMessageContentViewController.m */,
-				189BEDBC1907ABB400C1C908 /* SMessageContentViewController.xib */,
+				1823108F190F54F800B9C201 /* SMessageContentView.h */,
+				18231090190F54F800B9C201 /* SMessageContentView.m */,
+				18231092190F552700B9C201 /* SMessageContentView.xib */,
 				189B19AB1905105C007792F3 /* SSenderButton.h */,
 				189B19AC1905105C007792F3 /* SSenderButton.m */,
 				4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */,
@@ -1231,6 +1236,7 @@
 				4A44F44918ECF05C00F8D886 /* Calendar.bundle in Resources */,
 				4417CF8A18AC74C700E6E09F /* Images.xcassets in Resources */,
 				4A5EDF4C18FBE0DE0047B923 /* SResourceListViewCell.xib in Resources */,
+				18231093190F552700B9C201 /* SMessageContentView.xib in Resources */,
 				4A44F44718ECF03E00F8D886 /* TSMessagesDefaultDesign.json in Resources */,
 				7212653118FF764900460F62 /* SAlarmViewCell.xib in Resources */,
 				4442D69018E2A60C00FEC872 /* Localizable.strings in Resources */,
@@ -1240,7 +1246,6 @@
 				4A44F44D18ECFAFA00F8D886 /* SmartITSM.db in Resources */,
 				7212653318FF764900460F62 /* SAlarmListViewCell.xib in Resources */,
 				4A581FD818EE94F200B7C5D8 /* SMessageViewCell.xib in Resources */,
-				189BEDBD1907ABB400C1C908 /* SMessageContentViewController.xib in Resources */,
 				4417CF7C18AC74C700E6E09F /* InfoPlist.strings in Resources */,
 				3777A10418E3CCF000398191 /* RETableViewManager.bundle in Resources */,
 				374363D118EA84EF005E5312 /* SProcessCell.xib in Resources */,
@@ -1352,6 +1357,7 @@
 				379357D818E3C4F20062265C /* SDatabase.m in Sources */,
 				3777A0E918E3CCF000398191 /* RETableViewInlinePickerCell.m in Sources */,
 				37F9967C18EAC79900A27B69 /* SProblemOperationPopoverController.m in Sources */,
+				18231091190F54F800B9C201 /* SMessageContentView.m in Sources */,
 				189B19AD1905105C007792F3 /* SSenderButton.m in Sources */,
 				3777A10618E3CCF000398191 /* RETableViewOptionsController.m in Sources */,
 				371F2E8518EABF7500CC06BB /* WEPopoverContainerView.m in Sources */,

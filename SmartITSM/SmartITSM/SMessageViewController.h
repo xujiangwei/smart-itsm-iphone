@@ -21,13 +21,10 @@
 
 @interface SMessageViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, UIPopoverControllerDelegate, SMessageListenerDelegate, SMessageStatusListenerDelegate, MBProgressHUDDelegate>
 {
-//    WEPopoverController *popoverController;
     Class popoverClass;
 }
 
 @property (nonatomic, strong) NSMutableArray  * messages;
-
-//@property (nonatomic,strong)  UITableView *messageListView;
 
 @property (nonatomic, assign) id<SMessageListDelegate> delegate;
 
