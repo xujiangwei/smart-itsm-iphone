@@ -51,10 +51,6 @@
 
 - (void) updateMessage:(SMessage *)msg
 {
-//    Theme *theme = [[ThemeManager sharedSingleton] theme];
-//    NSLog(@"%@",msg.receiveTime);
-//    messageId = msg.messageId;
-    
     self.senderLabel.text = msg.sender;
     self.summaryLabel.text = msg.summary;
     self.sendTimeLabel.text = msg.sendTime;

@@ -69,11 +69,12 @@
     [leftImageV setImage:[UIImage imageNamed: theme.tabLeftActive]];
     [centerImageV setImage:[UIImage imageNamed:theme.tabCenterActive]];
     [rightImageV setImage:[UIImage imageNamed:theme.tabRightActive]];
-     
+    */
 }
 
 - (void)markUnselected
 {
+    /*
 	label.textColor = unselectedColor;
 	imageView.hidden = YES;
 	self.selected = NO;
@@ -81,7 +82,7 @@
     [leftImageV setImage:[UIImage imageNamed: theme.tabLeftNormal]];
     [centerImageV setImage:[UIImage imageNamed:theme.tabCenterNormal]];
     [rightImageV setImage:[UIImage imageNamed:theme.tabRightNormal]];
-    */
+   */
 }
 
 - (NSString*)text

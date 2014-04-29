@@ -31,7 +31,7 @@
     
     if ((self = [super initWithStyle:style]))
     {
-//        self.alarmLevelList = [[NSMutableArray alloc] initWithObjects:@"严重告警",@"主要告警", nil];
+        self.alarmLevelList = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -41,8 +41,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        
-//        self.alarmLevelList = [[NSMutableArray  alloc] initWithObjects:@"严重告警",@"主要告警", nil];
+        self.alarmLevelList = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -52,10 +51,6 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        _listener = [[SAlarmViewListener alloc] initWith:@"requestAlarmList"];
-
-        _listener.delegate = self;
-        
         self.alarmLevelList = [[NSMutableArray alloc] init];
     }
     return self;
@@ -65,23 +60,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [[MastEngine sharedSingleton] addListener:kDemoCelletName listener:_listener];
-   
+
     [self refresh];
-    
-//    [self initData];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"SAlarmViewCell" bundle:nil] forCellReuseIdentifier:@"SAlarmViewCell"];
     
-
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
-    [[MastEngine sharedSingleton] removeListener:kDemoCelletName listener:_listener];
    
 }
 
@@ -178,10 +166,13 @@
 //发送网络请求
 -(void)refresh
 {
+    _listener = [[SAlarmViewListener alloc] initWith:@"requestAlarmList"];
+    _listener.delegate = self;
+    [[MastEngine sharedSingleton] addListener:kDemoCelletName listener:_listener];
+    
     _HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _HUD.mode = MBProgressHUDModeIndeterminate;
     _HUD.labelText = @"数据加载中...";
-//    _HUD.labelText = @"loading";
 
     if ([SUser isSignin])
     {
@@ -200,7 +191,7 @@
     }
 }
 
--(void)initData
+-(void)loadData
 {
     if (self.alarmLevelList != nil)
     {
@@ -239,7 +230,7 @@
             }
         }
         
-        [self initData];
+        [self loadData];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [_HUD removeFromSuperview];
@@ -252,6 +243,8 @@
         NSLog(@"网络数据请求失败");
         
     }
+ 
+    [[MastEngine sharedSingleton] removeListener:kDemoCelletName listener:_listener];
 }
 
 

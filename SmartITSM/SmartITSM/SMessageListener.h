@@ -24,6 +24,12 @@
 @end
 
 
+/*
+ *
+ * SMessageStatusListener
+ *
+ */
+
 @protocol SMessageStatusListenerDelegate <NSObject>
 
 - (void)didFailed:(NSString *)identifier;
@@ -34,6 +40,18 @@
 
 @property (nonatomic, assign)id <SMessageStatusListenerDelegate> delegate;
 
+/** 当连接建立时，该方法被调用。
+ */
+- (void)didConnected:(NSString *)identifier;
+
+
+/** 当连接断开时，该方法被调用。
+ */
+- (void)didDisconnected:(NSString *)identifier;
+
+
+/** 当发生故障时，该方法被调用。
+ */
 - (void)didFailed:(NSString *)identifier failure:(Failure *)failure;
 
 @end
