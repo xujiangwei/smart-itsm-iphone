@@ -59,8 +59,6 @@
     incidentListView.delegate = self;
     incidents = [SIncidentDao getTaskList];
     
-    [[MastEngine sharedSingleton] addListener:@"SmartITOM" listener:_listener];
-    
     [self refreshIncidentList];
 
 }
@@ -69,9 +67,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
-    [[MastEngine sharedSingleton] removeListener:@"SmartITOM" listener:_listener];
-    
 }
 
 - (void)updateIncidentList:(NSMutableArray *)incidentArray

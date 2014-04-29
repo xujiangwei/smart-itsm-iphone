@@ -92,7 +92,7 @@
 
     self.signinView.hidden = NO;
     
-    [[MastEngine sharedSingleton] addListener:kDemoCelletName listener:_signinListener];
+    [[MastEngine sharedSingleton] addActionListener:kDemoCelletName listener:_signinListener];
     [[MastEngine sharedSingleton] addStatusListener:kDemoCelletName statusListener:_statusListener];
     
     // 下拉列表userName
@@ -214,7 +214,7 @@
 {
     [super didReceiveMemoryWarning];
     
-    [[MastEngine sharedSingleton] removeListener:kDemoCelletName listener:_signinListener];
+    [[MastEngine sharedSingleton] removeActionListener:kDemoCelletName listener:_signinListener];
     [[MastEngine sharedSingleton] removeStatusListener:kDemoCelletName statusListener:_statusListener];
 }
 
@@ -313,7 +313,9 @@
     }
     else
     {
-        [[MastEngine sharedSingleton] resetContact];
+        Contact *contact = [[Contact alloc]initWith:@"SmartITOM" address:_address port:_port];
+        [[MastEngine sharedSingleton] contactCellet:contact reconnection:NO];
+
         [SUser updateLastLogin];
         
         SUser *user = [[SUser alloc]init];
@@ -360,11 +362,10 @@
         {
             [SUser insertSeverIp:_address andPort:_port];
         }
-        
-        [[MastEngine sharedSingleton] removeContact:@"SmartITOM"];
+
         Contact *contact = [[Contact alloc]initWith:@"SmartITOM" address:_address port:_port];
-        [[MastEngine sharedSingleton] addContact:contact];
-        [[MastEngine sharedSingleton] resetContact];
+        [[MastEngine sharedSingleton] contactCellet:contact reconnection:NO];
+
         //测试
         _connectHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _connectHUD.mode = MBProgressHUDModeIndeterminate;
@@ -385,9 +386,8 @@
 - (IBAction)btnConfirmAction:(id)sender
 {
 
-    [[MastEngine sharedSingleton] removeContact:@"SmartITOM"];
-    Contact *contact = [[Contact alloc] initWith:@"SmartITOM" address:_address port:_port];
-    [[MastEngine sharedSingleton] addContact:contact];
+    Contact *contact = [[Contact alloc]initWith:@"SmartITOM" address:_address port:_port];
+    [[MastEngine sharedSingleton] contactCellet:contact reconnection:NO];
 
     [UIView animateWithDuration:0.3
                           delay:0
@@ -996,10 +996,9 @@
     {
         return FALSE;
     }
-    [[MastEngine sharedSingleton] removeContact:@"SmartITOM"];
+
     Contact *contact = [[Contact alloc]initWith:@"SmartITOM" address:_address port:_port];
-    [[MastEngine sharedSingleton] addContact:contact];
-    [[MastEngine sharedSingleton] resetContact];
+    [[MastEngine sharedSingleton] contactCellet:contact reconnection:NO];
 
     self.tfAddress.text = _address;
     self.tfPort.text = [NSString stringWithFormat:@"%d", _port];
