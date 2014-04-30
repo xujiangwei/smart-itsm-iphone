@@ -24,7 +24,10 @@
     self = [super initWithCoder: aDecoder];
     if (self)
     {
-        [self build];
+        NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"SMessageViewCell" owner:self options:nil];
+        UIView *view = [nibs objectAtIndex:0];
+        
+        [self.contentView addSubview:view];
     }
     return self;
 }
@@ -47,6 +50,7 @@
 - (void)build
 {
     self.backgroundColor = [UIColor clearColor];
+    
 }
 
 - (void) updateMessage:(SMessage *)msg

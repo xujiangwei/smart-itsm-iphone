@@ -33,7 +33,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"详细信息";
     
     CGRect frame = self.view.frame;
     contentView = [[SMessageContentView alloc]initWithFrame:frame];

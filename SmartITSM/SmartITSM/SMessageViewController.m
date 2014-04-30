@@ -137,16 +137,6 @@
     return kCellHeight;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    SMessage *msg = [self.messages objectAtIndex:indexPath.row];
-    SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    SMessageContentViewController *contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"SMessageContentVC"];
-    contentViewController.message = selectMsg;
-    [self.navigationController pushViewController:contentViewController animated:YES];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -161,7 +151,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"SMessageViewCell";
+    static NSString *CellIdentifier = @"MessageCell";
     SMessageViewCell *cell = (SMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (nil == cell)
@@ -187,12 +177,18 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    //设置sender为标题
-    SMessageViewCell *cell = (SMessageViewCell *)sender;
-    
-    SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
-    viewController.title = [cell.senderLabel text];
- 
+    if ([segue.identifier isEqualToString:@"MessageDetail"])
+    {
+        SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
+        
+        UITableViewCell *cell = (UITableViewCell *)sender;
+        NSIndexPath *indexpath = [self.tableView indexPathForCell:cell];
+        SMessage *msg = [self.messages objectAtIndex:indexpath.row];
+        SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
+        viewController.message = selectMsg;
+        viewController.title = @"详细信息";
+        
+    }
 }
 
 #pragma mark - SMessageDelegate
