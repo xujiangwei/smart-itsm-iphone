@@ -232,7 +232,7 @@
     {
         CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton] createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
         dialect.action = @"requestMessages";
-        NSDictionary *valueDic = [NSDictionary dictionaryWithObjectsAndKeys:@"50", @"pageSize", @"0", @"currentIndex", @"sender", @"orderBy", @"2", @"tagId", @"", @"condition", @"490f4dddf9b14117bc2df41016006497", @"token", nil];
+        NSDictionary *valueDic = [NSDictionary dictionaryWithObjectsAndKeys:@"50", @"pageSize", @"0", @"currentIndex", @"sender", @"orderBy", @"2", @"tagId", @"", @"condition", [NSString stringWithFormat:@"%@", [SUser getToken]], @"token", nil];
         NSString *value;
         if ([NSJSONSerialization isValidJSONObject:valueDic])
         {

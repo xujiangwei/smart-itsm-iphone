@@ -12,7 +12,6 @@
 
 @interface SMessageContentViewController : UIViewController
 
-//@property (strong, nonatomic) SMessageContentView *contentView;
 @property (strong, nonatomic) SMessage *message;
 
 @end
