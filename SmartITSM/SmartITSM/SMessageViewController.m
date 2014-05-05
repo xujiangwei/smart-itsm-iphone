@@ -151,7 +151,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"MessageCell";
+    static NSString *CellIdentifier = @"SMessageViewCell";
     SMessageViewCell *cell = (SMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (nil == cell)
@@ -171,24 +171,36 @@
     return cell;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SMessage *msg = [self.messages objectAtIndex:indexPath.row];
+    SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SMessageContentViewController *contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"SMessageContentVC"];
+    contentViewController.message = selectMsg;
+    [self.navigationController pushViewController:contentViewController animated:YES];
+}
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"MessageDetail"])
-    {
-        SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
-        
-        UITableViewCell *cell = (UITableViewCell *)sender;
-        NSIndexPath *indexpath = [self.tableView indexPathForCell:cell];
-        SMessage *msg = [self.messages objectAtIndex:indexpath.row];
-        SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
-        viewController.message = selectMsg;
-        viewController.title = @"详细信息";
-        
-    }
+    //设置标题
+    SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
+    viewController.title = @"详细信息";
+    
+//    if ([segue.identifier isEqualToString:@"MessageDetail"])
+//    {
+//        SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
+//        
+//        UITableViewCell *cell = (UITableViewCell *)sender;
+//        NSIndexPath *indexpath = [self.tableView indexPathForCell:cell];
+//        SMessage *msg = [self.messages objectAtIndex:indexpath.row];
+//        SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
+//        viewController.message = selectMsg;
+//        viewController.title = @"详细信息";
+//        
+//    }
 }
 
 #pragma mark - SMessageDelegate
