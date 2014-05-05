@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 #import "SMessage.h"
 #import "WEPopoverController.h"
+#import "SMessageListener.h"
 
 @protocol SMessageListDelegate <NSObject>
 
@@ -17,18 +19,18 @@
 
 @end
 
-@interface SMessageViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, UIPopoverControllerDelegate>
+@interface SMessageViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, UIPopoverControllerDelegate, SMessageListenerDelegate, SMessageStatusListenerDelegate, MBProgressHUDDelegate>
 {
-//    WEPopoverController *popoverController;
     Class popoverClass;
 }
 
 @property (nonatomic, strong) NSMutableArray  * messages;
 
-//@property (nonatomic,strong)  UITableView *messageListView;
-
 @property (nonatomic, assign) id<SMessageListDelegate> delegate;
 
 @property (nonatomic,retain) WEPopoverController *popoverController;
+
+@property (nonatomic, strong) NSIndexPath *currentIndexPath;
+
 
 @end

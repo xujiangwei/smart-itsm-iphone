@@ -11,6 +11,9 @@
 
 @interface SMessageViewCell : UITableViewCell
 
+//是否置顶
+@property (strong, nonatomic) IBOutlet UIButton *btnMarkTop;
+
 //已读 未读
 @property (strong, nonatomic) IBOutlet UIImageView *imageVRead;
 
@@ -25,6 +28,9 @@
 
 //发送时间
 @property (strong, nonatomic) IBOutlet UILabel *sendTimeLabel;
+
+//置顶
+@property (assign, nonatomic) BOOL markTop;
 
 @property (assign, nonatomic) IBOutlet UILabel *messageIdLabel;
 

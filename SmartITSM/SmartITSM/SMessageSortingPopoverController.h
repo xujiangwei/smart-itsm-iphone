@@ -13,6 +13,4 @@
 
 @property(nonatomic ,strong) NSArray *sortingArray;
 
-@property(nonatomic, strong) SMessageContentViewController  *messageContentViewController;
-
 @end

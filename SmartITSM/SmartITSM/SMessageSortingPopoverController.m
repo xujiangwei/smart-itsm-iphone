@@ -15,7 +15,6 @@
 @implementation SMessageSortingPopoverController
 
 @synthesize sortingArray;
-@synthesize messageContentViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -41,7 +40,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source

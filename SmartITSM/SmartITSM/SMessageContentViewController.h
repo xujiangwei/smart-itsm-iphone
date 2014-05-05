@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SMessage.h"
+#import "SMessageContentView.h"
 
 @interface SMessageContentViewController : UIViewController
+
+@property (strong, nonatomic) SMessage *message;
 
 @end

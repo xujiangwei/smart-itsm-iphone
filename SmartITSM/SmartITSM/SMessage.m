@@ -18,5 +18,13 @@
 @synthesize subject;
 @synthesize sendTime;
 @synthesize receiveTime;
+@synthesize messageType;
+@synthesize hasTop;
+@synthesize hasRead;
+@synthesize markedType;
+@synthesize hasAttachments;
+@synthesize hasThumbnailPic;
+@synthesize thumbnailPic;
+
 
 @end

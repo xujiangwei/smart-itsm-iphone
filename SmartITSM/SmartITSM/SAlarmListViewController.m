@@ -12,7 +12,7 @@
 
 @interface SAlarmListViewController ()
 {
-    NSArray *imageName;
+    NSArray *_imageName;
 }
 @end
 
@@ -40,8 +40,7 @@
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-//        imageName = [NSArray arrayWithObjects:@"alarm_serious_lamp@2x.png",@"alarm_main_lamp@2x.png",@"alarm_minor_lamp@2x.png",@"alarm_lamp@2x.png",@"alarm_unkown_lamp@2x.png" ,nil];
-        imageName = [NSArray arrayWithObjects:@"alarm_serious_lamp.png",@"alarm_main_lamp.png",@"alarm_minor_lamp.png",@"alarm_lamp.png",@"alarm_unkown_lamp.png" ,nil];
+        _imageName = [NSArray arrayWithObjects:@"alarm_serious_lamp.png",@"alarm_main_lamp.png",@"alarm_minor_lamp.png",@"alarm_lamp.png",@"alarm_unkown_lamp.png" ,nil];
 
     }
     return self;
@@ -90,7 +89,7 @@
     cell.nameLabel.text = alarm.objectOfManagement;
     cell.IPLabel.text = alarm.deviceIp;
     cell.IPLabel.font = [UIFont systemFontOfSize:14.0];
-    cell.imageV.image = [UIImage imageNamed:[imageName objectAtIndex:self.index]];
+    cell.imageV.image = [UIImage imageNamed:[_imageName objectAtIndex:self.index]];
     cell.imageView.contentMode = UIViewContentModeCenter;
     
     SAlarm *myAlarm = [SAlarmDao getAlarmDetailWithAlarmId:alarm.ID];

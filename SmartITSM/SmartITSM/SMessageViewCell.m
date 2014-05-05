@@ -10,19 +10,24 @@
 
 @implementation SMessageViewCell
 
+@synthesize btnMarkTop;
 @synthesize imageVRead;
 @synthesize icon;
 @synthesize senderLabel;
 @synthesize summaryLabel;
 @synthesize sendTimeLabel;
 @synthesize messageIdLabel;
+@synthesize markTop;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder: aDecoder];
     if (self)
     {
-        [self build];
+        NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"SMessageViewCell" owner:self options:nil];
+        UIView *view = [nibs objectAtIndex:0];
+        
+        [self.contentView addSubview:view];
     }
     return self;
 }
@@ -32,7 +37,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
-        
+        [self build];
     }
     return self;
 }
@@ -45,18 +50,16 @@
 - (void)build
 {
     self.backgroundColor = [UIColor clearColor];
+    
 }
 
 - (void) updateMessage:(SMessage *)msg
 {
-//    Theme *theme = [[ThemeManager sharedSingleton] theme];
-//    NSLog(@"%@",msg.receiveTime);
-//    messageId = msg.messageId;
-    
     self.senderLabel.text = msg.sender;
     self.summaryLabel.text = msg.summary;
     self.sendTimeLabel.text = msg.sendTime;
     
+    //管理员 系统
     if ([msg.sender isEqualToString:@"admin"])
     {
         [self.icon setImage:[UIImage imageNamed:@"user.png"]];
@@ -67,15 +70,25 @@
     }
     
     //是否已读
-//    if (msg.hasRead)
-//    {
-//        [self.imageVRead setImage:[UIImage imageNamed:theme.readed]];
-//    }
-//    else
-//    {
-//        [self.imageVRead setImage:[UIImage imageNamed:theme.unread]];
-//        
-//    }
+    if (msg.hasRead)
+    {
+        [self.imageVRead setImage:[UIImage imageNamed:@"have_read.png"]];
+    }
+    else
+    {
+        [self.imageVRead setImage:[UIImage imageNamed:@"unread.png"]];
+    }
+    
+    //是否置顶
+    if (msg.hasTop)
+    {
+        [self.btnMarkTop setBackgroundImage:[UIImage imageNamed:@"marked_highlight.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.btnMarkTop setBackgroundImage:[UIImage imageNamed:@"marked_normal.png"] forState:UIControlStateNormal];
+    }
+    
     
 /*
     if (msg.hasAttachments)
@@ -89,14 +102,7 @@
     
     markTop = msg.hasTop;
     
-    if (msg.hasTop)
-    {
-        [self.btnMarkTop setBackgroundImage:[UIImage imageNamed:theme.markTopHighlight] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self.btnMarkTop setBackgroundImage:[UIImage imageNamed:theme.markTopNormal] forState:UIControlStateNormal];
-    }
+ 
     
     if (msg.hasThumbnailPic)
     {

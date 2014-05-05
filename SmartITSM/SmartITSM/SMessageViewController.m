@@ -11,46 +11,36 @@
 #import "SMessageViewCell.h"
 #import "SMessageDao.h"
 #import "SMessageSortingPopoverController.h"
+#import "MastEngine.h"
+#import "MBProgressHUD.h"
+#import "SUser.h"
 
 #define kCellHeight 80
+#define kDemoCelletName @"SmartITOM"
 
 @interface SMessageViewController ()
-
+{
+    SMessageListener *_listener;
+    SMessageStatusListener *_statusListener;
+    MBProgressHUD *_HUD;
+    BOOL _refreshControl;
+}
 @end
 
 @implementation SMessageViewController
 
 @synthesize messages;
-//@synthesize messageListView;
 @synthesize delegate;
 @synthesize popoverController;
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    
-    if ((self = [super initWithStyle:style]))
-    {
-        
-    }
-    return self;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        
-    }
-    return self;
-}
+@synthesize currentIndexPath;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self)
     {
-        
+        _statusListener = [[SMessageStatusListener alloc] init];
+        _statusListener.delegate = self;
     }
     return self;
 }
@@ -59,13 +49,15 @@
 {
     [super viewDidLoad];
     
-//    [self.tableView registerNib:[UINib nibWithNibName:@"SMessageViewCell" bundle:nil] forCellReuseIdentifier:@"SMessageViewCell"];
-    
     //添加列表
-    messages = [SMessageDao getTaskList];
+    messages = [SMessageDao getMessageList];
+    
+    //下拉刷新列表
+    [self addRefreshViewControl];
     
     //刷新列表
-    [self addRefreshViewControl];
+    _refreshControl = true;
+    [self refresh];
     
     //添加rightBarButton
     popoverClass = [WEPopoverController class];
@@ -81,13 +73,19 @@
 
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
 // 添加UIRefreshControl下拉刷新控件到UITableViewController的view中
 -(void)addRefreshViewControl
 {
-    self.refreshControl = [[UIRefreshControl alloc]init];
-    self.refreshControl.tintColor = [UIColor blueColor];
-//    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新"];
-    [self.refreshControl addTarget:self action:@selector(RefreshViewControlEventValueChanged) forControlEvents:UIControlEventValueChanged];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    refreshControl.tintColor = [UIColor blueColor];
+    refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉刷新"];
+    [refreshControl addTarget:self action:@selector(RefreshViewControlEventValueChanged) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
 }
 
 -(void)RefreshViewControlEventValueChanged
@@ -100,15 +98,13 @@
     }
 }
 
-- (void) handleData
+- (void)handleData
 {
-//    messages = [SMessageDao getTaskList];
-    
-    
-    NSLog(@"refreshed");
+    _refreshControl = false;
+    [self refresh];
     [self.refreshControl endRefreshing];
-
     [self.tableView reloadData];
+    NSLog(@"refreshed");
 }
 
 //排序
@@ -118,9 +114,6 @@
 	if (!self.popoverController) {
 		
 		SMessageSortingPopoverController *sortingPopoverController = [[SMessageSortingPopoverController alloc] initWithStyle:UITableViewStylePlain];
-//        sortingPopoverController.messageContentViewController = self;
-        
-        
 		self.popoverController = [[popoverClass alloc] initWithContentViewController:sortingPopoverController];
 		self.popoverController.delegate = self;
 		self.popoverController.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
@@ -136,23 +129,12 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    
-}
 
 #pragma mark - Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return kCellHeight;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"MessageDetail" sender:cell];
 }
 
 #pragma mark - Table view data source
@@ -169,7 +151,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"SMessageViewCell";
+    static NSString *CellIdentifier = @"MessageCell";
     SMessageViewCell *cell = (SMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (nil == cell)
@@ -186,14 +168,6 @@
     {
         [cell updateMessage:msg];
     }
-    
-//    cell.cellSelected = TRUE;
-    
-    cell.senderLabel.text = msg.sender;
-//    cell.summaryLabel.text = msg.summary;
-//    cell.sendTimeLabel.text = msg.sendTime;
-//    NSString *stateImage=[SIncidentDao getStateIcon:msg];
-
     return cell;
 }
 
@@ -201,17 +175,91 @@
 
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    //设置sender为标题
-    SMessageViewCell *cell = (SMessageViewCell *)sender;
-    
-    SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
-    viewController.title = [cell.senderLabel text];
- 
+    if ([segue.identifier isEqualToString:@"MessageDetail"])
+    {
+        SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
+        
+        UITableViewCell *cell = (UITableViewCell *)sender;
+        NSIndexPath *indexpath = [self.tableView indexPathForCell:cell];
+        SMessage *msg = [self.messages objectAtIndex:indexpath.row];
+        SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
+        viewController.message = selectMsg;
+        viewController.title = @"详细信息";
+        
+    }
 }
 
+#pragma mark - SMessageDelegate
+- (void)updateMessages:(NSDictionary *)dic
+{
+    NSArray *rootArray = [dic objectForKey:@"root"];
+    for (int i=0; i<[rootArray count]; i++) {
+        NSDictionary *dic = [rootArray objectAtIndex:i];
+        [SMessageDao insertMessage:dic];
+        [SMessageDao updateMessage:dic];
+    }
+    self.messages = [SMessageDao getMessageList];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+       
+        [_HUD removeFromSuperview];
+    });
+    
+    
+    [[MastEngine sharedSingleton] removeActionListener:kDemoCelletName listener:_listener];
+    
+}
+
+
+#pragma mark - Public Methods
+
+- (void)refresh
+{
+    if (nil != _listener)
+    {
+        [[MastEngine sharedSingleton] removeActionListener:kDemoCelletName listener:_listener];
+    }
+    
+    _listener = [[SMessageListener alloc] initWith:@"requestMessages"];
+    _listener.delegate = self;
+    
+    [[MastEngine sharedSingleton] addActionListener:kDemoCelletName listener:_listener];
+    
+    //C2S
+    if ([SUser isSignin])
+    {
+        CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton] createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
+        dialect.action = @"requestMessages";
+        NSDictionary *valueDic = [NSDictionary dictionaryWithObjectsAndKeys:@"50", @"pageSize", @"0", @"currentIndex", @"sender", @"orderBy", @"2", @"tagId", @"", @"condition", [NSString stringWithFormat:@"%@", [SUser getToken]], @"token", nil];
+        NSString *value;
+        if ([NSJSONSerialization isValidJSONObject:valueDic])
+        {
+            NSError *error;
+            NSData *data = [NSJSONSerialization dataWithJSONObject:valueDic options:NSJSONWritingPrettyPrinted error:&error];
+            value = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        }
+        [dialect appendParam:@"data" stringValue:value];
+        [[MastEngine sharedSingleton] asynPerformAction:kDemoCelletName action:dialect];
+        
+        if (_refreshControl)
+        {
+            _HUD = [[MBProgressHUD alloc]initWithView:self.view];
+            [self.view addSubview:_HUD];
+            _HUD.mode = MBProgressHUDModeIndeterminate;
+            _HUD.labelText = @"loading...";
+            _HUD.delegate = self;
+            [_HUD show:YES];
+        }
+    }
+}
+
+#pragma mark - SMessageFailureDelegate
+- (void)didFailed:(NSString *)identifier
+{
+    [_HUD removeFromSuperview];
+}
 
 
 @end

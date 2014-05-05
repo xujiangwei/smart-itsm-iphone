@@ -7,18 +7,25 @@
 //
 
 #import "SMessageContentViewController.h"
+#import "SMessage.h"
 
 @interface SMessageContentViewController ()
-
+{
+    SMessageContentView *contentView;
+}
 @end
 
 @implementation SMessageContentViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//@synthesize contentView;
+@synthesize message;
+
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        
     }
     return self;
 }
@@ -26,7 +33,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    CGRect frame = self.view.frame;
+    contentView = [[SMessageContentView alloc]initWithFrame:frame];
+
+    [contentView updateMessage:message];
+
+    [self.view addSubview:contentView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,5 +47,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end
