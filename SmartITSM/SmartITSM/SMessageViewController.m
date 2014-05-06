@@ -57,7 +57,7 @@
     
     //刷新列表
     _refreshControl = true;
-    [self refresh];
+//    [self refresh];
     
     //添加rightBarButton
     popoverClass = [WEPopoverController class];
@@ -174,7 +174,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SMessage *msg = [self.messages objectAtIndex:indexPath.row];
+    
+    //标记已读
+    [msg setHasRead:YES];
+    [self.messages replaceObjectAtIndex:indexPath.row withObject:msg];
+    [tableView reloadData];
+    
+    [SMessageDao updateMessageUnread:YES withMessageId:msg.messageId];
     SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
+    
+    //点击跳转
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SMessageContentViewController *contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"SMessageContentVC"];
     contentViewController.message = selectMsg;
@@ -188,19 +197,6 @@
     //设置标题
     SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
     viewController.title = @"详细信息";
-    
-//    if ([segue.identifier isEqualToString:@"MessageDetail"])
-//    {
-//        SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
-//        
-//        UITableViewCell *cell = (UITableViewCell *)sender;
-//        NSIndexPath *indexpath = [self.tableView indexPathForCell:cell];
-//        SMessage *msg = [self.messages objectAtIndex:indexpath.row];
-//        SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
-//        viewController.message = selectMsg;
-//        viewController.title = @"详细信息";
-//        
-//    }
 }
 
 #pragma mark - SMessageDelegate

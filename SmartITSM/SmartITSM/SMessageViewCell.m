@@ -77,6 +77,7 @@
     }
     
     //是否置顶
+    [self.btnMarkTop setTitle:nil forState:UIControlStateNormal];
     if (msg.hasTop)
     {
         [self.btnMarkTop setBackgroundImage:[UIImage imageNamed:@"marked_highlight.png"] forState:UIControlStateNormal];

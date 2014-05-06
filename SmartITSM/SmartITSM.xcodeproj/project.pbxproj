@@ -551,6 +551,9 @@
 			children = (
 				370B676D18DC344F0071CDE4 /* SMessageViewController.h */,
 				370B676E18DC344F0071CDE4 /* SMessageViewController.m */,
+				4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */,
+				4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */,
+				4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */,
 				18F891CC18FFB6EA00C65650 /* SMessageSortingPopoverController.h */,
 				18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */,
 				37948F3918DFD05B00A5BBDA /* SMessageContentViewController.h */,
@@ -560,9 +563,6 @@
 				18231092190F552700B9C201 /* SMessageContentView.xib */,
 				189B19AB1905105C007792F3 /* SSenderButton.h */,
 				189B19AC1905105C007792F3 /* SSenderButton.m */,
-				4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */,
-				4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */,
-				4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */,
 				1868DD781909FF9500847BD1 /* SMessageListener.h */,
 				1868DD791909FF9500847BD1 /* SMessageListener.m */,
 			);

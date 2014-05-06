@@ -25,7 +25,7 @@
 
 +(NSMutableArray *)getMessageList{
     
-    NSMutableArray *taskArray = [[NSMutableArray alloc]init];
+    NSMutableArray *messageArray = [[NSMutableArray alloc]init];
     
     SDatabase *db = [SDatabase sharedSingleton];
     FMResultSet *rs;
@@ -53,10 +53,10 @@
         [tmpMessage setSendTime:sendTime];
         [tmpMessage setHasTop:hasTop];
         [tmpMessage setHasRead:hasRead];
-        [taskArray addObject:tmpMessage];
+        [messageArray addObject:tmpMessage];
     }
     
-    return taskArray;
+    return messageArray;
 }
 
 +(BOOL) deleteMessageWithMessageId:(NSString *)index
@@ -255,6 +255,56 @@
         [messagesArray addObject:tmpMessage];
     }
     return messagesArray;
+}
+
++ (BOOL)updateMessageUnread:(BOOL)unread withMessageId:(NSString *)index
+{
+    BOOL result = FALSE;
+    
+    SDatabase *db = [SDatabase sharedSingleton];
+    
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"UPDATE tb_message SET has_read = %d WHERE message_id  = '%@'",unread,index];
+    
+    //    NSLog(@"sql = %@", sql);
+    if ([db executeUpdate:sql])
+    {
+        result = TRUE;
+        
+        NSLog(@"uddate tb_message successed");
+        
+    }else
+    {
+        result = FALSE;
+        
+        NSLog(@"update tb_message failed");
+    }
+    
+    return result;
+}
+
++ (BOOL)updateMessageTop:(BOOL)top withMessageId:(NSString *)index
+{
+    BOOL result = FALSE;
+    
+    SDatabase *db = [SDatabase sharedSingleton];
+    //    NSLog(@"%d",top);
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"UPDATE tb_message SET has_top = %d WHERE message_id  = %@",top,index];
+    //    NSLog(@"%@",sql);
+    
+    if ([db executeUpdate:sql])
+    {
+        result = TRUE;
+        
+        NSLog(@"uddate tb_message successed");
+        
+    }else
+    {
+        result = FALSE;
+        
+        NSLog(@"update tb_message failed");
+    }
+    
+    return result;
 }
 
 @end
