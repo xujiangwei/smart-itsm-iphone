@@ -8,7 +8,6 @@
 
 #import "SMessageViewController.h"
 #import "SMessageContentViewController.h"
-#import "SMessageViewCell.h"
 #import "SMessageDao.h"
 #import "SMessageSortingPopoverController.h"
 #import "MastEngine.h"
@@ -30,7 +29,6 @@
 @implementation SMessageViewController
 
 @synthesize messages;
-@synthesize delegate;
 @synthesize popoverController;
 @synthesize currentIndexPath;
 
@@ -162,12 +160,18 @@
         cell = [nib objectAtIndex:0];
     }
     
+    //为delegate赋值
+    cell.delegate = self;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     SMessage *msg= [messages objectAtIndex:indexPath.row];
     if (nil != messages)
     {
         [cell updateMessage:msg];
     }
+    
+    //标记Button的tag
+    cell.btnMarkTop.tag = indexPath.row;
+    
     return cell;
 }
 
@@ -176,15 +180,17 @@
     SMessage *msg = [self.messages objectAtIndex:indexPath.row];
     
     //标记已读
-    [msg setHasRead:YES];
-    [self.messages replaceObjectAtIndex:indexPath.row withObject:msg];
-    [tableView reloadData];
+    if (!msg.hasRead)
+    {
+        [msg setHasRead:YES];
+        [self.messages replaceObjectAtIndex:indexPath.row withObject:msg];
+        [tableView reloadData];
+        [SMessageDao updateMessageUnread:YES withMessageId:msg.messageId];
+    }
     
-    [SMessageDao updateMessageUnread:YES withMessageId:msg.messageId];
+    //视图跳转
     SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
-    
-    //点击跳转
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard *storyboard = self.storyboard;
     SMessageContentViewController *contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"SMessageContentVC"];
     contentViewController.message = selectMsg;
     [self.navigationController pushViewController:contentViewController animated:YES];
@@ -220,6 +226,25 @@
     
 }
 
+#pragma mark - SMessageViewCellDelegate
+
+//置顶
+- (void)btnMarkTopAction:(BOOL)top withId:(NSString *)messageId withTag:(NSInteger)index
+{
+    
+    //置顶后更新model，相应的详情的里的model也要更新，不是仅仅改变某一个图片
+    [SMessageDao updateMessageTop:top withMessageId:messageId];
+    
+    //通过Button的tag标记cell的位置
+    SMessage *msg = [self.messages objectAtIndex:index];
+    [msg setHasTop:top];
+    [self.messages replaceObjectAtIndex:index withObject:msg];
+    [self.tableView reloadData];
+//    SMessage *message = [self.messages objectAtIndex:self.currentIndexPath.row];
+//    [controller updateMessage:message];
+    
+    
+}
 
 #pragma mark - Public Methods
 

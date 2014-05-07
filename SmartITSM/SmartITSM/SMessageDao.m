@@ -23,7 +23,8 @@
     return self;
 }
 
-+(NSMutableArray *)getMessageList{
++(NSMutableArray *)getMessageList
+{
     
     NSMutableArray *messageArray = [[NSMutableArray alloc]init];
     
@@ -189,7 +190,6 @@
         
     }
     return message;
-    
 }
 
 + (NSMutableArray *)getMessageListOrderBy:(NSString *)str withMark:(MarkedType )markType
@@ -287,9 +287,7 @@
     BOOL result = FALSE;
     
     SDatabase *db = [SDatabase sharedSingleton];
-    //    NSLog(@"%d",top);
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"UPDATE tb_message SET has_top = %d WHERE message_id  = %@",top,index];
-    //    NSLog(@"%@",sql);
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"UPDATE tb_message SET has_top = %d WHERE message_id  = '%@'",top,index];
     
     if ([db executeUpdate:sql])
     {

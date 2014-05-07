@@ -38,6 +38,9 @@
                         <state key="normal" title="b">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="btnMarkTopAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="b8c-KD-0sq"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BOg-C0-S3V">
                         <rect key="frame" x="0.0" y="0.0" width="4" height="80"/>

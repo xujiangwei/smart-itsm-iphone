@@ -16,8 +16,9 @@
 @synthesize senderLabel;
 @synthesize summaryLabel;
 @synthesize sendTimeLabel;
-@synthesize messageIdLabel;
+@synthesize messageId;
 @synthesize markTop;
+@synthesize delegate;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -52,6 +53,7 @@
 
 - (void) updateMessage:(SMessage *)msg
 {
+    messageId = msg.messageId;
     self.senderLabel.text = msg.sender;
     self.summaryLabel.text = msg.summary;
     self.sendTimeLabel.text = msg.sendTime;
@@ -77,6 +79,7 @@
     }
     
     //是否置顶
+    markTop = msg.hasTop;
     [self.btnMarkTop setTitle:nil forState:UIControlStateNormal];
     if (msg.hasTop)
     {
@@ -113,6 +116,16 @@
         [self.imageVContent setImage:nil];
     }
 */
+}
+
+- (IBAction)btnMarkTopAction:(id)sender
+{
+    markTop = !markTop;
+    if (nil != self.delegate &&[self.delegate respondsToSelector:@selector(btnMarkTopAction:withId:withTag:)])
+    {
+        NSInteger index = btnMarkTop.tag;
+        [self.delegate btnMarkTopAction:markTop withId:messageId withTag:index];
+    }
 }
 
 @end

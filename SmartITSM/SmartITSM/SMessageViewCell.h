@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "SMessage.h"
 
+@protocol SMessageViewCellDelegate <NSObject>
+
+- (void)btnMarkTopAction:(BOOL)top withId:(NSString *)messageId withTag:(NSInteger)index;
+
+@end
+
 @interface SMessageViewCell : UITableViewCell
 
 //是否置顶
@@ -29,11 +35,16 @@
 //发送时间
 @property (strong, nonatomic) IBOutlet UILabel *sendTimeLabel;
 
+//消息编号
+@property (assign, nonatomic) NSString *messageId;
+
 //置顶
 @property (assign, nonatomic) BOOL markTop;
 
-@property (assign, nonatomic) IBOutlet UILabel *messageIdLabel;
+@property (assign, nonatomic) id<SMessageViewCellDelegate>delegate;
 
 - (void) updateMessage:(SMessage *)msg;
+
+- (IBAction)btnMarkTopAction:(id)sender;
 
 @end
