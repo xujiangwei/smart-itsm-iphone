@@ -190,6 +190,11 @@
 
 #pragma mark - IBAction
 
+- (IBAction)unwindSegueAtDiscoveryAction:(UIStoryboardSegue *)sender
+{
+    //返回操作
+}
+
 - (IBAction)addDiscovery:(id)sender
 {
     UIActionSheet *sheet  = [[UIActionSheet alloc]initWithTitle:Nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles:@"设备",@"性能", @"通讯录", nil];

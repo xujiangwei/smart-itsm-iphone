@@ -79,7 +79,7 @@
 {
     NSArray *array = [self.alarmLevelList objectAtIndex:indexPath.row];
     SAlarm *alarm = [array objectAtIndex:0];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard *storyboard = self.storyboard;
     SAlarmListViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"SAlarmListVC"];
     
     SAlarmViewCell *cell = (SAlarmViewCell *)[tableView cellForRowAtIndexPath:indexPath];

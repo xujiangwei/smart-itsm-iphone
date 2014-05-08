@@ -15,4 +15,6 @@
 
 @property (nonatomic, strong) NSMutableArray *sectionArray;
 
+- (IBAction)unwindSegueAtDiscoveryAction:(UIStoryboardSegue *)sender;
+
 @end

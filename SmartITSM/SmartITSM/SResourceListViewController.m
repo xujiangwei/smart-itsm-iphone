@@ -112,20 +112,25 @@
     {
         resource = [self.resourceList.resourceArray objectAtIndex:indexPath.row];
     }
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    SResourceContentViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"SResourceContentVC"];
-    viewController.resource = resource;
     
-    
-    [self.navigationController pushViewController:viewController animated:YES];
+    if (fromTool)
+    {
+        UIStoryboard *storyboard = self.storyboard;
+        SResourceContentViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"SResourceContentVC"];
+        viewController.resource = resource;
+        
+        [self.navigationController pushViewController:viewController animated:YES];
+    }else
+    {
+        
+    }
+
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
-    // Return the number of sections.
     return 1;
 }
 
@@ -165,13 +170,20 @@
         resource = [self.resourceList.resourceArray objectAtIndex:indexPath.row];
     }
     
+    if (fromTool) {
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    }
+    
     [cell.resourceName setText:resource.resourceName];
     [cell.resourceIp setText:resource.resourceIp];
     
     return cell;
 }
 
-
+- (IBAction)backBtnAction:(id)sender
+{
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
