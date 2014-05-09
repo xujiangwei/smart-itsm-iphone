@@ -260,48 +260,38 @@
 + (BOOL)updateMessageUnread:(BOOL)unread withMessageId:(NSString *)index
 {
     BOOL result = FALSE;
-    
     SDatabase *db = [SDatabase sharedSingleton];
-    
     NSMutableString *sql = [NSMutableString stringWithFormat:@"UPDATE tb_message SET has_read = %d WHERE message_id  = '%@'",unread,index];
-    
-    //    NSLog(@"sql = %@", sql);
+
     if ([db executeUpdate:sql])
     {
         result = TRUE;
-        
         NSLog(@"uddate tb_message successed");
-        
-    }else
+    }
+    else
     {
         result = FALSE;
-        
         NSLog(@"update tb_message failed");
     }
-    
     return result;
 }
 
 + (BOOL)updateMessageTop:(BOOL)top withMessageId:(NSString *)index
 {
     BOOL result = FALSE;
-    
     SDatabase *db = [SDatabase sharedSingleton];
     NSMutableString *sql = [NSMutableString stringWithFormat:@"UPDATE tb_message SET has_top = %d WHERE message_id  = '%@'",top,index];
     
     if ([db executeUpdate:sql])
     {
         result = TRUE;
-        
         NSLog(@"uddate tb_message successed");
-        
-    }else
+    }
+    else
     {
         result = FALSE;
-        
         NSLog(@"update tb_message failed");
     }
-    
     return result;
 }
 

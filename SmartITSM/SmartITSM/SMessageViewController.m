@@ -9,10 +9,10 @@
 #import "SMessageViewController.h"
 #import "SMessageContentViewController.h"
 #import "SMessageDao.h"
-#import "SMessageSortingPopoverController.h"
 #import "MastEngine.h"
 #import "MBProgressHUD.h"
 #import "SUser.h"
+#import "SMessageOperationViewController.h"
 
 #define kCellHeight 80
 #define kDemoCelletName @"SmartITOM"
@@ -55,20 +55,19 @@
     
     //刷新列表
     _refreshControl = true;
-//    [self refresh];
+    //    [self refresh];
     
     //添加rightBarButton
     popoverClass = [WEPopoverController class];
     
     UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,44,40)];
-    
     [rightButton setTitle:@"操作" forState:UIControlStateNormal];
     [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     rightButton.titleLabel.font=[UIFont systemFontOfSize:14];
-    [rightButton addTarget:self action:@selector(sorting:)forControlEvents:UIControlEventTouchUpInside];
+    [rightButton addTarget:self action:@selector(operation:)forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem= rightItem;
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,14 +104,15 @@
     NSLog(@"refreshed");
 }
 
-//排序
--(void)sorting:(UIButton*)sender
+//操作PopOver
+-(void)operation:(UIButton *)sender
 {
     
 	if (!self.popoverController) {
 		
-		SMessageSortingPopoverController *sortingPopoverController = [[SMessageSortingPopoverController alloc] initWithStyle:UITableViewStylePlain];
-		self.popoverController = [[popoverClass alloc] initWithContentViewController:sortingPopoverController];
+		SMessageOperationViewController *operationViewController = [[SMessageOperationViewController alloc] initWithStyle:UITableViewStylePlain];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:operationViewController];
+		self.popoverController = [[popoverClass alloc] initWithContentViewController:navController];
 		self.popoverController.delegate = self;
 		self.popoverController.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
 		
@@ -120,13 +120,14 @@
 									   permittedArrowDirections:(UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown)
 													   animated:YES];
         
-	} else {
+	}
+    else
+    {
 		[self.popoverController dismissPopoverAnimated:YES];
 		self.popoverController = nil;
 	}
     
 }
-
 
 #pragma mark - Table view delegate
 
@@ -151,7 +152,7 @@
 {
     static NSString *CellIdentifier = @"SMessageViewCell";
     SMessageViewCell *cell = (SMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
+    
     if (nil == cell)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier
@@ -217,7 +218,7 @@
     self.messages = [SMessageDao getMessageList];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-       
+        
         [_HUD removeFromSuperview];
     });
     
@@ -240,10 +241,6 @@
     [msg setHasTop:top];
     [self.messages replaceObjectAtIndex:index withObject:msg];
     [self.tableView reloadData];
-//    SMessage *message = [self.messages objectAtIndex:self.currentIndexPath.row];
-//    [controller updateMessage:message];
-    
-    
 }
 
 #pragma mark - Public Methods

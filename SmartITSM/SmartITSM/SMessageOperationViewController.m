@@ -1,26 +1,31 @@
 //
-//  SMessageSortingPopoverController.m
+//  SMessageOperationViewController.m
 //  SmartITSM
 //
-//  Created by Apple Developer on 14-4-17.
+//  Created by Apple Developer on 14-5-7.
 //  Copyright (c) 2014年 Ambrose. All rights reserved.
 //
 
-#import "SMessageSortingPopoverController.h"
+#import "SMessageOperationViewController.h"
+#import "SMessageSortViewController.h"
+#import "SMessageMarkViewController.h"
+#import "SMessageEditViewController.h"
 
-@interface SMessageSortingPopoverController ()
+@interface SMessageOperationViewController ()
 
 @end
 
-@implementation SMessageSortingPopoverController
+@implementation SMessageOperationViewController
 
-@synthesize sortingArray;
+@synthesize operationArray;
+@synthesize controllers;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
-    //设置排序的cell
-    if ((self = [super initWithStyle:style])) {
-        self.preferredContentSize = CGSizeMake(100, 2 * 44 - 1);
+    //设置操作的cell
+    if ((self = [super initWithStyle:style]))
+    {
+        self.preferredContentSize = CGSizeMake(100, 3 * 44 - 1);
     }
     return self;
 }
@@ -31,15 +36,22 @@
     
     [self initData];
     
-	self.tableView.rowHeight = 44.0;
+    self.title = @"操作";
+    self.tableView.rowHeight = 44.0;
 	self.view.backgroundColor = [UIColor clearColor];
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
 }
 
+-(void)initData
+{
+    self.operationArray = [NSArray arrayWithObjects:@"排序", @"标签", @"编辑", nil];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -51,52 +63,46 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.sortingArray count];
+    return [self.operationArray count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *CellIdentifier =[NSString stringWithFormat:@"SortingCell"];
+    NSString *CellIdentifier =[NSString stringWithFormat:@"OperationCell"];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+    if (cell == nil)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-	cell.textLabel.text = [self.sortingArray objectAtIndex:indexPath.row];
-	cell.textLabel.textColor = [UIColor blackColor];
-    cell.textLabel.font=[UIFont systemFontOfSize:14];
+    cell.textLabel.text = [self.operationArray objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor blackColor];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
     return cell;
 }
 
-#pragma mark Table view delegate
+#pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *message = [NSString stringWithFormat:@"发件人"];
-    if (indexPath.row == 1)
+    if (indexPath.row == 0)
     {
-        message = @"发送时间";
+        SMessageSortViewController *sortViewController = [[SMessageSortViewController alloc] init];
+        [self.navigationController pushViewController:sortViewController animated:YES];
     }
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Sorting success!"
-                                                   message:[NSString stringWithFormat:@"按%@排序成功",message]
-                                                  delegate:self
-                                         cancelButtonTitle:nil
-                                         otherButtonTitles:@"OK", nil];
-    [alert show];
-//    SIncidentProcessViewController  *processVC=[[SIncidentProcessViewController alloc]init];
-//    //    ControlsViewController  *processVC=[[ControlsViewController alloc]init];
-//    [contentTabBarController.navigationController pushViewController:processVC animated:YES];
-//    
-//    
-//    contentTabBarController.popoverController=nil ;
+    else if (indexPath.row == 1)
+    {
+        SMessageMarkViewController *markViewController = [[SMessageMarkViewController alloc] init];
+        [self.navigationController pushViewController:markViewController animated:YES];
+    }
+    else if (indexPath.row == 2)
+    {
+        SMessageEditViewController *editViewController = [[SMessageEditViewController alloc] init];
+        [self.navigationController pushViewController:editViewController animated:YES];
+    }
 }
 
--(void)initData
-{
-    self.sortingArray = [NSArray arrayWithObjects:@"按发件人", @"按发送时间", nil];
-}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
