@@ -75,7 +75,11 @@
 
     self.searchResults = [NSMutableArray arrayWithCapacity:[self.resourceList.resourceArray count]];
     
-//    self.refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉可以刷新"];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
+    refreshControl.tintColor = [UIColor blueColor];
+    refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉可以刷新"];
+    
+    self.refreshControl = refreshControl;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -172,6 +176,9 @@
     
     if (fromTool) {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    }else
+    {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
     
     [cell.resourceName setText:resource.resourceName];
@@ -180,10 +187,6 @@
     return cell;
 }
 
-- (IBAction)backBtnAction:(id)sender
-{
-    
-}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

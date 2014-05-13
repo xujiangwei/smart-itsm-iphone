@@ -152,6 +152,8 @@
 		4A27ED1418F67E6900D6890D /* SSigninViewListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A27ED1318F67E6900D6890D /* SSigninViewListener.m */; };
 		4A2F495C190742AC00B61478 /* SResourceListListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2F495B190742AC00B61478 /* SResourceListListener.m */; };
 		4A30DEBE18F5321200A93982 /* libnucleus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A30DEBD18F5321200A93982 /* libnucleus.a */; };
+		4A40C7BA19220C0B00CE7AB3 /* SDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A40C7B919220C0B00CE7AB3 /* SDiscovery.m */; };
+		4A40C7BD1922199600CE7AB3 /* SDiscoveryDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A40C7BC1922199600CE7AB3 /* SDiscoveryDao.m */; };
 		4A42B289190E3B600036CBCB /* STaskDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A42B288190E3B600036CBCB /* STaskDao.m */; };
 		4A44F44618ECF03E00F8D886 /* TSMessage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44418ECF03E00F8D886 /* TSMessage.bundle */; };
 		4A44F44718ECF03E00F8D886 /* TSMessagesDefaultDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A44F44518ECF03E00F8D886 /* TSMessagesDefaultDesign.json */; };
@@ -481,6 +483,10 @@
 		4A2F495A190742AC00B61478 /* SResourceListListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SResourceListListener.h; sourceTree = "<group>"; };
 		4A2F495B190742AC00B61478 /* SResourceListListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SResourceListListener.m; sourceTree = "<group>"; };
 		4A30DEBD18F5321200A93982 /* libnucleus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnucleus.a; path = ../nucleus/bin/universal/libnucleus.a; sourceTree = "<group>"; };
+		4A40C7B819220C0B00CE7AB3 /* SDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiscovery.h; sourceTree = "<group>"; };
+		4A40C7B919220C0B00CE7AB3 /* SDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDiscovery.m; sourceTree = "<group>"; };
+		4A40C7BB1922199600CE7AB3 /* SDiscoveryDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDiscoveryDao.h; sourceTree = "<group>"; };
+		4A40C7BC1922199600CE7AB3 /* SDiscoveryDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDiscoveryDao.m; sourceTree = "<group>"; };
 		4A42B287190E3B600036CBCB /* STaskDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STaskDao.h; sourceTree = "<group>"; };
 		4A42B288190E3B600036CBCB /* STaskDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STaskDao.m; sourceTree = "<group>"; };
 		4A44F44418ECF03E00F8D886 /* TSMessage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TSMessage.bundle; path = SmartITSM/TSMessage.bundle; sourceTree = SOURCE_ROOT; };
@@ -895,6 +901,10 @@
 				18F891C718FF7DA900C65650 /* SMessage.m */,
 				18F891C918FF852500C65650 /* SMessageDao.h */,
 				18F891CA18FF852500C65650 /* SMessageDao.m */,
+				4A40C7B819220C0B00CE7AB3 /* SDiscovery.h */,
+				4A40C7B919220C0B00CE7AB3 /* SDiscovery.m */,
+				4A40C7BB1922199600CE7AB3 /* SDiscoveryDao.h */,
+				4A40C7BC1922199600CE7AB3 /* SDiscoveryDao.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1370,6 +1380,8 @@
 				370B677E18DC364E0071CDE4 /* SIncidentBaseViewController.m in Sources */,
 				3777A12E18E40DB700398191 /* MultilineTextItem.m in Sources */,
 				4A7E379E18FFD57A00EFD7C3 /* SAlarmSet.m in Sources */,
+				4A40C7BD1922199600CE7AB3 /* SDiscoveryDao.m in Sources */,
+				4A40C7BA19220C0B00CE7AB3 /* SDiscovery.m in Sources */,
 				37E289B718E29CBB004E8A4A /* SProcessCell.m in Sources */,
 				3777A0E618E3CCF000398191 /* RETableViewDateTimeCell.m in Sources */,
 				3777A10518E3CCF000398191 /* RETableViewManager.m in Sources */,
