@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180C8BE4191A1D90002F0CB5 /* SMessageOperationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180C8BE3191A1D90002F0CB5 /* SMessageOperationViewController.m */; };
 		18231091190F54F800B9C201 /* SMessageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18231090190F54F800B9C201 /* SMessageContentView.m */; };
 		18231093190F552700B9C201 /* SMessageContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18231092190F552700B9C201 /* SMessageContentView.xib */; };
 		1868DD7A1909FF9500847BD1 /* SMessageListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 1868DD791909FF9500847BD1 /* SMessageListener.m */; };
 		189B19AD1905105C007792F3 /* SSenderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 189B19AC1905105C007792F3 /* SSenderButton.m */; };
+		18BFB5C5191B13B9004D6DE9 /* SMessageMarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BFB5C4191B13B9004D6DE9 /* SMessageMarkViewController.m */; };
+		18BFB5C8191B1455004D6DE9 /* SMessageEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BFB5C7191B1455004D6DE9 /* SMessageEditViewController.m */; };
+		18BFB5CB191B223B004D6DE9 /* SMessageSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BFB5CA191B223B004D6DE9 /* SMessageSortViewController.m */; };
 		18F891C818FF7DA900C65650 /* SMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891C718FF7DA900C65650 /* SMessage.m */; };
 		18F891CB18FF852500C65650 /* SMessageDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891CA18FF852500C65650 /* SMessageDao.m */; };
-		18F891CE18FFB6EA00C65650 /* SMessageSortingPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */; };
 		370B3FAE18EBA46100915739 /* SProcessTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B3FAD18EBA46100915739 /* SProcessTemplate.m */; };
 		370B676B18DC33200071CDE4 /* SInspectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676A18DC33200071CDE4 /* SInspectionViewController.m */; };
 		370B676F18DC344F0071CDE4 /* SMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370B676E18DC344F0071CDE4 /* SMessageViewController.m */; };
@@ -196,6 +199,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		180C8BE2191A1D90002F0CB5 /* SMessageOperationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageOperationViewController.h; sourceTree = "<group>"; };
+		180C8BE3191A1D90002F0CB5 /* SMessageOperationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageOperationViewController.m; sourceTree = "<group>"; };
 		1823108F190F54F800B9C201 /* SMessageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageContentView.h; sourceTree = "<group>"; };
 		18231090190F54F800B9C201 /* SMessageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageContentView.m; sourceTree = "<group>"; };
 		18231092190F552700B9C201 /* SMessageContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMessageContentView.xib; sourceTree = "<group>"; };
@@ -204,12 +209,16 @@
 		189B19AB1905105C007792F3 /* SSenderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSenderButton.h; sourceTree = "<group>"; };
 		189B19AC1905105C007792F3 /* SSenderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSenderButton.m; sourceTree = "<group>"; };
 		189BEDC11907B65000C1C908 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		18BFB5C3191B13B9004D6DE9 /* SMessageMarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageMarkViewController.h; sourceTree = "<group>"; };
+		18BFB5C4191B13B9004D6DE9 /* SMessageMarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageMarkViewController.m; sourceTree = "<group>"; };
+		18BFB5C6191B1455004D6DE9 /* SMessageEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageEditViewController.h; sourceTree = "<group>"; };
+		18BFB5C7191B1455004D6DE9 /* SMessageEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageEditViewController.m; sourceTree = "<group>"; };
+		18BFB5C9191B223B004D6DE9 /* SMessageSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageSortViewController.h; sourceTree = "<group>"; };
+		18BFB5CA191B223B004D6DE9 /* SMessageSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageSortViewController.m; sourceTree = "<group>"; };
 		18F891C618FF7DA900C65650 /* SMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessage.h; sourceTree = "<group>"; };
 		18F891C718FF7DA900C65650 /* SMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessage.m; sourceTree = "<group>"; };
 		18F891C918FF852500C65650 /* SMessageDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageDao.h; sourceTree = "<group>"; };
 		18F891CA18FF852500C65650 /* SMessageDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageDao.m; sourceTree = "<group>"; };
-		18F891CC18FFB6EA00C65650 /* SMessageSortingPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMessageSortingPopoverController.h; sourceTree = "<group>"; };
-		18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMessageSortingPopoverController.m; sourceTree = "<group>"; };
 		370B3FAC18EBA46100915739 /* SProcessTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SProcessTemplate.h; sourceTree = "<group>"; };
 		370B3FAD18EBA46100915739 /* SProcessTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SProcessTemplate.m; sourceTree = "<group>"; };
 		370B676918DC33200071CDE4 /* SInspectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SInspectionViewController.h; sourceTree = "<group>"; };
@@ -563,8 +572,17 @@
 			children = (
 				370B676D18DC344F0071CDE4 /* SMessageViewController.h */,
 				370B676E18DC344F0071CDE4 /* SMessageViewController.m */,
-				18F891CC18FFB6EA00C65650 /* SMessageSortingPopoverController.h */,
-				18F891CD18FFB6EA00C65650 /* SMessageSortingPopoverController.m */,
+				4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */,
+				4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */,
+				4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */,
+				180C8BE2191A1D90002F0CB5 /* SMessageOperationViewController.h */,
+				180C8BE3191A1D90002F0CB5 /* SMessageOperationViewController.m */,
+				18BFB5C9191B223B004D6DE9 /* SMessageSortViewController.h */,
+				18BFB5CA191B223B004D6DE9 /* SMessageSortViewController.m */,
+				18BFB5C3191B13B9004D6DE9 /* SMessageMarkViewController.h */,
+				18BFB5C4191B13B9004D6DE9 /* SMessageMarkViewController.m */,
+				18BFB5C6191B1455004D6DE9 /* SMessageEditViewController.h */,
+				18BFB5C7191B1455004D6DE9 /* SMessageEditViewController.m */,
 				37948F3918DFD05B00A5BBDA /* SMessageContentViewController.h */,
 				37948F3A18DFD05B00A5BBDA /* SMessageContentViewController.m */,
 				1823108F190F54F800B9C201 /* SMessageContentView.h */,
@@ -572,9 +590,6 @@
 				18231092190F552700B9C201 /* SMessageContentView.xib */,
 				189B19AB1905105C007792F3 /* SSenderButton.h */,
 				189B19AC1905105C007792F3 /* SSenderButton.m */,
-				4A581FD418EE94F200B7C5D8 /* SMessageViewCell.h */,
-				4A581FD518EE94F200B7C5D8 /* SMessageViewCell.m */,
-				4A581FD618EE94F200B7C5D8 /* SMessageViewCell.xib */,
 				1868DD781909FF9500847BD1 /* SMessageListener.h */,
 				1868DD791909FF9500847BD1 /* SMessageListener.m */,
 			);
@@ -1331,7 +1346,6 @@
 				3777A0F318E3CCF000398191 /* REFloatItem.m in Sources */,
 				379357CB18E3C4F20062265C /* CalLogic.m in Sources */,
 				3777A13418E41AB800398191 /* SIncidentProcessViewController.m in Sources */,
-				18F891CE18FFB6EA00C65650 /* SMessageSortingPopoverController.m in Sources */,
 				4417CF8218AC74C700E6E09F /* AppDelegate.m in Sources */,
 				44B02BFB18ADAD7B0001451F /* Contact.m in Sources */,
 				379357E118E3C4F20062265C /* TSMessage.m in Sources */,
@@ -1364,6 +1378,7 @@
 				3777A0FC18E3CCF000398191 /* RETextItem.m in Sources */,
 				18F891C818FF7DA900C65650 /* SMessage.m in Sources */,
 				3777A12718E3D8CD00398191 /* REPresenceValidator.m in Sources */,
+				18BFB5CB191B223B004D6DE9 /* SMessageSortViewController.m in Sources */,
 				3777A12418E3D8CD00398191 /* REValidator.m in Sources */,
 				379357D118E3C4F20062265C /* NSDateAdditions.m in Sources */,
 				3777A10018E3CCF000398191 /* REPlaceholderTextView.m in Sources */,
@@ -1429,10 +1444,13 @@
 				3777A12518E3D8CD00398191 /* REEmailValidator.m in Sources */,
 				3777A0FA18E3CCF000398191 /* RERadioItem.m in Sources */,
 				4A5EDF3C18FB89F20047B923 /* SResource.m in Sources */,
+				18BFB5C5191B13B9004D6DE9 /* SMessageMarkViewController.m in Sources */,
 				44B02BF518ADA7DE0001451F /* StatusListener.m in Sources */,
 				379357E018E3C4F20062265C /* TSBlurView.m in Sources */,
 				3777A12818E3D8CD00398191 /* REURLValidator.m in Sources */,
 				3777A0F418E3CCF000398191 /* REInlineDatePickerItem.m in Sources */,
+				18BFB5C8191B1455004D6DE9 /* SMessageEditViewController.m in Sources */,
+				180C8BE4191A1D90002F0CB5 /* SMessageOperationViewController.m in Sources */,
 				379357D618E3C4F20062265C /* FMDatabaseQueue.m in Sources */,
 				3777A0EF18E3CCF000398191 /* RETableViewTextCell.m in Sources */,
 				4A5EDF4B18FBE0DE0047B923 /* SResourceListViewCell.m in Sources */,

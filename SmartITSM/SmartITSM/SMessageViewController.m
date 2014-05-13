@@ -8,12 +8,11 @@
 
 #import "SMessageViewController.h"
 #import "SMessageContentViewController.h"
-#import "SMessageViewCell.h"
 #import "SMessageDao.h"
-#import "SMessageSortingPopoverController.h"
 #import "MastEngine.h"
 #import "MBProgressHUD.h"
 #import "SUser.h"
+#import "SMessageOperationViewController.h"
 
 #define kCellHeight 80
 #define kDemoCelletName @"SmartITOM"
@@ -30,7 +29,6 @@
 @implementation SMessageViewController
 
 @synthesize messages;
-@synthesize delegate;
 @synthesize popoverController;
 @synthesize currentIndexPath;
 
@@ -57,20 +55,19 @@
     
     //刷新列表
     _refreshControl = true;
-    [self refresh];
+    //    [self refresh];
     
     //添加rightBarButton
     popoverClass = [WEPopoverController class];
     
     UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,44,40)];
-    
     [rightButton setTitle:@"操作" forState:UIControlStateNormal];
     [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     rightButton.titleLabel.font=[UIFont systemFontOfSize:14];
-    [rightButton addTarget:self action:@selector(sorting:)forControlEvents:UIControlEventTouchUpInside];
+    [rightButton addTarget:self action:@selector(operation:)forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem= rightItem;
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,14 +104,15 @@
     NSLog(@"refreshed");
 }
 
-//排序
--(void)sorting:(UIButton*)sender
+//操作PopOver
+-(void)operation:(UIButton *)sender
 {
     
 	if (!self.popoverController) {
 		
-		SMessageSortingPopoverController *sortingPopoverController = [[SMessageSortingPopoverController alloc] initWithStyle:UITableViewStylePlain];
-		self.popoverController = [[popoverClass alloc] initWithContentViewController:sortingPopoverController];
+		SMessageOperationViewController *operationViewController = [[SMessageOperationViewController alloc] initWithStyle:UITableViewStylePlain];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:operationViewController];
+		self.popoverController = [[popoverClass alloc] initWithContentViewController:navController];
 		self.popoverController.delegate = self;
 		self.popoverController.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
 		
@@ -122,13 +120,14 @@
 									   permittedArrowDirections:(UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown)
 													   animated:YES];
         
-	} else {
+	}
+    else
+    {
 		[self.popoverController dismissPopoverAnimated:YES];
 		self.popoverController = nil;
 	}
     
 }
-
 
 #pragma mark - Table view delegate
 
@@ -151,9 +150,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"MessageCell";
+    static NSString *CellIdentifier = @"SMessageViewCell";
     SMessageViewCell *cell = (SMessageViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
+    
     if (nil == cell)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier
@@ -162,33 +161,49 @@
         cell = [nib objectAtIndex:0];
     }
     
+    //为delegate赋值
+    cell.delegate = self;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     SMessage *msg= [messages objectAtIndex:indexPath.row];
     if (nil != messages)
     {
         [cell updateMessage:msg];
     }
+    
+    //标记Button的tag
+    cell.btnMarkTop.tag = indexPath.row;
+    
     return cell;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SMessage *msg = [self.messages objectAtIndex:indexPath.row];
+    
+    //标记已读
+    if (!msg.hasRead)
+    {
+        [msg setHasRead:YES];
+        [self.messages replaceObjectAtIndex:indexPath.row withObject:msg];
+        [tableView reloadData];
+        [SMessageDao updateMessageUnread:YES withMessageId:msg.messageId];
+    }
+    
+    //视图跳转
+    SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
+    UIStoryboard *storyboard = self.storyboard;
+    SMessageContentViewController *contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"SMessageContentVC"];
+    contentViewController.message = selectMsg;
+    [self.navigationController pushViewController:contentViewController animated:YES];
+}
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"MessageDetail"])
-    {
-        SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
-        
-        UITableViewCell *cell = (UITableViewCell *)sender;
-        NSIndexPath *indexpath = [self.tableView indexPathForCell:cell];
-        SMessage *msg = [self.messages objectAtIndex:indexpath.row];
-        SMessage *selectMsg = [SMessageDao getMessageDetailById:msg.messageId];
-        viewController.message = selectMsg;
-        viewController.title = @"详细信息";
-        
-    }
+    //设置标题
+    SMessageContentViewController *viewController = (SMessageContentViewController *)[segue destinationViewController];
+    viewController.title = @"详细信息";
 }
 
 #pragma mark - SMessageDelegate
@@ -203,7 +218,7 @@
     self.messages = [SMessageDao getMessageList];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-       
+        
         [_HUD removeFromSuperview];
     });
     
@@ -212,6 +227,21 @@
     
 }
 
+#pragma mark - SMessageViewCellDelegate
+
+//置顶
+- (void)btnMarkTopAction:(BOOL)top withId:(NSString *)messageId withTag:(NSInteger)index
+{
+    
+    //置顶后更新model，相应的详情的里的model也要更新，不是仅仅改变某一个图片
+    [SMessageDao updateMessageTop:top withMessageId:messageId];
+    
+    //通过Button的tag标记cell的位置
+    SMessage *msg = [self.messages objectAtIndex:index];
+    [msg setHasTop:top];
+    [self.messages replaceObjectAtIndex:index withObject:msg];
+    [self.tableView reloadData];
+}
 
 #pragma mark - Public Methods
 

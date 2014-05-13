@@ -34,4 +34,9 @@
 //消息MarkedType切换 已调测
 + (NSMutableArray *) getMessageListWithMark:(MarkedType )markType;
 
+//更新未读消息
++ (BOOL)updateMessageUnread:(BOOL)unread withMessageId:(NSString *)index;
+
+//更新置顶消息
++ (BOOL)updateMessageTop:(BOOL)top withMessageId:(NSString *)index;
 @end

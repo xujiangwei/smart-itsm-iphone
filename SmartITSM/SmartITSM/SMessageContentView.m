@@ -20,7 +20,6 @@
 @synthesize messageArray;
 @synthesize currentIndexPath;
 //@synthesize delegate;
-@synthesize hasTop;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -35,6 +34,7 @@
 
 - (void)updateMessage:(SMessage *)message
 {
+    [self.hasTopButton  setTitle:nil forState:UIControlStateNormal];
     if (nil != message)
     {
         self.senderLabel.text = message.sender;

@@ -16,18 +16,16 @@
 @synthesize senderLabel;
 @synthesize summaryLabel;
 @synthesize sendTimeLabel;
-@synthesize messageIdLabel;
+@synthesize messageId;
 @synthesize markTop;
+@synthesize delegate;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder: aDecoder];
     if (self)
     {
-        NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"SMessageViewCell" owner:self options:nil];
-        UIView *view = [nibs objectAtIndex:0];
         
-        [self.contentView addSubview:view];
     }
     return self;
 }
@@ -55,6 +53,7 @@
 
 - (void) updateMessage:(SMessage *)msg
 {
+    messageId = msg.messageId;
     self.senderLabel.text = msg.sender;
     self.summaryLabel.text = msg.summary;
     self.sendTimeLabel.text = msg.sendTime;
@@ -80,6 +79,8 @@
     }
     
     //是否置顶
+    markTop = msg.hasTop;
+    [self.btnMarkTop setTitle:nil forState:UIControlStateNormal];
     if (msg.hasTop)
     {
         [self.btnMarkTop setBackgroundImage:[UIImage imageNamed:@"marked_highlight.png"] forState:UIControlStateNormal];
@@ -115,6 +116,16 @@
         [self.imageVContent setImage:nil];
     }
 */
+}
+
+- (IBAction)btnMarkTopAction:(id)sender
+{
+    markTop = !markTop;
+    if (nil != self.delegate &&[self.delegate respondsToSelector:@selector(btnMarkTopAction:withId:withTag:)])
+    {
+        NSInteger index = btnMarkTop.tag;
+        [self.delegate btnMarkTopAction:markTop withId:messageId withTag:index];
+    }
 }
 
 @end
