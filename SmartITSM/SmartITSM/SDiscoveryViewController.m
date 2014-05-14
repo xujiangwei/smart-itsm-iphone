@@ -8,6 +8,7 @@
 
 #import "SDiscoveryViewController.h"
 #import "SDiscoveryDetailViewController.h"
+#import "SDiscoveryDao.h"
 
 @interface SDiscoveryViewController ()
 
@@ -147,20 +148,28 @@
 
 - (void)loadLocalData
 {
-    self.sectionArray = [[NSMutableArray alloc] initWithObjects:@"设备", @"指标", @"通讯录", @"拨测", nil];
-    SResource *resource = [[SResource alloc]init];
-    [resource setResourceName:@"dhcc_test"];
-    [resource setResourceIp:@"192.168.0.1"];
+    //查询数据库，查看当前Discovery的种类
+    NSMutableArray *discoveryTypes = [SDiscoveryDao selectAllDiscoveryType];
+    self.sectionArray = [NSMutableArray arrayWithArray:discoveryTypes];
     
-    NSMutableArray *resources = [[NSMutableArray alloc]initWithObjects:resource, nil];
-    NSMutableArray *indicators = [[NSMutableArray alloc] initWithObjects:@"flower_cpu", nil];
-    NSMutableArray *contacts = [[NSMutableArray alloc] initWithObjects:@"张三", @"李四", nil];
-    NSMutableArray *dials = [[NSMutableArray alloc]initWithObjects:@"ping 10.10.152.18", nil];
-    self.discoveryDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:resources,[self.sectionArray objectAtIndex:0],
-                         indicators,[self.sectionArray objectAtIndex:1],
-                         contacts, [self.sectionArray objectAtIndex:2],
-                         dials, [self.sectionArray objectAtIndex:3], nil];
     
+    self.discoveryDic = [[NSMutableDictionary alloc]initWithCapacity:2];
+    for (NSString *discovery in self.sectionArray)
+    {
+        NSMutableArray *discoveryArray = nil;
+        //查询各种类的具体Discovery
+        discoveryArray = [SDiscoveryDao selectDiscoveryWithType:discovery];
+        [self.discoveryDic setObject:discoveryArray forKey:discovery];
+        
+    }
+    
+}
+
+- (void)reloadDiscoveryData
+{
+    [self loadLocalData];
+    
+    [self.tableView reloadData];
 }
 
 
@@ -178,7 +187,7 @@
         
         SDiscoveryDetailViewController *detailVC = (SDiscoveryDetailViewController *)[segue destinationViewController];
         [detailVC setTitle:[NSString stringWithFormat:@"%@",selectCell.textLabel.text]];
-    }
+    }  
     else if ([segue.identifier isEqualToString:@"resourceList"])
     {
         SResourceListViewController *resourceListViewController = (SResourceListViewController *)[segue destinationViewController];
@@ -192,8 +201,21 @@
 
 - (IBAction)unwindSegueAtDiscoveryAction:(UIStoryboardSegue *)sender
 {
-    //返回操作
+    //Done操作
+    SResourceListViewController *sourceVC = sender.sourceViewController;
+    NSMutableArray *discoveryArray = sourceVC.discoveryArray;
+    for (SResource *resource in discoveryArray) {
+        [SDiscoveryDao insertDiscovery:[NSString stringWithFormat:@"%ld", resource.resourceId] withType:Resource];
+    }
+    
+    NSMutableArray *cancelDiscoveryArray = sourceVC.cancelDiscoveryArray;
+    for (SResource *resource in cancelDiscoveryArray) {
+        [SDiscoveryDao deleteDiscovery:[NSString stringWithFormat:@"%ld",resource.resourceId] withType:Resource];
+    }
+  
+    [self reloadDiscoveryData];
 }
+
 
 - (IBAction)addDiscovery:(id)sender
 {

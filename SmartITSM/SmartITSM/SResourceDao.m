@@ -21,7 +21,7 @@
     SDatabase *db = [SDatabase sharedSingleton];
     FMResultSet *rs = nil;
     NSString *sql = [NSString stringWithFormat:@"SELECT category_id, vendor_id, base_json FROM tb_resource WHERE resource_id = %ld",resourceId];
-    NSLog(@"%@", sql);
+//    NSLog(@"%@", sql);
     rs = [db executeQuery:sql];
     int categoryId = 0;
     int vendorId = NSNotFound;
@@ -47,7 +47,7 @@
     }
   
     sql = [NSString stringWithFormat:@"SELECT category,  parent_category_id, parent_category, category_picture FROM tb_resource_type WHERE category_id = %d", categoryId];
-    NSLog(@"%@", sql);
+//    NSLog(@"%@", sql);
     rs = [db executeQuery:sql];
     
     while ([rs next])
@@ -65,7 +65,7 @@
     }
     
     sql = [NSString stringWithFormat:@"SELECT vendor, vendor_picture FROM tb_resource_vendor WHERE id = %d", vendorId];
-    NSLog(@"%@", sql);
+//    NSLog(@"%@", sql);
     rs = [db executeQuery:sql];
     
     while ([rs next])

@@ -18,4 +18,8 @@
 
 @property (assign, nonatomic) BOOL fromTool;
 
+@property (strong, nonatomic) NSMutableArray *discoveryArray;        //增加的发现
+
+@property (strong, nonatomic) NSMutableArray *cancelDiscoveryArray;  //取消的发现
+
 @end

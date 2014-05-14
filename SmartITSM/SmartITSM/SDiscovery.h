@@ -8,15 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+#define DiscoveryTypeResource [NSString stringWithFormat:@"设备"]
+#define DiscoveryTypeKPI [NSString stringWithFormat:@"指标"]
+#define DiscoveryTypeCommutication [NSString stringWithFormat:@"通讯录"]
+#define DiscoveryTypeDial [NSString stringWithFormat:@"拨测"]
+
 typedef enum _DiscoveryType
 {
-    Rource = 0,           //设备
+    Resource = 0,           //设备
     
     KPI = 1,              //指标
     
     Communication = 2,    //通讯录
     
-    Dial = 4              //拨测
+    Dial = 3              //拨测
     
 } DiscoveryType;
 

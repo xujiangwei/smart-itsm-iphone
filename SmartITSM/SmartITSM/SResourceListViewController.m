@@ -9,6 +9,7 @@
 #import "SResourceListViewController.h"
 #import "SResourceListViewCell.h"
 #import "SResourceDao.h"
+#import "SDiscoveryDao.h"
 #import "MastPrerequisites.h"
 #import "MastEngine.h"
 #import "SResourceContentViewController.h"
@@ -52,6 +53,15 @@
         _listener.delegate = self;
         
         _statutsListener = [[SResourceListStatusListener alloc] init];
+        
+        self.discoveryArray = nil;
+        
+        self.discoveryArray = [[NSMutableArray alloc]initWithCapacity:2];
+        
+        self.cancelDiscoveryArray = nil;
+        
+        self.cancelDiscoveryArray = [[NSMutableArray alloc]initWithCapacity:2];
+        
         
     }
     return self;
@@ -106,6 +116,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     SResource *resource = nil;
     if (self.searchDisplayController.isActive)
     {
@@ -126,9 +137,31 @@
         [self.navigationController pushViewController:viewController animated:YES];
     }else
     {
-        
+        SResourceListViewCell *cell = (SResourceListViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+//        cell.accessoryType = (cell.accessoryType == UITableViewCellAccessoryCheckmark) ? UITableViewCellAccessoryNone: UITableViewCellAccessoryCheckmark;
+        if (cell.accessoryType == UITableViewCellAccessoryCheckmark)
+        {
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+            if (![self.cancelDiscoveryArray containsObject:resource]) {
+                [self.cancelDiscoveryArray addObject:resource];
+            }
+            
+            if ([self.discoveryArray containsObject:resource]) {
+                [self.discoveryArray removeObject:resource];
+            }
+        }
+        else
+        {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            if (![self.discoveryArray containsObject:resource]) {
+                [self.discoveryArray addObject:resource];
+            }
+            
+            if ([self.cancelDiscoveryArray containsObject:resource]) {
+                [self.cancelDiscoveryArray removeObject:resource];
+            }
+        }
     }
-
 }
 
 #pragma mark - Table view data source
@@ -178,7 +211,13 @@
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }else
     {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
+        if ([SDiscoveryDao isDiscovery:[NSString stringWithFormat:@"%ld", resource.resourceId] withType:Resource]) {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        }else
+        {
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+        }
+        
     }
     
     [cell.resourceName setText:resource.resourceName];

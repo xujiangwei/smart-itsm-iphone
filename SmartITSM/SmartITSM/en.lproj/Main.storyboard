@@ -114,6 +114,7 @@
                     </refreshControl>
                     <connections>
                         <outlet property="searchDisplayController" destination="9Sl-6s-IJk" id="yUn-Qs-hCy"/>
+                        <segue destination="6oa-sN-Kgt" kind="unwind" unwindAction="backDiscoverySegueAction:" id="6kX-Rz-Yb7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVr-Wp-sqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
