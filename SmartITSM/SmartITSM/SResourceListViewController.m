@@ -7,7 +7,6 @@
 //
 
 #import "SResourceListViewController.h"
-#import "SResourceListViewCell.h"
 #import "SResourceDao.h"
 #import "SDiscoveryDao.h"
 #import "MastPrerequisites.h"
@@ -88,6 +87,7 @@
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];
     refreshControl.tintColor = [UIColor blueColor];
     refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉可以刷新"];
+    [refreshControl addTarget:self action:@selector(refreshControlAction) forControlEvents:UIControlEventValueChanged];
     
     self.refreshControl = refreshControl;
     
@@ -275,7 +275,7 @@
 
 #pragma mark SResourceListListenerDelegate
 
-- (void)updateResourceList:(NSDictionary *)dic
+- (void)updateResourceList:(NSDictionary *)dic 
 {
     NSInteger statusCode = [[dic objectForKey:@"status"] integerValue];
     if (300 == statusCode)
@@ -321,14 +321,13 @@
 
 #pragma mark refreshControl 
 
-- (IBAction)refreshControlAction:(id)sender
+- (void)refreshControlAction
 {
-    UIRefreshControl *refreshC = (UIRefreshControl *)sender;
-    refreshC.attributedTitle = [[NSAttributedString alloc] initWithString:@"更新数据中..."];
-
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"更新数据中..."];
     
     //发送网络数据
     [self requestData];
+    [self.refreshControl endRefreshing];
 
 }
 

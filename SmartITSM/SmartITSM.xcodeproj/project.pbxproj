@@ -1189,13 +1189,13 @@
 		4AC37C9718E13755001A82C5 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				4A2F495A190742AC00B61478 /* SResourceListListener.h */,
+				4A2F495B190742AC00B61478 /* SResourceListListener.m */,
 				4AC37C9818E13792001A82C5 /* SResourceListViewController.h */,
 				4AC37C9918E13792001A82C5 /* SResourceListViewController.m */,
 				4A5EDF4818FBE0DE0047B923 /* SResourceListViewCell.h */,
 				4A5EDF4918FBE0DE0047B923 /* SResourceListViewCell.m */,
 				4A5EDF4A18FBE0DE0047B923 /* SResourceListViewCell.xib */,
-				4A2F495A190742AC00B61478 /* SResourceListListener.h */,
-				4A2F495B190742AC00B61478 /* SResourceListListener.m */,
 				4A865EC61907ABD3009D7A13 /* SResourceContentViewController.h */,
 				4A865EC71907ABD3009D7A13 /* SResourceContentViewController.m */,
 			);

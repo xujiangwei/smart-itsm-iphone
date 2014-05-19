@@ -7,6 +7,11 @@
 //
 
 #import "SResourceListViewCell.h"
+@interface SResourceListViewCell ()
+{
+}
+
+@end
 
 @implementation SResourceListViewCell
 
@@ -21,5 +26,9 @@
 
     // Configure the view for the selected state
 }
+
+
+#pragma mark - Private
+
 
 @end

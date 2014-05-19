@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SResourceList.h"
 #import "SResourceListListener.h"
+#import "SResourceListViewCell.h"
 
 @interface SResourceListViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate, SResourceListListenerDelegate>
 
