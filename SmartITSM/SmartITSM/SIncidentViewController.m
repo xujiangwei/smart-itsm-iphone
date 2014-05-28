@@ -49,11 +49,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    [self refreshIncidentList];
 
     incidents = [SIncidentDao getTaskList];
 
-    [self refreshIncidentList];
+}
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (nil != _listener)
+    {
+        [[MastEngine sharedSingleton] removeActionListener:kCelletName listener:_listener];
+    }
+    //实例化并添加监听器
+    _listener = [[SIncidentListener alloc] initWith:@"requestIncidentList"];
+    _listener.delegate = self;
+    [[MastEngine sharedSingleton] addActionListener:kCelletName listener:_listener];
 }
 
 
@@ -62,9 +76,16 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)dealloc
+{
+    //数据处理完成，移除监听器
+    [[MastEngine sharedSingleton] removeActionListener:@"SmartITOM" listener:_listener];
+}
+
 - (void)updateIncidentList:(NSMutableArray *)incidentArray
 {
     incidents = incidentArray;
+    
     [incidentListView reloadData];
 }
 
@@ -152,21 +173,12 @@
     }else{
         [_HUD removeFromSuperview];
     }
-    
-    //数据处理完成，移除监听器
-    [[MastEngine sharedSingleton] removeActionListener:@"SmartITOM" listener:_listener];
 }
 
 #pragma mark - Private
 
 - (void)refreshIncidentList
 {
-    //实例化并添加监听器
-    _listener = [[SIncidentListener alloc] initWith:@"requestIncidentList"];
-    _listener.delegate = self;
-    [[MastEngine sharedSingleton] addActionListener:@"SmartITOM" listener:_listener];
-    
-    
     //刷新故障任务列表
     CCActionDialect *dialect = (CCActionDialect *)[[CCDialectEnumerator sharedSingleton]createDialect:ACTION_DIALECT_NAME tracker:@"dhcc"];
     dialect.action = @"requestIncidentList";
@@ -182,7 +194,7 @@
     }
 
     [dialect appendParam:@"data" stringValue:value];
-    [[MastEngine sharedSingleton] asynPerformAction:@"SmartITOM" action:dialect];
+    [[MastEngine sharedSingleton] asynPerformAction:kCelletName action:dialect];
     
     _HUD = [[MBProgressHUD alloc]initWithView:self.view];
     [self.view addSubview:_HUD];

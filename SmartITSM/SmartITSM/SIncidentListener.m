@@ -14,7 +14,6 @@
 
 - (void)didAction:(CCActionDialect *)dialect
 {
-    
     if ([dialect.action isEqualToString:@"requestIncidentList"])
     {
         NSString *jsonStr = [dialect getParamAsString:@"data"];

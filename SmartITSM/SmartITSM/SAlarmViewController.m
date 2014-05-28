@@ -52,6 +52,7 @@
     if (self)
     {
         self.alarmLevelList = [[NSMutableArray alloc] init];
+
     }
     return self;
 }
@@ -61,9 +62,26 @@
 {
     [super viewDidLoad];
 
-    [self refresh];
+//    [self refresh];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"SAlarmViewCell" bundle:nil] forCellReuseIdentifier:@"SAlarmViewCell"];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (nil != _listener)
+    {
+        [[MastEngine sharedSingleton] removeActionListener:kDemoCelletName listener:_listener];
+    }
+    
+    _listener = [[SAlarmViewListener alloc] initWith:@"requestAlarmList"];
+    _listener.delegate = self;
+    
+    [[MastEngine sharedSingleton] addActionListener:kDemoCelletName listener:_listener];
+    
     
 }
 
@@ -72,6 +90,12 @@
     [super didReceiveMemoryWarning];
    
 }
+
+- (void)dealloc{
+
+    [[MastEngine sharedSingleton] removeActionListener:kDemoCelletName listener:_listener];
+}
+
 
 #pragma mark - Table view delegate
 
@@ -166,10 +190,6 @@
 //发送网络请求
 -(void)refresh
 {
-    _listener = [[SAlarmViewListener alloc] initWith:@"requestAlarmList"];
-    _listener.delegate = self;
-    [[MastEngine sharedSingleton] addActionListener:kDemoCelletName listener:_listener];
-    
     _HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _HUD.mode = MBProgressHUDModeIndeterminate;
     _HUD.labelText = @"数据加载中...";
@@ -243,9 +263,7 @@
         NSLog(@"网络数据请求失败");
         
     }
- 
-    [[MastEngine sharedSingleton] removeActionListener:kDemoCelletName listener:_listener];
-}
 
+}
 
 @end

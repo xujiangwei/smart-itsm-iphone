@@ -17,6 +17,8 @@
 #import "SDatabase.h"
 #import "FMResultSet.h"
 
+#define kCelletName @"SmartITOM"
+
 
 // 动作监听器
 @class ActionListener;

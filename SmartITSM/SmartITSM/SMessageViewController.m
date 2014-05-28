@@ -39,6 +39,8 @@
     {
         _statusListener = [[SMessageStatusListener alloc] init];
         _statusListener.delegate = self;
+
+        
     }
     return self;
 }
@@ -55,7 +57,8 @@
     
     //刷新列表
     _refreshControl = true;
-    //    [self refresh];
+    
+//    [self refresh];
     
     //添加rightBarButton
     popoverClass = [WEPopoverController class];
@@ -70,9 +73,31 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (nil != _listener)
+    {
+        [[MastEngine sharedSingleton] removeActionListener:kDemoCelletName listener:_listener];
+    }
+    
+    _listener = [[SMessageListener alloc] initWith:@"requestMessages"];
+    _listener.delegate = self;
+
+    [[MastEngine sharedSingleton] addActionListener:kDemoCelletName listener:_listener];
+    
+
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc{
+    
+    [[MastEngine sharedSingleton] removeActionListener:kDemoCelletName listener:_listener];
 }
 
 // 添加UIRefreshControl下拉刷新控件到UITableViewController的view中
@@ -222,8 +247,7 @@
         [_HUD removeFromSuperview];
     });
     
-    
-    [[MastEngine sharedSingleton] removeActionListener:kDemoCelletName listener:_listener];
+
     
 }
 
@@ -247,16 +271,6 @@
 
 - (void)refresh
 {
-    if (nil != _listener)
-    {
-        [[MastEngine sharedSingleton] removeActionListener:kDemoCelletName listener:_listener];
-    }
-    
-    _listener = [[SMessageListener alloc] initWith:@"requestMessages"];
-    _listener.delegate = self;
-    
-    [[MastEngine sharedSingleton] addActionListener:kDemoCelletName listener:_listener];
-    
     //C2S
     if ([SUser isSignin])
     {
